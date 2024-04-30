@@ -1,0 +1,26 @@
+[tool.poetry]
+    name        = "homelab"
+    version     = "0.1.0"
+    description = "Homelab configuration"
+    license     = "MIT"
+    readme      = "README.md"
+    authors     = ["Nathan Vaughn <nvaughn51@gmail.com>"]
+    homepage    = "https://github.com/homelab"
+    repository  = "https://github.com/homelab.git"
+    package-mode = false
+
+[tool.poetry.dependencies]
+    python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+    pre-commit = "3.7.0"
+
+[tool.pyright]
+    typeCheckingMode           = "basic"
+    venvPath                   = "."
+    venv                       = ".venv"
+    reportMissingParameterType = true
+
+[build-system]
+    requires      = ["poetry-core"]
+    build-backend = "poetry.core.masonry.api"
