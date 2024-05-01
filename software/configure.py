@@ -69,3 +69,6 @@ server.shell(name="Run k3s install script", commands=temp_k3s_file)
 
 files.file(name="Delete k3s install script", path=temp_k3s_file, present=False)
 # endregion
+
+
+# TODO resolvconf for DNS sever host
