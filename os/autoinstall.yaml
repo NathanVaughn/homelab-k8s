@@ -1,27 +1,21 @@
 autoinstall:
-  version: 1
-
-  updates: all
-
+  identity:
+    hostname: test
   ssh:
     install-server: true
-
   storage:
     layout:
       name: direct
-
-  identity:
-    hostname: ubuntu
-
+  updates: all
   user-data:
     users:
-    # https://docs.cloud-init.io/en/latest/reference/examples.html#configure-instance-to-be-managed-by-ansible
-    # https://docs.cloud-init.io/en/latest/reference/examples.html#including-users-and-groups
-    - name: pyinfra
-      gecos: pyinfra
+    - gecos: pyinfra
       groups: users,admin
-      sudo: ALL=(ALL) NOPASSWD:ALL
-      shell: /bin/bash
       lock_passwd: true
+      name: pyinfra
+      shell: /bin/bash
       ssh_authorized_keys:
-        - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC+SGfQHY4JKVIY5eL1fusVj+Z48x1QHTOV2RPvh/u1as+1deGJPSiqYtzOYetFmLakCEUrrCSo+ucsnR/kMn0O5s8LnKYEBwXVzM19xSFcAGLvoEcdQrJgiFGTh9m+Ki5aaAuNd2WSRVg1O7/nZcP7Kd1v1IKAROhYzGDLtCCtwQl64iBCiQEBALcEBgyZFK+IqldPW6DrCDrPWAzipvLRZude6KCppPc/58YSMJMDitPyjstshB2ISdLBRgr0I38+mFI7bkgTwKi6MWurmY6xiQwFn2+8ne3wQMr89yxdXsZHGCTsXD5/pACwZ9PXdJUJdzyT1Pb1iLqsFOGuXEcz8BWzI9YOriYlR0o6uLYIMN879XgOvyQw+KlDpPJtDHj61jbtjmzvpzUAsqvXglu1oyi1cFwL6B6y9HO4lOGHTS7omZ68FKtflBHwPtRoT5K8VamByq4UP34zzG77oEuvhDs5QrFMjCHB+S22a+aCOz143MjxFqTtySY2gyef76DcTDmwhzSc+pLfmh9oHdiG61Z4cTyI/ElREXvWmgV7re2EptTC9CuRo4P4/peDoBk4OTpdT5aXHYMcBTACAl2Wfb8g4o6v9LGHxDVRyu63rP86v0uJKUVzF42mMohSWcDqva8wSWP+mEWA+KMjoy9UAwSHfspH2XeiuoRzMMRdXw== nvaughn51@gmail.com"
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC+SGfQHY4JKVIY5eL1fusVj+Z48x1QHTOV2RPvh/u1as+1deGJPSiqYtzOYetFmLakCEUrrCSo+ucsnR/kMn0O5s8LnKYEBwXVzM19xSFcAGLvoEcdQrJgiFGTh9m+Ki5aaAuNd2WSRVg1O7/nZcP7Kd1v1IKAROhYzGDLtCCtwQl64iBCiQEBALcEBgyZFK+IqldPW6DrCDrPWAzipvLRZude6KCppPc/58YSMJMDitPyjstshB2ISdLBRgr0I38+mFI7bkgTwKi6MWurmY6xiQwFn2+8ne3wQMr89yxdXsZHGCTsXD5/pACwZ9PXdJUJdzyT1Pb1iLqsFOGuXEcz8BWzI9YOriYlR0o6uLYIMN879XgOvyQw+KlDpPJtDHj61jbtjmzvpzUAsqvXglu1oyi1cFwL6B6y9HO4lOGHTS7omZ68FKtflBHwPtRoT5K8VamByq4UP34zzG77oEuvhDs5QrFMjCHB+S22a+aCOz143MjxFqTtySY2gyef76DcTDmwhzSc+pLfmh9oHdiG61Z4cTyI/ElREXvWmgV7re2EptTC9CuRo4P4/peDoBk4OTpdT5aXHYMcBTACAl2Wfb8g4o6v9LGHxDVRyu63rP86v0uJKUVzF42mMohSWcDqva8wSWP+mEWA+KMjoy9UAwSHfspH2XeiuoRzMMRdXw==
+        Nathan Vaughn
+      sudo: ALL=(ALL) NOPASSWD:ALL
+  version: 1

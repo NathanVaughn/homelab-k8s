@@ -1,0 +1,28 @@
+autoinstall:
+  # https://canonical-subiquity.readthedocs-hosted.com/en/latest/reference/autoinstall-reference.html#top-level-keys
+  version: 1
+
+  updates: all
+
+  ssh:
+    install-server: true
+
+  storage:
+    layout:
+      name: direct
+
+  identity:
+    hostname: # TODO
+
+  user-data:
+    users:
+    # https://docs.cloud-init.io/en/latest/reference/examples.html#configure-instance-to-be-managed-by-ansible
+    # https://docs.cloud-init.io/en/latest/reference/examples.html#including-users-and-groups
+    - name: pyinfra
+      gecos: pyinfra
+      groups: users,admin
+      sudo: ALL=(ALL) NOPASSWD:ALL
+      shell: /bin/bash
+      lock_passwd: true
+      ssh_authorized_keys:
+        - "" # TODO
