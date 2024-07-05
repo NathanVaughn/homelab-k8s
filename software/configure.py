@@ -4,12 +4,14 @@ temp_k3s_file = "/tmp/install_k3s.sh"
 smartd_dir = "/var/log/smartd"
 smartd_config = "/etc/default/smartmontools"
 smartd_logrotate = "/etc/logrotate.d/smartd"
+resolvconf_config = "/etc/resolvconf/resolv.conf.d/head"
 
 # region Install lm-sensors
 apt.packages(
     name="Install lm-sensors",
     packages=["lm-sensors"],
     update=True,
+    _sudo=True,
 )
 # endregion
 
@@ -19,12 +21,7 @@ apt.packages(
     name="Install smartmontools",
     packages=["smartmontools"],
     update=True,
-)
-
-files.file(
-    name="Create smartd configuration file",
-    path=smartd_config,
-    present=True,
+    _sudo=True,
 )
 
 files.block(
@@ -39,12 +36,7 @@ apt.packages(
     name="Install logrotate",
     packages=["logrotate"],
     update=True,
-)
-
-files.file(
-    name="Create smartd logrotate configuration",
-    path=smartd_logrotate,
-    present=True,
+    _sudo=True,
 )
 
 files.block(
@@ -71,4 +63,33 @@ files.file(name="Delete k3s install script", path=temp_k3s_file, present=False)
 # endregion
 
 
-# TODO resolvconf for DNS sever host
+# TODO only do this for the DNS server
+apt.packages(
+    name="Install resolvconf",
+    packages=["resolvconf"],
+    update=True,
+    _sudo=True,
+)
+
+resolvconf_config_edit = files.block(
+    name="Edit resolvconf configuration",
+    path=resolvconf_config,
+    content="nameserver 1.1.1.1\nnameserver 1.0.0.1\n",  # last newline is important
+)
+
+server.service(
+    name="Start resolvconf",
+    service="resolvconf",
+    runing=True,
+    restarted=resolvconf_config_edit.changed,
+)
+
+if resolvconf_config_edit.changed:
+    server.shell(name="Update /etc/resolv.conf", commands="resolvconf -u")
+
+    server.service(
+        name="Start systemd-resolved",
+        service="systemd-resolved",
+        runing=True,
+        restarted=resolvconf_config_edit.changed,
+    )
