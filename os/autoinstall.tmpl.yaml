@@ -26,8 +26,6 @@ autoinstall:
     id: ubuntu-server-minimal
   user-data:
     disable_root: true
-  packages:
-    - lm-sensors
   updates: all
   late-commands:
     - curtin in-target --target=/target systemctl enable ssh
