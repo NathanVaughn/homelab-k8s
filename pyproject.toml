@@ -1,28 +1,10 @@
-[tool.poetry]
-    name         = "homelab"
-    version      = "0.1.0"
-    description  = "Homelab configuration"
-    license      = "MIT"
-    readme       = "README.md"
-    authors      = ["Nathan Vaughn <nvaughn51@gmail.com>"]
-    homepage     = "https://github.com/homelab"
-    repository   = "https://github.com/homelab.git"
-    package-mode = false
+[project]
+    name            = "homelab-new"
+    version         = "0.1.0"
+    description     = ""
+    readme          = "README.md"
+    requires-python = ">=3.13"
+    dependencies    = ["pyinfra>=3.1.1", "pyyaml>=6.0.2"]
 
-[tool.poetry.dependencies]
-    python  = "^3.12"
-    pyinfra = "^3.0"
-    pyyaml  = "^6.0.1"
-
-[tool.poetry.group.dev.dependencies]
-    pre-commit = "3.7.0"
-
-[tool.pyright]
-    typeCheckingMode           = "basic"
-    venvPath                   = "."
-    venv                       = ".venv"
-    reportMissingParameterType = true
-
-[build-system]
-    requires      = ["poetry-core"]
-    build-backend = "poetry.core.masonry.api"
+[dependency-groups]
+    dev = ["pre-commit>=4.0.1"]
