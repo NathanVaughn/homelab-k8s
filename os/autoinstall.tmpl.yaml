@@ -1,5 +1,4 @@
 #cloud-config
-version: 1 # make the jsonschema happy
 autoinstall:
   version: 1
   identity:
