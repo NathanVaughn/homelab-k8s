@@ -1,28 +1,32 @@
+#cloud-config
 autoinstall:
-  # https://canonical-subiquity.readthedocs-hosted.com/en/latest/reference/autoinstall-reference.html#top-level-keys
   version: 1
-
-  updates: all
-
+  identity:
+    hostname: TODO
+    username: ubuntu
+    password: TODO
   ssh:
     install-server: true
-
+    allow-pw: false
+    authorized-keys:
+      - TODO
   storage:
     layout:
       name: direct
-
-  identity:
-    hostname: # TODO
-
+  network:
+    network:
+      version: 2
+      ethernets:
+        all-en:
+          match:
+            name: en*  # Matches all Ethernet interfaces
+          dhcp4: true
+  source: # use a minimal distribution
+    id: ubuntu-server-minimal
   user-data:
-    users:
-    # https://docs.cloud-init.io/en/latest/reference/examples.html#configure-instance-to-be-managed-by-ansible
-    # https://docs.cloud-init.io/en/latest/reference/examples.html#including-users-and-groups
-    - name: pyinfra
-      gecos: pyinfra
-      groups: users,admin
-      sudo: ALL=(ALL) NOPASSWD:ALL
-      shell: /bin/bash
-      lock_passwd: true
-      ssh_authorized_keys:
-        - "" # TODO
+    disable_root: true
+  packages:
+    - lm-sensors
+  updates: all
+  late-commands:
+    - curtin in-target --target=/target systemctl enable ssh
