@@ -1,2 +1,4 @@
-control_planes = ["hades.nathanv.home"]
-worker_nodes = ["zeus.nathanv.home", "poseidon.nathanv.home", "ares.nathanv.home"]
+_base_zone = ".nathanv.home"
+_names = ["billy", "jesse", "tom", "annie"]
+
+nodes = [(f"{name}{_base_zone}", {"ssh_user": "ubuntu"}) for name in _names]

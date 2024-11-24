@@ -1,5 +1,5 @@
 Run
 
 ```bash
-pyinfra inventory.py software.py
+pyinfra inventory.py configure.py
 ```
