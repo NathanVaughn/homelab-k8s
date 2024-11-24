@@ -1,15 +1,17 @@
+import os
 import pathlib
 import urllib.request
 
+import yaml
 from pyinfra import host, inventory  # type: ignore
-from pyinfra.operations import apt, files, server
+from pyinfra.operations import apt, files, python, server
 
 ROOT_DIR = pathlib.Path(__file__).absolute().parent.parent
 
 resolvconf_config = "/etc/resolvconf/resolv.conf.d/head"
 
 # load k3s data
-k3s_install_script = ROOT_DIR.joinpath("downloaded", "k3s_install.sh")
+k3s_install_script = ROOT_DIR.joinpath("software", "downloaded", "k3s_install.sh")
 
 if not k3s_install_script.exists():
     req = urllib.request.Request(
@@ -49,6 +51,20 @@ server.shell(name="Disable wifi", commands="nmcli radio wifi off", _sudo=True)
 # https://www.rootisgod.com/2024/Running-an-HA-3-Node-K3S-Cluster/
 first_host = inventory.hosts[next(iter(inventory.hosts))]
 
+
+def update_kubeconfig():
+    # replace the server address with the first host
+    with open(kube_config, "r") as fp:
+        kube_config_data = yaml.safe_load(fp)
+
+    kube_config_data["clusters"][0]["cluster"]["server"] = (
+        f"https://{first_host.name}:6443"
+    )
+
+    with open(kube_config, "w") as fp:
+        yaml.safe_dump(kube_config_data, fp)
+
+
 if first_host.name == host.name:
     server.script(
         name="Run k3s install script on first node",
@@ -58,6 +74,19 @@ if first_host.name == host.name:
         # adds full hostname to the certificate
         args=("server", "--cluster-init", f"--tls-san={first_host.name}"),
     )
+
+    # download the kubeconfig file
+    kube_config = pathlib.Path(os.path.expanduser("~"), ".kube", "config")
+    kube_config.parent.mkdir(exist_ok=True)
+
+    files.get(
+        name="Download kubeconfig",
+        src="/etc/rancher/k3s/k3s.yaml",
+        dest=str(kube_config.absolute()),
+        _sudo=True,
+    )
+
+    python.call(name="Update kubeconfig", function=update_kubeconfig)
 
 else:
     server.script(
