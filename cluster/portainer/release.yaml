@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: portainer-repo
         namespace: portainer
-      version: 2.24.0
+      version: 1.0.58
   interval: 1h0m0s
   values:
     persistence:
