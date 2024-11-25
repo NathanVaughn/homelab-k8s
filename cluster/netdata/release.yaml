@@ -1,0 +1,28 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: netdata-release
+  namespace: netdata
+spec:
+  chart:
+    spec:
+      chart: netdata
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: netdata-repo
+        namespace: netdata
+      version: "2.0.3"
+  interval: 1h0m0s
+  values:
+    image:
+      tag: edge
+    parent:
+      claiming:
+        enabled: true
+    child:
+      claiming:
+        enabled: true
+  valuesFrom:
+    - kind: Secret
+      name: netdata-secrets

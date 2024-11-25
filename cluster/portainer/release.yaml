@@ -1,0 +1,22 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: portainer-release
+  namespace: portainer
+spec:
+  releaseName: portainer
+  chart:
+    spec:
+      chart: portainer
+      sourceRef:
+        kind: HelmRepository
+        name: portainer-repo
+        namespace: portainer
+      version: 2.24.0
+  interval: 1h0m0s
+  values:
+    persistence:
+      enabled: true
+      existingClaim: portainer-data
+    service:
+      type: LoadBalancer
