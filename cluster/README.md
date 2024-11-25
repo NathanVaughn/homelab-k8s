@@ -9,3 +9,9 @@ flux create source helm $NAME --url $HELMURL --namespace $NAME --export
 ```bash
 flux create helmrelease $RELEASENAME --chart $NAME --source HelmRepository/$NAME --chart-version $VERSION --namespace $NAME --export
 ```
+
+## Force update
+
+```bash
+flux reconcile source git flux-system
+```
