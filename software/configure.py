@@ -72,7 +72,12 @@ if first_host.name == host.name:
         _env={"K3S_TOKEN": k3s_token},
         # https://serverfault.com/a/1162813
         # adds full hostname to the certificate
-        args=("server", "--cluster-init", f"--tls-san={first_host.name}"),
+        args=(
+            "server",
+            "--embedded-registry",
+            "--cluster-init",
+            f"--tls-san={first_host.name}",
+        ),
     )
 
     # download the kubeconfig file
@@ -95,10 +100,18 @@ else:
         _env={"K3S_TOKEN": k3s_token},
         args=(
             "server",
+            "--embedded-registry",
             f"--server=https://{first_host.name}:6443",
             f"--tls-san={host.name}",
         ),
     )
+
+files.put(
+    name="Upload k3s registry config",
+    src=ROOT_DIR.joinpath("software", "registries.yaml"),
+    dest="/etc/rancher/k3s/registries.yaml",
+    _sudo=True,
+)
 # endregion
 
 
