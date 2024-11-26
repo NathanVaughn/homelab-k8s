@@ -12,11 +12,11 @@ spec:
         kind: HelmRepository
         name: netdata-repo
         namespace: netdata
-      version: "2.0.3"
+      version: "3.7.114"
   interval: 1h0m0s
   values:
     image:
-      tag: edge
+      tag: "2.0.3"
     parent:
       claiming:
         enabled: true
