@@ -26,4 +26,3 @@ spec:
   valuesFrom:
     - kind: Secret
       name: netdata-secrets
-      valuesKey: values.yaml
