@@ -21,3 +21,9 @@ flux reconcile source git flux-system
 ```bash
 kubeseal --fetch-cert --controller-namespace=sealed-secrets > sealed-secrets-public-key.pem
 ```
+
+## Forward a port
+
+```bash
+kubectl port-forward service/$NAME $PORT
+```
