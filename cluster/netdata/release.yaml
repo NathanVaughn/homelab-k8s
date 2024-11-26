@@ -15,11 +15,12 @@ spec:
       version: "3.7.113"
   interval: 1h0m0s
   values:
-    image:
-      tag: "v2.0.3"
     parent:
       enabled: true
       claiming:
         enabled: false
     child:
       enabled: true
+  valuesFrom:
+    - kind: ConfigMap
+      name: netdata-values
