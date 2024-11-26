@@ -1,7 +1,22 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["github>nathanvaughn/renovate-config"],
+    "extends": [
+        "github>nathanvaughn/renovate-config"
+    ],
     "flux": {
-        "fileMatch": ["cluster/.+\\.yaml$"]
-    }
+        "fileMatch": [
+            "cluster/.+\\.yaml$"
+        ]
+    },
+    "packageRules": [
+        {
+            "matchManagers": [
+                "flux",
+                "helm-values"
+            ],
+            "schedule": [
+                "before 11pm on the first day of the week"
+            ]
+        }
+    ]
 }

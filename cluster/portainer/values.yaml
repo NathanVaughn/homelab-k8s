@@ -1,0 +1,3 @@
+image:
+  repository: portainer/portainer-ce
+  tag: 2.21.4

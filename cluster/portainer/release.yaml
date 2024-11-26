@@ -18,5 +18,6 @@ spec:
     persistence:
       enabled: true
       existingClaim: portainer-data
-    service:
-      type: LoadBalancer
+  valuesFrom:
+    - kind: ConfigMap
+      name: portainer-values
