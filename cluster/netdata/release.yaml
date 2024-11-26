@@ -18,11 +18,8 @@ spec:
     image:
       tag: "v2.0.3"
     parent:
+      enabled: true
       claiming:
-        enabled: true
+        enabled: false
     child:
-      claiming:
-        enabled: true
-  valuesFrom:
-    - kind: Secret
-      name: netdata-secrets
+      enabled: true

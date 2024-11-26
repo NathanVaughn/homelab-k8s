@@ -1,9 +1,0 @@
-parent:
-  claiming:
-    token: $TOKEN
-    rooms: $ROOMS
-
-child:
-  claiming:
-    token: $TOKEN
-    rooms: $ROOMS
