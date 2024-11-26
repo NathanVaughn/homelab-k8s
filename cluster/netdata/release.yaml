@@ -26,3 +26,4 @@ spec:
   valuesFrom:
     - kind: Secret
       name: netdata-secrets
+      namespace: netdata
