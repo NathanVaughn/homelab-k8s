@@ -7,5 +7,5 @@ pyinfra inventory.py configure.py
 Now, bootstrap flux so the cluster is controlled by git:
 
 ```bash
-flux bootstrap github --token-auth --owner=NathanVaughn --repository=homelab-new --branch=main --path=cluster/ --personal
+flux bootstrap github --token-auth --owner=NathanVaughn --repository=homelab-k8s --branch=main --path=cluster/ --personal
 ```

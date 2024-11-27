@@ -1,5 +1,5 @@
 [project]
-    name            = "homelab-new"
+    name            = "homelab-k8s"
     version         = "0.1.0"
     description     = ""
     readme          = "README.md"
