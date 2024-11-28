@@ -18,6 +18,3 @@ spec:
     persistence:
       enabled: true
       existingClaim: portainer-data
-  valuesFrom:
-    - kind: ConfigMap
-      name: portainer-values

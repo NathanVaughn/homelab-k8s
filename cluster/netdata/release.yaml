@@ -21,6 +21,3 @@ spec:
         enabled: false
     child:
       enabled: true
-  valuesFrom:
-    - kind: ConfigMap
-      name: netdata-values

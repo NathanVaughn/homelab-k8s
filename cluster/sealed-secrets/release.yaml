@@ -20,6 +20,3 @@ spec:
   targetNamespace: sealed-secrets
   upgrade:
     crds: CreateReplace
-  valuesFrom:
-    - kind: ConfigMap
-      name: sealed-secret-values
