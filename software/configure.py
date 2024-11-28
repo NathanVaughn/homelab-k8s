@@ -74,6 +74,7 @@ if first_host.name == host.name:
         # adds full hostname to the certificate
         args=(
             "server",
+            "--disable=traefik",
             "--embedded-registry",
             "--cluster-init",
             f"--tls-san={first_host.name}",
@@ -100,6 +101,7 @@ else:
         _env={"K3S_TOKEN": k3s_token},
         args=(
             "server",
+            "--disable=traefik",
             "--embedded-registry",
             f"--server=https://{first_host.name}:6443",
             f"--tls-san={host.name}",
