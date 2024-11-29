@@ -15,5 +15,21 @@ spec:
       version: "33.0.0"
   interval: 1h0m0s
   values:
+    persistence:
+      enabled: true
+    certificatesResolvers:
+      le:
+        acme:
+          email: nvaughn51@gmail.com
+          storage: /data/acme.json
+          dnsChallenge:
+            provider: cloudflare
+            resolvers:
+              # i block 8.8.8.8 on my network
+              - "1.1.1.1:53"
+              - "9.9.9.9:53"
+    envFrom:
+      - secretRef:
+          name: traefik-cf-token
     nodeSelector:
       role: apps
