@@ -4,6 +4,7 @@ import urllib.request
 
 import yaml
 from pyinfra import host, inventory  # type: ignore
+from pyinfra.facts.server import Hostname
 from pyinfra.operations import apt, files, python, server
 
 ROOT_DIR = pathlib.Path(__file__).absolute().parent.parent
@@ -37,13 +38,14 @@ files.block(
 # endregion
 
 # region disable wifi
-apt.packages(
-    name="Install NetworkManager",
-    packages=["network-manager"],
-    update=True,
-    _sudo=True,
-)
-server.shell(name="Disable wifi", commands="nmcli radio wifi off", _sudo=True)
+if "connectivity=eth" in host.data.get("k8s_labels", []):  # type: ignore
+    apt.packages(
+        name="Install NetworkManager",
+        packages=["network-manager"],
+        update=True,
+        _sudo=True,
+    )
+    server.shell(name="Disable wifi", commands="nmcli radio wifi off", _sudo=True)
 # endregion
 
 # region Install k3s
@@ -114,6 +116,13 @@ files.put(
     dest="/etc/rancher/k3s/registries.yaml",
     _sudo=True,
 )
+
+for label in host.data.get("k8s_labels", []):  # type: ignore
+    server.shell(
+        name=f"Label node with {label}",
+        commands=f"kubectl label nodes {host.get_fact(Hostname)} {label}",
+        _sudo=True,
+    )
 # endregion
 
 

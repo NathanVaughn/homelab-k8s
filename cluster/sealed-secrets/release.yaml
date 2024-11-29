@@ -20,3 +20,6 @@ spec:
   targetNamespace: sealed-secrets
   upgrade:
     crds: CreateReplace
+  values:
+    nodeSelector:
+      role: apps
