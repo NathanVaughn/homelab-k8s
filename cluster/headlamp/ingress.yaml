@@ -1,0 +1,20 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: headlamp-route
+  namespace: headlamp
+
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`headlamp.nathanv.app`)
+    kind: Rule
+    services:
+    - name: headlamp
+      port: 80
+  tls:
+    certResolver: le
+    domains:
+    - sans:
+      - "*.nathanv.app"

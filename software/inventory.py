@@ -14,5 +14,7 @@ app_servers = [
 # hardware=3dprinter
 # role=apps
 # role=network
+# role=3dprint
+# role=games
 # connectivity=wifi
 # connectivity=eth
