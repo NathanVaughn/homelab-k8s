@@ -8,14 +8,20 @@
             "cluster/.+\\.yaml$"
         ]
     },
+    "kubernetes": {
+        "fileMatch": [
+            "cluster/.+\\.yaml$"
+        ]
+    },
     "packageRules": [
         {
             "matchManagers": [
                 "flux",
-                "helm-values"
+                "helm-values",
+                "kubernetes"
             ],
             "schedule": [
-                "before 11pm on the first day of the week"
+                "before 11pm"
             ]
         }
     ]
