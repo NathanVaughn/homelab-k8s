@@ -15,6 +15,8 @@ spec:
       version: "3.7.114"
   interval: 1h0m0s
   values:
+    ingress:
+      enabled: false
     k8sState:
       persistence:
         enabled: true
