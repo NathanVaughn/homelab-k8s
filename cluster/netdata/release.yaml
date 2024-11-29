@@ -15,9 +15,14 @@ spec:
       version: "3.7.114"
   interval: 1h0m0s
   values:
+    k8sState:
+      persistence:
+        enabled: true
+        storageclass: longhorn
     parent:
-      enabled: true
-      claiming:
-        enabled: false
-    child:
-      enabled: true
+      database:
+        persistence: true
+        storageclass: longhorn
+      alarms:
+        persistence: true
+        storageclass: longhorn

@@ -19,3 +19,4 @@ spec:
       role: apps
     persistence:
       enabled: true
+      storageClass: longhorn
