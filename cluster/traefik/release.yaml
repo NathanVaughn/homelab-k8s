@@ -35,5 +35,17 @@ spec:
     envFrom:
     - secretRef:
         name: traefik-cf-token
+    # https://github.com/traefik/traefik-helm-chart/blob/master/EXAMPLES.md#use-traefik-native-lets-encrypt-integration-without-cert-manager
+    deployment:
+      initContainers:
+      - name: volume-permissions
+        image: docker.io/library/busybox:latest
+        command: [ "sh", "-c", "ls -la /; touch /data/acme.json; chmod -v 600 /data/acme.json" ]
+        volumeMounts:
+        - mountPath: /data
+          name: data
+    podSecurityContext:
+      fsGroup: 65532
+      fsGroupChangePolicy: "OnRootMismatch"
     nodeSelector:
       role: apps
