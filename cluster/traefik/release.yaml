@@ -36,7 +36,7 @@ spec:
     - secretRef:
         name: traefik-cf-token
     # https://github.com/traefik/traefik-helm-chart/blob/master/EXAMPLES.md#use-traefik-native-lets-encrypt-integration-without-cert-manager
-    # https://github.com/traefik/traefik-helm-chart/issues/396#issuecomment-1789014624
+    # https://github.com/traefik/traefik-helm-chart/issues/396#issuecomment-1873454777
     deployment:
       initContainers:
       - name: volume-permissions
