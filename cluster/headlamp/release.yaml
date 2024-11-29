@@ -34,7 +34,7 @@ spec:
             enabled: true
             storageClassName: longhorn
             size: 1Gi
-            accessMode:
+            accessModes:
               - ReadWriteOnce
         volumeMounts:
           - mountPath: /build/plugins
