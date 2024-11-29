@@ -25,11 +25,15 @@ spec:
           dnsChallenge:
             provider: cloudflare
             resolvers:
-              # i block 8.8.8.8 on my network
-              - "1.1.1.1:53"
-              - "9.9.9.9:53"
+            # i block 8.8.8.8 on my network
+            - "1.1.1.1:53"
+            - "9.9.9.9:53"
+    ports:
+      websecure:
+        tls:
+          certResolver: le
     envFrom:
-      - secretRef:
-          name: traefik-cf-token
+    - secretRef:
+        name: traefik-cf-token
     nodeSelector:
       role: apps

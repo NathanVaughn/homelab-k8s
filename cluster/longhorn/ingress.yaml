@@ -1,0 +1,20 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: longhorn-route
+  namespace: longhorn
+
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`longhorn.nathanv.app`)
+    kind: Rule
+    services:
+    - name: longhorn-service
+      port: 8000
+  tls:
+    certResolver: le
+    domains:
+    - sans:
+      - "*.nathanv.app"
