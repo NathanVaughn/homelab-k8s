@@ -18,8 +18,6 @@ spec:
       app: scrutiny-collector
   template:
     metadata:
-      # annotations:
-      #   container.apparmor.security.beta.kubernetes.io/scrutiny-collector: unconfined
       labels:
         app: scrutiny-collector
     spec:
@@ -41,6 +39,8 @@ spec:
           mountPath: /dev/nvme0n1
           readOnly: true
         securityContext:
+          appArmorProfile:
+            type: Unconfined
           runAsUser: 0
           allowPrivilegeEscalation: false
           capabilities:
