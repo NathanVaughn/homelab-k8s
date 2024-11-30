@@ -18,6 +18,8 @@ spec:
       app: scrutiny-collector
   template:
     metadata:
+      annotations:
+        container.apparmor.security.beta.kubernetes.io/smartctl: unconfined
       labels:
         app: scrutiny-collector
     spec:
@@ -40,7 +42,10 @@ spec:
           readOnly: true
         securityContext:
           capabilities:
-            add: [ "SYS_RAWIO", "SYS_ADMIN", "CAP_SYS_PTRACE" ]
+            add: [ "SYS_RAWIO", "SYS_ADMIN", "CAP_SYS_PTRACE", "DAC_OVERRIDE" ]
+      resources:
+        limits:
+          devices: /dev/nvme0n1
       volumes:
       - name: udev
         hostPath:
