@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: stirling-pdf-deployment
+    namespace: stirling-pdf
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: stirling-pdf
+    template:
+        metadata:
+            labels:
+                app: stirling-pdf
+        spec:
+            containers:
+              - env:
+                  - name: DOCKER_ENABLE_SECURITY
+                    value: "true"
+                image: ghcr.io/stirling-tools/stirling-pdf:0.35.0-fat
+                name: stirling-pdf
+                ports:
+                  - containerPort: 8080
+                volumeMounts:
+                  - mountPath: /usr/share/tessdata
+                    name: stirling-pdf-pvc
+            volumes:
+              - name: stirling-pdf-pvc
+                persistentVolumeClaim:
+                    claimName: stirling-pdf-pvc
