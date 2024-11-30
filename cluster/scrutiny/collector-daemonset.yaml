@@ -35,12 +35,12 @@ spec:
         - name: udev
           mountPath: /run/udev
           readOnly: true
+        - name: dev-nvme0n1
+          mountPath: /dev/nvme0n1
+          readOnly: true
         securityContext:
           capabilities:
             add: [ "SYS_RAWIO" ]
-        volumeDevices:
-        - name: dev-nvme0n1
-          devicePath: /dev/nvme0n1
       volumes:
       - name: udev
         hostPath:
