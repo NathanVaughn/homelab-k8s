@@ -4,6 +4,7 @@ metadata:
     name: stirling-pdf-pvc
     namespace: stirling-pdf
 spec:
+    storageClassName: longhorn
     accessModes:
       - ReadWriteOnce
     resources:
