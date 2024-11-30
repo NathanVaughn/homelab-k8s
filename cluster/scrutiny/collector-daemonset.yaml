@@ -26,7 +26,7 @@ spec:
         image: ghcr.io/analogj/scrutiny:v0.8.1-collector
         env:
         - name: COLLECTOR_API_ENDPOINT
-          value: scrutiny-web-service.scrutiny.svc.cluster.local:8080
+          value: http://scrutiny-web-service.scrutiny.svc.cluster.local:8080
         - name: COLLECTOR_HOST_ID
           valueFrom:
             fieldRef:
