@@ -5,7 +5,7 @@ import urllib.request
 import yaml
 from pyinfra import host, inventory  # type: ignore
 from pyinfra.facts.server import Hostname
-from pyinfra.operations import apt, files, python, server
+from pyinfra.operations import apt, files, python, server, systemd
 
 ROOT_DIR = pathlib.Path(__file__).absolute().parent.parent
 
@@ -28,16 +28,31 @@ if not k3s_install_script.exists():
 with open(ROOT_DIR.joinpath("software", "secrets", "k3s_token"), "r") as fp:
     k3s_token = fp.read().strip()
 
-# region setup passwordless sudo
+# setup passwordless sudo
 files.block(
     name="Setup passwordless sudo",
     path="/etc/sudoers",
     content="ubuntu ALL=(ALL) NOPASSWD: ALL\n",
     _sudo=True,
 )
-# endregion
 
-# region disable wifi
+# configure multipath
+# https://longhorn.io/kb/troubleshooting-volume-with-multipath/#solution
+multipath_config = files.block(
+    name="Configure multipath",
+    path="/etc/multipath.conf",
+    content=pathlib.Path(ROOT_DIR, "software", "multipath.conf").read_text(),
+    _sudo=True,
+)
+
+systemd.service(
+    name="Restart multipathd",
+    service="multipathd",
+    restarted=multipath_config.changed,
+    _sudo=True,
+)
+
+# disable wifi
 if "connectivity=eth" in host.data.get("k8s_labels", []):  # type: ignore
     apt.packages(
         name="Install NetworkManager",
@@ -46,7 +61,6 @@ if "connectivity=eth" in host.data.get("k8s_labels", []):  # type: ignore
         _sudo=True,
     )
     server.shell(name="Disable wifi", commands="nmcli radio wifi off", _sudo=True)
-# endregion
 
 # region Install k3s
 # https://docs.k3s.io/datastore/ha-embedded
