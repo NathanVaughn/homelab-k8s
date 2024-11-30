@@ -40,7 +40,7 @@ spec:
           readOnly: true
         securityContext:
           capabilities:
-            add: [ "SYS_RAWIO" ]
+            add: [ "SYS_RAWIO", "SYS_ADMIN", "CAP_SYS_PTRACE" ]
       volumes:
       - name: udev
         hostPath:
