@@ -16,7 +16,7 @@ spec:
         app: scrutiny-influxdb
     spec:
       containers:
-      - image: docker.io/library/influxdb:2.2
+      - image: docker.io/library/influxdb:2.7
         livenessProbe:
           exec:
             command:
