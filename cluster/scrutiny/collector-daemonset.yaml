@@ -19,7 +19,7 @@ spec:
   template:
     metadata:
       annotations:
-        container.apparmor.security.beta.kubernetes.io/smartctl: unconfined
+        container.apparmor.security.beta.kubernetes.io/scrutiny-collector: unconfined
       labels:
         app: scrutiny-collector
     spec:
