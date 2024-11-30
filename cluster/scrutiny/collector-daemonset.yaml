@@ -39,16 +39,8 @@ spec:
           mountPath: /dev/nvme0n1
           readOnly: true
         securityContext:
-          appArmorProfile:
-            type: Unconfined
           runAsUser: 0
-          allowPrivilegeEscalation: false
-          capabilities:
-            add: [ "SYS_RAWIO" ]
-            #, "SYS_ADMIN", "CAP_SYS_PTRACE", "DAC_OVERRIDE" ]
-            # resources:
-            #   limits:
-            #     devices: /dev/nvme0n1
+          privileged: true # only way to get this to work
       volumes:
       - name: udev
         hostPath:
