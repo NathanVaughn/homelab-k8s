@@ -1,0 +1,20 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: scrutiny-route
+  namespace: scrutiny
+
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`scrutiny.nathanv.app`)
+    kind: Rule
+    services:
+    - name: scrutiny-web-service
+      port: 8080
+  tls:
+    certResolver: le
+    domains:
+    - sans:
+      - "*.nathanv.app"

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scrutiny-influxdb-deployment
+  namespace: scrutiny
+spec:
+  replicas: 1
+  nodeSelector:
+    role: apps
+  selector:
+    matchLabels:
+      app: scrutiny-influxdb
+  template:
+    metadata:
+      labels:
+        app: scrutiny-influxdb
+    spec:
+      containers:
+      - image: docker.io/library/influxdb:2.2
+        livenessProbe:
+          exec:
+            command:
+            - curl
+            - -f
+            - http://localhost:8086/health
+          failureThreshold: 20
+          periodSeconds: 5
+          timeoutSeconds: 10
+        name: scrutiny-influxdb
+        ports:
+        - containerPort: 8086
+        volumeMounts:
+        - mountPath: /var/lib/influxdb2
+          name: scrutiny-influxdb-vol
+      volumes:
+      - name: scrutiny-influxdb-vol
+        persistentVolumeClaim:
+          claimName: scrutiny-influxdb-pvc

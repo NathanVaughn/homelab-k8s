@@ -5,6 +5,8 @@ metadata:
   namespace: stirling-pdf
 spec:
   replicas: 1
+  nodeSelector:
+    role: apps
   selector:
     matchLabels:
       app: stirling-pdf
