@@ -18,6 +18,10 @@ spec:
     persistence:
       enabled: true
       storageClass: longhorn
+    service:
+      type: LoadBalancer
+      annotations:
+        metallb.universe.tf/loadBalancerIPs: 192.168.42.0
     certificatesResolvers:
       le:
         acme:

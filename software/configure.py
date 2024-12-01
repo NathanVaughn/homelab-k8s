@@ -81,20 +81,22 @@ def update_kubeconfig():
         yaml.safe_dump(kube_config_data, fp)
 
 
+# https://serverfault.com/a/1162813
+# adds full hostname to the certificate
+base_args = [
+    "server",
+    "--disable=traefik",
+    "--disable=servicelb",
+    "--embedded-registry",
+    f"--tls-san={host.name}",
+]
+
 if first_host.name == host.name:
     server.script(
         name="Run k3s install script on first node",
         src=k3s_install_script,
         _env={"K3S_TOKEN": k3s_token},
-        # https://serverfault.com/a/1162813
-        # adds full hostname to the certificate
-        args=(
-            "server",
-            "--disable=traefik",
-            "--embedded-registry",
-            "--cluster-init",
-            f"--tls-san={first_host.name}",
-        ),
+        args=base_args + ["--cluster-init"],
     )
 
     # download the kubeconfig file
@@ -115,13 +117,7 @@ else:
         name="Run k3s install script on other nodes",
         src=k3s_install_script,
         _env={"K3S_TOKEN": k3s_token},
-        args=(
-            "server",
-            "--disable=traefik",
-            "--embedded-registry",
-            f"--server=https://{first_host.name}:6443",
-            f"--tls-san={host.name}",
-        ),
+        args=base_args + [f"--server=https://{first_host.name}:6443"],
     )
 
 files.put(
