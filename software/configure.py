@@ -41,7 +41,7 @@ files.block(
 multipath_config = files.block(
     name="Configure multipath",
     path="/etc/multipath.conf",
-    content=pathlib.Path(ROOT_DIR, "software", "multipath.conf").read_text(),
+    content=pathlib.Path(ROOT_DIR, "software", "files", "multipath.conf").read_text(),
     _sudo=True,
 )
 
@@ -122,8 +122,15 @@ else:
 
 files.put(
     name="Upload k3s registry config",
-    src=ROOT_DIR.joinpath("software", "registries.yaml"),
+    src=ROOT_DIR.joinpath("software", "files", "registries.yaml"),
     dest="/etc/rancher/k3s/registries.yaml",
+    _sudo=True,
+)
+
+files.put(
+    name="Upload k3s config",
+    src=ROOT_DIR.joinpath("software", "secrets", "config.yaml"),
+    dest="/etc/rancher/k3s/config.yaml",
     _sudo=True,
 )
 

@@ -3,6 +3,7 @@
 ## Setup
 
 First, copy the K3S secret token into the `secrets/k3s_token` file.
+Also, setup the S3 config file in `secrets/config.yaml` file.
 
 To setup K3S, run the following command:
 
