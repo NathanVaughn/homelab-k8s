@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: ntp-deployment
+    namespace: ntp
+spec:
+    replicas: 1
+    nodeSelector:
+        role: apps
+    selector:
+        matchLabels:
+            app: ntp
+    template:
+        metadata:
+            labels:
+                app: ntp
+        spec:
+            containers:
+              - env:
+                  - name: NTP_SERVERS
+                    value: time.cloudflare.com
+                image: docker.io/cturra/ntp:latest
+                name: ntp
+                ports:
+                  - containerPort: 123
+                    protocol: UDP
