@@ -5,7 +5,7 @@ metadata:
     namespace: system-upgrade
 spec:
     interval: 1h0m0s
-    path: ./manifests
+    path: ./
     prune: true
     sourceRef:
         kind: GitRepository
