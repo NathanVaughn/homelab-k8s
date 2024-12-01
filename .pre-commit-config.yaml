@@ -1,30 +1,35 @@
 repos:
--   hooks:
-    -   id: check-json
-    -   id: check-toml
-    -   id: check-yaml
-    -   id: check-case-conflict
-    -   id: trailing-whitespace
-    -   id: check-merge-conflict
-    -   id: mixed-line-ending
+  - hooks:
+      - id: check-json
+      - id: check-toml
+      - id: check-yaml
+        args: [ --allow-multiple-documents ]
+      - id: check-case-conflict
+      - id: trailing-whitespace
+      - id: check-merge-conflict
+      - id: mixed-line-ending
     repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
--   hooks:
-    -   id: absolufy-imports
+  - hooks:
+      - id: absolufy-imports
     repo: https://github.com/MarcoGorelli/absolufy-imports
     rev: v0.3.1
--   hooks:
-    -   args:
-        -   --fix
+  - hooks:
+      - args:
+          - --fix
         id: ruff
-    -   id: ruff-format
+      - id: ruff-format
     repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.8.1
--   hooks:
-    -   id: pyright
+  - hooks:
+      - id: pyright
     repo: https://github.com/RobertCraigie/pyright-python
     rev: v1.1.389
--   repo: https://github.com/astral-sh/uv-pre-commit
+  - repo: https://github.com/astral-sh/uv-pre-commit
     rev: 0.5.5
     hooks:
-    -   id: uv-lock
+      - id: uv-lock
+  - repo: https://github.com/tarioch/flux-check-hook
+    rev: v0.5.0
+    hooks:
+      - id: check-flux-helm-values

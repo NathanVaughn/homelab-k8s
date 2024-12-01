@@ -21,9 +21,11 @@ def main(hostname: str, password: str) -> None:
         ssh_key = response.read().decode("utf-8").strip()
 
     data["autoinstall"]["identity"]["hostname"] = hostname
-    data["autoinstall"]["identity"]["password"] = subprocess.check_output(
-        ["mkpasswd", "-m", "sha-512", password]
-    ).decode("utf-8").strip()
+    data["autoinstall"]["identity"]["password"] = (
+        subprocess.check_output(["mkpasswd", "-m", "sha-512", password])
+        .decode("utf-8")
+        .strip()
+    )
 
     data["autoinstall"]["ssh"]["authorized-keys"] = [ssh_key]
 
