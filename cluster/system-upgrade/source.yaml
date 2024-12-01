@@ -8,8 +8,3 @@ spec:
     url: https://github.com/rancher/system-upgrade-controller/
     ref:
         tag: v0.14.2
-    # ignore: |
-    #     # exclude all
-    #     /*
-    #     # include manifests dir
-    #     !/manifests
