@@ -1,5 +1,7 @@
+import json
 import os
 import pathlib
+import subprocess
 import urllib.request
 
 import yaml
@@ -73,12 +75,17 @@ def update_kubeconfig():
     with open(kube_config, "r") as fp:
         kube_config_data = yaml.safe_load(fp)
 
-    kube_config_data["clusters"][0]["cluster"]["server"] = "https://10.0.1.1:6443"
+    # check if static ip is available
+    try:
+        host = "https://10.0.1.1:6443"
+        json.loads(
+            subprocess.check_output(["curl", "-k", host], stderr=subprocess.DEVNULL)
+        )
+    except Exception:
+        # if not, use a host
+        host = f"https://{first_host.name}:6443"
 
-    # may need this on first run until kube-vip is up
-    # kube_config_data["clusters"][0]["cluster"]["server"] = (
-    #     f"https://{first_host.name}:6443"
-    # )
+    kube_config_data["clusters"][0]["cluster"]["server"] = host
 
     with open(kube_config, "w") as fp:
         yaml.safe_dump(kube_config_data, fp)
