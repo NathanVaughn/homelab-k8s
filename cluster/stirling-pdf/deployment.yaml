@@ -25,8 +25,13 @@ spec:
         - containerPort: 8080
         volumeMounts:
         - mountPath: /usr/share/tessdata
-          name: stirling-pdf-vol
+          name: stirling-pdf-vol-ocr
+        - mountPath: /configs
+          name: stirling-pdf-vol-configs
       volumes:
-      - name: stirling-pdf-vol
+      - name: stirling-pdf-vol-ocr
         persistentVolumeClaim:
-          claimName: stirling-pdf-pvc
+          claimName: stirling-pdf-pvc-ocr
+      - name: stirling-pdf-vol-configs
+        persistentVolumeClaim:
+          claimName: stirling-pdf-pvc-configs
