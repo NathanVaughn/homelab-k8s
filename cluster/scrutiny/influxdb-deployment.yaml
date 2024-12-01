@@ -5,8 +5,6 @@ metadata:
   namespace: scrutiny
 spec:
   replicas: 1
-  nodeSelector:
-    role: apps
   selector:
     matchLabels:
       app: scrutiny-influxdb
@@ -15,6 +13,8 @@ spec:
       labels:
         app: scrutiny-influxdb
     spec:
+      nodeSelector:
+        role: apps
       containers:
       - image: docker.io/library/influxdb:2.7
         livenessProbe:

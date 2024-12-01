@@ -5,8 +5,6 @@ metadata:
     namespace: scrutiny
 spec:
     replicas: 1
-    nodeSelector:
-        role: apps
     selector:
         matchLabels:
             app: scrutiny-web
@@ -15,6 +13,8 @@ spec:
             labels:
                 app: scrutiny-web
         spec:
+            nodeSelector:
+                role: apps
             containers:
               - env:
                   - name: SCRUTINY_WEB_INFLUXDB_HOST

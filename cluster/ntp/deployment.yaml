@@ -5,8 +5,6 @@ metadata:
     namespace: ntp
 spec:
     replicas: 1
-    nodeSelector:
-        role: apps
     selector:
         matchLabels:
             app: ntp
@@ -15,6 +13,8 @@ spec:
             labels:
                 app: ntp
         spec:
+            nodeSelector:
+                role: apps
             containers:
               - env:
                   - name: NTP_SERVERS

@@ -14,3 +14,10 @@ spec:
                 namespace: metallb
             version: "0.14.8"
     interval: 1h0m0s
+    values:
+        speaker:
+            nodeSelector:
+                role: apps
+        controller:
+            nodeSelector:
+                role: apps
