@@ -73,9 +73,12 @@ def update_kubeconfig():
     with open(kube_config, "r") as fp:
         kube_config_data = yaml.safe_load(fp)
 
-    kube_config_data["clusters"][0]["cluster"]["server"] = (
-        f"https://{first_host.name}:6443"
-    )
+    kube_config_data["clusters"][0]["cluster"]["server"] = "https://10.0.1.1:6443"
+
+    # may need this on first run until kube-vip is up
+    # kube_config_data["clusters"][0]["cluster"]["server"] = (
+    #     f"https://{first_host.name}:6443"
+    # )
 
     with open(kube_config, "w") as fp:
         yaml.safe_dump(kube_config_data, fp)
@@ -89,6 +92,7 @@ base_args = [
     "--disable=servicelb",
     "--embedded-registry",
     f"--tls-san={host.name}",
+    "--tls-san=10.0.1.1",
 ]
 
 if first_host.name == host.name:
