@@ -13,8 +13,17 @@ spec:
             labels:
                 app: ntp
         spec:
-            nodeSelector:
-                role: apps
+            affinity:
+                nodeAffinity:
+                preferredDuringSchedulingIgnoredDuringExecution:
+                  - weight: 100
+                    preference:
+                        # when possible, run on the network controller
+                        matchExpressions:
+                          - key: role
+                            operator: In
+                            values:
+                              - network
             containers:
               - env:
                   - name: NTP_SERVERS
