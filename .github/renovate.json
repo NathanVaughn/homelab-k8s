@@ -21,7 +21,7 @@
                 "kubernetes"
             ],
             "schedule": [
-                "before 11pm"
+                "schedule:weekends"
             ]
         }
     ]
