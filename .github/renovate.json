@@ -21,7 +21,7 @@
                 "kubernetes"
             ],
             "schedule": [
-                "schedule:weekends"
+                "* * * * 0,6"
             ]
         }
     ]
