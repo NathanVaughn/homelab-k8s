@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+    name: common-redis-repo
+    namespace: common
+spec:
+    interval: 1h0m0s
+    url: oci://registry-1.docker.io/bitnamicharts/redis
+    ref:
+        tag: "20.4.0"

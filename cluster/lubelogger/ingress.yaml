@@ -1,0 +1,20 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: lubelogger-route
+  namespace: lubelogger
+
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`lubelogger.nathanv.app`)
+    kind: Rule
+    services:
+    - name: lubelogger
+      port: 80
+  tls:
+    certResolver: le
+    domains:
+    - sans:
+      - "*.nathanv.app"
