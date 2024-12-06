@@ -1,6 +1,6 @@
 _base_zone = ".nathanv.home"
 
-_app_server_names = ["billy", "jesse", "tom", "annie"]
+_app_server_names = ["billy", "jesse", "tom", "annie", "will"]
 app_servers = [
     (f"{name}{_base_zone}", {"ssh_user": "ubuntu"}) for name in _app_server_names
 ]

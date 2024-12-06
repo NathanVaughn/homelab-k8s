@@ -29,6 +29,7 @@
 | jesse.nathanv.home    | 10.0.0.21 | Kubernetes node 2                 |
 | tom.nathanv.home      | 10.0.0.22 | Kubernetes node 3                 |
 | annie.nathanv.home    | 10.0.0.23 | Kubernetes node 4                 |
+| will.nathanv.home     | 10.0.0.24 | Kubernetes node 5                 |
 
 ## Load Balancer Addresses
 
