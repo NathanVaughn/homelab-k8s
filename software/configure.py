@@ -64,6 +64,41 @@ if "connectivity=eth" in host.data.get("k8s_labels", []):  # type: ignore
     )
     server.shell(name="Disable wifi", commands="nmcli radio wifi off", _sudo=True)
 
+# adsb prerequisites
+if "hardware=adsb" in host.data.get("k8s_labels", []):  # type: ignore
+    files.put(
+        name="Upload rtlsdr blacklist",
+        src=ROOT_DIR.joinpath("software", "files", "blacklist-rtlsdr.conf"),
+        dest="/etc/modprobe.d/blacklist-rtlsdr.conf",
+        _sudo=True,
+    )
+
+    modules = [
+        "rtl2832_sdr",
+        "dvb_usb_rtl2832u",
+        "dvb_usb_rtl28xxu",
+        "dvb_usb_v2",
+        "r820t",
+        "rtl2830",
+        "rtl2832",
+        "rtl2838",
+        "rtl8192cu",
+        "rtl8xxxu",
+        "dvb_core",
+    ]
+    for module in modules:
+        server.shell(
+            name=f"Unload {module}",
+            commands=f"modprobe -r {module}",
+            _sudo=True,
+        )
+
+    server.shell(
+        name="Update boot image",
+        commands="update-initramfs -u",
+        _sudo=True,
+    )
+
 # region Install k3s
 # https://docs.k3s.io/datastore/ha-embedded
 # https://www.rootisgod.com/2024/Running-an-HA-3-Node-K3S-Cluster/
