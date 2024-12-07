@@ -7,4 +7,4 @@ spec:
     interval: 1h0m0s
     url: oci://registry-1.docker.io/bitnamicharts/postgresql
     ref:
-        tag: "16.2.4"
+        tag: "16.2.5"
