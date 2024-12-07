@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ntp-deployment
-  namespace: ntp
+  name: chrony-deployment
+  namespace: chrony
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ntp
+      app: chrony
   template:
     metadata:
       labels:
-        app: ntp
+        app: chrony
     spec:
       affinity:
         nodeAffinity:
@@ -28,8 +28,10 @@ spec:
       - env:
         - name: NTP_SERVERS
           value: time.cloudflare.com
-        image: docker.io/cturra/ntp:latest
-        name: ntp
+        - name: ENABLE_NTS
+          value: "true"
+        image: ghcr.io/dockur/chrony:4.6.1
+        name: chrony
         ports:
         - containerPort: 123
           protocol: UDP
