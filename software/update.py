@@ -24,12 +24,24 @@ def reboot_node():
     )
 
     # reboot
-    server.reboot(name="Reboot the server", _sudo=True)
+    server.reboot(name="Reboot the server", interval=5, _sudo=True)
 
     # wait for the kubernetes server to come back
+    # this uses netstat
+    apt.packages(
+        name="Install net-tools",
+        packages=["net-tools"],
+        _sudo=True,
+    )
+
     server.wait(
         name="Wait for k3s to start",
         port=6443,
+    )
+
+    server.shell(
+        name="Fudge factor",
+        commands="sleep 3",
     )
 
     # uncordon the node
