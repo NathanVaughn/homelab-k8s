@@ -10,6 +10,7 @@ from pyinfra.facts.server import Hostname
 from pyinfra.operations import apt, files, python, server, systemd
 
 ROOT_DIR = pathlib.Path(__file__).absolute().parent.parent
+CONTROL_PLANE_IP = "10.0.1.1"
 
 resolvconf_config = "/etc/resolvconf/resolv.conf.d/head"
 
@@ -51,6 +52,15 @@ systemd.service(
     name="Restart multipathd",
     service="multipathd",
     restarted=multipath_config.changed,
+    _sudo=True,
+)
+
+# install nfs-common
+# https://longhorn.io/docs/1.7.2/deploy/install/#installing-nfsv4-client
+apt.packages(
+    name="Install nfs-common",
+    packages=["nfs-common"],
+    update=True,
     _sudo=True,
 )
 
@@ -112,7 +122,7 @@ def update_kubeconfig():
 
     # check if static ip is available
     try:
-        host = "https://10.0.1.1:6443"
+        host = f"https://{CONTROL_PLANE_IP}:6443"
         json.loads(
             subprocess.check_output(["curl", "-k", host], stderr=subprocess.DEVNULL)
         )
@@ -134,7 +144,7 @@ base_args = [
     "--disable=servicelb",
     "--embedded-registry",
     f"--tls-san={host.name}",
-    "--tls-san=10.0.1.1",
+    f"--tls-san={CONTROL_PLANE_IP}",
 ]
 
 if first_host.name == host.name:
