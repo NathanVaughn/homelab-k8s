@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: netdata-repo
         namespace: netdata
-      version: "3.7.114"
+      version: "3.7.115"
   interval: 1h0m0s
   values:
     ingress:

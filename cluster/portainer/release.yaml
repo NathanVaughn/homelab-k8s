@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: portainer-repo
         namespace: portainer
-      version: "1.0.58"
+      version: "1.0.59"
   interval: 1h0m0s
   values:
     nodeSelector:
