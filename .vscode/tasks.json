@@ -23,9 +23,10 @@
             "dependsOn": ["install-pkgs"]
         },
         {
-            "label": "run",
-            "command": "uv run flask --app app.wsgi:create_app run",
-            "type": "shell"
+            "label": "os-updates",
+            "command": "pyinfra inventory.py update.py",
+            "type": "shell",
+            "options": {"cwd": "${workspaceFolder}${/}software"}
         }
     ]
 }
