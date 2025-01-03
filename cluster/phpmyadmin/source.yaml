@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+    name: phpmyadmin-repo
+    namespace: phpmyadmin
+spec:
+    type: oci
+    interval: 1h0m0s
+    # don't put chart name at end for pre-commit hook
+    url: oci://registry-1.docker.io/bitnamicharts/
