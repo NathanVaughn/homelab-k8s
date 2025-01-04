@@ -12,7 +12,7 @@ spec:
                 kind: HelmRepository
                 name: lubelogger-repo
                 namespace: lubelogger
-            version: "0.5.3"
+            version: "0.5.4"
     interval: 1h0m0s
     values:
         nodeSelector:
