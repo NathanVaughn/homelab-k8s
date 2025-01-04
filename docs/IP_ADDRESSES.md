@@ -23,8 +23,6 @@
 | ares.nathanv.home     | 10.0.0.5  | DNS Server and Network Controller |
 | zeus.nathanv.home     | 10.0.0.10 | Main app server                   |
 | poseidon.nathanv.home | 10.0.0.11 | 3D print server                   |
-| retropie.nathanv.home | 10.0.0.12 | Retropie                          |
-| apollo.nathanv.home   | 10.0.0.13 | Laptop                            |
 | billy.nathanv.home    | 10.0.0.20 | Kubernetes node 1                 |
 | jesse.nathanv.home    | 10.0.0.21 | Kubernetes node 2                 |
 | tom.nathanv.home      | 10.0.0.22 | Kubernetes node 3                 |
@@ -33,8 +31,9 @@
 
 ## Load Balancer Addresses
 
-| Service       | IP       |
-| ------------- | -------- |
-| control plane | 10.0.1.1 |
-| traefik       | 10.0.1.2 |
-| chrony (NTP)  | 10.0.1.3 |
+| Service                 | IP       | DNS                                |
+| ----------------------- | -------- | ---------------------------------- |
+| control plane           | 10.0.1.1 | k8s-control-plane.svc.nathanv.home |
+| traefik (reverse proxy) | 10.0.1.2 | reverse-proxy.svc.nathanv.home     |
+| chrony (NTP)            | 10.0.1.3 | ntp.svc.nathanv.home               |
+| pi-hole (DNS)           | 10.0.1.4 | dns.svc.nathanv.home               |
