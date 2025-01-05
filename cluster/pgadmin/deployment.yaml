@@ -15,6 +15,15 @@ spec:
     spec:
       nodeSelector:
         role: apps
+      initContainers:
+      - name: permission-fix
+        image: busybox
+        command: [ 'sh', '-c' ]
+        # https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html#environment-variables
+        args: [ 'chown -R 5050:5050 /var/lib/pgadmin' ]
+        volumeMounts:
+        - mountPath: /var/lib/pgadmin
+          name: pgadmin-vol-data
       containers:
       - env:
         - name: PGADMIN_CONFIG_AUTO_DISCOVER_SERVERS
