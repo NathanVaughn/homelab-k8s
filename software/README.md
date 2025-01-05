@@ -11,6 +11,14 @@ To setup K3S, run the following command:
 pyinfra inventory.py configure.py
 ```
 
+May need to run
+
+```bash
+chmod go-r ~/.kube/config
+```
+
+After installation to fix permissions.
+
 Now, bootstrap flux so the cluster is controlled by git:
 
 ```bash

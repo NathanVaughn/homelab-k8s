@@ -4,6 +4,13 @@ metadata:
   name: traefik-release
   namespace: traefik
 spec:
+  # https://github.com/fluxcd/flux2/issues/5052#issuecomment-2450931227
+  install:
+    disableWait: true
+  upgrade:
+    disableWait: true
+  rollback:
+    disableWait: true
   releaseName: traefik
   chart:
     spec:
