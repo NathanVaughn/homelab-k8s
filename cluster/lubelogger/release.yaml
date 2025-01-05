@@ -27,6 +27,9 @@ spec:
             images:
                 enabled: true
                 storageClass: longhorn
+        # this is for email settings
+        secret:
+            create: false
         config:
             UseDarkMode: true
         # postgres is optional and it can use litedb internally instead.
