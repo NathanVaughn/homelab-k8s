@@ -1,4 +1,4 @@
-apiVersion: source.toolkit.fluxcd.io/v1
+apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: OCIRepository
 metadata:
     name: common-postgres-repo
@@ -6,5 +6,3 @@ metadata:
 spec:
     interval: 1h0m0s
     url: oci://registry-1.docker.io/bitnamicharts/postgresql
-    ref:
-        tag: "16.3.5"
