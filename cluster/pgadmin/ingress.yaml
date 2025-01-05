@@ -1,0 +1,20 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pgadmin-route
+  namespace: pgadmin
+
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`pgadmin.nathanv.app`)
+    kind: Rule
+    services:
+    - name: pgadmin-service
+      port: 80
+  tls:
+    certResolver: le
+    domains:
+    - sans:
+      - "*.nathanv.app"
