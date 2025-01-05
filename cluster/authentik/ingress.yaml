@@ -11,7 +11,7 @@ spec:
   - match: Host(`authentik.nathanv.app`)
     kind: Rule
     services:
-    - name: authentik
+    - name: authentik-server
       port: 80
   tls:
     certResolver: le
