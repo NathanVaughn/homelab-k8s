@@ -57,7 +57,3 @@ spec:
     name: authentik-secrets
     valuesKey: authentik.email.password
     targetPath: authentik.email.password
-  - kind: Secret
-    name: authentik-secrets
-    valuesKey: authentik.email.from
-    targetPath: authentik.email.from
