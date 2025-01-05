@@ -34,7 +34,7 @@ spec:
         - containerPort: 80
         volumeMounts:
         - mountPath: /var/lib/pgadmin
-          name: pgadmin-pvc-data
+          name: pgadmin-vol-data
       volumes:
       - name: pgadmin-vol-data
         persistentVolumeClaim:
