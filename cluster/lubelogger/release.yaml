@@ -27,9 +27,21 @@ spec:
             images:
                 enabled: true
                 storageClass: longhorn
-        # this is for email settings
         secret:
-            create: false
+            emailFrom: lubelogger@nvaughn.email
         config:
             UseDarkMode: true
         # postgres is optional and it can use litedb internally instead.
+    valuesFrom:
+      - kind: Secret
+        name: lubelogger-secrets
+        valuesKey: secret.emailServer
+        targetPath: secret.emailServer
+      - kind: Secret
+        name: lubelogger-secrets
+        valuesKey: secret.password
+        targetPath: secret.password
+      - kind: Secret
+        name: lubelogger-secrets
+        valuesKey: secret.username
+        targetPath: secret.username
