@@ -25,7 +25,7 @@ spec:
     certificatesResolvers:
       le:
         acme:
-          email: nvaughn51@gmail.com
+          email: nath@nvaughn.email
           storage: /data/acme.json
           dnsChallenge:
             provider: cloudflare
