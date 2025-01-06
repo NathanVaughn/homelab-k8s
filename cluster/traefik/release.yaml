@@ -3,6 +3,9 @@ kind: HelmRelease
 metadata:
   name: traefik-release
   namespace: traefik
+  annotations:
+    k8s-dns.nathanv.me/hostname: reverse-proxy.svc.nathanv.home
+    k8s-dns.nathanv.me/internal: loadbalancer
 spec:
   # https://github.com/fluxcd/flux2/issues/5052#issuecomment-2450931227
   install:

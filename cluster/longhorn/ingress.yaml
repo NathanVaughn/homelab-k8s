@@ -3,7 +3,10 @@ kind: IngressRoute
 metadata:
   name: longhorn-route
   namespace: longhorn
-
+  annotations:
+    k8s-dns.nathanv.me/hostname: longhorn.nathanv.app
+    k8s-dns.nathanv.me/external: tunnel.nathanv.app
+    k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
 spec:
   entryPoints:
   - websecure
