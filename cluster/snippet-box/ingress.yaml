@@ -1,0 +1,23 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: snippet-box-route
+  namespace: snippet-box
+  annotations:
+    k8s-dns.nathanv.me/hostname: snippet-box.nathanv.app
+    k8s-dns.nathanv.me/external: tunnel.nathanv.app
+    k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`snippet-box.nathanv.app`)
+    kind: Rule
+    services:
+    - name: snippet-box-service
+      port: 5000
+  tls:
+    certResolver: le
+    domains:
+    - sans:
+      - "*.nathanv.app"
