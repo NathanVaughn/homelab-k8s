@@ -36,4 +36,4 @@
 | control plane           | 10.0.1.1 | k8s-control-plane.svc.nathanv.home |
 | traefik (reverse proxy) | 10.0.1.2 | reverse-proxy.svc.nathanv.home     |
 | chrony (NTP)            | 10.0.1.3 | ntp.svc.nathanv.home               |
-| pi-hole (DNS)           | 10.0.1.4 | dns.svc.nathanv.home               |
+| technitium (DNS)        | 10.0.1.4 | dns.svc.nathanv.home               |

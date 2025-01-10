@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: technitium-dns-service
+    namespace: technitium-dns
+    annotations:
+        k8s-dns.nathanv.me/hostname: dns.svc.nathanv.home
+        k8s-dns.nathanv.me/internal: loadbalancer
+spec:
+    type: LoadBalancer
+    loadBalancerIP: "10.0.1.4"
+    selector:
+        app: technitium-dns
+    ports:
+      - port: 5380
+        protocol: TCP
+      - port: 53
+        protocol: TCP
+      - port: 53
+        protocol: UDP

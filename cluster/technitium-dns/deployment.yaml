@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: technitium-dns-deployment
+  namespace: technitium-dns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: technitium-dns
+  template:
+    metadata:
+      labels:
+        app: technitium-dns
+    spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            preference:
+              # when possible, run on the network controller
+              matchExpressions:
+              - key: role
+                operator: In
+                values:
+                - network
+      containers:
+      - image: docker.io/technitium/dns-server:13.3.0
+        name: technitium-dns
+        ports:
+        - containerPort: 5380
+        - containerPort: 53
+          protocol: TCP
+        - containerPort: 53
+          protocol: UDP
+        volumeMounts:
+        - mountPath: /etc/dns
+          name: technitium-dns-vol-config
+      volumes:
+      - name: technitium-dns-vol-config
+        persistentVolumeClaim:
+          claimName: technitium-dns-pvc-config
