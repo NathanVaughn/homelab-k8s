@@ -27,7 +27,7 @@ spec:
           value: "true"
         - name: mail__transport
           value: SMTP
-        - name: mail__options__port=587
+        - name: mail__options__port
           value: "587"
         - name: mail__from
           value: Ghost <ghost@nathanv.app>
