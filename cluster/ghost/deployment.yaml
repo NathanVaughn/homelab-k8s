@@ -15,6 +15,14 @@ spec:
     spec:
       nodeSelector:
         role: apps
+      initContainers:
+      - name: permission-fix
+        image: docker.io/library/busybox:latest
+        command: [ 'sh', '-c' ]
+        args: [ 'chown -R 1000:1000 /var/lib/ghost/content' ]
+        volumeMounts:
+        - mountPath: /var/lib/ghost/content
+          name: ghost-vol
       containers:
       - env:
         - name: url
