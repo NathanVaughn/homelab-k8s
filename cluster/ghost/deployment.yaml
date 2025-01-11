@@ -38,7 +38,7 @@ spec:
         - name: mail__options__port
           value: "587"
         - name: mail__from
-          value: Ghost <ghost@nathanv.app>
+          value: Ghost <ghost@nvaughn.email>
         envFrom:
         - secretRef:
             name: ghost-env
