@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpmyadmin-mysql-deployment
+  namespace: phpmyadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phpmyadmin-mysql
+  template:
+    metadata:
+      labels:
+        app: phpmyadmin-mysql
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+      - env:
+        - name: MARIADB_RANDOM_ROOT_PASSWORD
+          value: "1"
+        - name: MARIADB_USER
+          value: phpmyadmin
+        - name: MARIADB_DATABASE
+          value: phpmyadmin
+        envFrom:
+        - secretRef:
+            name: phpmyadmin-env
+        image: docker.io/library/mariadb:11.6.2
+        name: mariadb
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: mysql-vol
+      volumes:
+      - name: mysql-vol
+        persistentVolumeClaim:
+          claimName: phpmyadmin-pvc-mysql

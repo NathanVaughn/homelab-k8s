@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    name: phpmyadmin-pvc-mysql
+    namespace: phpmyadmin
+spec:
+    storageClassName: longhorn
+    accessModes:
+      - ReadWriteOnce
+    resources:
+        requests:
+            storage: 100Mi

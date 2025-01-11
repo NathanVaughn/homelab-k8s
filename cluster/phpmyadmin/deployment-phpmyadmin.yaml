@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpmyadmin-deployment
+  namespace: phpmyadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phpmyadmin
+  template:
+    metadata:
+      labels:
+        app: phpmyadmin
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+      - env:
+        - name: PMA_HOSTS
+          value: bookstack-mysql-service.bookstack.svc.cluster.local,phpmyadmin-mysql-service.phpmyadmin.svc.cluster.local,webtrees-mysql-service.webtrees.svc.cluster.local
+        - name: PMA_CONTROLHOST
+          value: phpmyadmin-mysql-service.phpmyadmin.svc.cluster.local
+        - name: PMA_CONTROLUSER
+          value: phpmyadmin
+        - name: PMA_PMADB
+          value: phpmyadmin
+        envFrom:
+        - secretRef:
+            name: phpmyadmin-env
+        image: docker.io/library/phpmyadmin:5.2.1
+        name: phpmyadmin
+        ports:
+        - containerPort: 80
