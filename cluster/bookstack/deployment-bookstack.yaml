@@ -30,7 +30,7 @@ spec:
         - name: APP_DEBUG
           value: "false"
         - name: DB_HOST
-          value: mariadb
+          value: bookstack-mysql-service.bookstack.svc.cluster.local
         - name: DB_DATABASE
           value: bookstack
         - name: DB_USERNAME
