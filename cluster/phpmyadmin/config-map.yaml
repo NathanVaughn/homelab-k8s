@@ -10,11 +10,11 @@ data:
         $i = 0;
         $i++;
         $cfg['Servers'][$i]['verbose'] = 'Bookstack Server';
-        $cfg['Servers'][$i]['host'] = 'mysql.bookstack.svc.cluster.local';
+        $cfg['Servers'][$i]['host'] = 'bookstack-mysql-service.bookstack.svc.cluster.local';
         $cfg['Servers'][$i]['port'] = 3306;
         $cfg['Servers'][$i]['auth_type'] = 'cookie';
         $i++;
         $cfg['Servers'][$i]['verbose'] = 'Webtrees Server';
-        $cfg['Servers'][$i]['host'] = 'mysql.webtrees.svc.cluster.local';
+        $cfg['Servers'][$i]['host'] = 'webtrees-mysql-service.webtrees.svc.cluster.local';
         $cfg['Servers'][$i]['port'] = 3306;
         $cfg['Servers'][$i]['auth_type'] = 'cookie';
