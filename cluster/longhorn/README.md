@@ -28,6 +28,8 @@ storage class "longhorn-rwx".
 1. Use the Longhorn UI to figure out what node the volume is on.
 2. SSH into the node.
 3. Run `sudo lsblk` to find the mount path. In the form of `/var/lib/kubelet/pods/{pod-guid}/volumes/kubernetes.io~csi/pvc-{vol-guid}/mount`
+4. `sudo -s`
+5. `cd /var/lib/kubelet/pods/{pod-guid}/volumes/kubernetes.io~csi/pvc-{vol-guid}/mount`
 
 Alternatively, you can connect a shell to a pod and modify the volume from there:
 

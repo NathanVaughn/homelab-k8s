@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghost-deployment
+  namespace: ghost
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghost
+  template:
+    metadata:
+      labels:
+        app: ghost
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+      - env:
+        - name: url
+          value: "https://christmas.nathanv.app"
+        - name: database__client
+          value: sqlite3
+        - name: database__connection__filename
+          value: content/data/ghost.db
+        - name: database__useNullAsDefault
+          value: "true"
+        - name: mail__transport
+          value: SMTP
+        - name: mail__options__port=587
+          value: "587"
+        - name: mail__from
+          value: Ghost <ghost@nathanv.app>
+        envFrom:
+        - secretRef:
+            name: ghost-env
+        image: docker.io/library/ghost:5.105.0
+        name: ghost
+        ports:
+        - containerPort: 2368
+        volumeMounts:
+        - mountPath: /var/lib/ghost/content
+          name: ghost-vol
+      volumes:
+      - name: ghost-vol
+        persistentVolumeClaim:
+          claimName: ghost-pvc
