@@ -14,7 +14,7 @@ spec:
   - match: Host(`christmas.nathanv.app`)
     kind: Rule
     services:
-    - name: ghost
+    - name: ghost-service
       port: 2368
   tls:
     certResolver: le
