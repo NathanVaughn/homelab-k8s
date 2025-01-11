@@ -20,7 +20,6 @@ spec:
     # https://github.com/headlamp-k8s/plugins/tree/main/flux
     config:
       pluginsDir: /build/plugins
-      baseURL: https://headlamp.nathanv.app
       oidc:
         issuerURL: https://authentik.nathanv.app/application/o/headlamp/
         scopes: profile,email,repo
