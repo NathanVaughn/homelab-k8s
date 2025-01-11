@@ -1,46 +1,59 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-    name: headlamp-release
-    namespace: headlamp
+  name: headlamp-release
+  namespace: headlamp
 spec:
-    releaseName: headlamp
-    chart:
-        spec:
-            chart: headlamp
-            sourceRef:
-                kind: HelmRepository
-                name: headlamp-repo
-                namespace: headlamp
-            version: "0.27.0"
-    interval: 1h0m0s
-    values:
-        nodeSelector:
-            role: apps
-        # https://github.com/headlamp-k8s/plugins/tree/main/flux
-        config:
-            pluginsDir: /build/plugins
-        initContainers:
-          - command:
-              - /bin/sh
-              - -c
-              - mkdir -p /build/plugins && cp -r /plugins/* /build/plugins/
-            image: ghcr.io/headlamp-k8s/headlamp-plugin-flux:latest
-            imagePullPolicy: Always
-            name: headlamp-plugins
-            volumeMounts:
-              - mountPath: /build/plugins
-                name: headlamp-plugins
-        persistentVolumeClaim:
-            enabled: true
-            storageClassName: longhorn
-            size: 1Gi
-            accessModes:
-              - ReadWriteOnce
-        volumeMounts:
-          - mountPath: /build/plugins
-            name: headlamp-plugins
-        volumes:
-          - name: headlamp-plugins
-            persistentVolumeClaim:
-            claimName: headlamp
+  releaseName: headlamp
+  chart:
+    spec:
+      chart: headlamp
+      sourceRef:
+        kind: HelmRepository
+        name: headlamp-repo
+        namespace: headlamp
+      version: "0.27.0"
+  interval: 1h0m0s
+  values:
+    nodeSelector:
+      role: apps
+    # https://github.com/headlamp-k8s/plugins/tree/main/flux
+    config:
+      pluginsDir: /build/plugins
+      baseURL: https://headlamp.nathanv.app
+      oidc:
+        issuerURL: https://authentik.nathanv.app/application/o/headlamp/
+        scopes: profile,email,repo
+    initContainers:
+    - command:
+      - /bin/sh
+      - -c
+      - mkdir -p /build/plugins && cp -r /plugins/* /build/plugins/
+      image: ghcr.io/headlamp-k8s/headlamp-plugin-flux:latest
+      imagePullPolicy: Always
+      name: headlamp-plugins
+      volumeMounts:
+      - mountPath: /build/plugins
+        name: headlamp-plugins
+    persistentVolumeClaim:
+      enabled: true
+      storageClassName: longhorn
+      size: 1Gi
+      accessModes:
+      - ReadWriteOnce
+    volumeMounts:
+    - mountPath: /build/plugins
+      name: headlamp-plugins
+    volumes:
+    - name: headlamp-plugins
+      persistentVolumeClaim:
+      claimName: headlamp
+  valuesFrom:
+  - kind: Secret
+    name: headlamp-secrets
+    valuesKey: config.oidc.clientID
+    targetPath: config.oidc.clientID
+  - kind: Secret
+    name: headlamp-secrets
+    valuesKey: config.oidc.clientSecret
+    targetPath: config.oidc.clientSecret
