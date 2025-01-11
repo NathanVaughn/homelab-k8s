@@ -1,0 +1,52 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ghost-release
+  namespace: ghost
+spec:
+  releaseName: ghost
+  chart:
+    spec:
+      chart: ghost
+      sourceRef:
+        kind: HelmRepository
+        name: ghost-repo
+        namespace: ghost
+      version: "22.1.2"
+  interval: 1h0m0s
+  values:
+    nodeSelector:
+      role: apps
+    persistence:
+      storageClass: longhorn
+    # by default, the chart sets up a load balancer
+    service:
+      type: ClusterIP
+    smtpPort: 587
+    smtpProtocol: tls
+    ghostHost: christmas.nathanv.app
+    ghostSkipInstall: true
+    mysql:
+      enabled: true
+      auth:
+        database: ghost
+        username: ghost
+    volumePermissions:
+      enabled: true
+  valuesFrom:
+  - kind: Secret
+    name: ghost-secrets
+    valuesKey: smtpHost
+    targetPath: smtpHost
+  - kind: Secret
+    name: ghost-secrets
+    valuesKey: smtpUser
+    targetPath: smtpUser
+  - kind: Secret
+    name: ghost-secrets
+    valuesKey: smtpPassword
+    targetPath: smtpPassword
+  - kind: Secret
+    name: ghost-secrets
+    valuesKey: mysql.auth.password
+    targetPath: mysql.auth.password

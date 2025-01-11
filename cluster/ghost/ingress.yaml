@@ -1,0 +1,23 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ghost-route
+  namespace: ghost
+  annotations:
+    k8s-dns.nathanv.me/hostname: christmas.nathanv.app
+    k8s-dns.nathanv.me/external: tunnel.nathanv.app
+    k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`christmas.nathanv.app`)
+    kind: Rule
+    services:
+    - name: ghost
+      port: 2368
+  tls:
+    certResolver: le
+    domains:
+    - sans:
+      - "*.nathanv.app"
