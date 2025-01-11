@@ -29,7 +29,7 @@ spec:
         - name: PGADMIN_CONFIG_AUTO_DISCOVER_SERVERS
           value: "False"
         - name: PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED
-          value: "False"
+          value: "True"
         - name: PGADMIN_CONFIG_MAIL_PORT
           value: "587"
         - name: PGADMIN_CONFIG_MAIL_USE_TLS
