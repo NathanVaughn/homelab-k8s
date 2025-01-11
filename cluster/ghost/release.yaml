@@ -10,8 +10,8 @@ spec:
       chart: ghost
       sourceRef:
         kind: HelmRepository
-        name: ghost-repo
-        namespace: ghost
+        name: bitnami-repo
+        namespace: common
       version: "22.1.2"
   interval: 1h0m0s
   values:

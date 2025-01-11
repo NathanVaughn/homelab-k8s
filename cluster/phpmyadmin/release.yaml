@@ -10,8 +10,8 @@ spec:
             reconcileStrategy: ChartVersion
             sourceRef:
                 kind: HelmRepository
-                name: phpmyadmin-repo
-                namespace: phpmyadmin
+                name: bitnami-repo
+                namespace: common
             version: "18.1.0"
     interval: 1h0m0s
     values:
