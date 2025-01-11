@@ -1,0 +1,23 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: omada-route
+  namespace: omada
+  annotations:
+    k8s-dns.nathanv.me/hostname: omada.nathanv.app
+    k8s-dns.nathanv.me/external: tunnel.nathanv.app
+    k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`omada.nathanv.app`)
+    kind: Rule
+    services:
+    - name: omada-service
+      port: 8043
+  tls:
+    certResolver: le
+    domains:
+    - sans:
+      - "*.nathanv.app"
