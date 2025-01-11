@@ -2,6 +2,9 @@
 
 ## Setup
 
+In Authentik, configure a OAuth2 provider. Use the redirect URL as
+`https://bookstack.nathanv.app/oidc/callback`
+
 ```bash
 export APP_KEY=$APP_KEY
 export MARIADB_PASSWORD=$MARIADB_PASSWORD

@@ -22,7 +22,7 @@ spec:
       pluginsDir: /build/plugins
       oidc:
         issuerURL: https://authentik.nathanv.app/application/o/headlamp/
-        scopes: profile,email,repo
+        scopes: profile,email
     initContainers:
     - command:
       - /bin/sh
