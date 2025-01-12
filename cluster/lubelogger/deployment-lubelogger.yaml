@@ -43,6 +43,9 @@ spec:
           value: "true"
         - name: OpenIDConfig__LogOutURL
           value: "https://authentik.nathanv.app/application/o/lubelogger/end-session/"
+        # this if off bv default
+        - name: EnableAuth
+          value: "true"
         envFrom:
         - secretRef:
             name: lubelogger-env
