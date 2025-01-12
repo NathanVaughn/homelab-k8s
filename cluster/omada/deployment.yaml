@@ -44,7 +44,7 @@ spec:
           value: "508"
         - name: TZ
           value: "America/Chicago"
-        image: docker.io/mbentley/omada-controller:5.14
+        image: docker.io/mbentley/omada-controller:5.15
         name: omada
         volumeMounts:
         - mountPath: /opt/tplink/EAPController/data
