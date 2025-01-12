@@ -28,11 +28,13 @@ spec:
         - name: url
           value: "https://christmas.nathanv.app"
         - name: database__client
-          value: sqlite3
-        - name: database__connection__filename
-          value: content/data/ghost.db
-        - name: database__useNullAsDefault
-          value: "true"
+          value: mysql
+        - name: database__connection__host
+          value: ghost-mysql-service.ghost.svc.cluster.local
+        - name: database__connection__user
+          value: ghost
+        - name: database__connection__database
+          value: ghost
         - name: mail__transport
           value: SMTP
         - name: mail__options__port

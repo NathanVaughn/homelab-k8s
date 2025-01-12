@@ -5,7 +5,11 @@
 ```bash
 export TOKEN=$TOKEN
 kubectl apply -f namespace.yaml
-kubectl -n traefik create secret generic traefik-cf-token --from-literal=CF_DNS_API_TOKEN=$TOKEN --dry-run=client -o yaml > secret.yaml
+
+kubectl -n traefik create secret generic traefik-cf-token \
+--from-literal=CF_DNS_API_TOKEN=$TOKEN \
+--dry-run=client -o yaml > secret.yaml
+
 kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
 # optional
 kubectl apply -f sealed-secret.yaml
