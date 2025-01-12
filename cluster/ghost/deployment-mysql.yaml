@@ -19,14 +19,14 @@ spec:
         fsGroup: 999
         runAsUser: 999
         runAsGroup: 999
-      initContainers:
-      - name: permission-fix
-        image: docker.io/library/busybox:latest
-        command: [ 'sh', '-c' ]
-        args: [ 'chown -R 999:999 /var/lib/mysql' ]
-        volumeMounts:
-        - mountPath: /var/lib/mysql
-          name: mysql-vol
+      # initContainers:
+      # - name: permission-fix
+      #   image: docker.io/library/busybox:latest
+      #   command: [ 'sh', '-c' ]
+      #   args: [ 'chown -R 999:999 /var/lib/mysql' ]
+      #   volumeMounts:
+      #   - mountPath: /var/lib/mysql
+      #     name: mysql-vol
       containers:
       # https://ghost.org/docs/faq/supported-databases/
       # - command: [ mysqld, '--character-set-server=utf8mb4', '--collation-server=utf8mb4_0900_ai_ci' ]
