@@ -17,7 +17,7 @@ spec:
         role: apps
       containers:
       # https://ghost.org/docs/faq/supported-databases/
-      - command: [ '--character-set-server=utf8mb4', '--collation-server=utf8mb4_0900_ai_ci' ]
+      - command: [ mysqld, '--character-set-server=utf8mb4', '--collation-server=utf8mb4_0900_ai_ci' ]
         env:
         - name: MYSQL_RANDOM_ROOT_PASSWORD
           value: "1"
