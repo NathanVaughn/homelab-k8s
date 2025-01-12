@@ -14,7 +14,7 @@ spec:
   - match: Host(`lubelogger.nathanv.app`)
     kind: Rule
     services:
-    - name: lubelogger
+    - name: lubelogger-service
       port: 80
   tls:
     certResolver: le
