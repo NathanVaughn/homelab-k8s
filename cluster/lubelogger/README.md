@@ -15,7 +15,7 @@ export OPENIDCONFIG_CLIENTID=$OPENIDCONFIG_CLIENTID
 export OPENIDCONFIG_SECRET=$OPENIDCONFIG_SECRET
 kubectl apply -f namespace.yaml
 
-kubectl -n lubelogger create secret generic lubelogger-secrets \
+kubectl -n lubelogger create secret generic lubelogger-env \
 --from-literal=POSTGRES_PASSWORD=$POSTGRES_PASSWORD \
 --from-literal=POSTGRES_CONNECTION=$POSTGRES_CONNECTION \
 --from-literal=MailConfig__EmailServer=$MAILCONFIG_EMAILSERVER \
