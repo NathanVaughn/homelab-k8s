@@ -39,6 +39,7 @@ export PGADMIN_DEFAULT_PASSWORD=$PGADMIN_DEFAULT_PASSWORD
 export PGADMIN_CONFIG_MAIL_SERVER="'$PGADMIN_CONFIG_MAIL_SERVER'"
 export PGADMIN_CONFIG_MAIL_USERNAME="'$PGADMIN_CONFIG_MAIL_USERNAME'"
 export PGADMIN_CONFIG_MAIL_PASSWORD="'$PGADMIN_CONFIG_MAIL_PASSWORD'"
+export PGADMIN_CONFIG_CONFIG_DATABASE_URI="'postgresql://pgadmin:$POSTGRES_PASSWORD@pgadmin-postgresql-service.pgadmin.svc.cluster.local:5432/pgadmin'"
 kubectl apply -f namespace.yaml
 
 kubectl -n pgadmin create secret generic pgadmin-env \
@@ -48,7 +49,7 @@ kubectl -n pgadmin create secret generic pgadmin-env \
 --from-literal=PGADMIN_CONFIG_MAIL_SERVER=$PGADMIN_CONFIG_MAIL_SERVER \
 --from-literal=PGADMIN_CONFIG_MAIL_USERNAME=$PGADMIN_CONFIG_MAIL_USERNAME \
 --from-literal=PGADMIN_CONFIG_MAIL_PASSWORD=$PGADMIN_CONFIG_MAIL_PASSWORD \
---from-literal=PGADMIN_CONFIG_CONFIG_DATABASE_URI=postgresql://pgadmin:$POSTGRES_PASSWORD@pgadmin-postgresql-service.pgadmin.svc.cluster.local:5432/pgadmin \
+--from-literal=PGADMIN_CONFIG_CONFIG_DATABASE_URI=$PGADMIN_CONFIG_CONFIG_DATABASE_URI \
 --dry-run=client -o yaml > secret.yaml
 
 kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
