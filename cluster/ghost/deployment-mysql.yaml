@@ -8,6 +8,8 @@ spec:
   selector:
     matchLabels:
       app: ghost-mysql
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:

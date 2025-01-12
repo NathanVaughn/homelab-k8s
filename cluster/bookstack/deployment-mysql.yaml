@@ -8,6 +8,8 @@ spec:
   selector:
     matchLabels:
       app: bookstack-mysql
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
