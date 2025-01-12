@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pgadmin-postgresql-deployment
+  namespace: pgadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pgadmin-postgresql
+  template:
+    metadata:
+      labels:
+        app: pgadmin-postgresql
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+      - env:
+        - name: POSTGRES_USER
+          value: pgadmin
+        - name: POSTGRES_DB
+          value: pgadmin
+        envFrom:
+        - secretRef:
+            name: pgadmin-env
+        image: docker.io/library/postgres:17.2
+        name: postgresql
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: postgresql-vol
+      volumes:
+      - name: postgresql-vol
+        persistentVolumeClaim:
+          claimName: pgadmin-pvc-postgresql
