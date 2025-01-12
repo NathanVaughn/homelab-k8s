@@ -15,6 +15,14 @@ spec:
     spec:
       nodeSelector:
         role: apps
+      initContainers:
+      - name: permission-fix
+        image: docker.io/library/busybox:latest
+        command: [ 'sh', '-c' ]
+        args: [ 'chown -R 999:999 /var/lib/mysql' ]
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: mysql-vol
       containers:
       - env:
         - name: MARIADB_RANDOM_ROOT_PASSWORD
