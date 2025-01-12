@@ -21,6 +21,9 @@ spec:
           value: pgadmin
         - name: POSTGRES_DB
           value: pgadmin
+        # avoids issues with lost+found directory
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
         envFrom:
         - secretRef:
             name: pgadmin-env
