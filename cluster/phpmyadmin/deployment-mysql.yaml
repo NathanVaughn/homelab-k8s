@@ -17,6 +17,14 @@ spec:
     spec:
       nodeSelector:
         role: apps
+      initContainers:
+      - name: lost-found-fix
+        image: docker.io/library/busybox:latest
+        command: [ 'sh', '-c' ]
+        args: [ 'rm -rf /var/lib/mysql/lost+found' ]
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: mysql-vol
       containers:
       - env:
         - name: MARIADB_RANDOM_ROOT_PASSWORD
