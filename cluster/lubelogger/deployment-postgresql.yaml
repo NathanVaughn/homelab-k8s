@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lubelogger-postgresql-deployment
+  namespace: lubelogger
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lubelogger-postgresql
+  template:
+    metadata:
+      labels:
+        app: lubelogger-postgresql
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+      - env:
+        - name: POSTGRES_USER
+          value: lubelogger
+        - name: POSTGRES_DB
+          value: lubelogger
+        # avoids issues with lost+found directory
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
+        envFrom:
+        - secretRef:
+            name: lubelogger-env
+        image: docker.io/library/postgres:17.2
+        name: postgresql
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: postgresql-vol
+      volumes:
+      - name: postgresql-vol
+        persistentVolumeClaim:
+          claimName: lubelogger-pvc-postgresql
