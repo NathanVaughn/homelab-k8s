@@ -42,10 +42,15 @@ export PGADMIN_CONFIG_MAIL_PASSWORD="'$PGADMIN_CONFIG_MAIL_PASSWORD'"
 export PGADMIN_CONFIG_CONFIG_DATABASE_URI="'postgresql://pgadmin:$POSTGRES_PASSWORD@pgadmin-postgresql-service.pgadmin.svc.cluster.local:5432/pgadmin'"
 kubectl apply -f namespace.yaml
 
+# SETUP environment variables also set
+# Docker ones don't seem to work when using postgres backend
+# https://github.com/pgadmin-org/pgadmin4/blob/a9974b418c49760d3989b7fb25e052ff16b89ac6/web/pgadmin/setup/user_info.py#L37-L44
 kubectl -n pgadmin create secret generic pgadmin-env \
 --from-literal=POSTGRES_PASSWORD=$POSTGRES_PASSWORD \
 --from-literal=PGADMIN_DEFAULT_EMAIL=$PGADMIN_DEFAULT_EMAIL \
 --from-literal=PGADMIN_DEFAULT_PASSWORD=$PGADMIN_DEFAULT_PASSWORD \
+--from-literal=PGADMIN_SETUP_EMAIL=$PGADMIN_DEFAULT_EMAIL \
+--from-literal=PGADMIN_SETUP_PASSWORD=$PGADMIN_DEFAULT_PASSWORD \
 --from-literal=PGADMIN_CONFIG_MAIL_SERVER=$PGADMIN_CONFIG_MAIL_SERVER \
 --from-literal=PGADMIN_CONFIG_MAIL_USERNAME=$PGADMIN_CONFIG_MAIL_USERNAME \
 --from-literal=PGADMIN_CONFIG_MAIL_PASSWORD=$PGADMIN_CONFIG_MAIL_PASSWORD \
