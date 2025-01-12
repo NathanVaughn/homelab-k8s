@@ -39,7 +39,7 @@ spec:
         - secretRef:
             name: ghost-env
         # https://ghost.org/docs/faq/supported-databases/
-        image: docker.io/library/mysql:8.4.3
+        image: docker.io/library/mysql:9.1.0
         name: mysql
         ports:
         - containerPort: 3306
