@@ -14,7 +14,7 @@ spec:
   - match: Host(`phpmyadmin.nathanv.app`)
     kind: Rule
     services:
-    - name: phpmyadmin-release
+    - name: phpmyadmin
       port: 80
   tls:
     certResolver: le
