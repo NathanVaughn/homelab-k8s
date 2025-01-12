@@ -9,6 +9,8 @@ spec:
     matchLabels:
       app: phpmyadmin-mysql
   strategy:
+    # https://github.com/kubernetes/kubernetes/issues/24198
+    rollingUpdate: null
     type: Recreate
   template:
     metadata:
