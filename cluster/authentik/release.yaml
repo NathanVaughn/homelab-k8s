@@ -12,6 +12,7 @@ spec:
         kind: HelmRepository
         name: authentik-repo
         namespace: authentik
+      # https://github.com/goauthentik/authentik/issues/12646
       version: "2024.12.1"
   interval: 1h0m0s
   values:
