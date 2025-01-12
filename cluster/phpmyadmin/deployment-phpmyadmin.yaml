@@ -18,7 +18,7 @@ spec:
       containers:
       - env:
         - name: PMA_HOSTS
-          value: bookstack-mysql-service.bookstack.svc.cluster.local,phpmyadmin-mysql-service.phpmyadmin.svc.cluster.local,webtrees-mysql-service.webtrees.svc.cluster.local
+          value: bookstack-mysql-service.bookstack.svc.cluster.local,ghost-mysql-service.ghost.svc.cluster.local,phpmyadmin-mysql-service.phpmyadmin.svc.cluster.local,webtrees-mysql-service.webtrees.svc.cluster.local
         - name: PMA_CONTROLHOST
           value: phpmyadmin-mysql-service.phpmyadmin.svc.cluster.local
         - name: PMA_CONTROLUSER
