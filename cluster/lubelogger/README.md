@@ -29,3 +29,8 @@ kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < 
 # optional
 kubectl apply -f sealed-secret.yaml
 ```
+
+The first time you log, you'll be asked for a token. You will need
+to manually add this token to the database in the `tokenrecords` table.
+It can be any value, though a GUID is recommended. Use anything other than `0`
+for the ID, and the email must match exactly.
