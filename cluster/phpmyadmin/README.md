@@ -10,3 +10,6 @@ kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < 
 # optional
 kubectl apply -f sealed-secret.yaml
 ```
+
+After starting the service for the first time, log in and create the PHPMyAdmin
+tables in the web UI. There will be a button prompt.

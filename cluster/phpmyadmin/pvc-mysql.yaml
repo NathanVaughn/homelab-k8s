@@ -9,4 +9,5 @@ spec:
       - ReadWriteOnce
     resources:
         requests:
+            # had issues with 100 Mi
             storage: 500Mi
