@@ -18,7 +18,8 @@
             "matchManagers": [
                 "flux",
                 "helm-values",
-                "kubernetes"
+                "kubernetes",
+                "regex"
             ],
             "schedule": [
                 "* * * * 0,6"
