@@ -24,7 +24,7 @@ kubectl apply -f sealed-secret.yaml
 ## Post Launch
 
 All persistent volume claims should use the storage class name "longhorn".
-This is a ReadWriteOnce storage class which means that only one pod can
+This is a ReadWriteOnce storage class which means that only one node can
 access the volume for writing at a time.
 
 Volumes which needed to *modified* by multiple pods at the same time should use the
