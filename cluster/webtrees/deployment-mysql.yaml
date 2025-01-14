@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webtrees-mysql-deployment
+  namespace: webtrees
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webtrees-mysql
+  template:
+    metadata:
+      labels:
+        app: webtrees-mysql
+    spec:
+      nodeSelector:
+        role: apps
+      initContainers:
+      - name: lost-found-fix
+        image: docker.io/library/busybox:latest
+        command: [ 'sh', '-c' ]
+        args: [ 'rm -rf /var/lib/mysql/lost+found' ]
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: mysql-vol
+      containers:
+      - env:
+        - name: MARIADB_RANDOM_ROOT_PASSWORD
+          value: "1"
+        - name: MARIADB_USER
+          value: webtrees
+        - name: MARIADB_DATABASE
+          value: webtrees
+        envFrom:
+        - secretRef:
+            name: webtrees-env
+        image: docker.io/library/mariadb:11.6.2
+        name: mariadb
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: mysql-vol
+      volumes:
+      - name: mysql-vol
+        persistentVolumeClaim:
+          claimName: webtrees-pvc-mysql
