@@ -44,6 +44,7 @@
             "fileMatch": [
                 "cluster/webtrees/modules.py"
             ],
+            "currentValueTemplate": "master",
             "matchStrings": [
                 "(?<depName>https:\/\/github\\.com\/.+?\/.+?)\/archive\/(?<currentDigest>[a-z0-9]+?)\\.zip"
             ],
