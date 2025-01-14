@@ -24,5 +24,30 @@
                 "* * * * 0,6"
             ]
         }
+    ],
+    "customManagers": [
+        {
+            "customType": "regex",
+            "description": "Update webtrees versioned modules",
+            "fileMatch": [
+                "cluster/webtrees/modules.py"
+            ],
+            "matchStrings": [
+                "https:\/\/github\\.com\/(?<depName>.+?\/.+?)\/releases\/download\/(?<currentValue>.+?)\/.+\\.zip",
+                "https:\/\/github\\.com\/(?<depName>.+?\/.+?)\/archive\/refs\/tags\/(?<currentValue>.+?)\\.zip"
+            ],
+            "datasourceTemplate": "github-releases"
+        },
+        {
+            "customType": "regex",
+            "description": "Update webtrees git modules",
+            "fileMatch": [
+                "cluster/webtrees/modules.py"
+            ],
+            "matchStrings": [
+                "(?<depName>https:\/\/github\\.com\/.+?\/.+?)\/archive\/(?<currentDigest>[a-z0-9]+?)\\.zip"
+            ],
+            "datasourceTemplate": "git-refs"
+        }
     ]
 }
