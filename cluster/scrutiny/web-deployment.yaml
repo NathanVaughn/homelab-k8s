@@ -34,3 +34,10 @@ spec:
                 ports:
                   - containerPort: 8080
                     protocol: TCP
+                volumeMounts:
+                  - mountPath: /opt/scrutiny/config
+                    name: scrutiny-web-vol
+            volumes:
+              - name: scrutiny-web-vol
+                persistentVolumeClaim:
+                    claimName: scrutiny-web-pvc

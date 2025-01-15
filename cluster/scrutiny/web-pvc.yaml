@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    name: scrutiny-web-pvc
+    namespace: scrutiny
+spec:
+    storageClassName: longhorn
+    accessModes:
+      - ReadWriteOnce
+    resources:
+        requests:
+            storage: 50Mi
