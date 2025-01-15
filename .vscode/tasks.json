@@ -27,6 +27,11 @@
             "command": "pyinfra inventory.py update.py",
             "type": "shell",
             "options": {"cwd": "${workspaceFolder}${/}software"}
+        },
+        {
+            "label": "force-sync",
+            "command": "flux reconcile source git flux-system && flux reconcile kustomization flux-system -n flux-system",
+            "type": "shell"
         }
     ]
 }

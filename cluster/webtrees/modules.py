@@ -83,10 +83,17 @@ def download_and_extract_zip(url: str) -> None:
     os.remove(zip_path)
     print(f"Deleted {file_name}.")
 
-    # Record source url
+    # Find new dir and rename
     new_dir = find_dir(repo_name)
     assert new_dir is not None
-    with open(os.path.join(new_dir, source_file), "w") as fp:
+    # modules with `.` in the name are ignored
+    new_dir_replaced = new_dir.replace(".", "_")
+    if new_dir_replaced != new_dir:
+        os.rename(new_dir, new_dir_replaced)
+
+    # Record source url
+    assert new_dir_replaced is not None
+    with open(os.path.join(new_dir_replaced, source_file), "w") as fp:
         fp.write(url)
 
 
