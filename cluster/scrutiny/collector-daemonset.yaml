@@ -35,9 +35,9 @@ spec:
         - name: udev
           mountPath: /run/udev
           readOnly: true
-        - name: dev-nvme0n1
-          mountPath: /dev/nvme0n1
-          readOnly: true
+        - name: collector-config-vol
+          mountPath: /opt/scrutiny/config/collector.yaml
+          subPath: collector.yaml
         securityContext:
           runAsUser: 0
           privileged: true # only way to get this to work
@@ -45,6 +45,6 @@ spec:
       - name: udev
         hostPath:
           path: /run/udev
-      - name: dev-nvme0n1
-        hostPath:
-          path: /dev/nvme0n1
+      - name: collector-config-vol
+        configMap:
+          name: collector-config
