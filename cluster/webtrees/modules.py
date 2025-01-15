@@ -22,8 +22,11 @@ sources = [
 def check_existing_dir(dir: str, url: str) -> bool:
     """
     See if the existing directory came from the same source.
-    If not, delete.
+    If not, delete. Returns result.
     """
+    if not os.path.isdir(dir):
+        return False
+
     # see if existing folder comes from the same upstream url
     dir_source_file = os.path.join(dir, source_file)
     if os.path.isfile(dir_source_file):
@@ -37,17 +40,6 @@ def check_existing_dir(dir: str, url: str) -> bool:
     return False
 
 
-def find_dir(repo_name: str) -> str | None:
-    """
-    Based on a repo name, figure out what directory in the modules
-    folder
-    """
-    for path in os.listdir(modules_dir):
-        if repo_name in path:
-            full_path = os.path.join(modules_dir, path)
-            return full_path
-
-
 def download_and_extract_zip(url: str) -> None:
     print("-------------------")
     if not os.path.exists(modules_dir):
@@ -59,13 +51,12 @@ def download_and_extract_zip(url: str) -> None:
     repo_name = url_path.split("/")[2]
     file_name = os.path.basename(url_path)
     zip_path = os.path.join(modules_dir, file_name)
+    dst_path = os.path.join(modules_dir, repo_name)
 
-    # Check existing folder
-    if existing_dir := find_dir(repo_name):
-        # if already exists, break
-        if check_existing_dir(existing_dir, url):
-            print(f"{url} already downloaded")
-            return
+    # if already exists, break
+    if check_existing_dir(dst_path, url):
+        print(f"{url} already downloaded")
+        return
 
     # Download the file
     print(f"Downloading {url}...")
@@ -73,27 +64,24 @@ def download_and_extract_zip(url: str) -> None:
         file.write(response.read())
     print(f"Downloaded {file_name}.")
 
-    # Extract the ZIP file
+    # Extract the file
     print(f"Extracting {file_name}...")
     with zipfile.ZipFile(zip_path, "r") as zip_ref:
+        # first item will be the top level directory name with no prefix
+        extracted_dir = zip_ref.namelist()[0]
         zip_ref.extractall(modules_dir)
-    print(f"Extracted {file_name} to {modules_dir}.")
+    print(f"Extracted {file_name}")
 
     # Delete the downloaded ZIP file
     os.remove(zip_path)
     print(f"Deleted {file_name}.")
 
-    # Find new dir and rename
-    new_dir = find_dir(repo_name)
-    assert new_dir is not None
-    # modules with `.` in the name are ignored
-    new_dir_replaced = new_dir.replace(".", "_")
-    if new_dir_replaced != new_dir:
-        os.rename(new_dir, new_dir_replaced)
+    # Rename zip
+    os.rename(os.path.join(modules_dir, extracted_dir), dst_path)
+    print(f"Renamed {extracted_dir} to {repo_name}.")
 
     # Record source url
-    assert new_dir_replaced is not None
-    with open(os.path.join(new_dir_replaced, source_file), "w") as fp:
+    with open(os.path.join(dst_path, source_file), "w") as fp:
         fp.write(url)
 
 
