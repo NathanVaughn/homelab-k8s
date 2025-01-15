@@ -12,7 +12,7 @@ spec:
                 kind: HelmRepository
                 name: kube-vip-repo
                 namespace: kube-vip
-            version: "0.6.4"
+            version: "0.6.5"
     interval: 1h0m0s
     values:
         config:
