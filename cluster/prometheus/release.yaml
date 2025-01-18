@@ -17,6 +17,8 @@ spec:
   values:
     grafana:
       enabled: false
+    alertmanager:
+      enabled: false
     prometheus:
       prometheusSpec:
         storageSpec:
@@ -27,13 +29,3 @@ spec:
             resources:
               requests:
                 storage: 1Gi
-    alertmanager:
-      alertmanagerSpec:
-        storage:
-          volumeClaimTemplate:
-            spec:
-              storageClassName: longhorn
-              accessModes: [ "ReadWriteOnce" ]
-              resources:
-                requests:
-                  storage: 500Mi
