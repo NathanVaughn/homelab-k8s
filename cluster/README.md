@@ -13,6 +13,10 @@ flux reconcile kustomization flux-system -n flux-system
 kubectl get events -n flux-system --field-selector type=Warning
 ```
 
+```bash
+flux logs -n foo
+```
+
 ## Wipe namespace
 
 ```bash
