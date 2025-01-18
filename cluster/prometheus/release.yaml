@@ -21,6 +21,9 @@ spec:
       enabled: false
     prometheus:
       prometheusSpec:
+        # https://github.com/prometheus-operator/prometheus-operator/issues/5197#issuecomment-1382210067
+        scrapeInterval: 30s
+        evaluationInterval: 30s
         storageSpec:
         volumeClaimTemplate:
           spec:
