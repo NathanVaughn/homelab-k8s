@@ -15,6 +15,7 @@ spec:
       version: "27.1.0"
   interval: 1h0m0s
   values:
-    persistentVolume:
-      storageClass: longhorn
-      size: 2Gi
+    server:
+      persistentVolume:
+        storageClass: longhorn
+        size: 2Gi
