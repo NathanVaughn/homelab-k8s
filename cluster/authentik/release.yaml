@@ -22,15 +22,17 @@ spec:
         from: Authentik <authentik@nvaughn.email>
     postgresql:
       enabled: true
-      persistence:
-        enabled: true
-        size: 1Gi
+      primary:
+        persistence:
+          enabled: true
+          size: 1Gi
       defaultStorageClass: longhorn
     redis:
       enabled: true
-      persistence:
-        enabled: true
-        size: 1Gi
+      master:
+        persistence:
+          enabled: true
+          size: 1Gi
       defaultStorageClass: longhorn
     global:
       nodeSelector:
