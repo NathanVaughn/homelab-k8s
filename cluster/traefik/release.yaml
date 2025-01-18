@@ -22,7 +22,7 @@ spec:
         kind: HelmRepository
         name: traefik-repo
         namespace: traefik
-      version: "33.2.1"
+      version: "34.1.0"
   interval: 1h0m0s
   values:
     persistence:
