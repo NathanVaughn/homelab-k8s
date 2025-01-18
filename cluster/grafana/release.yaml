@@ -28,19 +28,21 @@ spec:
       auth.generic_oauth:
         enabled: true
         allow_sign_up: true
-        auto_login: true
+        auto_login: false
         name: Authentik
         client_id: $__file{/etc/secrets/grafana_secrets/grafana_ini.auth_generic_oauth.client_id}
         client_secret: $__file{/etc/secrets/grafana_secrets/grafana_ini.auth_generic_oauth.client_secret}
         scopes: "openid profile email"
-        auth_url: "https://authentik.nathanv.app/application/o/authorize/"
-        token_url: "https://authentik.nathanv.app/application/o/token/"
-        api_url: "https://authentik.nathanv.app/application/o/userinfo/"
+        auth_url: https://authentik.nathanv.app/application/o/authorize/
+        token_url: https://authentik.nathanv.app/application/o/token/
+        api_url: https://authentik.nathanv.app/application/o/userinfo/
+        signout_redirect_url: https://authentik.nathanv.app/application/o/grafana/end-session/
       smtp:
         enabled: true
         host: $__file{/etc/secrets/grafana_secrets/grafana_ini.smtp.host}
         user: $__file{/etc/secrets/grafana_secrets/grafana_ini.smtp.user}
         password: $__file{/etc/secrets/grafana_secrets/grafana_ini.smtp.password}
+        login_attribute_path: preferred_username
         from_address: grafana@nvaughn.email
         from_name: Grafana
         skip_verify: false
