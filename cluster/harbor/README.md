@@ -1,0 +1,20 @@
+# Harbor
+
+## Setup
+
+```bash
+export ADMIN_PASSWORD=$ADMIN_PASSWORD
+export REGISTRY_PASSWORD=$REGISTRY_PASSWORD
+export DATABASE_PASSWORD=$DATABASE_PASSWORD
+kubectl apply -f namespace.yaml
+
+kubectl -n harbor create secret generic harbor-secrets \
+--from-literal=harborAdminPassword=$ADMIN_PASSWORD \
+--from-literal=registry.credentials.password=$REGISTRY_PASSWORD \
+--from-literal=database.internal.password=$DATABASE_PASSWORD \
+--dry-run=client -o yaml > secret.yaml
+
+kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
+# optional
+kubectl apply -f sealed-secret.yaml
+```

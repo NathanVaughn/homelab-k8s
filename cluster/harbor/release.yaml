@@ -1,0 +1,71 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+    name: harbor-release
+    namespace: harbor
+spec:
+    releaseName: harbor
+    chart:
+        spec:
+            chart: harbor
+            sourceRef:
+                kind: HelmRepository
+                name: harbor-repo
+                namespace: harbor
+            version: "1.16.1"
+    interval: 1h0m0s
+    values:
+        externalURL: https://cr.nathanv.app
+        expose:
+            type: clusterIP
+        portal:
+            nodeSelector:
+                role: apps
+        core:
+            nodeSelector:
+                role: apps
+        jobservice:
+            nodeSelector:
+                role: apps
+        registry:
+            # needed for reverse proxy
+            relativeurls: true
+            nodeSelector:
+                role: apps
+        database:
+            internal:
+                nodeSelector:
+                    role: apps
+        redis:
+            internal:
+                nodeSelector:
+                    role: apps
+        exporter:
+            nodeSelector:
+                role: apps
+        persistence:
+            persistentVolumeClaim:
+                registry:
+                    storageClass: longhorn
+                    size: 100Gi
+                jobservice:
+                    storageClass: longhorn
+                database:
+                    storageClass: longhorn
+                redis:
+                    storageClass: longhorn
+                trivy:
+                    storageClass: longhorn
+    valuesFrom:
+      - kind: Secret
+        name: harbor-secrets
+        valuesKey: harborAdminPassword
+        targetPath: harborAdminPassword
+      - kind: Secret
+        name: harbor-secrets
+        valuesKey: registry.credentials.password
+        targetPath: registry.credentials.password
+      - kind: Secret
+        name: harbor-secrets
+        valuesKey: database.internal.password
+        targetPath: database.internal.password

@@ -1,0 +1,23 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: bookstack-route
+  namespace: bookstack
+  annotations:
+    k8s-dns.nathanv.me/hostname: cr.nathanv.app
+    k8s-dns.nathanv.me/external: tunnel.nathanv.app
+    k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`cr.nathanv.app`)
+    kind: Rule
+    services:
+    - name: harbor
+      port: 80
+  tls:
+    certResolver: le
+    domains:
+    - sans:
+      - "*.nathanv.app"
