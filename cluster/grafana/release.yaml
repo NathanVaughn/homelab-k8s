@@ -37,12 +37,12 @@ spec:
         token_url: https://authentik.nathanv.app/application/o/token/
         api_url: https://authentik.nathanv.app/application/o/userinfo/
         signout_redirect_url: https://authentik.nathanv.app/application/o/grafana/end-session/
+        login_attribute_path: preferred_username
       smtp:
         enabled: true
         host: $__file{/etc/secrets/grafana_secrets/grafana_ini.smtp.host}
         user: $__file{/etc/secrets/grafana_secrets/grafana_ini.smtp.user}
         password: $__file{/etc/secrets/grafana_secrets/grafana_ini.smtp.password}
-        login_attribute_path: preferred_username
         from_address: grafana@nvaughn.email
         from_name: Grafana
         skip_verify: false
