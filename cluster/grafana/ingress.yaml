@@ -1,23 +1,23 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-    name: grafana-route
-    namespace: grafana
-    annotations:
-        k8s-dns.nathanv.me/hostname: grafana.nathanv.app
-        k8s-dns.nathanv.me/external: tunnel.nathanv.app
-        k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
+  name: grafana-route
+  namespace: grafana
+  annotations:
+    k8s-dns.nathanv.me/hostname: grafana.nathanv.app
+    k8s-dns.nathanv.me/external: tunnel.nathanv.app
+    k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
 spec:
-    entryPoints:
-      - websecure
-    routes:
-      - match: Host(`grafana.nathanv.app`)
-        kind: Rule
-        services:
-          - name: grafana-service
-            port: 80
-    tls:
-        certResolver: le
-        domains:
-          - sans:
-              - "*.nathanv.app"
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`grafana.nathanv.app`)
+    kind: Rule
+    services:
+    - name: grafana
+      port: 80
+  tls:
+    certResolver: le
+    domains:
+    - sans:
+      - "*.nathanv.app"
