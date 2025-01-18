@@ -30,10 +30,10 @@ spec:
         scrapeInterval: 30s
         evaluationInterval: 30s
         storageSpec:
-        volumeClaimTemplate:
-          spec:
-            storageClassName: longhorn
-            accessModes: [ "ReadWriteOnce" ]
-            resources:
-              requests:
-                storage: 1Gi
+          volumeClaimTemplate:
+            spec:
+              storageClassName: longhorn
+              accessModes: [ "ReadWriteOnce" ]
+              resources:
+                requests:
+                  storage: 1Gi
