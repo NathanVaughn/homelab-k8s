@@ -41,6 +41,8 @@ spec:
         api_url: https://authentik.nathanv.app/application/o/userinfo/
         signout_redirect_url: https://authentik.nathanv.app/application/o/grafana/end-session/
         login_attribute_path: preferred_username
+        # manage roles manually
+        skip_org_role_sync: true
       smtp:
         enabled: true
         host: $__file{/etc/secrets/grafana_secrets/grafana_ini.smtp.host}
