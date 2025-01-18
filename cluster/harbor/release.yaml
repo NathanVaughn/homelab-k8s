@@ -18,6 +18,8 @@ spec:
         externalURL: https://cr.nathanv.app
         expose:
             type: clusterIP
+            tls:
+                enabled: false
         portal:
             nodeSelector:
                 role: apps
