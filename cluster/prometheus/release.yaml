@@ -7,7 +7,7 @@ spec:
   releaseName: prometheus
   chart:
     spec:
-      chart: prometheus
+      chart: kube-prometheus-stack
       sourceRef:
         kind: HelmRepository
         name: prometheus-repo
@@ -15,7 +15,25 @@ spec:
       version: "27.1.0"
   interval: 1h0m0s
   values:
-    server:
-      persistentVolume:
-        storageClass: longhorn
-        size: 2Gi
+    grafana:
+      enabled: false
+    prometheus:
+      prometheusSpec:
+        storageSpec:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: longhorn
+            accessModes: [ "ReadWriteOnce" ]
+            resources:
+              requests:
+                storage: 1Gi
+    alertmanager:
+      alertmanagerSpec:
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: longhorn
+              accessModes: [ "ReadWriteOnce" ]
+              resources:
+                requests:
+                  storage: 500Mi

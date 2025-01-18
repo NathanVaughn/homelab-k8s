@@ -32,3 +32,6 @@ kubectl apply -f sealed-secret.yaml
 ```
 
 ## Post Setup
+
+Add the following as a datasource:
+`http://prometheus-server.prometheus.svc.cluster.local`
