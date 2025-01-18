@@ -7,6 +7,13 @@ flux reconcile source git flux-system
 flux reconcile kustomization flux-system -n flux-system
 ```
 
+## Troubleshooting
+
+```bash
+kubectl get events -n flux-system --field-selector type=Warning
+```
+
+
 ## Wipe namespace
 
 ```bash

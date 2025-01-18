@@ -1,8 +1,8 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: bookstack-route
-  namespace: bookstack
+  name: harbor-route
+  namespace: harbor
   annotations:
     k8s-dns.nathanv.me/hostname: cr.nathanv.app
     k8s-dns.nathanv.me/external: tunnel.nathanv.app
