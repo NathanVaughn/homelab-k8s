@@ -6,6 +6,7 @@ In Authentik, configure a OAuth2 provider. Use the redirect URL as
 `https://grafana.nathanv.app/login/generic_oauth`
 
 ```bash
+# admin user cannot be same as Authentik user
 export ADMIN_USER=$ADMIN_USER
 export ADMIN_PASSWORD=$ADMIN_PASSWORD
 export OAUTH_CLIENT_ID=$OAUTH_CLIENT_ID
