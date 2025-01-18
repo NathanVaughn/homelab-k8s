@@ -43,6 +43,12 @@ spec:
             # i block 8.8.8.8 on my network
             - "1.1.1.1:53"
             - "9.9.9.9:53"
+    metrics:
+      prometheus:
+        service:
+          enabled: true
+        serviceMonitor:
+          enabled: true
     ports:
       websecure:
         tls:
