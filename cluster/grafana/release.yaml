@@ -20,3 +20,47 @@ spec:
       type: pvc
       size: 1Gi
       storageClassName: longhorn
+    grafana.ini:
+      server:
+        root_url: https://grafana.nathanv.app
+      auth.generic_oauth:
+        enabled: true
+        allow_sign_up: true
+        auto_login: true
+        name: Authentik
+        # client_id:
+        # client_secret:
+        scopes: "openid profile email"
+        auth_url: "https://authentik.nathanv.app/application/o/authorize/"
+        token_url: "https://authentik.nathanv.app/application/o/token/"
+        api_url: "https://authentik.nathanv.app/application/o/userinfo/"
+      smtp:
+        enabled: true
+        # host:
+        # user:
+        # password:
+        from_address: grafana@nvaughn.email
+        from_name: Grafana
+        skip_verify: false
+        startTLS_policy: MandatoryStartTLS
+  valuesFrom:
+  - kind: Secret
+    name: grafana-secrets
+    valuesKey: grafana_ini.auth_generic_oauth.client_id
+    targetPath: grafana\.ini.auth\.generic_oauth.client_id
+  - kind: Secret
+    name: grafana-secrets
+    valuesKey: grafana_ini.auth_generic_oauth.client_secret
+    targetPath: grafana\.ini.auth\.generic_oauth.client_secret
+  - kind: Secret
+    name: grafana-secrets
+    valuesKey: grafana_ini.smtp.host
+    targetPath: grafana\.ini.smtp.host
+  - kind: Secret
+    name: grafana-secrets
+    valuesKey: grafana_ini.smtp.user
+    targetPath: grafana\.ini.smtp.user
+  - kind: Secret
+    name: grafana-secrets
+    valuesKey: grafana_ini.smtp.password
+    targetPath: grafana\.ini.smtp.password
