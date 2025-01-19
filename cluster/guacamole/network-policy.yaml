@@ -10,13 +10,21 @@ spec:
   policyTypes:
     - Ingress
     - Egress
+  # only permit ingress from guacamole frontend
   ingress:
     - from:
         - podSelector:
             matchLabels:
               app: guacamole
+      ports:
+        - protocol: TCP
+          port: 4822
+  # allow egress for SSH-ing
   egress:
     - to:
-        - podSelector:
-            matchLabels:
-              app: guacamole
+        # restrict to local network
+        - ipBlock:
+            cidr: 10.0.0.1/20
+      ports:
+        - protocol: TCP
+          port: 22
