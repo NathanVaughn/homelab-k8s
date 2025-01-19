@@ -1,10 +1,11 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: guacamole-postgresql-deployment
   namespace: guacamole
 spec:
   replicas: 1
+  serviceName: guacamole-postgresql
   selector:
     matchLabels:
       app: guacamole-postgresql
