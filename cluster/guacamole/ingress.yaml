@@ -1,0 +1,26 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: guacamole-route
+  namespace: guacamole
+  annotations:
+    k8s-dns.nathanv.me/hostname: guacamole.nathanv.app
+    k8s-dns.nathanv.me/external: tunnel.nathanv.app
+    k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`guacamole.nathanv.app`)
+      kind: Rule
+      services:
+        - name: guacamole-service
+          port: 8080
+      middlewares:
+        - name: guacamole-middleware-prefix
+          namespace: guacamole
+  tls:
+    certResolver: le
+    domains:
+      - sans:
+          - "*.nathanv.app"

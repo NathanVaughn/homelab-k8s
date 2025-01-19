@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: guacd-network-policy
+  namespace: guacamole
+spec:
+  podSelector:
+    matchLabels:
+      app: guacamole-guacd
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: guacamole
+  egress:
+    - to:
+        - podSelector:
+            matchLabels:
+              app: guacamole

@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guacamole-guacamole-deployment
+  namespace: guacamole
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: guacamole-guacamole
+  template:
+    metadata:
+      labels:
+        app: guacamole-guacamole
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+        - env:
+            - name: POSTGRESQL_HOSTNAME
+              value: guacamole-postgresql-service.guacamole.svc.cluster.local
+            - name: POSTGRESQL_USER
+              value: guacamole
+            - name: POSTGRESQL_DATABASE
+              value: guacamole
+            - name: OPENID_AUTHORIZATION_ENDPOINT
+              value: https://authentik.nathanv.app/application/o/authorize/
+            - name: OPENID_ISSUER
+              value: https://authentik.nathanv.app/application/o/guacamole/
+            - name: OPENID_JWKS_ENDPOINT
+              value: https://authentik.nathanv.app/application/o/guacamole/jwks/
+            - name: OPENID_REDIRECT_URI
+              value: https://guacamole.nathanv.app/
+            - name: OPENID_USERNAME_CLAIM_TYPE
+              value: preferred_username
+            - name: GUACD_HOSTNAME
+              value: guacamole-guacd-service.guacamole.svc.cluster.local
+          envFrom:
+            - secretRef:
+                name: guacamole-env
+          image: docker.io/guacamole/guacamole:1.5.5
+          name: guacamole
+          ports:
+            - containerPort: 8080

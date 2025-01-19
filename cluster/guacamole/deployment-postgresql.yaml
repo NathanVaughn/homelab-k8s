@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guacamole-postgresql-deployment
+  namespace: guacamole
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: guacamole-postgresql
+  template:
+    metadata:
+      labels:
+        app: guacamole-postgresql
+    spec:
+      nodeSelector:
+        role: apps
+      initContainers:
+        - name: schema-gen
+          image: docker.io/guacamole/guacamole:1.5.5
+          command: ['/bin/bash', '-c']
+          args: ['/opt/guacamole/bin/initdb.sh --postgresql > /docker-entrypoint-initdb.d/initdb.sql']
+          volumeMounts:
+            - mountPath: /docker-entrypoint-initdb.d
+              name: initdb-vol
+      containers:
+        - env:
+            - name: POSTGRES_USER
+              value: guacamole
+            - name: POSTGRES_DB
+              value: guacamole
+            # avoids issues with lost+found directory
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+          envFrom:
+            - secretRef:
+                name: guacamole-env
+          image: docker.io/library/postgres:17.2
+          name: postgresql
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgresql-vol
+            - mountPath: /docker-entrypoint-initdb.d
+              name: initdb-vol
+      volumes:
+        - name: postgresql-vol
+          persistentVolumeClaim:
+            claimName: guacamole-pvc-postgresql
+        - name: initdb-vol
+          persistentVolumeClaim:
+            claimName: guacamole-pvc-initdb
