@@ -48,6 +48,10 @@ spec:
         enabled: true
         # required for authentik
         allowCrossNamespace: true
+    # kubectl -n traefik port-forward $(kubectl -n traefik get pods --selector "app.kubernetes.io/name=traefik" --output=name) 8080:8080
+    ingressRoute:
+      dashboard:
+        enabled: true
     metrics:
       prometheus:
         service:
