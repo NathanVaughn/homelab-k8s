@@ -28,3 +28,6 @@ spec:
     longhornDriver:
       nodeSelector:
         role: apps
+    metrics:
+      serviceMonitor:
+        enabled: true
