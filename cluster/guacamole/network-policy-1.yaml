@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: guacd-network-policy
+  name: guacd-network-policy-1
   namespace: guacamole
 spec:
   podSelector:
@@ -10,7 +10,7 @@ spec:
   policyTypes:
     - Ingress
     - Egress
-  # only permit ingress from guacamole frontend
+  # only permit ingress/egress from guacamole frontend
   ingress:
     - from:
         - podSelector:
@@ -19,12 +19,11 @@ spec:
       ports:
         - protocol: TCP
           port: 4822
-  # allow egress for SSH-ing
   egress:
     - to:
-        # restrict to local network
-        - ipBlock:
-            cidr: 10.0.0.1/20
+        - podSelector:
+            matchLabels:
+              app: guacamole
       ports:
         - protocol: TCP
-          port: 22
+          port: 4822
