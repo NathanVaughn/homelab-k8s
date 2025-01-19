@@ -2,6 +2,9 @@
 
 ## Setup
 
+In Authentik, create a proxy provider for a single application with the URL
+`https://longhorn.nathanv.app`. Ensure you assign the application to an outpost.
+
 ```bash
 export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
 export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
@@ -21,7 +24,7 @@ kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < 
 kubectl apply -f sealed-secret.yaml
 ```
 
-## Post Launch
+## Post Setup
 
 All persistent volume claims should use the storage class name "longhorn".
 This is a ReadWriteOnce storage class which means that only one node can
