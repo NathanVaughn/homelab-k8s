@@ -35,6 +35,9 @@ spec:
               value: preferred_username
             - name: GUACD_HOSTNAME
               value: guacamole-guacd-service.guacamole.svc.cluster.local
+              # only set this for first time
+              # - name: EXTENSION_PRIORITY
+              #   value: "*, openid"
           envFrom:
             - secretRef:
                 name: guacamole-env

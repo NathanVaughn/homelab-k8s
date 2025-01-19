@@ -23,3 +23,14 @@ kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < 
 # optional
 kubectl apply -f sealed-secret.yaml
 ```
+
+## Post Setup
+
+Set `EXTENSION_PRIORITY` to `*, openid`. This will allow you to sign in
+with a username and password. The default account is `guacadmin` and `guacadmin`.
+Create a user in the system with the same username as the Authentik user
+and grant them full admin privileges.
+
+You can now disable the `EXTENSION_PRIORITY` environment variable.
+
+Log in with this account, and disable the built-in `guacadmin` account.
