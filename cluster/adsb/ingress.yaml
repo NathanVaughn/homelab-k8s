@@ -14,7 +14,7 @@ spec:
     - match: Host(`readsb.nathanv.app`)
       kind: Rule
       services:
-        - name: readsb-service
+        - name: readsb-web-service
           port: 8080
   tls:
     certResolver: le
