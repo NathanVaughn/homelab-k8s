@@ -40,6 +40,15 @@ spec:
         serviceMonitor:
           enabled: true
       # required for icon uploads
+      initContainers:
+        - name: permission-fix
+          image: docker.io/library/busybox:latest
+          command: ['sh', '-c']
+          # https://docs.goauthentik.io/docs/troubleshooting/image_upload
+          args: ['chown -R 1000:1000 /media && chmod ug+rwx media/']
+          volumeMounts:
+            - mountPath: /media
+              name: media-vol
       volumes:
         - name: media-vol
           persistentVolumeClaim:
