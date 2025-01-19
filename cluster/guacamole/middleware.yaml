@@ -4,5 +4,5 @@ metadata:
   name: guacamole-middleware-prefix
   namespace: guacamole
 spec:
-  addprefix:
+  addPrefix:
     prefix: "/guacamole"
