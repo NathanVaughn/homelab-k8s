@@ -1,8 +1,15 @@
-_base_zone = ".nathanv.home"
-
-_app_server_names = ["billy", "jesse", "tom", "annie", "will"]
 app_servers = [
-    (f"{name}{_base_zone}", {"ssh_user": "ubuntu"}) for name in _app_server_names
+    ("billy.nathanv.home", {"ssh_user": "ubuntu"}),
+    ("jesse.nathanv.home", {"ssh_user": "ubuntu"}),
+    ("tom.nathanv.home", {"ssh_user": "ubuntu"}),
+    ("annie.nathanv.home", {"ssh_user": "ubuntu"}),
+    (
+        "will.nathanv.home",
+        {
+            "ssh_user": "ubuntu",
+            "k8s_labels": ["role=apps", "connectivity=eth", "hardware=adsb"],
+        },
+    ),
 ]
 
 # We don't want to schedule jobs on the 3d print server

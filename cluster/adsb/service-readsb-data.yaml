@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: readsb-data-service
+  namespace: adsb
+spec:
+  type: ClusterIP
+  selector:
+    app: readsb
+  ports:
+    - port: 30005
+      protocol: TCP

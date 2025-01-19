@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adsb-readsb-deployment
+  namespace: adsb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: readsb
+  template:
+    metadata:
+      labels:
+        app: readsb
+    spec:
+      nodeSelector:
+        hardware: adsb
+      containers:
+        - env:
+            - name: READSB_DCFILTER
+              value: "true"
+            - name: READSB_DEVICE_TYPE
+              value: rtlsdr
+            - name: READSB_FIX
+              value: "true"
+            - name: READSB_GAIN
+              value: autogain
+            - name: READSB_MODEAC
+              value: "true"
+            - name: READSB_RX_LOCATION_ACCURACY
+              value: "2"
+            - name: READSB_STATS_RANGE
+              value: "true"
+            - name: READSB_NET_ENABLE
+              value: "true"
+          envFrom:
+            - secretRef:
+                name: adsb-env
+          image: ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest-build-745
+          name: readsb
+          securityContext:
+            privileged: true # for access to the usb dongle
+          ports:
+            - containerPort: 8080 # http server
+            - containerPort: 30005 # ads-b data
+          volumeMounts:
+            - mountPath: /run/collectd
+              name: readsb-rrd-vol
+            - mountPath: /run/autogain
+              name: readsb-autogain-vol
+            - mountPath: /run/readsb
+              name: readsb-run-vol
+            - mountPath: /var/log
+              name: readsb-log-vol
+      volumes:
+        - name: readsb-rrd-vol
+          persistentVolumeClaim:
+            claimName: adsb-pvc-readsb-rrd
+        - name: readsb-autogain-vol
+          persistentVolumeClaim:
+            claimName: adsb-pvc-readsb-autogain
+        - name: readsb-run-vol
+          emptyDir:
+            medium: Memory
+            sizeLimit: 64M
+        - name: readsb-log-vol
+          emptyDir:
+            medium: Memory
+            sizeLimit: 32M

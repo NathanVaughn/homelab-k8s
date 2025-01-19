@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adsb-planefinder-deployment
+  namespace: adsb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: planefinder
+  template:
+    metadata:
+      labels:
+        app: planefinder
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+        - env:
+            - name: RECEIVER_TYPE
+              value: relay
+            - name: BEASTHOST
+              value: readsb-data-service.adsb.svc.cluster.local
+            - name: BEASTPORT
+              value: "30005"
+          envFrom:
+            - secretRef:
+                name: adsb-env
+          image: ghcr.io/sdr-enthusiasts/docker-planefinder:latest-build-445
+          name: planefinder
+          volumeMounts:
+            - mountPath: /run
+              name: planefinder-run-vol
+            - mountPath: /var/log
+              name: planefinder-log-vol
+      volumes:
+        - name: planefinder-run-vol
+          emptyDir:
+            medium: Memory
+            sizeLimit: 64M
+        - name: planefinder-log-vol
+          emptyDir:
+            medium: Memory
+            sizeLimit: 32M

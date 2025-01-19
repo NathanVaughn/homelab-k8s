@@ -75,6 +75,7 @@ if "connectivity=eth" in host.data.get("k8s_labels", []):  # type: ignore
     server.shell(name="Disable wifi", commands="nmcli radio wifi off", _sudo=True)
 
 # adsb prerequisites
+# https://github.com/sdr-enthusiasts/docker-readsb-protobuf?tab=readme-ov-file#kernel-module-configuration
 if "hardware=adsb" in host.data.get("k8s_labels", []):  # type: ignore
     files.put(
         name="Upload rtlsdr blacklist",
@@ -197,36 +198,3 @@ for label in host.data.get("k8s_labels", []):  # type: ignore
         _sudo=True,
     )
 # endregion
-
-
-# TODO only do this for the DNS server
-if False:
-    apt.packages(
-        name="Install resolvconf",
-        packages=["resolvconf"],
-        update=True,
-        _sudo=True,
-    )
-
-    resolvconf_config_edit = files.block(
-        name="Edit resolvconf configuration",
-        path=resolvconf_config,
-        content="nameserver 1.1.1.1\nnameserver 1.0.0.1\n",  # last newline is important
-    )
-
-    server.service(
-        name="Start resolvconf",
-        service="resolvconf",
-        runing=True,
-        restarted=resolvconf_config_edit.changed,
-    )
-
-    if resolvconf_config_edit.changed:
-        server.shell(name="Update /etc/resolv.conf", commands="resolvconf -u")
-
-        server.service(
-            name="Start systemd-resolved",
-            service="systemd-resolved",
-            runing=True,
-            restarted=resolvconf_config_edit.changed,
-        )

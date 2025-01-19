@@ -1,0 +1,23 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: readsb-route
+  namespace: adsb
+  annotations:
+    k8s-dns.nathanv.me/hostname: readsb.nathanv.app
+    k8s-dns.nathanv.me/external: tunnel.nathanv.app
+    k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`readsb.nathanv.app`)
+      kind: Rule
+      services:
+        - name: readsb-service
+          port: 8080
+  tls:
+    certResolver: le
+    domains:
+      - sans:
+          - "*.nathanv.app"
