@@ -29,6 +29,7 @@ spec:
         # https://github.com/prometheus-operator/prometheus-operator/issues/5197#issuecomment-1382210067
         scrapeInterval: 30s
         evaluationInterval: 30s
+        # https://github.com/prometheus-community/helm-charts/issues/2816#issuecomment-1356595736
         storageSpec:
           volumeClaimTemplate:
             spec:
