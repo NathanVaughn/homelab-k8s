@@ -1,10 +1,11 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: phpmyadmin-mysql-deployment
   namespace: phpmyadmin
 spec:
   replicas: 1
+  serviceName: phpmyadmin-mysql
   selector:
     matchLabels:
       app: phpmyadmin-mysql

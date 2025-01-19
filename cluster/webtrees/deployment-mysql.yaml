@@ -1,10 +1,11 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: webtrees-mysql-deployment
   namespace: webtrees
 spec:
   replicas: 1
+  serviceName: webtrees-mysql
   selector:
     matchLabels:
       app: webtrees-mysql

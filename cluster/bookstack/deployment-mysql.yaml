@@ -1,10 +1,11 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: bookstack-mysql-deployment
   namespace: bookstack
 spec:
   replicas: 1
+  serviceName: bookstack-mysql
   selector:
     matchLabels:
       app: bookstack-mysql

@@ -1,10 +1,11 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: scrutiny-influxdb-deployment
   namespace: scrutiny
 spec:
   replicas: 1
+  serviceName: scrutiny-influxdb
   selector:
     matchLabels:
       app: scrutiny-influxdb

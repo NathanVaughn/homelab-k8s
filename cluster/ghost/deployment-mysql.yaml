@@ -1,10 +1,11 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ghost-mysql-deployment
   namespace: ghost
 spec:
   replicas: 1
+  serviceName: ghost-mysql
   selector:
     matchLabels:
       app: ghost-mysql
