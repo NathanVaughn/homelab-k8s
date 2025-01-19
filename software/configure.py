@@ -184,10 +184,17 @@ files.put(
     _sudo=True,
 )
 
-files.put(
+k3s_config = files.put(
     name="Upload k3s config",
     src=ROOT_DIR.joinpath("software", "secrets", "config.yaml"),
     dest="/etc/rancher/k3s/config.yaml",
+    _sudo=True,
+)
+
+systemd.service(
+    name="Restart k3s",
+    service="k3s",
+    restarted=k3s_config.changed,
     _sudo=True,
 )
 
