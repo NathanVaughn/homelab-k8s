@@ -34,6 +34,11 @@ spec:
           enabled: true
           size: 1Gi
       defaultStorageClass: longhorn
+    server:
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
     global:
       nodeSelector:
         role: apps
