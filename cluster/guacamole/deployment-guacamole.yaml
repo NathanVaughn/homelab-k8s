@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: guacamole-guacamole-deployment
+  name: guacamole-deployment
   namespace: guacamole
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: guacamole-guacamole
+      app: guacamole
   template:
     metadata:
       labels:
-        app: guacamole-guacamole
+        app: guacamole
     spec:
       nodeSelector:
         role: apps

@@ -16,9 +16,9 @@ spec:
       services:
         - name: guacamole-service
           port: 8080
-      middlewares:
-        - name: guacamole-middleware-prefix
-          namespace: guacamole
+          # middlewares:
+          #   - name: guacamole-middleware-prefix
+          #     namespace: guacamole
   tls:
     certResolver: le
     domains:
