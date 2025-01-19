@@ -39,6 +39,14 @@ spec:
         enabled: true
         serviceMonitor:
           enabled: true
+      # required for icon uploads
+      volumes:
+        - name: media-vol
+          persistentVolumeClaim:
+            claimName: authentik-pvc-media
+      volumeMounts:
+        - mountPath: /media
+          name: media-vol
     global:
       nodeSelector:
         role: apps
