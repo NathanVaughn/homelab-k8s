@@ -16,45 +16,45 @@ spec:
       affinity:
         nodeAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            preference:
-              # when possible, run on the network controller
-              matchExpressions:
-              - key: role
-                operator: In
-                values:
-                - network
+            - weight: 100
+              preference:
+                # when possible, run on the network controller
+                matchExpressions:
+                  - key: role
+                    operator: In
+                    values:
+                      - network
       initContainers:
-      - name: permission-fix
-        image: docker.io/library/busybox:latest
-        command: [ 'sh', '-c' ]
-        args: [ 'chown -R 508:508 /opt/tplink/EAPController/' ]
-        volumeMounts:
-        - mountPath: /opt/tplink/EAPController/data
-          name: omada-vol-data
-        - mountPath: /opt/tplink/EAPController/logs
-          name: omada-vol-logs
+        - name: permission-fix
+          image: docker.io/library/busybox:latest
+          command: ['sh', '-c']
+          args: ['chown -R 508:508 /opt/tplink/EAPController/']
+          volumeMounts:
+            - mountPath: /opt/tplink/EAPController/data
+              name: omada-vol-data
+            - mountPath: /opt/tplink/EAPController/logs
+              name: omada-vol-logs
       # lazy way out, a lot of ports need to be exposed
       hostNetwork: true
       containers:
-      - env:
-        - name: PUID
-          value: "508"
-        - name: PGID
-          value: "508"
-        - name: TZ
-          value: "America/Chicago"
-        image: docker.io/mbentley/omada-controller:5.14
-        name: omada
-        volumeMounts:
-        - mountPath: /opt/tplink/EAPController/data
-          name: omada-vol-data
-        - mountPath: /opt/tplink/EAPController/logs
-          name: omada-vol-logs
+        - env:
+            - name: PUID
+              value: "508"
+            - name: PGID
+              value: "508"
+            - name: TZ
+              value: "America/Chicago"
+          image: docker.io/mbentley/omada-controller:5.14
+          name: omada
+          volumeMounts:
+            - mountPath: /opt/tplink/EAPController/data
+              name: omada-vol-data
+            - mountPath: /opt/tplink/EAPController/logs
+              name: omada-vol-logs
       volumes:
-      - name: omada-vol-data
-        persistentVolumeClaim:
-          claimName: omada-pvc-data
-      - name: omada-vol-logs
-        persistentVolumeClaim:
-          claimName: omada-pvc-logs
+        - name: omada-vol-data
+          persistentVolumeClaim:
+            claimName: omada-pvc-data
+        - name: omada-vol-logs
+          persistentVolumeClaim:
+            claimName: omada-pvc-logs

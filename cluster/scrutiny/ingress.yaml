@@ -9,18 +9,18 @@ metadata:
     k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
 spec:
   entryPoints:
-  - websecure
+    - websecure
   routes:
-  - match: Host(`scrutiny.nathanv.app`)
-    kind: Rule
-    services:
-    - name: scrutiny-web-service
-      port: 8080
-    middlewares:
-    - name: authentik-forward-auth
-      namespace: authentik
+    - match: Host(`scrutiny.nathanv.app`)
+      kind: Rule
+      services:
+        - name: scrutiny-web-service
+          port: 8080
+      middlewares:
+        - name: authentik-forward-auth
+          namespace: authentik
   tls:
     certResolver: le
     domains:
-    - sans:
-      - "*.nathanv.app"
+      - sans:
+          - "*.nathanv.app"

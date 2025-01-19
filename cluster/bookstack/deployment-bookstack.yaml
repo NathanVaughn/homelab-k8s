@@ -16,64 +16,64 @@ spec:
       nodeSelector:
         role: apps
       initContainers:
-      - name: permission-fix
-        image: docker.io/library/busybox:latest
-        command: [ 'sh', '-c' ]
-        args: [ 'chown -R 911:911 /config' ]
-        volumeMounts:
-        - mountPath: /config
-          name: bookstack-vol
+        - name: permission-fix
+          image: docker.io/library/busybox:latest
+          command: ['sh', '-c']
+          args: ['chown -R 911:911 /config']
+          volumeMounts:
+            - mountPath: /config
+              name: bookstack-vol
       containers:
-      - env:
-        - name: APP_URL
-          value: "https://bookstack.nathanv.app"
-        - name: APP_DEBUG
-          value: "false"
-        - name: DB_HOST
-          value: bookstack-mysql-service.bookstack.svc.cluster.local
-        - name: DB_DATABASE
-          value: bookstack
-        - name: DB_USERNAME
-          value: bookstack
-        - name: MAIL_DRIVER
-          value: smtp
-        - name: MAIL_PORT
-          value: "587"
-        - name: MAIL_ENCRYPTION
-          value: tls
-        - name: MAIL_FROM
-          value: bookstack@nvaughn.email
-        - name: MAIL_FROM_NAME
-          value: Bookstack
-        - name: CACHE_DRIVER
-          value: database
-        - name: SESSION_DRIVER
-          value: database
-        - name: QUEUE_CONNECTION
-          value: database
-        - name: AUTH_METHOD
-          value: oidc
-        - name: AUTH_AUTO_INITIATE
-          value: "true"
-        - name: OIDC_NAME
-          value: Authentik
-        - name: OIDC_DISPLAY_NAME_CLAIMS
-          value: name
-        - name: OIDC_ISSUER
-          value: https://authentik.nathanv.app/application/o/bookstack/
-        - name: OIDC_ISSUER_DISCOVER
-          value: "true"
-        envFrom:
-        - secretRef:
-            name: bookstack-env
-        image: ghcr.io/linuxserver/bookstack:24.12.20241223
-        name: bookstack
-        ports:
-        - containerPort: 80
-        volumeMounts:
-        - mountPath: /config
-          name: bookstack-vol
+        - env:
+            - name: APP_URL
+              value: "https://bookstack.nathanv.app"
+            - name: APP_DEBUG
+              value: "false"
+            - name: DB_HOST
+              value: bookstack-mysql-service.bookstack.svc.cluster.local
+            - name: DB_DATABASE
+              value: bookstack
+            - name: DB_USERNAME
+              value: bookstack
+            - name: MAIL_DRIVER
+              value: smtp
+            - name: MAIL_PORT
+              value: "587"
+            - name: MAIL_ENCRYPTION
+              value: tls
+            - name: MAIL_FROM
+              value: bookstack@nvaughn.email
+            - name: MAIL_FROM_NAME
+              value: Bookstack
+            - name: CACHE_DRIVER
+              value: database
+            - name: SESSION_DRIVER
+              value: database
+            - name: QUEUE_CONNECTION
+              value: database
+            - name: AUTH_METHOD
+              value: oidc
+            - name: AUTH_AUTO_INITIATE
+              value: "true"
+            - name: OIDC_NAME
+              value: Authentik
+            - name: OIDC_DISPLAY_NAME_CLAIMS
+              value: name
+            - name: OIDC_ISSUER
+              value: https://authentik.nathanv.app/application/o/bookstack/
+            - name: OIDC_ISSUER_DISCOVER
+              value: "true"
+          envFrom:
+            - secretRef:
+                name: bookstack-env
+          image: ghcr.io/linuxserver/bookstack:24.12.20241223
+          name: bookstack
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /config
+              name: bookstack-vol
       volumes:
-      - name: bookstack-vol
-        persistentVolumeClaim:
-          claimName: bookstack-pvc-bookstack
+        - name: bookstack-vol
+          persistentVolumeClaim:
+            claimName: bookstack-pvc-bookstack

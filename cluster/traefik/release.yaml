@@ -40,9 +40,9 @@ spec:
           dnsChallenge:
             provider: cloudflare
             resolvers:
-            # i block 8.8.8.8 on my network
-            - "1.1.1.1:53"
-            - "9.9.9.9:53"
+              # i block 8.8.8.8 on my network
+              - "1.1.1.1:53"
+              - "9.9.9.9:53"
     providers:
       kubernetesCRD:
         enabled: true
@@ -63,22 +63,22 @@ spec:
         tls:
           certResolver: le
     envFrom:
-    - secretRef:
-        name: traefik-cf-token
+      - secretRef:
+          name: traefik-cf-token
     # https://github.com/traefik/traefik-helm-chart/blob/master/EXAMPLES.md#use-traefik-native-lets-encrypt-integration-without-cert-manager
     # https://github.com/traefik/traefik-helm-chart/issues/396#issuecomment-1873454777
     deployment:
       initContainers:
-      - name: volume-permissions
-        image: docker.io/library/busybox:latest
-        command: [ "sh", "-c", "ls -la /; touch /data/acme.json; chmod -v 600 /data/acme.json" ]
-        volumeMounts:
-        - mountPath: /data
-          name: data
-        securityContext:
-          runAsNonRoot: true
-          runAsGroup: 65532
-          runAsUser: 65532
+        - name: volume-permissions
+          image: docker.io/library/busybox:latest
+          command: ["sh", "-c", "ls -la /; touch /data/acme.json; chmod -v 600 /data/acme.json"]
+          volumeMounts:
+            - mountPath: /data
+              name: data
+          securityContext:
+            runAsNonRoot: true
+            runAsGroup: 65532
+            runAsUser: 65532
     podSecurityContext:
       fsGroup: 65532
       fsGroupChangePolicy: "OnRootMismatch"

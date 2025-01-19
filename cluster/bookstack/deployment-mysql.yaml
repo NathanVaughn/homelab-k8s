@@ -16,32 +16,32 @@ spec:
       nodeSelector:
         role: apps
       initContainers:
-      - name: lost-found-fix
-        image: docker.io/library/busybox:latest
-        command: [ 'sh', '-c' ]
-        args: [ 'rm -rf /var/lib/mysql/lost+found' ]
-        volumeMounts:
-        - mountPath: /var/lib/mysql
-          name: mysql-vol
+        - name: lost-found-fix
+          image: docker.io/library/busybox:latest
+          command: ['sh', '-c']
+          args: ['rm -rf /var/lib/mysql/lost+found']
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql-vol
       containers:
-      - env:
-        - name: MARIADB_RANDOM_ROOT_PASSWORD
-          value: "1"
-        - name: MARIADB_USER
-          value: bookstack
-        - name: MARIADB_DATABASE
-          value: bookstack
-        envFrom:
-        - secretRef:
-            name: bookstack-env
-        image: docker.io/library/mariadb:11.6.2
-        name: mariadb
-        ports:
-        - containerPort: 3306
-        volumeMounts:
-        - mountPath: /var/lib/mysql
-          name: mysql-vol
+        - env:
+            - name: MARIADB_RANDOM_ROOT_PASSWORD
+              value: "1"
+            - name: MARIADB_USER
+              value: bookstack
+            - name: MARIADB_DATABASE
+              value: bookstack
+          envFrom:
+            - secretRef:
+                name: bookstack-env
+          image: docker.io/library/mariadb:11.6.2
+          name: mariadb
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql-vol
       volumes:
-      - name: mysql-vol
-        persistentVolumeClaim:
-          claimName: bookstack-pvc-mysql
+        - name: mysql-vol
+          persistentVolumeClaim:
+            claimName: bookstack-pvc-mysql

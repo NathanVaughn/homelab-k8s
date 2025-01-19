@@ -22,29 +22,29 @@ spec:
         app: scrutiny-collector
     spec:
       containers:
-      - name: scrutiny-collector
-        image: ghcr.io/analogj/scrutiny:v0.8.1-collector
-        env:
-        - name: COLLECTOR_API_ENDPOINT
-          value: http://scrutiny-web-service.scrutiny.svc.cluster.local:8080
-        - name: COLLECTOR_HOST_ID
-          valueFrom:
-            fieldRef:
-              fieldPath: spec.nodeName
-        volumeMounts:
-        - name: udev
-          mountPath: /run/udev
-          readOnly: true
-        - name: collector-config-vol
-          mountPath: /opt/scrutiny/config/collector.yaml
-          subPath: collector.yaml
-        securityContext:
-          runAsUser: 0
-          privileged: true # only way to get this to work
+        - name: scrutiny-collector
+          image: ghcr.io/analogj/scrutiny:v0.8.1-collector
+          env:
+            - name: COLLECTOR_API_ENDPOINT
+              value: http://scrutiny-web-service.scrutiny.svc.cluster.local:8080
+            - name: COLLECTOR_HOST_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+          volumeMounts:
+            - name: udev
+              mountPath: /run/udev
+              readOnly: true
+            - name: collector-config-vol
+              mountPath: /opt/scrutiny/config/collector.yaml
+              subPath: collector.yaml
+          securityContext:
+            runAsUser: 0
+            privileged: true # only way to get this to work
       volumes:
-      - name: udev
-        hostPath:
-          path: /run/udev
-      - name: collector-config-vol
-        configMap:
-          name: collector-config
+        - name: udev
+          hostPath:
+            path: /run/udev
+        - name: collector-config-vol
+          configMap:
+            name: collector-config

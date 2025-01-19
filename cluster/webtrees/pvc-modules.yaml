@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-    name: webtrees-pvc-modules
-    namespace: webtrees
+  name: webtrees-pvc-modules
+  namespace: webtrees
 spec:
-    storageClassName: longhorn
-    accessModes:
-      - ReadWriteMany
-    resources:
-        requests:
-            storage: 100Mi
+  storageClassName: longhorn
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Mi

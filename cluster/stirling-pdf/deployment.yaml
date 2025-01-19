@@ -16,22 +16,22 @@ spec:
       nodeSelector:
         role: apps
       containers:
-      - env:
-        - name: DOCKER_ENABLE_SECURITY
-          value: "true"
-        image: ghcr.io/stirling-tools/stirling-pdf:0.37.1-fat
-        name: stirling-pdf
-        ports:
-        - containerPort: 8080
-        volumeMounts:
-        - mountPath: /usr/share/tessdata
-          name: stirling-pdf-vol-ocr
-        - mountPath: /configs
-          name: stirling-pdf-vol-configs
+        - env:
+            - name: DOCKER_ENABLE_SECURITY
+              value: "true"
+          image: ghcr.io/stirling-tools/stirling-pdf:0.37.1-fat
+          name: stirling-pdf
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /usr/share/tessdata
+              name: stirling-pdf-vol-ocr
+            - mountPath: /configs
+              name: stirling-pdf-vol-configs
       volumes:
-      - name: stirling-pdf-vol-ocr
-        persistentVolumeClaim:
-          claimName: stirling-pdf-pvc-ocr
-      - name: stirling-pdf-vol-configs
-        persistentVolumeClaim:
-          claimName: stirling-pdf-pvc-configs
+        - name: stirling-pdf-vol-ocr
+          persistentVolumeClaim:
+            claimName: stirling-pdf-pvc-ocr
+        - name: stirling-pdf-vol-configs
+          persistentVolumeClaim:
+            claimName: stirling-pdf-pvc-configs

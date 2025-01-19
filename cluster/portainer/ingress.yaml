@@ -9,15 +9,15 @@ metadata:
     k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
 spec:
   entryPoints:
-  - websecure
+    - websecure
   routes:
-  - match: Host(`portainer.nathanv.app`)
-    kind: Rule
-    services:
-    - name: portainer
-      port: 9000
+    - match: Host(`portainer.nathanv.app`)
+      kind: Rule
+      services:
+        - name: portainer
+          port: 9000
   tls:
     certResolver: le
     domains:
-    - sans:
-      - "*.nathanv.app"
+      - sans:
+          - "*.nathanv.app"

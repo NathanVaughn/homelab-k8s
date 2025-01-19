@@ -16,19 +16,19 @@ spec:
       nodeSelector:
         role: apps
       containers:
-      - env:
-        - name: PMA_HOSTS
-          value: bookstack-mysql-service.bookstack.svc.cluster.local,ghost-mysql-service.ghost.svc.cluster.local,phpmyadmin-mysql-service.phpmyadmin.svc.cluster.local,webtrees-mysql-service.webtrees.svc.cluster.local
-        - name: PMA_CONTROLHOST
-          value: phpmyadmin-mysql-service.phpmyadmin.svc.cluster.local
-        - name: PMA_CONTROLUSER
-          value: phpmyadmin
-        - name: PMA_PMADB
-          value: phpmyadmin
-        envFrom:
-        - secretRef:
-            name: phpmyadmin-env
-        image: docker.io/library/phpmyadmin:5.2.1
-        name: phpmyadmin
-        ports:
-        - containerPort: 80
+        - env:
+            - name: PMA_HOSTS
+              value: bookstack-mysql-service.bookstack.svc.cluster.local,ghost-mysql-service.ghost.svc.cluster.local,phpmyadmin-mysql-service.phpmyadmin.svc.cluster.local,webtrees-mysql-service.webtrees.svc.cluster.local
+            - name: PMA_CONTROLHOST
+              value: phpmyadmin-mysql-service.phpmyadmin.svc.cluster.local
+            - name: PMA_CONTROLUSER
+              value: phpmyadmin
+            - name: PMA_PMADB
+              value: phpmyadmin
+          envFrom:
+            - secretRef:
+                name: phpmyadmin-env
+          image: docker.io/library/phpmyadmin:5.2.1
+          name: phpmyadmin
+          ports:
+            - containerPort: 80

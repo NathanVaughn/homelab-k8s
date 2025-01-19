@@ -1,20 +1,20 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-    name: kube-vip-cloud-provider-release
-    namespace: kube-vip
+  name: kube-vip-cloud-provider-release
+  namespace: kube-vip
 spec:
-    releaseName: kube-vip-cloud-provider
-    chart:
-        spec:
-            chart: kube-vip-cloud-provider
-            sourceRef:
-                kind: HelmRepository
-                name: kube-vip-repo
-                namespace: kube-vip
-            version: "0.2.5"
-    interval: 1h0m0s
-    values:
-        cm:
-            data:
-                range-global: "10.0.1.1-10.0.1.254"
+  releaseName: kube-vip-cloud-provider
+  chart:
+    spec:
+      chart: kube-vip-cloud-provider
+      sourceRef:
+        kind: HelmRepository
+        name: kube-vip-repo
+        namespace: kube-vip
+      version: "0.2.5"
+  interval: 1h0m0s
+  values:
+    cm:
+      data:
+        range-global: "10.0.1.1-10.0.1.254"

@@ -16,52 +16,52 @@ spec:
       nodeSelector:
         role: apps
       containers:
-      - env:
-        - name: LC_ALL
-          value: en_US
-        - name: LANG
-          value: en_US
-        - name: MailConfig__EmailFrom
-          value: "lubelogger@nvaughn.email"
-        - name: MailConfig__Port
-          value: "587"
-        - name: OpenIDConfig__Name
-          value: "Authentik"
-        - name: OpenIDConfig__AuthURL
-          value: "https://authentik.nathanv.app/application/o/authorize/"
-        - name: OpenIDConfig__TokenURL
-          value: "https://authentik.nathanv.app/application/o/token/"
-        - name: OpenIDConfig__RedirectURL
-          value: "https://lubelogger.nathanv.app/Login/RemoteAuth"
-        - name: OpenIDConfig__Scope
-          value: "openid email"
-        - name: OpenIDConfig__ValidateState
-          value: "false"
-        - name: OpenIDConfig__UsePKCE
-          value: "false"
-        - name: OpenIDConfig__DisableRegularLogin
-          value: "true"
-        - name: OpenIDConfig__LogOutURL
-          value: "https://authentik.nathanv.app/application/o/lubelogger/end-session/"
-        # this if off bv default
-        - name: EnableAuth
-          value: "true"
-        envFrom:
-        - secretRef:
-            name: lubelogger-env
-        image: ghcr.io/hargata/lubelogger:v1.4.3
-        name: lubelogger
-        ports:
-        - containerPort: 8080
-        volumeMounts:
-        - mountPath: /App/data
-          name: data-vol
-        - mountPath: /root/.aspnet/DataProtection-Keys
-          name: keys-vol
+        - env:
+            - name: LC_ALL
+              value: en_US
+            - name: LANG
+              value: en_US
+            - name: MailConfig__EmailFrom
+              value: "lubelogger@nvaughn.email"
+            - name: MailConfig__Port
+              value: "587"
+            - name: OpenIDConfig__Name
+              value: "Authentik"
+            - name: OpenIDConfig__AuthURL
+              value: "https://authentik.nathanv.app/application/o/authorize/"
+            - name: OpenIDConfig__TokenURL
+              value: "https://authentik.nathanv.app/application/o/token/"
+            - name: OpenIDConfig__RedirectURL
+              value: "https://lubelogger.nathanv.app/Login/RemoteAuth"
+            - name: OpenIDConfig__Scope
+              value: "openid email"
+            - name: OpenIDConfig__ValidateState
+              value: "false"
+            - name: OpenIDConfig__UsePKCE
+              value: "false"
+            - name: OpenIDConfig__DisableRegularLogin
+              value: "true"
+            - name: OpenIDConfig__LogOutURL
+              value: "https://authentik.nathanv.app/application/o/lubelogger/end-session/"
+            # this if off bv default
+            - name: EnableAuth
+              value: "true"
+          envFrom:
+            - secretRef:
+                name: lubelogger-env
+          image: ghcr.io/hargata/lubelogger:v1.4.3
+          name: lubelogger
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /App/data
+              name: data-vol
+            - mountPath: /root/.aspnet/DataProtection-Keys
+              name: keys-vol
       volumes:
-      - name: data-vol
-        persistentVolumeClaim:
-          claimName: lubelogger-pvc-data
-      - name: keys-vol
-        persistentVolumeClaim:
-          claimName: lubelogger-pvc-keys
+        - name: data-vol
+          persistentVolumeClaim:
+            claimName: lubelogger-pvc-data
+        - name: keys-vol
+          persistentVolumeClaim:
+            claimName: lubelogger-pvc-keys

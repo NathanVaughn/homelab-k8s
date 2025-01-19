@@ -9,21 +9,21 @@ metadata:
     k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
 spec:
   entryPoints:
-  - websecure
+    - websecure
   routes:
-  - match: Host(`omada.nathanv.app`)
-    kind: Rule
-    services:
-    - name: omada-service
-      port: 8043
-      scheme: https
-      # required as omada requires ssl
-      serversTransport: omada-transport
-    middlewares:
-    - name: authentik-forward-auth
-      namespace: authentik
+    - match: Host(`omada.nathanv.app`)
+      kind: Rule
+      services:
+        - name: omada-service
+          port: 8043
+          scheme: https
+          # required as omada requires ssl
+          serversTransport: omada-transport
+      middlewares:
+        - name: authentik-forward-auth
+          namespace: authentik
   tls:
     certResolver: le
     domains:
-    - sans:
-      - "*.nathanv.app"
+      - sans:
+          - "*.nathanv.app"

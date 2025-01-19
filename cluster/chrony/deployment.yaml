@@ -16,22 +16,22 @@ spec:
       affinity:
         nodeAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            preference:
-              # when possible, run on the network controller
-              matchExpressions:
-              - key: role
-                operator: In
-                values:
-                - network
+            - weight: 100
+              preference:
+                # when possible, run on the network controller
+                matchExpressions:
+                  - key: role
+                    operator: In
+                    values:
+                      - network
       containers:
-      - env:
-        - name: NTP_SERVERS
-          value: time.cloudflare.com
-        - name: ENABLE_NTS
-          value: "true"
-        image: ghcr.io/dockur/chrony:4.6.1
-        name: chrony
-        ports:
-        - containerPort: 123
-          protocol: UDP
+        - env:
+            - name: NTP_SERVERS
+              value: time.cloudflare.com
+            - name: ENABLE_NTS
+              value: "true"
+          image: ghcr.io/dockur/chrony:4.6.1
+          name: chrony
+          ports:
+            - containerPort: 123
+              protocol: UDP

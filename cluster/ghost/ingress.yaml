@@ -9,15 +9,15 @@ metadata:
     k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
 spec:
   entryPoints:
-  - websecure
+    - websecure
   routes:
-  - match: Host(`christmas.nathanv.app`)
-    kind: Rule
-    services:
-    - name: ghost-service
-      port: 2368
+    - match: Host(`christmas.nathanv.app`)
+      kind: Rule
+      services:
+        - name: ghost-service
+          port: 2368
   tls:
     certResolver: le
     domains:
-    - sans:
-      - "*.nathanv.app"
+      - sans:
+          - "*.nathanv.app"

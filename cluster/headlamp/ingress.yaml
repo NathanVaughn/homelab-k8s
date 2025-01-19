@@ -9,15 +9,15 @@ metadata:
     k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
 spec:
   entryPoints:
-  - websecure
+    - websecure
   routes:
-  - match: Host(`headlamp.nathanv.app`)
-    kind: Rule
-    services:
-    - name: headlamp
-      port: 80
+    - match: Host(`headlamp.nathanv.app`)
+      kind: Rule
+      services:
+        - name: headlamp
+          port: 80
   tls:
     certResolver: le
     domains:
-    - sans:
-      - "*.nathanv.app"
+      - sans:
+          - "*.nathanv.app"

@@ -16,23 +16,23 @@ spec:
       nodeSelector:
         role: apps
       containers:
-      - image: docker.io/library/influxdb:2.7
-        livenessProbe:
-          exec:
-            command:
-            - curl
-            - -f
-            - http://localhost:8086/health
-          failureThreshold: 20
-          periodSeconds: 5
-          timeoutSeconds: 10
-        name: scrutiny-influxdb
-        ports:
-        - containerPort: 8086
-        volumeMounts:
-        - mountPath: /var/lib/influxdb2
-          name: scrutiny-influxdb-vol
+        - image: docker.io/library/influxdb:2.7
+          livenessProbe:
+            exec:
+              command:
+                - curl
+                - -f
+                - http://localhost:8086/health
+            failureThreshold: 20
+            periodSeconds: 5
+            timeoutSeconds: 10
+          name: scrutiny-influxdb
+          ports:
+            - containerPort: 8086
+          volumeMounts:
+            - mountPath: /var/lib/influxdb2
+              name: scrutiny-influxdb-vol
       volumes:
-      - name: scrutiny-influxdb-vol
-        persistentVolumeClaim:
-          claimName: scrutiny-influxdb-pvc
+        - name: scrutiny-influxdb-vol
+          persistentVolumeClaim:
+            claimName: scrutiny-influxdb-pvc

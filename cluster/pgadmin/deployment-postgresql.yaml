@@ -16,25 +16,25 @@ spec:
       nodeSelector:
         role: apps
       containers:
-      - env:
-        - name: POSTGRES_USER
-          value: pgadmin
-        - name: POSTGRES_DB
-          value: pgadmin
-        # avoids issues with lost+found directory
-        - name: PGDATA
-          value: /var/lib/postgresql/data/pgdata
-        envFrom:
-        - secretRef:
-            name: pgadmin-env
-        image: docker.io/library/postgres:17.2
-        name: postgresql
-        ports:
-        - containerPort: 5432
-        volumeMounts:
-        - mountPath: /var/lib/postgresql/data
-          name: postgresql-vol
+        - env:
+            - name: POSTGRES_USER
+              value: pgadmin
+            - name: POSTGRES_DB
+              value: pgadmin
+            # avoids issues with lost+found directory
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+          envFrom:
+            - secretRef:
+                name: pgadmin-env
+          image: docker.io/library/postgres:17.2
+          name: postgresql
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgresql-vol
       volumes:
-      - name: postgresql-vol
-        persistentVolumeClaim:
-          claimName: pgadmin-pvc-postgresql
+        - name: postgresql-vol
+          persistentVolumeClaim:
+            claimName: pgadmin-pvc-postgresql

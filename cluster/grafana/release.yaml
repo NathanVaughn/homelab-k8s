@@ -53,18 +53,18 @@ spec:
         skip_verify: false
         startTLS_policy: MandatoryStartTLS
     extraSecretMounts:
-    - name: grafana-secrets-mount
-      secretName: grafana-secrets
-      defaultMode: 440
-      mountPath: /etc/secrets/grafana_secrets
-      readOnly: true
+      - name: grafana-secrets-mount
+        secretName: grafana-secrets
+        defaultMode: 440
+        mountPath: /etc/secrets/grafana_secrets
+        readOnly: true
   valuesFrom:
-  - kind: Secret
-    name: grafana-secrets
-    valuesKey: adminUser
-    targetPath: adminUser
-  - kind: Secret
-    name: grafana-secrets
-    valuesKey: adminPassword
-    targetPath: adminPassword
+    - kind: Secret
+      name: grafana-secrets
+      valuesKey: adminUser
+      targetPath: adminUser
+    - kind: Secret
+      name: grafana-secrets
+      valuesKey: adminPassword
+      targetPath: adminPassword
   # grafana does not allow setting the value of secrets in grafana.ini directly in values.yaml

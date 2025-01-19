@@ -4,23 +4,23 @@
 apiVersion: upgrade.cattle.io/v1
 kind: Plan
 metadata:
-    name: k3s-server
-    namespace: system-upgrade
-    labels:
-        k3s-upgrade: server
+  name: k3s-server
+  namespace: system-upgrade
+  labels:
+    k3s-upgrade: server
 spec:
-    concurrency: 1 # only upgrade one node at a time
-    channel: https://update.k3s.io/v1-release/channels/stable
-    nodeSelector:
-        matchExpressions:
-          - { key: k3s-upgrade, operator: Exists }
-          - { key: k3s-upgrade, operator: NotIn, values: [ "disabled", "false" ] }
-          - { key: k3os.io/mode, operator: DoesNotExist }
-        #   - { key: node-role.kubernetes.io/control-plane, operator: Exists }
-    serviceAccountName: system-upgrade
-    cordon: true
-    drain:
-        force: true
-        skipWaitForDeleteTimeout: 120
-    upgrade:
-        image: rancher/k3s-upgrade
+  concurrency: 1 # only upgrade one node at a time
+  channel: https://update.k3s.io/v1-release/channels/stable
+  nodeSelector:
+    matchExpressions:
+      - {key: k3s-upgrade, operator: Exists}
+      - {key: k3s-upgrade, operator: NotIn, values: ["disabled", "false"]}
+      - {key: k3os.io/mode, operator: DoesNotExist,}
+      #   - { key: node-role.kubernetes.io/control-plane, operator: Exists }
+  serviceAccountName: system-upgrade
+  cordon: true
+  drain:
+    force: true
+    skipWaitForDeleteTimeout: 120
+  upgrade:
+    image: rancher/k3s-upgrade

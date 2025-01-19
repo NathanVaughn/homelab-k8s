@@ -1,8 +1,8 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-    name: harbor-repo
-    namespace: harbor
+  name: harbor-repo
+  namespace: harbor
 spec:
-    interval: 1h0m0s
-    url: https://helm.goharbor.io
+  interval: 1h0m0s
+  url: https://helm.goharbor.io

@@ -1,43 +1,43 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: scrutiny-web-deployment
-    namespace: scrutiny
+  name: scrutiny-web-deployment
+  namespace: scrutiny
 spec:
-    replicas: 1
-    selector:
-        matchLabels:
-            app: scrutiny-web
-    template:
-        metadata:
-            labels:
-                app: scrutiny-web
-        spec:
-            nodeSelector:
-                role: apps
-            containers:
-              - env:
-                  - name: SCRUTINY_WEB_INFLUXDB_HOST
-                    value: scrutiny-influxdb-service.scrutiny.svc.cluster.local
-                image: ghcr.io/analogj/scrutiny:v0.8.1-web
-                livenessProbe:
-                    exec:
-                        command:
-                          - curl
-                          - -f
-                          - http://localhost:8080/api/health
-                    failureThreshold: 20
-                    initialDelaySeconds: 10
-                    periodSeconds: 5
-                    timeoutSeconds: 10
-                name: scrutiny-web
-                ports:
-                  - containerPort: 8080
-                    protocol: TCP
-                volumeMounts:
-                  - mountPath: /opt/scrutiny/config
-                    name: scrutiny-web-vol
-            volumes:
-              - name: scrutiny-web-vol
-                persistentVolumeClaim:
-                    claimName: scrutiny-web-pvc
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scrutiny-web
+  template:
+    metadata:
+      labels:
+        app: scrutiny-web
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+        - env:
+            - name: SCRUTINY_WEB_INFLUXDB_HOST
+              value: scrutiny-influxdb-service.scrutiny.svc.cluster.local
+          image: ghcr.io/analogj/scrutiny:v0.8.1-web
+          livenessProbe:
+            exec:
+              command:
+                - curl
+                - -f
+                - http://localhost:8080/api/health
+            failureThreshold: 20
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 10
+          name: scrutiny-web
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /opt/scrutiny/config
+              name: scrutiny-web-vol
+      volumes:
+        - name: scrutiny-web-vol
+          persistentVolumeClaim:
+            claimName: scrutiny-web-pvc

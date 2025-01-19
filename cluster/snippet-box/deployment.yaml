@@ -1,29 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: snippet-box-deployment
-    namespace: snippet-box
+  name: snippet-box-deployment
+  namespace: snippet-box
 spec:
-    replicas: 1
-    selector:
-        matchLabels:
-            app: snippet-box
-    template:
-        metadata:
-            labels:
-                app: snippet-box
-        spec:
-            nodeSelector:
-                role: apps
-            containers:
-              - image: docker.io/pawelmalak/snippet-box:latest
-                name: snippet-box
-                ports:
-                  - containerPort: 5000
-                volumeMounts:
-                  - mountPath: /app/data
-                    name: snippet-box-vol
-            volumes:
-              - name: snippet-box-vol
-                persistentVolumeClaim:
-                    claimName: snippet-box-pvc
+  replicas: 1
+  selector:
+    matchLabels:
+      app: snippet-box
+  template:
+    metadata:
+      labels:
+        app: snippet-box
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+        - image: docker.io/pawelmalak/snippet-box:latest
+          name: snippet-box
+          ports:
+            - containerPort: 5000
+          volumeMounts:
+            - mountPath: /app/data
+              name: snippet-box-vol
+      volumes:
+        - name: snippet-box-vol
+          persistentVolumeClaim:
+            claimName: snippet-box-pvc

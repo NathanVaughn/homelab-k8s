@@ -9,18 +9,18 @@ metadata:
     k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
 spec:
   entryPoints:
-  - websecure
+    - websecure
   routes:
-  - match: Host(`snippet-box.nathanv.app`)
-    kind: Rule
-    services:
-    - name: snippet-box-service
-      port: 5000
-    middlewares:
-    - name: authentik-forward-auth
-      namespace: authentik
+    - match: Host(`snippet-box.nathanv.app`)
+      kind: Rule
+      services:
+        - name: snippet-box-service
+          port: 5000
+      middlewares:
+        - name: authentik-forward-auth
+          namespace: authentik
   tls:
     certResolver: le
     domains:
-    - sans:
-      - "*.nathanv.app"
+      - sans:
+          - "*.nathanv.app"

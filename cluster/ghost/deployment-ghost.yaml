@@ -16,42 +16,42 @@ spec:
       nodeSelector:
         role: apps
       initContainers:
-      - name: permission-fix
-        image: docker.io/library/busybox:latest
-        command: [ 'sh', '-c' ]
-        args: [ 'chown -R 1000:1000 /var/lib/ghost/content' ]
-        volumeMounts:
-        - mountPath: /var/lib/ghost/content
-          name: ghost-vol
+        - name: permission-fix
+          image: docker.io/library/busybox:latest
+          command: ['sh', '-c']
+          args: ['chown -R 1000:1000 /var/lib/ghost/content']
+          volumeMounts:
+            - mountPath: /var/lib/ghost/content
+              name: ghost-vol
       containers:
-      - env:
-        - name: url
-          value: "https://christmas.nathanv.app"
-        - name: database__client
-          value: mysql
-        - name: database__connection__host
-          value: ghost-mysql-service.ghost.svc.cluster.local
-        - name: database__connection__user
-          value: ghost
-        - name: database__connection__database
-          value: ghost
-        - name: mail__transport
-          value: SMTP
-        - name: mail__options__port
-          value: "587"
-        - name: mail__from
-          value: Ghost <ghost@nvaughn.email>
-        envFrom:
-        - secretRef:
-            name: ghost-env
-        image: docker.io/library/ghost:5.107.0
-        name: ghost
-        ports:
-        - containerPort: 2368
-        volumeMounts:
-        - mountPath: /var/lib/ghost/content
-          name: ghost-vol
+        - env:
+            - name: url
+              value: "https://christmas.nathanv.app"
+            - name: database__client
+              value: mysql
+            - name: database__connection__host
+              value: ghost-mysql-service.ghost.svc.cluster.local
+            - name: database__connection__user
+              value: ghost
+            - name: database__connection__database
+              value: ghost
+            - name: mail__transport
+              value: SMTP
+            - name: mail__options__port
+              value: "587"
+            - name: mail__from
+              value: Ghost <ghost@nvaughn.email>
+          envFrom:
+            - secretRef:
+                name: ghost-env
+          image: docker.io/library/ghost:5.107.0
+          name: ghost
+          ports:
+            - containerPort: 2368
+          volumeMounts:
+            - mountPath: /var/lib/ghost/content
+              name: ghost-vol
       volumes:
-      - name: ghost-vol
-        persistentVolumeClaim:
-          claimName: ghost-pvc
+        - name: ghost-vol
+          persistentVolumeClaim:
+            claimName: ghost-pvc

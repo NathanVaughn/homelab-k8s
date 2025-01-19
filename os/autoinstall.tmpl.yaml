@@ -19,7 +19,7 @@ autoinstall:
       ethernets:
         all-en:
           match:
-            name: en*  # Matches all Ethernet interfaces
+            name: en* # Matches all Ethernet interfaces
           dhcp4: true
   source: # use a minimal distribution
     id: ubuntu-server-minimal
