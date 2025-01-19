@@ -16,6 +16,9 @@ spec:
     services:
     - name: phpmyadmin-service
       port: 80
+    middlewares:
+    - name: authentik-forward-auth
+      namespace: authentik
   tls:
     certResolver: le
     domains:

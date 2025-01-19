@@ -19,6 +19,9 @@ spec:
       scheme: https
       # required as omada requires ssl
       serversTransport: omada-transport
+    middlewares:
+    - name: authentik-forward-auth
+      namespace: authentik
   tls:
     certResolver: le
     domains:
