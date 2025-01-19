@@ -13,6 +13,9 @@ spec:
     services:
     - name: scrutiny-web-service
       port: 8080
+    middlewares:
+    - name: authentik-forward-auth
+      namespace: authentik
   tls:
     certResolver: le
     domains:

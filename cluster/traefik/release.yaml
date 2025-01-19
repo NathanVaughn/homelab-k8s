@@ -43,6 +43,11 @@ spec:
             # i block 8.8.8.8 on my network
             - "1.1.1.1:53"
             - "9.9.9.9:53"
+    providers:
+      kubernetesCRD:
+        enabled: true
+        # required for authentik
+        allowCrossNamespace: true
     metrics:
       prometheus:
         service:
