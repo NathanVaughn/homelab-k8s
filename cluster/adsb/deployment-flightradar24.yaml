@@ -33,14 +33,8 @@ spec:
           volumeMounts:
             - mountPath: /run
               name: flightradar24-run-vol
-            - mountPath: /var/log
-              name: flightradar24-log-vol
       volumes:
         - name: flightradar24-run-vol
           emptyDir:
             medium: Memory
             sizeLimit: 64M
-        - name: flightradar24-log-vol
-          emptyDir:
-            medium: Memory
-            sizeLimit: 32M

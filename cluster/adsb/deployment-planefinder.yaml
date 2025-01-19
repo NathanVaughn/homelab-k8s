@@ -31,14 +31,8 @@ spec:
           volumeMounts:
             - mountPath: /run
               name: planefinder-run-vol
-            - mountPath: /var/log
-              name: planefinder-log-vol
       volumes:
         - name: planefinder-run-vol
           emptyDir:
             medium: Memory
             sizeLimit: 64M
-        - name: planefinder-log-vol
-          emptyDir:
-            medium: Memory
-            sizeLimit: 32M

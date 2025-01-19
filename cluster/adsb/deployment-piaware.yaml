@@ -33,14 +33,8 @@ spec:
           volumeMounts:
             - mountPath: /run
               name: piaware-run-vol
-            - mountPath: /var/log
-              name: piaware-log-vol
       volumes:
         - name: piaware-run-vol
           emptyDir:
             medium: Memory
             sizeLimit: 64M
-        - name: piaware-log-vol
-          emptyDir:
-            medium: Memory
-            sizeLimit: 32M

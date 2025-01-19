@@ -50,8 +50,6 @@ spec:
               name: readsb-autogain-vol
             - mountPath: /run/readsb
               name: readsb-run-vol
-            - mountPath: /var/log
-              name: readsb-log-vol
       volumes:
         - name: readsb-rrd-vol
           persistentVolumeClaim:
@@ -63,7 +61,3 @@ spec:
           emptyDir:
             medium: Memory
             sizeLimit: 64M
-        - name: readsb-log-vol
-          emptyDir:
-            medium: Memory
-            sizeLimit: 32M
