@@ -26,9 +26,9 @@ kubectl apply -f sealed-secret.yaml
 
 Configure an OIDC provider as follows:
 
-Endpoint: `https://authentik.nathanv.app/application/o/harbor/`
-OIDC Scope: `openid,profile,email`
-Username Claim: `preferred_username`
+- Endpoint: `https://authentik.nathanv.app/application/o/harbor/`
+- OIDC Scope: `openid,profile,email`
+- Username Claim: `preferred_username`
 
 See <https://docs.goauthentik.io/integrations/services/harbor/> for more info.
 
