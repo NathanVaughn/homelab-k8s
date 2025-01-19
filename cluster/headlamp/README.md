@@ -19,3 +19,5 @@ kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < 
 # optional
 kubectl apply -f sealed-secret.yaml
 ```
+
+See <https://elroy.fyi/posts/headlamp-setup-guide/> for more information.
