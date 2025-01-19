@@ -11,6 +11,7 @@ export FR24KEY=$FR24KEY
 export PLANE_FINDER_CODE=$PLANE_FINDER_CODE
 export READSB_LAT=$READSB_LAT
 export READSB_LON=$READSB_LON
+export TZ="America/Chicago"
 kubectl apply -f namespace.yaml
 
 kubectl -n adsb create secret generic adsb-env \
@@ -21,6 +22,7 @@ kubectl -n adsb create secret generic adsb-env \
 --from-literal=READSB_LON=$READSB_LON \
 --from-literal=LAT=$READSB_LAT \
 --from-literal=LONG=$READSB_LON \
+--from-literal=TZ=$TZ \
 --dry-run=client -o yaml > secret.yaml
 
 kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
