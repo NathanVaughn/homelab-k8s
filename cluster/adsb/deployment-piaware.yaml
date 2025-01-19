@@ -28,7 +28,7 @@ spec:
           envFrom:
             - secretRef:
                 name: adsb-env
-          image: ghcr.io/sdr-enthusiasts/docker-piaware:latest-build-764
+          image: ghcr.io/sdr-enthusiasts/docker-piaware:latest-build-586
           name: piaware
           volumeMounts:
             - mountPath: /run
