@@ -1,5 +1,5 @@
 {
-  "apiVersion": "dashboard.grafana.app/v1beta1",
+  "apiVersion": "dashboard.grafana.app/v0alpha1",
   "kind": "Dashboard",
   "metadata": {
     "name": "nodes_list"
@@ -1016,7 +1016,7 @@
       }
     ],
     "refresh": "",
-    "schemaVersion": 42,
+    "schemaVersion": 40,
     "tags": [
       "Kubernetes",
       "Prometheus"
