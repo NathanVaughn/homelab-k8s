@@ -52,10 +52,10 @@ spec:
     persistence:
       persistentVolumeClaim:
         registry:
-          storageClass: longhorn
+          storageClass: longhorn-rwx
           size: 50Gi
         jobservice:
-          storageClass: longhorn
+          storageClass: longhorn-rwx
         database:
           storageClass: longhorn
         redis:
