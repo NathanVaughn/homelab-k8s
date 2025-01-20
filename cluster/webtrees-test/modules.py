@@ -7,7 +7,7 @@ from urllib.request import urlopen
 modules_dir = "modules_v4"
 source_file = "source.txt"
 sources = [
-    "https://github.com/UksusoFF/webtrees-faces/archive/refs/tags/v2.7.2.zip",
+    "https://github.com/UksusoFF/webtrees-faces/archive/refs/tags/v2.7.3.zip",
     "https://github.com/JustCarmen/webtrees-fancy-imagebar/archive/refs/tags/2.3.3.zip",
     "https://github.com/JustCarmen/webtrees-theme-justlight/archive/refs/tags/2.2.10.zip",
     "https://github.com/vesta-webtrees-2-custom-modules/vesta_classic_laf/archive/d986e742dcf74a30b92c908afe6fbfbcfb23d526.zip",
