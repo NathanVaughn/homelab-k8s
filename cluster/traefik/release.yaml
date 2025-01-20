@@ -68,6 +68,7 @@ spec:
     # https://github.com/traefik/traefik-helm-chart/blob/master/EXAMPLES.md#use-traefik-native-lets-encrypt-integration-without-cert-manager
     # https://github.com/traefik/traefik-helm-chart/issues/396#issuecomment-1873454777
     deployment:
+      replicas: 2
       initContainers:
         - name: volume-permissions
           image: docker.io/library/busybox:latest
