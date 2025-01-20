@@ -12,7 +12,7 @@ from pyinfra.operations import apt, files, python, server, systemd
 ROOT_DIR = pathlib.Path(__file__).absolute().parent.parent
 CONTROL_PLANE_IP = "10.0.1.1"
 
-resolvconf_config = "/etc/resolvconf/resolv.conf.d/head"
+resolvconf_config = "/etc/resolvconf/resolv.conf.d/base"
 
 # load k3s data
 k3s_install_script = ROOT_DIR.joinpath("software", "downloaded", "k3s_install.sh")
@@ -212,3 +212,36 @@ for label in host.data.get("k8s_labels", []):  # type: ignore
         _sudo=True,
     )
 # endregion
+
+# Allow servers to use upstream DNS in the event
+# they need to pull the DNS server image
+# Prevents chicken and egg problem.
+apt.packages(
+    name="Install resolvconf",
+    packages=["resolvconf"],
+    update=True,
+    _sudo=True,
+)
+
+resolvconf_config_edit = files.block(
+    name="Edit resolvconf configuration",
+    path=resolvconf_config,
+    content="nameserver 1.1.1.1\nnameserver 1.0.0.1\n",  # last newline is important
+)
+
+server.service(
+    name="Start resolvconf",
+    service="resolvconf",
+    runing=True,
+    restarted=resolvconf_config_edit.changed,
+)
+
+if resolvconf_config_edit.changed:
+    server.shell(name="Update /etc/resolv.conf", commands="resolvconf -u")
+
+    server.service(
+        name="Start systemd-resolved",
+        service="systemd-resolved",
+        runing=True,
+        restarted=resolvconf_config_edit.changed,
+    )
