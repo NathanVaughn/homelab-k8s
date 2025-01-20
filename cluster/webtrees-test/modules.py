@@ -10,7 +10,7 @@ sources = [
     "https://github.com/UksusoFF/webtrees-faces/archive/refs/tags/v2.7.2.zip",
     "https://github.com/JustCarmen/webtrees-fancy-imagebar/archive/refs/tags/2.3.3.zip",
     "https://github.com/JustCarmen/webtrees-theme-justlight/archive/refs/tags/2.2.10.zip",
-    "https://github.com/vesta-webtrees-2-custom-modules/vesta_classic_laf/archive/d986e742dcf74a30b92c908afe6fbfbcfb23d526.zip",
+    "https://github.com/vesta-webtrees-2-custom-modules/vesta_classic_laf/archive/c124b298de400d65a141c0fa35571c13cf7d525d.zip",
     "https://github.com/vesta-webtrees-2-custom-modules/vesta_common/archive/2474c32ad55d7efa247524089a40d57850c044aa.zip",
     "https://github.com/vytux-com/vytux_cousins/archive/refs/tags/2.1.1.zip",
     "https://github.com/magicsunday/webtrees-fan-chart/releases/download/2.7.2/webtrees-fan-chart.zip",
