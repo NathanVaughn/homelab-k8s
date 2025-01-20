@@ -1,10 +1,11 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: webtrees-test-deployment
   namespace: webtrees-test
 spec:
   replicas: 1
+  serviceName: webtrees-test
   selector:
     matchLabels:
       app: webtrees-test
@@ -21,7 +22,7 @@ spec:
           # forgive me for what i've done
           workingDir: /var/www/webtrees/
           command: ['uv']
-          args: ['run', 'https://raw.githubusercontent.com/NathanVaughn/homelab-k8s/refs/heads/main/cluster/webtrees/modules.py']
+          args: ['run', 'https://raw.githubusercontent.com/NathanVaughn/homelab-k8s/refs/heads/main/cluster/webtrees-test/modules.py']
           volumeMounts:
             - mountPath: /var/www/webtrees/modules_v4/
               name: modules-vol
@@ -45,7 +46,7 @@ spec:
               value: wt_
           envFrom:
             - secretRef:
-                name: webtrees-env
+                name: webtrees-test-env
           image: ghcr.io/nathanvaughn/webtrees:2.1.22
           name: webtrees-test
           ports:

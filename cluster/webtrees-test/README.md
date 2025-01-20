@@ -6,7 +6,7 @@
 export MARIADB_PASSWORD=$MARIADB_PASSWORD
 kubectl apply -f namespace.yaml
 
-kubectl -n webtrees create secret generic webtrees-env \
+kubectl -n webtrees-test create secret generic webtrees-test-env \
 --from-literal=MARIADB_PASSWORD=$MARIADB_PASSWORD \
 --from-literal=DB_PASS=$MARIADB_PASSWORD \
 --dry-run=client -o yaml > secret.yaml
