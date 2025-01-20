@@ -33,5 +33,12 @@ kubectl apply -f sealed-secret.yaml
 
 ## Post Setup
 
+Set `grafana.ini.auth.generic_oauth.auto_login` to `false`.
+This will allow you to sign in with a username and password.
+Log in with Authentik user, log out, log in as admin,
+make authentik user an admin, disable builtin admin account, log out.
+
+You can now reset `grafana.ini.auth.generic_oauth.auto_login` to `true`.
+
 Add the following as a datasource:
 `http://prometheus-kube-prometheus-prometheus.prometheus.svc.cluster.local:9090`
