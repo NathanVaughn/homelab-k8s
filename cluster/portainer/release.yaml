@@ -19,5 +19,6 @@ spec:
       role: apps
     persistence:
       enabled: true
-      storageClass: longhorn
+      storageClass: longhorn-rwx
+      accessMode: ReadWriteMany
       size: 200Mi
