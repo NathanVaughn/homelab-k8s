@@ -6,7 +6,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: webtrees
+    app: webtrees-test
   ports:
     - port: 80
       protocol: TCP
