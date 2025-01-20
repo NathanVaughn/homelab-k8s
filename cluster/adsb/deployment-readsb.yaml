@@ -35,6 +35,8 @@ spec:
               value: "true"
             - name: ENABLE_PROMETHEUS
               value: "true"
+            - name: PROMETHEUSPORT
+              value: "9273"
           envFrom:
             - secretRef:
                 name: adsb-env
@@ -45,6 +47,7 @@ spec:
           ports:
             - containerPort: 8080 # http server
             - containerPort: 30005 # ads-b data
+            - containerPort: 9273 # metrics
           volumeMounts:
             - mountPath: /run/collectd
               name: readsb-rrd-vol
