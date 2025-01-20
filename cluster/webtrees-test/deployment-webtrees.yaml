@@ -4,7 +4,7 @@ metadata:
   name: webtrees-test-deployment
   namespace: webtrees-test
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: webtrees-test
