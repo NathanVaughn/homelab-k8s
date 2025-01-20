@@ -1,5 +1,5 @@
 {
-  "apiVersion": "dashboard.grafana.app/v1beta1",
+  "apiVersion": "dashboard.grafana.app/v0alpha1",
   "kind": "Dashboard",
   "metadata": {
     "name": "eM7_f4V7z"
@@ -9,9 +9,7 @@
       "list": [
         {
           "builtIn": 1,
-          "datasource": {
-            "uid": "-- Grafana --"
-          },
+          "datasource": "-- Grafana --",
           "enable": true,
           "hide": true,
           "iconColor": "rgba(0, 211, 255, 1)",
@@ -34,10 +32,7 @@
     "links": [],
     "panels": [
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
+        "datasource": "aeaihzsgrbpc0f",
         "description": "",
         "fieldConfig": {
           "defaults": {
@@ -85,10 +80,6 @@
         "pluginVersion": "8.1.0",
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
             "exemplar": true,
             "expr": "count(gotk_reconcile_condition{namespace=~\"$namespace\",type=\"Ready\",status=\"True\",kind=~\"Kustomization|HelmRelease\"})\n-\nsum(gotk_reconcile_condition{namespace=~\"$namespace\",type=\"Ready\",status=\"Deleted\",kind=~\"Kustomization|HelmRelease\"})",
             "interval": "",
@@ -102,10 +93,7 @@
         "type": "stat"
       },
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
+        "datasource": "aeaihzsgrbpc0f",
         "description": "",
         "fieldConfig": {
           "defaults": {
@@ -149,10 +137,6 @@
         "pluginVersion": "8.1.0",
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
             "expr": "sum(gotk_reconcile_condition{namespace=~\"$namespace\",type=\"Ready\",status=\"False\",kind=~\"Kustomization|HelmRelease\"})",
             "interval": "",
             "legendFormat": "",
@@ -165,10 +149,7 @@
         "type": "stat"
       },
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
+        "datasource": "aeaihzsgrbpc0f",
         "description": "",
         "fieldConfig": {
           "defaults": {
@@ -216,10 +197,6 @@
         "pluginVersion": "8.1.0",
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
             "expr": "count(gotk_reconcile_condition{namespace=~\"$namespace\",type=\"Ready\",status=\"True\",kind=~\"GitRepository|HelmRepository|Bucket\"})\n-\nsum(gotk_reconcile_condition{namespace=~\"$namespace\",type=\"Ready\",status=\"Deleted\",kind=~\"GitRepository|HelmRepository|Bucket\"})",
             "interval": "",
             "legendFormat": "",
@@ -232,10 +209,7 @@
         "type": "stat"
       },
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
+        "datasource": "aeaihzsgrbpc0f",
         "description": "",
         "fieldConfig": {
           "defaults": {
@@ -279,10 +253,6 @@
         "pluginVersion": "8.1.0",
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
             "expr": "sum(gotk_reconcile_condition{namespace=~\"$namespace\",type=\"Ready\",status=\"False\",kind=~\"GitRepository|HelmRepository|Bucket\"})",
             "interval": "",
             "legendFormat": "",
@@ -295,10 +265,7 @@
         "type": "stat"
       },
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
+        "datasource": "aeaihzsgrbpc0f",
         "description": "",
         "fieldConfig": {
           "defaults": {
@@ -347,10 +314,6 @@
         "pluginVersion": "8.1.0",
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
             "expr": "  sum(rate(gotk_reconcile_duration_seconds_sum{namespace=~\"$namespace\",kind=~\"Kustomization|HelmRelease\"}[5m])) by (kind)\n/\n  sum(rate(gotk_reconcile_duration_seconds_count{namespace=~\"$namespace\",kind=~\"Kustomization|HelmRelease\"}[5m])) by (kind)",
             "interval": "",
             "legendFormat": "{{kind}}",
@@ -363,10 +326,7 @@
         "type": "bargauge"
       },
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
+        "datasource": "aeaihzsgrbpc0f",
         "description": "",
         "fieldConfig": {
           "defaults": {
@@ -415,10 +375,6 @@
         "pluginVersion": "8.1.0",
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
             "expr": "  sum(rate(gotk_reconcile_duration_seconds_sum{namespace=~\"$namespace\",kind=~\"GitRepository|HelmRepository|Bucket\"}[5m])) by (kind)\n/\n  sum(rate(gotk_reconcile_duration_seconds_count{namespace=~\"$namespace\",kind=~\"GitRepository|HelmRepository|Bucket\"}[5m])) by (kind)",
             "interval": "",
             "legendFormat": "{{kind}}",
@@ -432,10 +388,7 @@
       },
       {
         "collapsed": false,
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
+        "datasource": "aeaihzsgrbpc0f",
         "fieldConfig": {
           "defaults": {},
           "overrides": []
@@ -448,31 +401,17 @@
         },
         "id": 15,
         "panels": [],
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
-            "refId": "A"
-          }
-        ],
         "title": "Status",
         "type": "row"
       },
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
+        "datasource": "aeaihzsgrbpc0f",
         "description": "",
         "fieldConfig": {
           "defaults": {
             "custom": {
               "align": null,
-              "cellOptions": {
-                "type": "auto"
-              },
+              "displayMode": "auto",
               "filterable": true
             },
             "mappings": [
@@ -514,11 +453,8 @@
               },
               "properties": [
                 {
-                  "id": "custom.cellOptions",
-                  "value": {
-                    "mode": "gradient",
-                    "type": "color-background"
-                  }
+                  "id": "custom.displayMode",
+                  "value": "color-background"
                 }
               ]
             }
@@ -537,10 +473,6 @@
         "pluginVersion": "8.1.0",
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
             "expr": "gotk_reconcile_condition{namespace=~\"$namespace\",type=\"Ready\",status=\"False\",kind=~\"Kustomization|HelmRelease\"}",
             "format": "table",
             "instant": true,
@@ -585,18 +517,13 @@
         "type": "table"
       },
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
+        "datasource": "aeaihzsgrbpc0f",
         "description": "",
         "fieldConfig": {
           "defaults": {
             "custom": {
               "align": null,
-              "cellOptions": {
-                "type": "auto"
-              },
+              "displayMode": "auto",
               "filterable": true
             },
             "mappings": [
@@ -638,11 +565,8 @@
               },
               "properties": [
                 {
-                  "id": "custom.cellOptions",
-                  "value": {
-                    "mode": "gradient",
-                    "type": "color-background"
-                  }
+                  "id": "custom.displayMode",
+                  "value": "color-background"
                 }
               ]
             }
@@ -661,10 +585,6 @@
         "pluginVersion": "8.1.0",
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
             "expr": "gotk_reconcile_condition{namespace=~\"$namespace\",type=\"Ready\",status=\"False\",kind=~\"GitRepository|HelmRepository|Bucket\"}",
             "format": "table",
             "instant": true,
@@ -710,10 +630,7 @@
       },
       {
         "collapsed": false,
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
+        "datasource": "aeaihzsgrbpc0f",
         "fieldConfig": {
           "defaults": {},
           "overrides": []
@@ -726,15 +643,6 @@
         },
         "id": 17,
         "panels": [],
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
-            "refId": "A"
-          }
-        ],
         "title": "Timing",
         "type": "row"
       },
@@ -743,10 +651,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
+        "datasource": "aeaihzsgrbpc0f",
         "description": "",
         "fill": 1,
         "fillGradient": 0,
@@ -788,10 +693,6 @@
         "steppedLine": false,
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
             "expr": "  sum(rate(gotk_reconcile_duration_seconds_sum{namespace=~\"$namespace\",kind=~\"Kustomization|HelmRelease\"}[5m])) by (kind, name)\n/\n  sum(rate(gotk_reconcile_duration_seconds_count{namespace=~\"$namespace\",kind=~\"Kustomization|HelmRelease\"}[5m])) by (kind, name)",
             "hide": false,
             "interval": "",
@@ -845,10 +746,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
+        "datasource": "aeaihzsgrbpc0f",
         "description": "",
         "fill": 1,
         "fillGradient": 0,
@@ -890,10 +788,6 @@
         "steppedLine": false,
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
             "expr": "  sum(rate(gotk_reconcile_duration_seconds_sum{namespace=~\"$namespace\",kind=~\"GitRepository|HelmRepository|Bucket\"}[5m])) by (kind, name)\n/\n  sum(rate(gotk_reconcile_duration_seconds_count{namespace=~\"$namespace\",kind=~\"GitRepository|HelmRepository|Bucket\"}[5m])) by (kind, name)",
             "hide": false,
             "interval": "",
@@ -944,7 +838,7 @@
       }
     ],
     "refresh": "10s",
-    "schemaVersion": 42,
+    "schemaVersion": 30,
     "style": "light",
     "tags": [
       "flux"
@@ -974,9 +868,7 @@
         {
           "allValue": ".*",
           "current": {},
-          "datasource": {
-            "uid": "$DS_PROMETHEUS"
-          },
+          "datasource": "$DS_PROMETHEUS",
           "definition": "gotk_reconcile_condition",
           "description": null,
           "error": null,
