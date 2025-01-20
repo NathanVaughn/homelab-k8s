@@ -4,9 +4,9 @@ metadata:
   name: stirling-pdf-pvc-ocr
   namespace: stirling-pdf
 spec:
-  storageClassName: longhorn
+  storageClassName: longhorn-rwx
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 5Gi
