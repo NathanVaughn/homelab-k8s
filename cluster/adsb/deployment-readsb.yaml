@@ -33,6 +33,8 @@ spec:
               value: "true"
             - name: READSB_NET_ENABLE
               value: "true"
+            - name: ENABLE_PROMETHEUS
+              value: "true"
           envFrom:
             - secretRef:
                 name: adsb-env
