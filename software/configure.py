@@ -143,10 +143,10 @@ base_args = [
     f"--tls-san={CONTROL_PLANE_IP}",
     # https://github.com/Sheldonwl/rpi-cluster-k3s/blob/master/docs/setup-k3s-server.md
     # Increase speed at which pods will be rescheduled if a node goes down
-    "--kube-apiserver-arg=default-not-ready-toleration-seconds=10",
-    "--kube-apiserver-arg=default-unreachable-toleration-seconds=10",
-    "--kube-controller-arg node-monitor-period=10s",
-    "--kube-controller-arg node-monitor-grace-period=10s",
+    "--kube-apiserver-arg=default-not-ready-toleration-seconds=20",
+    "--kube-apiserver-arg=default-unreachable-toleration-seconds=20",
+    "--kube-controller-arg node-monitor-period=20s",
+    "--kube-controller-arg node-monitor-grace-period=20s",
     "--kubelet-arg node-status-update-frequency=5s",
 ]
 
