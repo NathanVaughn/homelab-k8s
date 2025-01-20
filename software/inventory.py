@@ -1,8 +1,20 @@
 app_servers = [
-    ("billy.nathanv.home", {"ssh_user": "ubuntu"}),
-    ("jesse.nathanv.home", {"ssh_user": "ubuntu"}),
-    ("tom.nathanv.home", {"ssh_user": "ubuntu"}),
-    ("annie.nathanv.home", {"ssh_user": "ubuntu"}),
+    (
+        "billy.nathanv.home",
+        {"ssh_user": "ubuntu", "k8s_labels": ["role=apps", "connectivity=eth"]},
+    ),
+    (
+        "jesse.nathanv.home",
+        {"ssh_user": "ubuntu", "k8s_labels": ["role=apps", "connectivity=eth"]},
+    ),
+    (
+        "tom.nathanv.home",
+        {"ssh_user": "ubuntu", "k8s_labels": ["role=apps", "connectivity=eth"]},
+    ),
+    (
+        "annie.nathanv.home",
+        {"ssh_user": "ubuntu", "k8s_labels": ["role=apps", "connectivity=eth"]},
+    ),
     (
         "will.nathanv.home",
         {
