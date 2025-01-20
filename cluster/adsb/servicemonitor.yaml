@@ -13,4 +13,4 @@ spec:
       - adsb
   selector:
     matchLabels:
-      app: readsb
+      app: readsb-metrics
