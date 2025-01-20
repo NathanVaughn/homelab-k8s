@@ -909,7 +909,7 @@
             },
             "editorMode": "code",
             "exemplar": true,
-            "expr": "sum without (instance) (sum(longhorn_disk_reservation_bytes))",
+            "expr": "sum without (instance) (sum(longhorn_disk_reservation_bytes)+sum(longhorn_disk_usage_bytes))",
             "format": "time_series",
             "interval": "$resolution",
             "legendFormat": "",
