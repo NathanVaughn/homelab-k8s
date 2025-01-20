@@ -15,7 +15,7 @@ sources = [
     "https://github.com/vytux-com/vytux_cousins/archive/refs/tags/2.1.1.zip",
     "https://github.com/magicsunday/webtrees-fan-chart/releases/download/2.7.2/webtrees-fan-chart.zip",
     "https://github.com/magicsunday/webtrees-pedigree-chart/releases/download/1.7.3/webtrees-pedigree-chart.zip",
-    "https://github.com/magicsunday/webtrees-descendants-chart/releases/download/1.9.0/webtrees-descendants-chart.zip",
+    "https://github.com/magicsunday/webtrees-descendants-chart/releases/download/2.0.0/webtrees-descendants-chart.zip",
 ]
 
 
