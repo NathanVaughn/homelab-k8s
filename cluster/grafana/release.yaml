@@ -19,9 +19,9 @@ spec:
       enabled: true
       type: pvc
       size: 200Mi
-      storageClassName: longhorn
+      storageClassName: longhorn-rwx
       accessModes:
-        - ReadWriteOnce
+        - ReadWriteMany
     # adminUser:
     # adminPassword:
     grafana.ini:
