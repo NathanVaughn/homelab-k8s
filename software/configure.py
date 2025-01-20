@@ -232,7 +232,7 @@ resolvconf_config_edit = files.block(
 server.service(
     name="Start resolvconf",
     service="resolvconf",
-    runing=True,
+    running=True,
     restarted=resolvconf_config_edit.changed,
 )
 
@@ -242,6 +242,6 @@ if resolvconf_config_edit.changed:
     server.service(
         name="Start systemd-resolved",
         service="systemd-resolved",
-        runing=True,
+        running=True,
         restarted=resolvconf_config_edit.changed,
     )
