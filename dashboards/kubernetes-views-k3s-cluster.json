@@ -332,7 +332,7 @@
             },
             "editorMode": "code",
             "exemplar": true,
-            "expr": "sum without (instance) ((ceph_cluster_total_bytes-ceph_cluster_total_used_bytes)/ceph_cluster_total_bytes)",
+            "expr": "sum without (instance) ((sum(longhorn_disk_capacity_bytes)-(sum(longhorn_disk_reservation_bytes)+sum(longhorn_disk_usage_bytes)))/sum(longhorn_disk_capacity_bytes))",
             "format": "time_series",
             "interval": "$resolution",
             "intervalFactor": 1,
@@ -343,7 +343,7 @@
             "step": 10
           }
         ],
-        "title": "Ceph Cluster Storage space",
+        "title": "Longhorn Cluster Storage space",
         "type": "gauge"
       },
       {
