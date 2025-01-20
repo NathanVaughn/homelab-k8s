@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webtrees-deployment
+  namespace: webtrees-test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webtrees
+  template:
+    metadata:
+      labels:
+        app: webtrees
+    spec:
+      nodeSelector:
+        role: apps
+      initContainers:
+        - name: module-install
+          image: ghcr.io/astral-sh/uv:python3.13-alpine
+          # forgive me for what i've done
+          workingDir: /var/www/webtrees/
+          command: ['uv']
+          args: ['run', 'https://raw.githubusercontent.com/NathanVaughn/homelab-k8s/refs/heads/main/cluster/webtrees/modules.py']
+          volumeMounts:
+            - mountPath: /var/www/webtrees/modules_v4/
+              name: modules-vol
+      containers:
+        - env:
+            - name: BASE_URL
+              value: "https://webtrees-test.nathanv.app"
+            - name: PRETTY_URLS
+              value: "1"
+            - name: DB_USER
+              value: webtrees
+            - name: DB_NAME
+              value: webtrees
+            - name: DB_HOST
+              value: webtrees-mysql-service.webtrees-test.svc.cluster.local
+            - name: DB_PORT
+              value: "3306"
+            - name: DB_TYPE
+              value: mysql
+            - name: DB_PREFIX
+              value: wt_
+          envFrom:
+            - secretRef:
+                name: webtrees-env
+          image: ghcr.io/nathanvaughn/webtrees:2.1.22
+          name: webtrees
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /var/www/webtrees/data/
+              name: data-vol
+            - mountPath: /var/www/webtrees/modules_v4/
+              name: modules-vol
+      volumes:
+        - name: data-vol
+          persistentVolumeClaim:
+            claimName: webtrees-pvc-data
+        - name: modules-vol
+          persistentVolumeClaim:
+            claimName: webtrees-pvc-modules

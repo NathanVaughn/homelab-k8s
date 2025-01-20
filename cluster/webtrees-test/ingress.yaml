@@ -1,20 +1,19 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: pgadmin-route
-  namespace: pgadmin
+  name: webtrees-route
+  namespace: webtrees-test
   annotations:
-    k8s-dns.nathanv.me/hostname: pgadmin.nathanv.app
-    # k8s-dns.nathanv.me/external: tunnel.nathanv.app
+    k8s-dns.nathanv.me/hostname: webtrees-test.nathanv.app
     k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`pgadmin.nathanv.app`)
+    - match: Host(`webtrees-test.nathanv.app`)
       kind: Rule
       services:
-        - name: pgadmin-service
+        - name: webtrees-service
           port: 80
   tls:
     certResolver: le
