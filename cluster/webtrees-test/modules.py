@@ -11,7 +11,7 @@ sources = [
     "https://github.com/JustCarmen/webtrees-fancy-imagebar/archive/refs/tags/2.3.3.zip",
     "https://github.com/JustCarmen/webtrees-theme-justlight/archive/refs/tags/2.2.10.zip",
     "https://github.com/vesta-webtrees-2-custom-modules/vesta_classic_laf/archive/d986e742dcf74a30b92c908afe6fbfbcfb23d526.zip",
-    "https://github.com/vesta-webtrees-2-custom-modules/vesta_common/archive/2474c32ad55d7efa247524089a40d57850c044aa.zip",
+    "https://github.com/vesta-webtrees-2-custom-modules/vesta_common/archive/afeb5b1fed5a5a00c10a010f12cf002e6c59ef52.zip",
     "https://github.com/vytux-com/vytux_cousins/archive/refs/tags/2.1.1.zip",
     "https://github.com/magicsunday/webtrees-fan-chart/releases/download/2.7.2/webtrees-fan-chart.zip",
     "https://github.com/magicsunday/webtrees-pedigree-chart/releases/download/1.7.3/webtrees-pedigree-chart.zip",
