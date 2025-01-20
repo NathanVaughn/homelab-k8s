@@ -6,7 +6,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: webtrees-mysql
+    app: webtrees-test-mysql
   ports:
     - port: 3306
       protocol: TCP
