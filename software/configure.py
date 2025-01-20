@@ -6,13 +6,14 @@ import urllib.request
 
 import yaml
 from pyinfra import host, inventory  # type: ignore
-from pyinfra.facts.server import Hostname
+from pyinfra.facts.server import Hostname, User
 from pyinfra.operations import apt, files, python, server, systemd
 
 ROOT_DIR = pathlib.Path(__file__).absolute().parent.parent
 CONTROL_PLANE_IP = "10.0.1.1"
+DNS_IP = "10.0.1.4"
 
-resolvconf_config = "/etc/resolvconf/resolv.conf.d/base"
+resolvconf_config = "/etc/systemd/resolved.conf.d/fallback.conf"
 
 # load k3s data
 k3s_install_script = ROOT_DIR.joinpath("software", "downloaded", "k3s_install.sh")
@@ -35,7 +36,7 @@ with open(ROOT_DIR.joinpath("software", "secrets", "k3s_token"), "r") as fp:
 files.block(
     name="Setup passwordless sudo",
     path="/etc/sudoers",
-    content="ubuntu ALL=(ALL) NOPASSWD: ALL\n",
+    content=f"{host.get_fact(User)} ALL=(ALL) NOPASSWD: ALL\n",
     _sudo=True,
 )
 
@@ -55,23 +56,17 @@ systemd.service(
     _sudo=True,
 )
 
-# install nfs-common
+# install packages
 # https://longhorn.io/docs/1.7.2/deploy/install/#installing-nfsv4-client
 apt.packages(
-    name="Install nfs-common",
-    packages=["nfs-common"],
+    name="Install required packages",
+    packages=["nfs-common", "network-manager", "systemd-resolved"],
     update=True,
     _sudo=True,
 )
 
 # disable wifi
 if "connectivity=eth" in host.data.get("k8s_labels", []):  # type: ignore
-    apt.packages(
-        name="Install NetworkManager",
-        packages=["network-manager"],
-        update=True,
-        _sudo=True,
-    )
     server.shell(name="Disable wifi", commands="nmcli radio wifi off", _sudo=True)
 
 # adsb prerequisites
@@ -216,32 +211,17 @@ for label in host.data.get("k8s_labels", []):  # type: ignore
 # Allow servers to use upstream DNS in the event
 # they need to pull the DNS server image
 # Prevents chicken and egg problem.
-apt.packages(
-    name="Install resolvconf",
-    packages=["resolvconf"],
-    update=True,
-    _sudo=True,
-)
-
+# Use `resolvectl status` for debugging
 resolvconf_config_edit = files.block(
     name="Edit resolvconf configuration",
     path=resolvconf_config,
-    content="nameserver 1.1.1.1\nnameserver 1.0.0.1\n",  # last newline is important
+    content=f"[Resolve]\nDNS={DNS_IP} 1.1.1.1 1.0.0.1\nDomains=~.\n",
+    _sudo=True,
 )
 
-server.service(
-    name="Start resolvconf",
-    service="resolvconf",
-    running=True,
+systemd.service(
+    name="Restart systemd-resolved",
+    service="systemd-resolved",
     restarted=resolvconf_config_edit.changed,
+    _sudo=True,
 )
-
-if resolvconf_config_edit.changed:
-    server.shell(name="Update /etc/resolv.conf", commands="resolvconf -u")
-
-    server.service(
-        name="Start systemd-resolved",
-        service="systemd-resolved",
-        running=True,
-        restarted=resolvconf_config_edit.changed,
-    )
