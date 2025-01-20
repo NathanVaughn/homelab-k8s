@@ -907,16 +907,18 @@
               "type": "prometheus",
               "uid": "${DS_PROMETHEUS}"
             },
+            "editorMode": "code",
             "exemplar": true,
-            "expr": "sum without (instance) (ceph_cluster_total_used_bytes)",
+            "expr": "sum without (instance) (sum(longhorn_disk_reservation_bytes))",
             "format": "time_series",
             "interval": "$resolution",
             "legendFormat": "",
+            "range": true,
             "refId": "A",
             "step": 10
           }
         ],
-        "title": "Used",
+        "title": "Used \u0026 Reserved",
         "type": "stat"
       },
       {
