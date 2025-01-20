@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webtrees-deployment
+  name: webtrees-test-deployment
   namespace: webtrees-test
 spec:
   replicas: 2

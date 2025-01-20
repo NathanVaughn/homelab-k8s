@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: webtrees-mysql-deployment
+  name: webtrees-test-mysql-deployment
   namespace: webtrees-test
 spec:
   replicas: 1
