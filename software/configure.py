@@ -215,7 +215,9 @@ for label in host.data.get("k8s_labels", []):  # type: ignore
 resolvconf_config_edit = files.block(
     name="Edit resolvconf configuration",
     path=resolvconf_config,
-    content=f"[Resolve]\nDNS={DNS_IP} 1.1.1.1 1.0.0.1\nDomains=~.\n",
+    # as kubernetes adds its own nameserver, the linux kernel has a max of 3
+    # We cannot define more than 2.
+    content=f"[Resolve]\nDNS={DNS_IP} 1.1.1.1\nDomains=~.\n",
     _sudo=True,
 )
 
