@@ -1,0 +1,7 @@
+tunnel: a022e654-0e10-4fcc-aeb1-a95ca2d68dc3
+credentials-file: /tunnel/tunnel.json
+ingress:
+  - service: https://traefik.service.consul:443
+    originRequest:
+      noTLSVerify: true
+      originServerName: "*traefik*"

@@ -37,3 +37,9 @@
 | traefik (reverse proxy) | 10.0.1.2 | reverse-proxy.svc.nathanv.home     |
 | chrony (NTP)            | 10.0.1.3 | ntp.svc.nathanv.home               |
 | technitium (DNS)        | 10.0.1.4 | dns.svc.nathanv.home               |
+
+### Iot
+
+VLAN 10
+
+10.10.0.1/24
