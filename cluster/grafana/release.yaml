@@ -31,7 +31,7 @@ spec:
         # this will need to be false on first-time setup
         # Log in with Authentik user, log out, log in as admin,
         # Make authentik user an admin, disable builtin admin account, log out
-        auto_login: false
+        auto_login: true
         name: Authentik
         client_id: $__file{/etc/secrets/grafana_secrets/grafana_ini.auth_generic_oauth.client_id}
         client_secret: $__file{/etc/secrets/grafana_secrets/grafana_ini.auth_generic_oauth.client_secret}

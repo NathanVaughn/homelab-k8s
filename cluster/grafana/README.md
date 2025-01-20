@@ -35,8 +35,9 @@ kubectl apply -f sealed-secret.yaml
 
 Set `grafana.ini.auth.generic_oauth.auto_login` to `false`.
 This will allow you to sign in with a username and password.
-Log in with Authentik user, log out, log in as admin,
-make authentik user an admin, disable builtin admin account, log out.
+Log in with Authentik, log out, and then log in as admin using username and password.
+Make the Authentik user an admin, along with an admin in the default org.
+Disable the builtin admin account and log out.
 
 You can now reset `grafana.ini.auth.generic_oauth.auto_login` to `true`.
 
