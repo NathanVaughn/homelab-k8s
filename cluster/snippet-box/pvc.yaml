@@ -4,9 +4,9 @@ metadata:
   name: snippet-box-pvc
   namespace: snippet-box
 spec:
-  storageClassName: longhorn-rwx
+  storageClassName: longhorn
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 100Mi
