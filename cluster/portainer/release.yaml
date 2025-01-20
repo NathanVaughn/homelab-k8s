@@ -19,6 +19,8 @@ spec:
       role: apps
     persistence:
       enabled: true
+      # ideally this would be a stateful set since
+      # portainer also has an embedded database, but helm chart does not allow that
       storageClass: longhorn-rwx
       accessMode: ReadWriteMany
       size: 200Mi

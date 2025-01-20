@@ -37,6 +37,7 @@ spec:
           volumeClaimTemplate:
             spec:
               storageClassName: longhorn
+              # TODO maybe need to revisit
               accessModes: ["ReadWriteOnce"]
               resources:
                 requests:

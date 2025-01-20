@@ -19,6 +19,8 @@ spec:
       enabled: true
       type: pvc
       size: 200Mi
+      # ideally this would be a stateful set since
+      # grafana also has an embedded database, but helm chart does not allow that
       storageClassName: longhorn-rwx
       accessModes:
         - ReadWriteMany

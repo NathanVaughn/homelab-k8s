@@ -4,6 +4,7 @@ metadata:
   name: snippet-box-pvc
   namespace: snippet-box
 spec:
+  # snippet box has an embedded sqlite database that doesn't like to share
   storageClassName: longhorn
   accessModes:
     - ReadWriteOnce
