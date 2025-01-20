@@ -27,7 +27,7 @@ spec:
                       - network
       initContainers:
         - name: permission-fix
-          image: docker.io/library/busybox:latest
+          image: docker.io/library/busybox:1.37.0
           command: ['sh', '-c']
           args: ['chown -R 508:508 /opt/tplink/EAPController/']
           volumeMounts:

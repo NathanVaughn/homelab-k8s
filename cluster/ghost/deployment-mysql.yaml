@@ -22,7 +22,7 @@ spec:
         runAsGroup: 999
       initContainers:
         - name: lost-found-fix
-          image: docker.io/library/busybox:latest
+          image: docker.io/library/busybox:1.37.0
           command: ['sh', '-c']
           args: ['rm -rf /var/lib/mysql/lost+found']
           volumeMounts:

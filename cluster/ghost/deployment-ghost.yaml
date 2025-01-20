@@ -17,7 +17,7 @@ spec:
         role: apps
       initContainers:
         - name: permission-fix
-          image: docker.io/library/busybox:latest
+          image: docker.io/library/busybox:1.37.0
           command: ['sh', '-c']
           args: ['chown -R 1000:1000 /var/lib/ghost/content']
           volumeMounts:
