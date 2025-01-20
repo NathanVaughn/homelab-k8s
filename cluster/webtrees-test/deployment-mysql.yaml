@@ -34,7 +34,7 @@ spec:
               value: webtrees
           envFrom:
             - secretRef:
-                name: webtrees-env
+                name: webtrees-test-env
           image: docker.io/library/mariadb:11.6.2
           name: mariadb
           ports:
