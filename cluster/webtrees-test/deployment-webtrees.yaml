@@ -7,11 +7,11 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: webtrees
+      app: webtrees-test
   template:
     metadata:
       labels:
-        app: webtrees
+        app: webtrees-test
     spec:
       nodeSelector:
         role: apps
@@ -36,7 +36,7 @@ spec:
             - name: DB_NAME
               value: webtrees
             - name: DB_HOST
-              value: webtrees-mysql-service.webtrees-test.svc.cluster.local
+              value: webtrees-test-mysql-service.webtrees-test.svc.cluster.local
             - name: DB_PORT
               value: "3306"
             - name: DB_TYPE
@@ -47,7 +47,7 @@ spec:
             - secretRef:
                 name: webtrees-env
           image: ghcr.io/nathanvaughn/webtrees:2.1.22
-          name: webtrees
+          name: webtrees-test
           ports:
             - containerPort: 80
           volumeMounts:
@@ -58,7 +58,7 @@ spec:
       volumes:
         - name: data-vol
           persistentVolumeClaim:
-            claimName: webtrees-pvc-data
+            claimName: webtrees-test-pvc-data
         - name: modules-vol
           persistentVolumeClaim:
-            claimName: webtrees-pvc-modules
+            claimName: webtrees-test-pvc-modules

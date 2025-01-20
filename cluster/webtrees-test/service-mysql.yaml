@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: webtrees-mysql-service
+  name: webtrees-test-mysql-service
   namespace: webtrees-test
 spec:
   type: ClusterIP

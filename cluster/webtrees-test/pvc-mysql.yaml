@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: webtrees-pvc-mysql
+  name: webtrees-test-pvc-mysql
   namespace: webtrees-test
 spec:
   storageClassName: longhorn

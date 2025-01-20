@@ -13,7 +13,7 @@ spec:
     - match: Host(`webtrees-test.nathanv.app`)
       kind: Rule
       services:
-        - name: webtrees-service
+        - name: webtrees-test-service
           port: 80
   tls:
     certResolver: le

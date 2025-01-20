@@ -5,14 +5,14 @@ metadata:
   namespace: webtrees-test
 spec:
   replicas: 1
-  serviceName: webtrees-mysql
+  serviceName: webtrees-test-mysql
   selector:
     matchLabels:
-      app: webtrees-mysql
+      app: webtrees-test-mysql
   template:
     metadata:
       labels:
-        app: webtrees-mysql
+        app: webtrees-test-mysql
     spec:
       nodeSelector:
         role: apps
@@ -45,4 +45,4 @@ spec:
       volumes:
         - name: mysql-vol
           persistentVolumeClaim:
-            claimName: webtrees-pvc-mysql
+            claimName: webtrees-test-pvc-mysql
