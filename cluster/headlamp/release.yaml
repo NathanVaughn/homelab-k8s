@@ -39,7 +39,7 @@ spec:
     persistentVolumeClaim:
       enabled: true
       storageClassName: longhorn
-      size: 1Gi
+      size: 100Mi
       accessModes:
         - ReadWriteOnce
     volumeMounts:
@@ -48,7 +48,7 @@ spec:
     volumes:
       - name: headlamp-plugins
         persistentVolumeClaim:
-        claimName: headlamp
+          claimName: headlamp
   valuesFrom:
     - kind: Secret
       name: headlamp-secrets
