@@ -1,5 +1,5 @@
 {
-  "apiVersion": "dashboard.grafana.app/v1beta1",
+  "apiVersion": "dashboard.grafana.app/v0alpha1",
   "kind": "Dashboard",
   "metadata": {
     "name": "83xwIJ8Gk"
@@ -9,9 +9,7 @@
       "list": [
         {
           "builtIn": 1,
-          "datasource": {
-            "uid": "-- Grafana --"
-          },
+          "datasource": "-- Grafana --",
           "enable": true,
           "hide": true,
           "iconColor": "rgba(0, 211, 255, 1)",
@@ -27,35 +25,22 @@
     "panels": [
       {
         "cacheTimeout": null,
+        "colorBackground": true,
         "colorPrefix": false,
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "mappings": [],
-            "nullValueMode": "connected",
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "#C4162A",
-                  "value": null
-                },
-                {
-                  "color": "#37872D",
-                  "value": 0
-                },
-                {
-                  "color": "#37872D",
-                  "value": 1
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
+        "colorValue": true,
+        "colors": [
+          "#C4162A",
+          "#37872D",
+          "#37872D"
+        ],
+        "datasource": "aeaihzsgrbpc0f",
+        "format": "none",
+        "gauge": {
+          "maxValue": 100,
+          "minValue": 0,
+          "show": false,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
         },
         "gridPos": {
           "h": 1,
@@ -78,24 +63,10 @@
           }
         ],
         "maxDataPoints": 100,
-        "options": {
-          "colorMode": "background",
-          "graphMode": "none",
-          "justifyMode": "auto",
-          "orientation": "horizontal",
-          "percentChangeColorMode": "standard",
-          "reduceOptions": {
-            "calcs": [
-              "firstNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showPercentChange": false,
-          "textMode": "auto",
-          "wideLayout": true
-        },
-        "pluginVersion": "12.1.0",
+        "nullPointMode": "connected",
+        "nullText": null,
+        "options": {},
+        "pluginVersion": "6.4.2",
         "postfix": "",
         "postfixFontSize": "50%",
         "prefix": "",
@@ -107,12 +78,17 @@
             "to": "null"
           }
         ],
+        "sparkline": {
+          "fillColor": "rgba(31, 118, 189, 0.18)",
+          "full": false,
+          "lineColor": "rgb(31, 120, 193)",
+          "show": false,
+          "ymax": null,
+          "ymin": null
+        },
+        "tableColumn": "",
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
             "exemplar": false,
             "expr": "harbor_health",
             "format": "time_series",
@@ -122,18 +98,24 @@
             "refId": "A"
           }
         ],
+        "thresholds": "0,1",
         "timeFrom": null,
         "timeShift": null,
         "title": "harbor health",
-        "type": "stat",
-        "valueFontSize": "80%"
+        "type": "singlestat",
+        "valueFontSize": "80%",
+        "valueMaps": [
+          {
+            "op": "=",
+            "text": "N/A",
+            "value": "null"
+          }
+        ],
+        "valueName": "first"
       },
       {
         "collapsed": false,
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
+        "datasource": "aeaihzsgrbpc0f",
         "gridPos": {
           "h": 1,
           "w": 24,
@@ -142,23 +124,11 @@
         },
         "id": 2,
         "panels": [],
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
-            "refId": "A"
-          }
-        ],
         "title": "Info",
         "type": "row"
       },
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
+        "datasource": "aeaihzsgrbpc0f",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -223,10 +193,6 @@
         "pluginVersion": "6.4.2",
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
             "exemplar": false,
             "expr": "harbor_health",
             "format": "table",
@@ -246,10 +212,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
+        "datasource": "aeaihzsgrbpc0f",
         "description": "",
         "fieldConfig": {
           "defaults": {
@@ -306,10 +269,6 @@
         "steppedLine": false,
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
             "expr": "harbor_project_quota_usage_byte",
             "format": "time_series",
             "hide": false,
@@ -367,10 +326,7 @@
         "cacheTimeout": null,
         "dashLength": 10,
         "dashes": false,
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
+        "datasource": "aeaihzsgrbpc0f",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -419,10 +375,6 @@
         "steppedLine": false,
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
             "expr": "rate(harbor_artifact_pulled[5m])",
             "instant": false,
             "interval": "",
@@ -474,34 +426,21 @@
       },
       {
         "cacheTimeout": null,
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "fixedColor": "rgb(31, 120, 193)",
-              "mode": "fixed"
-            },
-            "mappings": [],
-            "nullValueMode": "connected",
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
+        "colorBackground": false,
+        "colorValue": false,
+        "colors": [
+          "#299c46",
+          "rgba(237, 129, 40, 0.89)",
+          "#d44a3a"
+        ],
+        "datasource": "aeaihzsgrbpc0f",
+        "format": "none",
+        "gauge": {
+          "maxValue": 100,
+          "minValue": 0,
+          "show": false,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
         },
         "gridPos": {
           "h": 2,
@@ -524,24 +463,10 @@
           }
         ],
         "maxDataPoints": 100,
-        "options": {
-          "colorMode": "none",
-          "graphMode": "area",
-          "justifyMode": "auto",
-          "orientation": "horizontal",
-          "percentChangeColorMode": "standard",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showPercentChange": false,
-          "textMode": "auto",
-          "wideLayout": true
-        },
-        "pluginVersion": "12.1.0",
+        "nullPointMode": "connected",
+        "nullText": null,
+        "options": {},
+        "pluginVersion": "7.4.3",
         "postfix": "",
         "postfixFontSize": "50%",
         "prefix": "",
@@ -553,12 +478,17 @@
             "to": "null"
           }
         ],
+        "sparkline": {
+          "fillColor": "rgba(31, 118, 189, 0.18)",
+          "full": true,
+          "lineColor": "rgb(31, 120, 193)",
+          "show": true,
+          "ymax": null,
+          "ymin": null
+        },
+        "tableColumn": "",
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
             "expr": "sum(harbor_project_total)",
             "format": "table",
             "instant": false,
@@ -567,42 +497,38 @@
             "refId": "A"
           }
         ],
+        "thresholds": "",
         "timeFrom": null,
         "timeShift": null,
         "title": "Projects",
-        "type": "stat",
-        "valueFontSize": "80%"
+        "type": "singlestat",
+        "valueFontSize": "80%",
+        "valueMaps": [
+          {
+            "op": "=",
+            "text": "N/A",
+            "value": "null"
+          }
+        ],
+        "valueName": "avg"
       },
       {
         "cacheTimeout": null,
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "fixedColor": "rgb(31, 120, 193)",
-              "mode": "fixed"
-            },
-            "mappings": [],
-            "nullValueMode": "connected",
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
+        "colorBackground": false,
+        "colorValue": false,
+        "colors": [
+          "#299c46",
+          "rgba(237, 129, 40, 0.89)",
+          "#d44a3a"
+        ],
+        "datasource": "aeaihzsgrbpc0f",
+        "format": "none",
+        "gauge": {
+          "maxValue": 100,
+          "minValue": 0,
+          "show": false,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
         },
         "gridPos": {
           "h": 2,
@@ -625,24 +551,10 @@
           }
         ],
         "maxDataPoints": 100,
-        "options": {
-          "colorMode": "none",
-          "graphMode": "area",
-          "justifyMode": "auto",
-          "orientation": "horizontal",
-          "percentChangeColorMode": "standard",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showPercentChange": false,
-          "textMode": "auto",
-          "wideLayout": true
-        },
-        "pluginVersion": "12.1.0",
+        "nullPointMode": "connected",
+        "nullText": null,
+        "options": {},
+        "pluginVersion": "7.4.3",
         "postfix": "",
         "postfixFontSize": "50%",
         "prefix": "",
@@ -654,12 +566,17 @@
             "to": "null"
           }
         ],
+        "sparkline": {
+          "fillColor": "rgba(31, 118, 189, 0.18)",
+          "full": true,
+          "lineColor": "rgb(31, 120, 193)",
+          "show": true,
+          "ymax": null,
+          "ymin": null
+        },
+        "tableColumn": "",
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
             "expr": "sum(harbor_project_repo_total)",
             "format": "table",
             "instant": false,
@@ -668,42 +585,38 @@
             "refId": "A"
           }
         ],
+        "thresholds": "",
         "timeFrom": null,
         "timeShift": null,
         "title": "Repos",
-        "type": "stat",
-        "valueFontSize": "80%"
+        "type": "singlestat",
+        "valueFontSize": "80%",
+        "valueMaps": [
+          {
+            "op": "=",
+            "text": "N/A",
+            "value": "null"
+          }
+        ],
+        "valueName": "avg"
       },
       {
         "cacheTimeout": null,
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "fixedColor": "rgb(31, 120, 193)",
-              "mode": "fixed"
-            },
-            "mappings": [],
-            "nullValueMode": "connected",
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
+        "colorBackground": false,
+        "colorValue": false,
+        "colors": [
+          "#299c46",
+          "rgba(237, 129, 40, 0.89)",
+          "#d44a3a"
+        ],
+        "datasource": "aeaihzsgrbpc0f",
+        "format": "none",
+        "gauge": {
+          "maxValue": 100,
+          "minValue": 0,
+          "show": false,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
         },
         "gridPos": {
           "h": 2,
@@ -726,24 +639,10 @@
           }
         ],
         "maxDataPoints": 100,
-        "options": {
-          "colorMode": "none",
-          "graphMode": "area",
-          "justifyMode": "auto",
-          "orientation": "horizontal",
-          "percentChangeColorMode": "standard",
-          "reduceOptions": {
-            "calcs": [
-              "firstNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showPercentChange": false,
-          "textMode": "auto",
-          "wideLayout": true
-        },
-        "pluginVersion": "12.1.0",
+        "nullPointMode": "connected",
+        "nullText": null,
+        "options": {},
+        "pluginVersion": "7.4.3",
         "postfix": "",
         "postfixFontSize": "50%",
         "prefix": "",
@@ -755,12 +654,17 @@
             "to": "null"
           }
         ],
+        "sparkline": {
+          "fillColor": "rgba(31, 118, 189, 0.18)",
+          "full": true,
+          "lineColor": "rgb(31, 120, 193)",
+          "show": true,
+          "ymax": null,
+          "ymin": null
+        },
+        "tableColumn": "",
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
             "expr": "sum(harbor_project_total{public=\"true\"})",
             "format": "table",
             "instant": false,
@@ -769,42 +673,38 @@
             "refId": "A"
           }
         ],
+        "thresholds": "",
         "timeFrom": null,
         "timeShift": null,
         "title": "Public Projects",
-        "type": "stat",
-        "valueFontSize": "80%"
+        "type": "singlestat",
+        "valueFontSize": "80%",
+        "valueMaps": [
+          {
+            "op": "=",
+            "text": "N/A",
+            "value": "null"
+          }
+        ],
+        "valueName": "first"
       },
       {
         "cacheTimeout": null,
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "fixedColor": "rgb(31, 120, 193)",
-              "mode": "fixed"
-            },
-            "mappings": [],
-            "nullValueMode": "connected",
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
+        "colorBackground": false,
+        "colorValue": false,
+        "colors": [
+          "#299c46",
+          "rgba(237, 129, 40, 0.89)",
+          "#d44a3a"
+        ],
+        "datasource": "aeaihzsgrbpc0f",
+        "format": "none",
+        "gauge": {
+          "maxValue": 100,
+          "minValue": 0,
+          "show": false,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
         },
         "gridPos": {
           "h": 2,
@@ -827,24 +727,10 @@
           }
         ],
         "maxDataPoints": 100,
-        "options": {
-          "colorMode": "none",
-          "graphMode": "area",
-          "justifyMode": "auto",
-          "orientation": "horizontal",
-          "percentChangeColorMode": "standard",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showPercentChange": false,
-          "textMode": "auto",
-          "wideLayout": true
-        },
-        "pluginVersion": "12.1.0",
+        "nullPointMode": "connected",
+        "nullText": null,
+        "options": {},
+        "pluginVersion": "7.4.3",
         "postfix": "",
         "postfixFontSize": "50%",
         "prefix": "",
@@ -856,12 +742,17 @@
             "to": "null"
           }
         ],
+        "sparkline": {
+          "fillColor": "rgba(31, 118, 189, 0.18)",
+          "full": true,
+          "lineColor": "rgb(31, 120, 193)",
+          "show": true,
+          "ymax": null,
+          "ymin": null
+        },
+        "tableColumn": "",
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
             "expr": "sum(harbor_project_repo_total{public=\"true\"})",
             "format": "table",
             "instant": false,
@@ -870,42 +761,38 @@
             "refId": "A"
           }
         ],
+        "thresholds": "",
         "timeFrom": null,
         "timeShift": null,
         "title": "Public Repos",
-        "type": "stat",
-        "valueFontSize": "80%"
+        "type": "singlestat",
+        "valueFontSize": "80%",
+        "valueMaps": [
+          {
+            "op": "=",
+            "text": "N/A",
+            "value": "null"
+          }
+        ],
+        "valueName": "avg"
       },
       {
         "cacheTimeout": null,
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "fixedColor": "rgb(31, 120, 193)",
-              "mode": "fixed"
-            },
-            "mappings": [],
-            "nullValueMode": "connected",
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
+        "colorBackground": false,
+        "colorValue": false,
+        "colors": [
+          "#299c46",
+          "rgba(237, 129, 40, 0.89)",
+          "#d44a3a"
+        ],
+        "datasource": "aeaihzsgrbpc0f",
+        "format": "none",
+        "gauge": {
+          "maxValue": 100,
+          "minValue": 0,
+          "show": false,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
         },
         "gridPos": {
           "h": 2,
@@ -928,24 +815,10 @@
           }
         ],
         "maxDataPoints": 100,
-        "options": {
-          "colorMode": "none",
-          "graphMode": "area",
-          "justifyMode": "auto",
-          "orientation": "horizontal",
-          "percentChangeColorMode": "standard",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showPercentChange": false,
-          "textMode": "auto",
-          "wideLayout": true
-        },
-        "pluginVersion": "12.1.0",
+        "nullPointMode": "connected",
+        "nullText": null,
+        "options": {},
+        "pluginVersion": "7.4.3",
         "postfix": "",
         "postfixFontSize": "50%",
         "prefix": "",
@@ -957,12 +830,17 @@
             "to": "null"
           }
         ],
+        "sparkline": {
+          "fillColor": "rgba(31, 118, 189, 0.18)",
+          "full": true,
+          "lineColor": "rgb(31, 120, 193)",
+          "show": true,
+          "ymax": null,
+          "ymin": null
+        },
+        "tableColumn": "",
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
             "expr": "sum(harbor_project_total{public=\"false\"})",
             "format": "table",
             "instant": false,
@@ -971,42 +849,38 @@
             "refId": "A"
           }
         ],
+        "thresholds": "",
         "timeFrom": null,
         "timeShift": null,
         "title": "Private Projects",
-        "type": "stat",
-        "valueFontSize": "80%"
+        "type": "singlestat",
+        "valueFontSize": "80%",
+        "valueMaps": [
+          {
+            "op": "=",
+            "text": "N/A",
+            "value": "null"
+          }
+        ],
+        "valueName": "avg"
       },
       {
         "cacheTimeout": null,
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "fixedColor": "rgb(31, 120, 193)",
-              "mode": "fixed"
-            },
-            "mappings": [],
-            "nullValueMode": "connected",
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
+        "colorBackground": false,
+        "colorValue": false,
+        "colors": [
+          "#299c46",
+          "rgba(237, 129, 40, 0.89)",
+          "#d44a3a"
+        ],
+        "datasource": "aeaihzsgrbpc0f",
+        "format": "none",
+        "gauge": {
+          "maxValue": 100,
+          "minValue": 0,
+          "show": false,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
         },
         "gridPos": {
           "h": 2,
@@ -1029,24 +903,10 @@
           }
         ],
         "maxDataPoints": 100,
-        "options": {
-          "colorMode": "none",
-          "graphMode": "area",
-          "justifyMode": "auto",
-          "orientation": "horizontal",
-          "percentChangeColorMode": "standard",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showPercentChange": false,
-          "textMode": "auto",
-          "wideLayout": true
-        },
-        "pluginVersion": "12.1.0",
+        "nullPointMode": "connected",
+        "nullText": null,
+        "options": {},
+        "pluginVersion": "7.4.3",
         "postfix": "",
         "postfixFontSize": "50%",
         "prefix": "",
@@ -1058,12 +918,17 @@
             "to": "null"
           }
         ],
+        "sparkline": {
+          "fillColor": "rgba(31, 118, 189, 0.18)",
+          "full": true,
+          "lineColor": "rgb(31, 120, 193)",
+          "show": true,
+          "ymax": null,
+          "ymin": null
+        },
+        "tableColumn": "",
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
             "expr": "sum(harbor_project_repo_total{public=\"false\"})",
             "format": "table",
             "instant": false,
@@ -1072,18 +937,24 @@
             "refId": "A"
           }
         ],
+        "thresholds": "",
         "timeFrom": null,
         "timeShift": null,
         "title": "Private Repos",
-        "type": "stat",
-        "valueFontSize": "80%"
+        "type": "singlestat",
+        "valueFontSize": "80%",
+        "valueMaps": [
+          {
+            "op": "=",
+            "text": "N/A",
+            "value": "null"
+          }
+        ],
+        "valueName": "avg"
       },
       {
         "collapsed": true,
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
+        "datasource": "aeaihzsgrbpc0f",
         "gridPos": {
           "h": 1,
           "w": 24,
@@ -1097,10 +968,7 @@
             "bars": true,
             "dashLength": 10,
             "dashes": false,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
+            "datasource": "aeaihzsgrbpc0f",
             "fieldConfig": {
               "defaults": {
                 "custom": {}
@@ -1144,10 +1012,6 @@
             "steppedLine": false,
             "targets": [
               {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "aeaihzsgrbpc0f"
-                },
                 "expr": "sum(harbor_core_http_inflight_requests) by (pod)",
                 "interval": "",
                 "intervalFactor": 5,
@@ -1201,10 +1065,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
+            "datasource": "aeaihzsgrbpc0f",
             "fieldConfig": {
               "defaults": {
                 "custom": {}
@@ -1250,10 +1111,6 @@
             "steppedLine": false,
             "targets": [
               {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "aeaihzsgrbpc0f"
-                },
                 "exemplar": false,
                 "expr": "sum(rate(harbor_core_http_request_total[5m])) by (operation)",
                 "format": "time_series",
@@ -1310,10 +1167,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
+            "datasource": "aeaihzsgrbpc0f",
             "fieldConfig": {
               "defaults": {
                 "custom": {}
@@ -1360,10 +1214,6 @@
             "steppedLine": false,
             "targets": [
               {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "aeaihzsgrbpc0f"
-                },
                 "expr": "max(harbor_core_http_request_duration_seconds{quantile=\"0.99\"}) by (operation)",
                 "interval": "",
                 "intervalFactor": 2,
@@ -1413,24 +1263,12 @@
             }
           }
         ],
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
-            "refId": "A"
-          }
-        ],
         "title": "Core Metrics",
         "type": "row"
       },
       {
         "collapsed": true,
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
+        "datasource": "aeaihzsgrbpc0f",
         "gridPos": {
           "h": 1,
           "w": 24,
@@ -1444,10 +1282,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
+            "datasource": "aeaihzsgrbpc0f",
             "description": "time period from last process of task queue",
             "fieldConfig": {
               "defaults": {
@@ -1493,10 +1328,6 @@
             "steppedLine": false,
             "targets": [
               {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "aeaihzsgrbpc0f"
-                },
                 "expr": "avg(harbor_task_queue_latency) by (type)",
                 "interval": "",
                 "intervalFactor": 1,
@@ -1550,10 +1381,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
+            "datasource": "aeaihzsgrbpc0f",
             "description": "",
             "fieldConfig": {
               "defaults": {
@@ -1599,10 +1427,6 @@
             "steppedLine": false,
             "targets": [
               {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "aeaihzsgrbpc0f"
-                },
                 "expr": "sum(harbor_task_concurrency) by (type)",
                 "interval": "",
                 "legendFormat": "{{ type }}",
@@ -1655,10 +1479,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
+            "datasource": "aeaihzsgrbpc0f",
             "fieldConfig": {
               "defaults": {
                 "custom": {}
@@ -1703,10 +1524,6 @@
             "steppedLine": false,
             "targets": [
               {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "aeaihzsgrbpc0f"
-                },
                 "expr": "harbor_task_queue_size",
                 "interval": "",
                 "legendFormat": "{{ type }}",
@@ -1759,10 +1576,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
+            "datasource": "aeaihzsgrbpc0f",
             "fieldConfig": {
               "defaults": {
                 "custom": {}
@@ -1807,10 +1621,6 @@
             "steppedLine": false,
             "targets": [
               {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "aeaihzsgrbpc0f"
-                },
                 "expr": "harbor_task_scheduled_total",
                 "interval": "",
                 "legendFormat": " ",
@@ -1863,10 +1673,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
+            "datasource": "aeaihzsgrbpc0f",
             "description": "",
             "fieldConfig": {
               "defaults": {
@@ -1912,10 +1719,6 @@
             "steppedLine": false,
             "targets": [
               {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "aeaihzsgrbpc0f"
-                },
                 "expr": "sum(rate(harbor_jobservice_task_total{status=\"fail\"}[1m])) by (type)",
                 "interval": "",
                 "legendFormat": "{{ type }}",
@@ -1968,10 +1771,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
+            "datasource": "aeaihzsgrbpc0f",
             "fieldConfig": {
               "defaults": {
                 "custom": {}
@@ -2016,10 +1816,6 @@
             "steppedLine": false,
             "targets": [
               {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "aeaihzsgrbpc0f"
-                },
                 "expr": "max(harbor_jobservice_task_process_time_seconds{quantile=\"0.99\", status=\"fail\"}) by (type)",
                 "interval": "",
                 "legendFormat": "{{ type }}",
@@ -2072,10 +1868,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
+            "datasource": "aeaihzsgrbpc0f",
             "description": "",
             "fieldConfig": {
               "defaults": {
@@ -2121,10 +1914,6 @@
             "steppedLine": false,
             "targets": [
               {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "aeaihzsgrbpc0f"
-                },
                 "expr": "sum(rate(harbor_jobservice_task_total{status=\"success\"}[1m])) by (type)",
                 "interval": "",
                 "legendFormat": "{{ type }}",
@@ -2177,10 +1966,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
+            "datasource": "aeaihzsgrbpc0f",
             "fieldConfig": {
               "defaults": {
                 "custom": {}
@@ -2225,10 +2011,6 @@
             "steppedLine": false,
             "targets": [
               {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "aeaihzsgrbpc0f"
-                },
                 "expr": "max(harbor_jobservice_task_process_time_seconds{quantile=\"0.99\", status=\"success\"}) by (type)",
                 "interval": "",
                 "legendFormat": "{{ type }}",
@@ -2277,24 +2059,12 @@
             }
           }
         ],
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
-            "refId": "A"
-          }
-        ],
         "title": "JobService Metrics",
         "type": "row"
       },
       {
         "collapsed": true,
-        "datasource": {
-          "type": "prometheus",
-          "uid": "aeaihzsgrbpc0f"
-        },
+        "datasource": "aeaihzsgrbpc0f",
         "gridPos": {
           "h": 1,
           "w": 24,
@@ -2308,10 +2078,7 @@
             "bars": true,
             "dashLength": 10,
             "dashes": false,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
+            "datasource": "aeaihzsgrbpc0f",
             "fieldConfig": {
               "defaults": {
                 "custom": {}
@@ -2355,10 +2122,6 @@
             "steppedLine": false,
             "targets": [
               {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "aeaihzsgrbpc0f"
-                },
                 "expr": "sum(registry_http_in_flight_requests) by (pod)",
                 "interval": "",
                 "intervalFactor": 5,
@@ -2412,10 +2175,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
+            "datasource": "aeaihzsgrbpc0f",
             "fieldConfig": {
               "defaults": {
                 "custom": {}
@@ -2460,10 +2220,6 @@
             "steppedLine": false,
             "targets": [
               {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "aeaihzsgrbpc0f"
-                },
                 "expr": "sum(rate(registry_http_requests_total[5m])) by (method)",
                 "interval": "",
                 "intervalFactor": 2,
@@ -2517,10 +2273,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
+            "datasource": "aeaihzsgrbpc0f",
             "fieldConfig": {
               "defaults": {
                 "custom": {}
@@ -2564,10 +2317,6 @@
             "steppedLine": false,
             "targets": [
               {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "aeaihzsgrbpc0f"
-                },
                 "expr": "sum(rate(registry_storage_cache_total[5m])) by (type)",
                 "interval": "",
                 "intervalFactor": 2,
@@ -2621,10 +2370,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
+            "datasource": "aeaihzsgrbpc0f",
             "fieldConfig": {
               "defaults": {
                 "custom": {}
@@ -2668,10 +2414,6 @@
             "steppedLine": false,
             "targets": [
               {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "aeaihzsgrbpc0f"
-                },
                 "expr": "max(histogram_quantile(0.99, rate(registry_http_request_duration_seconds_bucket[10m]))) by (handler)",
                 "interval": "",
                 "legendFormat": "{{ handler }}",
@@ -2724,10 +2466,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
+            "datasource": "aeaihzsgrbpc0f",
             "fieldConfig": {
               "defaults": {
                 "custom": {}
@@ -2771,10 +2510,6 @@
             "steppedLine": false,
             "targets": [
               {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "aeaihzsgrbpc0f"
-                },
                 "expr": "sum(histogram_quantile(0.99, rate(registry_http_request_size_bytes_bucket[10m]))) by (handler)",
                 "hide": false,
                 "interval": "",
@@ -2828,10 +2563,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
+            "datasource": "aeaihzsgrbpc0f",
             "fieldConfig": {
               "defaults": {
                 "custom": {}
@@ -2875,10 +2607,6 @@
             "steppedLine": false,
             "targets": [
               {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "aeaihzsgrbpc0f"
-                },
                 "expr": "sum(histogram_quantile(0.99, rate(registry_http_response_size_bytes_bucket[10m]))) by (handler)",
                 "interval": "",
                 "legendFormat": "{{ handler }}",
@@ -2927,21 +2655,12 @@
             }
           }
         ],
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
-            "refId": "A"
-          }
-        ],
         "title": "Registry Metric",
         "type": "row"
       }
     ],
-    "refresh": "",
-    "schemaVersion": 42,
+    "refresh": false,
+    "schemaVersion": 20,
     "style": "dark",
     "tags": [],
     "templating": {
