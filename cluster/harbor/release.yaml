@@ -56,8 +56,9 @@ spec:
           accessMode: ReadWriteMany
           size: 50Gi
         jobservice:
-          storageClass: longhorn-rwx
-          accessMode: ReadWriteMany
+          jobLog:
+            storageClass: longhorn-rwx
+            accessMode: ReadWriteMany
         database:
           storageClass: longhorn
           accessMode: ReadWriteOnce
