@@ -53,15 +53,20 @@ spec:
       persistentVolumeClaim:
         registry:
           storageClass: longhorn-rwx
+          accessMode: ReadWriteMany
           size: 50Gi
         jobservice:
           storageClass: longhorn-rwx
+          accessMode: ReadWriteMany
         database:
           storageClass: longhorn
+          accessMode: ReadWriteOnce
         redis:
           storageClass: longhorn
+          accessMode: ReadWriteOnce
         trivy:
           storageClass: longhorn
+          accessMode: ReadWriteOnce
   valuesFrom:
     - kind: Secret
       name: harbor-secrets
