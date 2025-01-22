@@ -1,0 +1,5 @@
+- Update webtrees
+- Setup Octoprint
+- Setup Factorio
+- Provision network controller
+- Write K8S operator
