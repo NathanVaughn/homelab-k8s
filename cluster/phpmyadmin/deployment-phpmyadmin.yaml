@@ -28,7 +28,7 @@ spec:
           envFrom:
             - secretRef:
                 name: phpmyadmin-env
-          image: docker.io/library/phpmyadmin:5.2.1
+          image: docker.io/library/phpmyadmin:5.2.2
           name: phpmyadmin
           ports:
             - containerPort: 80
