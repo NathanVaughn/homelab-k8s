@@ -33,7 +33,7 @@ access the volume for writing at a time.
 Volumes which needed to *modified* by multiple pods at the same time should use the
 storage class "longhorn-rwx".
 
-## Accessing a Volume
+### Accessing a Volume
 
 1. Use the Longhorn UI to figure out what node the volume is on.
 2. SSH into the node.
@@ -50,3 +50,15 @@ kubectl exec -n {namespace} -it {pod-name} -- /bin/bash
 ```
 
 This tends to be easier.
+
+### Manually Run Backup Job
+
+```bash
+kubectl create job --from=cronjob/nightly-backup nightly-backup-oneshot -n longhorn
+```
+
+Check when it's done with
+
+```bash
+kubectl get jobs -n longhorn nightly-backup-oneshot
+```
