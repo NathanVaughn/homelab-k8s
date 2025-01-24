@@ -38,10 +38,10 @@ spec:
             name: headlamp-plugins
     persistentVolumeClaim:
       enabled: true
-      storageClassName: longhorn
+      storageClassName: longhorn-rwx
       size: 100Mi
       accessModes:
-        - ReadWriteOnce
+        - ReadWriteMany
     volumeMounts:
       - mountPath: /build/plugins
         name: headlamp-plugins
