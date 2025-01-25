@@ -13,6 +13,7 @@ spec:
       labels:
         app: k8s-dns
     spec:
+      serviceAccountName: k8s-dns-account
       nodeSelector:
         role: apps
       containers:
