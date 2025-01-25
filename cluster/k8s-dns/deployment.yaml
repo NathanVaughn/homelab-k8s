@@ -13,6 +13,8 @@ spec:
       labels:
         app: k8s-dns
     spec:
+      nodeSelector:
+        role: apps
       containers:
         - env:
             - name: TECHNITIUM_HOST
