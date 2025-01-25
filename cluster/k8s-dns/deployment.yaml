@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-dns-deployment
+  namespace: k8s-dns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-dns
+  template:
+    metadata:
+      labels:
+        app: k8s-dns
+    spec:
+      containers:
+        - env:
+            - name: TECHNITIUM_HOST
+              value: http://technitium-dns-service.technitium-dns.svc.cluster.local:5380
+          envFrom:
+            - secretRef:
+                name: k8s-dns-env
+          image: docker pull cr.nathanv.app/library/k8s-dns:latest
+          name: k8s-dns

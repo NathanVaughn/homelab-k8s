@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: k8s-dns-repo
+  namespace: k8s-dns
+spec:
+  interval: 1h0m0s
+  url: https://github.com/NathanVaughn/k8s-dns/
+  ref:
+    branch: main
