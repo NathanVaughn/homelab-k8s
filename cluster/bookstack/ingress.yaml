@@ -3,10 +3,6 @@ kind: IngressRoute
 metadata:
   name: bookstack-route
   namespace: bookstack
-  annotations:
-    k8s-dns.nathanv.me/hostname: bookstack.nathanv.app
-    k8s-dns.nathanv.me/external: tunnel.nathanv.app
-    k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
 spec:
   entryPoints:
     - websecure
