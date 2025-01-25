@@ -4,7 +4,7 @@ metadata:
   name: k8s-dns-role
   namespace: k8s-dns
 rules:
-  # handling events
+  # events
   - apiGroups: [""]
     resources: [events]
     verbs: [create]
