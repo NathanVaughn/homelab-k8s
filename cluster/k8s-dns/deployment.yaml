@@ -20,5 +20,5 @@ spec:
           envFrom:
             - secretRef:
                 name: k8s-dns-env
-          image: docker pull cr.nathanv.app/library/k8s-dns:latest
+          image: cr.nathanv.app/library/k8s-dns:latest
           name: k8s-dns
