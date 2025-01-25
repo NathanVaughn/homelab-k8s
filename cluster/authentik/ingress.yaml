@@ -3,10 +3,6 @@ kind: IngressRoute
 metadata:
   name: authentik-route
   namespace: authentik
-  annotations:
-    k8s-dns.nathanv.me/hostname: authentik.nathanv.app
-    k8s-dns.nathanv.me/external: tunnel.nathanv.app
-    k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
 spec:
   entryPoints:
     - websecure
