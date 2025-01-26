@@ -10,7 +10,7 @@ spec:
     - match: Host(`kubetail.nathanv.app`)
       kind: Rule
       services:
-        - name: kubetail
+        - name: kubetail-dashboard
           port: 8080
           # middlewares:
           #   - name: authentik-forward-auth
