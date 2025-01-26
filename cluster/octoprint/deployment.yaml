@@ -30,7 +30,12 @@ spec:
           volumeMounts:
             - mountPath: /octoprint
               name: data-vol
+            - mountPath: /dev/ttyUSB0
+              name: printer-usb
       volumes:
         - name: data-vol
           persistentVolumeClaim:
             claimName: octoprint-pvc
+        - name: printer-usb
+          hostPath:
+            path: /dev/ttyUSB0
