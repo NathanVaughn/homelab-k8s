@@ -23,9 +23,8 @@ autoinstall:
           name: en* # Matches all Ethernet interfaces
         dhcp4: true
     wifis:
-      all-wl:
-        match:
-          name: wl*
+      # match not allowed for WiFi. Hopefully this is consistent
+      wlp2s0:
         access-points:
           TODO:
             password: TODO
