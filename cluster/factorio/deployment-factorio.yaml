@@ -15,7 +15,7 @@ spec:
         app: factorio
     spec:
       nodeSelector:
-        role: games
+        role: apps
       initContainers:
         # https://www.jeffgeerling.com/blog/2019/mounting-kubernetes-secret-single-file-inside-pod
         - name: config-copy
