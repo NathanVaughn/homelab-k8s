@@ -10,7 +10,7 @@ spec:
     - match: Host(`octoprint-cam.nathanv.app`)
       kind: Rule
       services:
-        - name: octoprint-service
+        - name: octoprint-cam-service
           port: 8080
   tls:
     certResolver: le

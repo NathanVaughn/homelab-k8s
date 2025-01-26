@@ -10,7 +10,7 @@ spec:
     - match: Host(`octoprint.nathanv.app`)
       kind: Rule
       services:
-        - name: octoprint-service
+        - name: octoprint-web-service
           port: 80
   tls:
     certResolver: le
