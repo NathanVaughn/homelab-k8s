@@ -53,7 +53,7 @@ multipath_config = files.block(
 systemd.service(
     name="Restart multipathd",
     service="multipathd",
-    restarted=multipath_config.changed,
+    restarted=multipath_config.did_change(),
     _sudo=True,
 )
 
@@ -199,7 +199,7 @@ k3s_config = files.put(
 systemd.service(
     name="Restart k3s",
     service="k3s",
-    restarted=k3s_config.changed,
+    restarted=k3s_config.did_change(),
     _sudo=True,
 )
 
@@ -234,6 +234,6 @@ resolvconf_config_edit = files.block(
 systemd.service(
     name="Restart systemd-resolved",
     service="systemd-resolved",
-    restarted=resolvconf_config_edit.changed,
+    restarted=resolvconf_config_edit.did_change(),
     _sudo=True,
 )
