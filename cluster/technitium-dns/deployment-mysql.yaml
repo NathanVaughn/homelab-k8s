@@ -40,7 +40,7 @@ spec:
           command: ['sh', '-c']
           # technitium tries to `use mysql` to create it's own database
           # https://github.com/TechnitiumSoftware/DnsServer/blob/2f7a5d4494a27d73bd3aa67d728dac72c46dbfae/Apps/QueryLogsMySqlApp/App.cs#L324
-          args: [echo "GRANT SELECT ON mysql.* TO 'technitium-dns'@'%';" > /docker-entrypoint-initdb.d/perms.sql']
+          args: [echo "GRANT SELECT ON mysql.* TO 'technitium-dns'@'%';" > /docker-entrypoint-initdb.d/perms.sql]
           volumeMounts:
             - mountPath: /docker-entrypoint-initdb.d
               name: initdb-vol
