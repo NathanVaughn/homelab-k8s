@@ -23,5 +23,5 @@ spec:
           envFrom:
             - secretRef:
                 name: k8s-dns-env
-          image: ghcr.io/nathanvaughn/k8s-dns:0.1.1
+          image: ghcr.io/nathanvaughn/k8s-dns:0.1.2
           name: k8s-dns
