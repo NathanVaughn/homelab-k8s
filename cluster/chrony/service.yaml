@@ -3,9 +3,6 @@ kind: Service
 metadata:
   name: chrony-service
   namespace: chrony
-  annotations:
-    k8s-dns.nathanv.me/hostname: time.nathanv.app
-    k8s-dns.nathanv.me/internal: ntp.svc.nathanv.home
 spec:
   type: LoadBalancer
   loadBalancerIP: "10.0.1.3"

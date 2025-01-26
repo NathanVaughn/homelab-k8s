@@ -1,0 +1,8 @@
+apiVersion: nathanv.me/v1
+kind: DNSConfig
+metadata:
+  name: chrony-dns-config2
+  namespace: chrony
+spec:
+  hostname: tunnel.nathanv.app
+  internalCNAME: ntp.svc.nathanv.home
