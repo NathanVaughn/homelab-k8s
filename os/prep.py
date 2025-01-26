@@ -30,11 +30,12 @@ def main(hostname: str, password: str, ssid_name: str, ssid_password: str) -> No
 
     data["autoinstall"]["ssh"]["authorized-keys"] = [ssh_key]
 
-    # add Wifi credentials
+    # add Wifi credentials and package
     if ssid_name and ssid_password:
-        data["autoinstall"]["network"]["wifis"]["all-wl"]["access-points"] = {
+        data["autoinstall"]["network"]["wifis"]["wlp2s0"]["access-points"] = {
             ssid_name: {"password": ssid_password}
         }
+        data["packages"] = ["wpasupplicant"]
     else:
         del data["autoinstall"]["network"]["wifis"]
 

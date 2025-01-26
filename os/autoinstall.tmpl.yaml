@@ -25,9 +25,11 @@ autoinstall:
     wifis:
       # match not allowed for WiFi. Hopefully this is consistent
       wlp2s0:
+        dhcp4: true
         access-points:
           TODO:
             password: TODO
+  packages:
   source: # use a minimal distribution
     id: ubuntu-server-minimal
   user-data:

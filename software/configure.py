@@ -212,6 +212,13 @@ for label in host.data.get("k8s_labels", []):  # type: ignore
 # they need to pull the DNS server image
 # Prevents chicken and egg problem.
 # Use `resolvectl status` for debugging
+files.directory(
+    name="Create resolvconf configuration director",
+    path=os.path.dirname(resolvconf_config),
+    present=True,
+    _sudo=True,
+)
+
 resolvconf_config_edit = files.block(
     name="Edit resolvconf configuration",
     path=resolvconf_config,
