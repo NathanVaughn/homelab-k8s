@@ -30,7 +30,7 @@ spec:
           volumeMounts:
             - mountPath: /octoprint
               name: data-vol
-            - mountPath: /dev/ttyUSB0
+            - mountPath: /dev/ttyUSB0 # even with privleged, still needed for some reason
               name: printer-usb
       volumes:
         - name: data-vol
