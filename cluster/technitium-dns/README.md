@@ -68,10 +68,12 @@ Change the configuration:
   "maxQueueSize": 1000000,
   "maxLogDays": 30,
   "maxLogRecords": 0,
-  "databaseName": "technitium-dns",
-  "connectionString": "Server=technitium-dns-mysql-service.technitium-dns.svc.cluster.local; Port=3306; Uid=technitium-dns; Pwd=$MARIADB_PASSWORD;"
+  "databaseName": "technitiumdns",
+  "connectionString": "Server=technitium-dns-mysql-service.technitium-dns.svc.cluster.local; Port=3306; Uid=technitiumdns; Pwd=$MARIADB_PASSWORD;"
 }
 ```
+
+Cannot use a dash in the database name.
 
 ### Misc
 
