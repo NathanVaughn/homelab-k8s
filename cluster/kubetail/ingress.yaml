@@ -12,9 +12,9 @@ spec:
       services:
         - name: kubetail-dashboard
           port: 8080
-          middlewares:
-            - name: authentik-forward-auth
-              namespace: authentik
+      middlewares:
+        - name: authentik-forward-auth
+          namespace: authentik
   tls:
     certResolver: le
     domains:
