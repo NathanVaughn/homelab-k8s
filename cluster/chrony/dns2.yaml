@@ -4,5 +4,5 @@ metadata:
   name: chrony-dns-config2
   namespace: chrony
 spec:
-  hostname: tunnel.nathanv.app
+  hostname: time.nathanv.app
   internalCNAME: ntp.svc.nathanv.home
