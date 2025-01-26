@@ -1,3 +1,5 @@
+# OS Install
+
 1. Download desired Ubuntu image
 2. Create bootable flash drive
 3. Run `prep.py`

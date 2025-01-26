@@ -18,16 +18,16 @@
 
 ### Static IP Addresses
 
-| Device                | IP        | Description                       |
-| --------------------- | --------- | --------------------------------- |
-| ares.nathanv.home     | 10.0.0.5  | DNS Server and Network Controller |
-| zeus.nathanv.home     | 10.0.0.10 | Main app server                   |
-| poseidon.nathanv.home | 10.0.0.11 | 3D print server                   |
-| billy.nathanv.home    | 10.0.0.20 | Kubernetes node 1                 |
-| jesse.nathanv.home    | 10.0.0.21 | Kubernetes node 2                 |
-| tom.nathanv.home      | 10.0.0.22 | Kubernetes node 3                 |
-| annie.nathanv.home    | 10.0.0.23 | Kubernetes node 4                 |
-| will.nathanv.home     | 10.0.0.24 | Kubernetes node 5                 |
+| Device               | IP        | Description                       |
+| -------------------- | --------- | --------------------------------- |
+| butch.nathanv.home   | 10.0.0.2  | DNS Server and Network Controller |
+| tex.nathanv.home     | 10.0.0.10 | Old app server                    |
+| cassidy.nathanv.home | 10.0.0.11 | 3D print server                   |
+| billy.nathanv.home   | 10.0.0.20 | Kubernetes node 1                 |
+| jesse.nathanv.home   | 10.0.0.21 | Kubernetes node 2                 |
+| tom.nathanv.home     | 10.0.0.22 | Kubernetes node 3                 |
+| annie.nathanv.home   | 10.0.0.23 | Kubernetes node 4                 |
+| will.nathanv.home    | 10.0.0.24 | Kubernetes node 5                 |
 
 ### Load Balancer Addresses
 

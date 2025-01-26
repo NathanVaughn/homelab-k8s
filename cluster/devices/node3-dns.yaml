@@ -1,0 +1,9 @@
+apiVersion: nathanv.me/v1
+kind: DNSConfig
+metadata:
+  name: node3-dns-config
+  namespace: devices
+spec:
+  hostname: tom.nathanv.home
+  internalIP: "10.0.0.22"
+  comments: Kubernetes node 3, E8-6A-64-78-DE-EF

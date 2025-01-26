@@ -1,15 +1,16 @@
-import yaml
-import os
 import argparse
-import urllib.request
+import os
 import subprocess
+import urllib.request
+
+import yaml
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE_FILE = os.path.join(THIS_DIR, "autoinstall.tmpl.yaml")
 OUTPUT_FILE = os.path.join(THIS_DIR, "autoinstall.yaml")
 
 
-def main(hostname: str, password: str) -> None:
+def main(hostname: str, password: str, ssid_name: str, ssid_password: str) -> None:
     with open(TEMPLATE_FILE, "r") as f:
         data = yaml.load(f, Loader=yaml.FullLoader)
 
@@ -29,6 +30,14 @@ def main(hostname: str, password: str) -> None:
 
     data["autoinstall"]["ssh"]["authorized-keys"] = [ssh_key]
 
+    # add Wifi credentials
+    if ssid_name and ssid_password:
+        data["autoinstall"]["network"]["wifis"]["all-wl"]["access-points"] = {
+            ssid_name: {"password": ssid_password}
+        }
+    else:
+        del data["autoinstall"]["network"]["wifis"]
+
     with open(OUTPUT_FILE, "w") as f:
         yaml.dump(data, f)
 
@@ -37,6 +46,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("hostname", type=str, help="The hostname of the machine.")
     parser.add_argument("password", type=str, help="The password of the machine.")
+
+    parser.add_argument("--ssid-name", type=str, help="The SSID name.")
+    parser.add_argument("--ssid-password", type=str, help="The SSID password.")
+
     args = parser.parse_args()
 
-    main(args.hostname, args.password)
+    main(args.hostname, args.password, args.ssid_name, args.ssid_password)

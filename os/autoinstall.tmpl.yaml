@@ -14,13 +14,21 @@ autoinstall:
     layout:
       name: direct
   network:
-    network:
-      version: 2
-      ethernets:
-        all-en:
-          match:
-            name: en* # Matches all Ethernet interfaces
-          dhcp4: true
+    # add extra network: key if does not work
+    # https://canonical-subiquity.readthedocs-hosted.com/en/latest/reference/autoinstall-reference.html#network
+    version: 2
+    ethernets:
+      all-en:
+        match:
+          name: en* # Matches all Ethernet interfaces
+        dhcp4: true
+    wifis:
+      all-wl:
+        match:
+          name: wl*
+        access-points:
+          TODO:
+            password: TODO
   source: # use a minimal distribution
     id: ubuntu-server-minimal
   user-data:

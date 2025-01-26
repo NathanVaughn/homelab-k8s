@@ -1,0 +1,9 @@
+apiVersion: nathanv.me/v1
+kind: DNSConfig
+metadata:
+  name: node4-dns-config
+  namespace: devices
+spec:
+  hostname: annie.nathanv.home
+  internalIP: "10.0.0.23"
+  comments: Kubernetes node 4, E8-6A-64-7A-EE-C9

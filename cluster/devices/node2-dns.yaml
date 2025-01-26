@@ -1,0 +1,9 @@
+apiVersion: nathanv.me/v1
+kind: DNSConfig
+metadata:
+  name: node2-dns-config
+  namespace: devices
+spec:
+  hostname: jesse.nathanv.home
+  internalIP: "10.0.0.21"
+  comments: Kubernetes node 2, E8-6A-64-40-5D-76

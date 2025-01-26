@@ -1,0 +1,9 @@
+apiVersion: nathanv.me/v1
+kind: DNSConfig
+metadata:
+  name: 3dprint-dns-config
+  namespace: devices
+spec:
+  hostname: cassidy.nathanv.home
+  internalIP: "10.0.0.11"
+  comments: 3D Print Server, 90-CD-B6-75-96-95
