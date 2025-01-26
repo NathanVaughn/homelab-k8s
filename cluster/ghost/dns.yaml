@@ -1,0 +1,9 @@
+apiVersion: nathanv.me/v1
+kind: DNSConfig
+metadata:
+  name: ghost-dns-config
+  namespace: ghost
+spec:
+  hostname: christmas.nathanv.app
+  internalCNAME: reverse-proxy.svc.nathanv.home
+  externalCNAME: tunnel.nathanv.app

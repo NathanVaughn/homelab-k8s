@@ -1,0 +1,9 @@
+apiVersion: nathanv.me/v1
+kind: DNSConfig
+metadata:
+  name: grafana-dns-config
+  namespace: grafana
+spec:
+  hostname: grafana.nathanv.app
+  internalCNAME: reverse-proxy.svc.nathanv.home
+  externalCNAME: tunnel.nathanv.app

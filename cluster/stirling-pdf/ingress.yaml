@@ -3,10 +3,6 @@ kind: IngressRoute
 metadata:
   name: stirling-pdf-route
   namespace: stirling-pdf
-  annotations:
-    k8s-dns.nathanv.me/hostname: stirling-pdf.nathanv.app
-    k8s-dns.nathanv.me/external: tunnel.nathanv.app
-    k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
 spec:
   entryPoints:
     - websecure

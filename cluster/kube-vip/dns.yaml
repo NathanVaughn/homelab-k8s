@@ -1,0 +1,8 @@
+apiVersion: nathanv.me/v1
+kind: DNSConfig
+metadata:
+  name: k8s-control-plane-dns-config
+  namespace: kube-vip
+spec:
+  hostname: k8s-control-plane.svc.nathanv.home
+  internalIP: "10.0.1.1"

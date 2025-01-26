@@ -1,0 +1,10 @@
+apiVersion: nathanv.me/v1
+kind: DNSConfig
+metadata:
+  name: technitium-dns-dns-config1
+  namespace: technitium-dns
+spec:
+  # for the web portal
+  hostname: technitium-dns.nathanv.app
+  internalCNAME: reverse-proxy.svc.nathanv.home
+  externalCNAME: tunnel.nathanv.app

@@ -1,0 +1,9 @@
+apiVersion: nathanv.me/v1
+kind: DNSConfig
+metadata:
+  name: portainer-dns-config
+  namespace: portainer
+spec:
+  hostname: portainer.nathanv.app
+  internalCNAME: reverse-proxy.svc.nathanv.home
+  # externalCNAME: tunnel.nathanv.app

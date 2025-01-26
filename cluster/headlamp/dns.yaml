@@ -1,0 +1,10 @@
+apiVersion: nathanv.me/v1
+kind: DNSConfig
+metadata:
+  name: headlamp-dns-config
+  namespace: headlamp
+spec:
+  hostname: headlamp.nathanv.app
+  internalCNAME: reverse-proxy.svc.nathanv.home
+  # auth doesn't work super well
+  # extetnalCNAME: tunnel.nathanv.app

@@ -1,0 +1,9 @@
+apiVersion: nathanv.me/v1
+kind: DNSConfig
+metadata:
+  name: webtrees-dns-config
+  namespace: webtrees
+spec:
+  hostname: webtrees.nathanv.app
+  internalCNAME: reverse-proxy.svc.nathanv.home
+  externalCNAME: tunnel.nathanv.app

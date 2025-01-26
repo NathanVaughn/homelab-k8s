@@ -3,10 +3,6 @@ kind: IngressRoute
 metadata:
   name: omada-route
   namespace: omada
-  annotations:
-    k8s-dns.nathanv.me/hostname: omada.nathanv.app
-    k8s-dns.nathanv.me/external: tunnel.nathanv.app
-    k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
 spec:
   entryPoints:
     - websecure
@@ -19,9 +15,10 @@ spec:
           scheme: https
           # required as omada requires ssl
           serversTransport: omada-transport
-      middlewares:
-        - name: authentik-forward-auth
-          namespace: authentik
+          # internal only
+          # middlewares:
+          #   - name: authentik-forward-auth
+          #     namespace: authentik
   tls:
     certResolver: le
     domains:

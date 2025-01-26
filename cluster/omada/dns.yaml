@@ -1,0 +1,10 @@
+apiVersion: nathanv.me/v1
+kind: DNSConfig
+metadata:
+  name: omada-dns-config
+  namespace: omada
+spec:
+  hostname: omada.nathanv.app
+  internalCNAME: reverse-proxy.svc.nathanv.home
+  # already has a login screen
+  # externalCNAME: tunnel.nathanv.app

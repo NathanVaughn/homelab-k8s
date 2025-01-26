@@ -3,10 +3,6 @@ kind: IngressRoute
 metadata:
   name: lubelogger-route
   namespace: lubelogger
-  annotations:
-    k8s-dns.nathanv.me/hostname: lubelogger.nathanv.app
-    k8s-dns.nathanv.me/external: tunnel.nathanv.app
-    k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
 spec:
   entryPoints:
     - websecure

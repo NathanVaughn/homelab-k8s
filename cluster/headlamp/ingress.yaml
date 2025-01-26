@@ -3,10 +3,6 @@ kind: IngressRoute
 metadata:
   name: headlamp-route
   namespace: headlamp
-  annotations:
-    k8s-dns.nathanv.me/hostname: headlamp.nathanv.app
-    k8s-dns.nathanv.me/external: tunnel.nathanv.app
-    k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
 spec:
   entryPoints:
     - websecure

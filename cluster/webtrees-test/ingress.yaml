@@ -3,9 +3,6 @@ kind: IngressRoute
 metadata:
   name: webtrees-test-route
   namespace: webtrees-test
-  annotations:
-    k8s-dns.nathanv.me/hostname: webtrees-test.nathanv.app
-    k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
 spec:
   entryPoints:
     - websecure

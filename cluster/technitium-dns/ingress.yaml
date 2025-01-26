@@ -3,10 +3,6 @@ kind: IngressRoute
 metadata:
   name: technitium-dns-route
   namespace: technitium-dns
-  annotations:
-    k8s-dns.nathanv.me/hostname: technitium-dns.nathanv.app
-    k8s-dns.nathanv.me/external: tunnel.nathanv.app
-    k8s-dns.nathanv.me/internal: reverse-proxy.svc.nathanv.home
 spec:
   entryPoints:
     - websecure

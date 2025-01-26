@@ -1,0 +1,9 @@
+apiVersion: nathanv.me/v1
+kind: DNSConfig
+metadata:
+  name: technitium-dns-dns-config2
+  namespace: technitium-dns
+spec:
+  # for the actual dns service
+  hostname: dns.svc.nathanv.home
+  internalService: technitium-dns-service
