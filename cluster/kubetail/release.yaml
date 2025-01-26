@@ -1,0 +1,29 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kubetail-release
+  namespace: kubetail
+spec:
+  releaseName: kubetail
+  chart:
+    spec:
+      chart: kubetail
+      sourceRef:
+        kind: HelmRepository
+        name: kubetail-repo
+        namespace: kubetail
+      version: "0.9.0"
+  interval: 1h0m0s
+  values:
+    kubetail:
+      dashboard:
+        enabled: true
+        authMode: auto
+        podTemplate:
+          nodeSelector:
+            role: apps
+      clusterAPI:
+        enabled: true
+        podTemplate:
+          nodeSelector:
+            role: apps
