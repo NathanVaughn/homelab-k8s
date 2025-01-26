@@ -10,6 +10,7 @@ export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
 export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 export AWS_ENDPOINTS=s3.us-west-001.backblazeb2.com
 export VIRTUAL_HOSTED_STYLE=false
+# change dollar sign variables above this line
 kubectl apply -f namespace.yaml
 
 kubectl -n longhorn create secret generic longhorn-env \

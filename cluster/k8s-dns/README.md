@@ -5,6 +5,7 @@
 ```bash
 export CLOUDFLARE_API_TOKEN=$CLOUDFLARE_API_TOKEN
 export TECHNITIUM_API_TOKEN=$TECHNITIUM_API_TOKEN
+# change dollar sign variables above this line
 kubectl apply -f namespace.yaml
 
 kubectl -n k8s-dns create secret generic k8s-dns-env \

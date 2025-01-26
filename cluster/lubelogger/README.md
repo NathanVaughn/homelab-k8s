@@ -13,6 +13,7 @@ export MAILCONFIG_USERNAME=$MAILCONFIG_USERNAME
 export MAILCONFIG_PASSWORD=$MAILCONFIG_PASSWORD
 export OPENIDCONFIG_CLIENTID=$OPENIDCONFIG_CLIENTID
 export OPENIDCONFIG_SECRET=$OPENIDCONFIG_SECRET
+# change dollar sign variables above this line
 kubectl apply -f namespace.yaml
 
 kubectl -n lubelogger create secret generic lubelogger-env \

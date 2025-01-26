@@ -19,6 +19,7 @@ kubectl apply -f sealed-secret.yaml
 
 # This Cloudflare token needs Edit zone DNS permissions.
 export CLOUDFLARE_API_TOKEN=$CLOUDFLARE_API_TOKEN
+# change dollar sign variables above this line
 
 kubectl -n factorio create secret generic factorio-ddns-env \
 --from-literal=CLOUDFLARE_API_TOKEN=$CLOUDFLARE_API_TOKEN \

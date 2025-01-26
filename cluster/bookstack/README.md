@@ -13,6 +13,7 @@ export MAIL_USERNAME=$MAIL_USERNAME
 export MAIL_PASSWORD=$MAIL_PASSWORD
 export OIDC_CLIENT_ID=$OIDC_CLIENT_ID
 export OIDC_CLIENT_SECRET=$OIDC_CLIENT_SECRET
+# change dollar sign variables above this line
 kubectl apply -f namespace.yaml
 
 kubectl -n bookstack create secret generic bookstack-env \

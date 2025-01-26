@@ -8,6 +8,7 @@ export POSTGRESQL_PASSWORD=$POSTGRESQL_PASSWORD
 export AUTHENTIK_EMAIL_HOST=$AUTHENTIK_EMAIL_HOST
 export AUTHENTIK_EMAIL_USERNAME=$AUTHENTIK_EMAIL_USERNAME
 export AUTHENTIK_EMAIL_PASSWORD=$AUTHENTIK_EMAIL_PASSWORD
+# change dollar sign variables above this line
 kubectl apply -f namespace.yaml
 
 kubectl -n authentik create secret generic authentik-secrets \

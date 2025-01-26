@@ -8,6 +8,7 @@ Use the redirect URL as `https://headlamp.nathanv.app/oidc-callback`
 ```bash
 export HEADLAMP_CONFIG_OIDC_CLIENT_ID=$HEADLAMP_CONFIG_OIDC_CLIENT_ID
 export HEADLAMP_CONFIG_OIDC_CLIENT_SECRET=$HEADLAMP_CONFIG_OIDC_CLIENT_SECRET
+# change dollar sign variables above this line
 kubectl apply -f namespace.yaml
 
 kubectl -n headlamp create secret generic headlamp-secrets \

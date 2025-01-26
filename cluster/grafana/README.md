@@ -14,6 +14,7 @@ export OAUTH_CLIENT_SECRET=$OAUTH_CLIENT_SECRET
 export SMTP_HOST=$SMTP_HOST
 export SMTP_USER=$SMTP_USER
 export SMTP_PASSWORD=$SMTP_PASSWORD
+# change dollar sign variables above this line
 kubectl apply -f namespace.yaml
 
 kubectl -n grafana create secret generic grafana-secrets \

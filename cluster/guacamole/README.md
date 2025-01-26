@@ -11,6 +11,7 @@ In Authentik, configure a OAuth2 provider. Use the redirect URL as
 ```bash
 export OPENID_CLIENT_ID=$OPENID_CLIENT_ID
 export POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+# change dollar sign variables above this line
 kubectl apply -f namespace.yaml
 
 kubectl -n guacamole create secret generic guacamole-env \

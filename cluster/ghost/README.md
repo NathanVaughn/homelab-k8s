@@ -7,6 +7,7 @@ export SMTP_HOST=$SMTP_HOST
 export SMTP_USER=$SMTP_USER
 export SMTP_PASSWORD=$SMTP_PASSWORD
 export MYSQL_PASSWORD=$MYSQL_PASSWORD
+# change dollar sign variables above this line
 kubectl apply -f namespace.yaml
 
 kubectl -n ghost create secret generic ghost-env \

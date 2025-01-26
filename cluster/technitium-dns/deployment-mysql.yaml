@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: technitium-dns-mysql-deployment
+  namespace: technitium-dns
+spec:
+  replicas: 1
+  serviceName: technitium-dns-mysql
+  selector:
+    matchLabels:
+      app: technitium-dns-mysql
+  template:
+    metadata:
+      labels:
+        app: technitium-dns-mysql
+    spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              preference:
+                # when possible, run on the network controller
+                matchExpressions:
+                  - key: role
+                    operator: In
+                    values:
+                      - network
+      initContainers:
+        - name: lost-found-fix
+          image: docker.io/library/busybox:1.37.0
+          command: ['sh', '-c']
+          args: ['rm -rf /var/lib/mysql/lost+found']
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql-vol
+      containers:
+        - env:
+            - name: MARIADB_RANDOM_ROOT_PASSWORD
+              value: "1"
+            - name: MARIADB_USER
+              value: technitium-dns
+            - name: MARIADB_DATABASE
+              value: technitium-dns
+          envFrom:
+            - secretRef:
+                name: technitium-dns-env
+          image: docker.io/library/mariadb:11.6.2
+          name: mariadb
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql-vol
+      volumes:
+        - name: mysql-vol
+          persistentVolumeClaim:
+            claimName: technitium-dns-pvc-mysql

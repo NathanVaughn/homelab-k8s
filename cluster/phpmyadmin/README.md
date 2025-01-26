@@ -7,6 +7,7 @@ In Authentik, create a proxy provider for a single application with the URL
 
 ```bash
 export MARIADB_PASSWORD=$MARIADB_PASSWORD
+# change dollar sign variables above this line
 kubectl apply -f namespace.yaml
 
 kubectl -n phpmyadmin create secret generic phpmyadmin-env \

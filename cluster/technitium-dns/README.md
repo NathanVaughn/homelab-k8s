@@ -5,6 +5,20 @@
 In Authentik, create a proxy provider for a single application with the URL
 `https://technitium-dns.nathanv.app`. Ensure you assign the application to an outpost.
 
+```bash
+export MARIADB_PASSWORD=$MARIADB_PASSWORD
+# change dollar sign variables above this line
+kubectl apply -f namespace.yaml
+
+kubectl -n technitium-dns create secret generic technitium-dns-env \
+--from-literal=MARIADB_PASSWORD=$MARIADB_PASSWORD \
+--dry-run=client -o yaml > secret.yaml
+
+kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
+# optional
+kubectl apply -f sealed-secret.yaml
+```
+
 ## Post Setup
 
 ### Auth
@@ -45,7 +59,19 @@ Under Settings -> Blocking, add the following blocklists:
 
 ### Apps
 
-Install "Query Logs (Sqlite)".
+Install "Query Logs (MySQL)".
+Change the configuration:
+
+```json
+{
+  "enableLogging": true,
+  "maxQueueSize": 1000000,
+  "maxLogDays": 30,
+  "maxLogRecords": 0,
+  "databaseName": "technitium-dns",
+  "connectionString": "Server=technitium-dns-mysql-service.technitium-dns.svc.cluster.local; Port=3306; Uid=technitium-dns; Pwd=$MARIADB_PASSWORD;"
+}
+```
 
 ### Misc
 

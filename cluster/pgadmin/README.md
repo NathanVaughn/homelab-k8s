@@ -40,6 +40,7 @@ export PGADMIN_CONFIG_MAIL_SERVER="'$PGADMIN_CONFIG_MAIL_SERVER'"
 export PGADMIN_CONFIG_MAIL_USERNAME="'$PGADMIN_CONFIG_MAIL_USERNAME'"
 export PGADMIN_CONFIG_MAIL_PASSWORD="'$PGADMIN_CONFIG_MAIL_PASSWORD'"
 export PGADMIN_CONFIG_CONFIG_DATABASE_URI="'postgresql://pgadmin:$POSTGRES_PASSWORD@pgadmin-postgresql-service.pgadmin.svc.cluster.local:5432/pgadmin'"
+# change dollar sign variables above this line
 kubectl apply -f namespace.yaml
 
 # SETUP environment variables also set

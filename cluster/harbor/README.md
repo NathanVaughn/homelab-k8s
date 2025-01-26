@@ -9,6 +9,7 @@ In Authentik, configure a OAuth2 provider. Use the redirect URL as
 export ADMIN_PASSWORD=$ADMIN_PASSWORD
 export REGISTRY_PASSWORD=$REGISTRY_PASSWORD
 export DATABASE_PASSWORD=$DATABASE_PASSWORD
+# change dollar sign variables above this line
 kubectl apply -f namespace.yaml
 
 kubectl -n harbor create secret generic harbor-secrets \

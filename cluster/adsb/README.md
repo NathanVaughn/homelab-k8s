@@ -12,6 +12,7 @@ export PLANE_FINDER_CODE=$PLANE_FINDER_CODE
 export READSB_LAT=$READSB_LAT
 export READSB_LON=$READSB_LON
 export TZ="America/Chicago"
+# change dollar sign variables above this line
 kubectl apply -f namespace.yaml
 
 kubectl -n adsb create secret generic adsb-env \

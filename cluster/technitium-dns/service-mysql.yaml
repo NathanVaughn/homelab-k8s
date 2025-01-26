@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: technitium-dns-mysql-service
+  namespace: technitium-dns
+spec:
+  type: ClusterIP
+  selector:
+    app: technitium-dns-mysql
+  ports:
+    - port: 3306
+      protocol: TCP
