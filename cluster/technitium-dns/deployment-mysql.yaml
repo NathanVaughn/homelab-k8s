@@ -33,6 +33,17 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/mysql
               name: mysql-vol
+        - name: perms-gen
+          image: docker.io/library/busybox:1.37.0
+          securityContext:
+            runAsUser: 0 # required for script to work
+          command: ['/bin/bash', '-c']
+          # technitium tries to `use mysql` to create it's own database
+          # https://github.com/TechnitiumSoftware/DnsServer/blob/2f7a5d4494a27d73bd3aa67d728dac72c46dbfae/Apps/QueryLogsMySqlApp/App.cs#L324
+          args: [echo "GRANT SELECT ON mysql.* TO 'technitium-dns'@'%';" > /docker-entrypoint-initdb.d/perms.sql']
+          volumeMounts:
+            - mountPath: /docker-entrypoint-initdb.d
+              name: initdb-vol
       containers:
         - env:
             - name: MARIADB_RANDOM_ROOT_PASSWORD
@@ -51,7 +62,12 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/mysql
               name: mysql-vol
+            - mountPath: /docker-entrypoint-initdb.d
+              name: initdb-vol
       volumes:
         - name: mysql-vol
           persistentVolumeClaim:
             claimName: technitium-dns-pvc-mysql
+        - name: initdb-vol
+          persistentVolumeClaim:
+            claimName: technitium-dns-pvc-initdb
