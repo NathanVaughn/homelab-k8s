@@ -1,6 +1,7 @@
 import json
 import os
 import pathlib
+import socket
 import subprocess
 import urllib.request
 
@@ -145,9 +146,9 @@ base_args = [
     # Increase speed at which pods will be rescheduled if a node goes down
     "--kube-apiserver-arg=default-not-ready-toleration-seconds=20",
     "--kube-apiserver-arg=default-unreachable-toleration-seconds=20",
-    "--kube-controller-arg node-monitor-period=20s",
-    "--kube-controller-arg node-monitor-grace-period=20s",
-    "--kubelet-arg node-status-update-frequency=5s",
+    "--kube-controller-arg=node-monitor-period=20s",
+    "--kube-controller-arg=node-monitor-grace-period=20s",
+    "--kubelet-arg=node-status-update-frequency=5s",
 ]
 
 if first_host.name == host.name:
@@ -172,11 +173,13 @@ if first_host.name == host.name:
     python.call(name="Update kubeconfig", function=update_kubeconfig)
 
 else:
+    # resolve first host name to ip address
+    first_host_ip = socket.gethostbyname(first_host.name)
     server.script(
         name="Run k3s install script on other nodes",
         src=k3s_install_script,
         _env={"K3S_TOKEN": k3s_token},
-        args=base_args + [f"--server=https://{first_host.name}:6443"],
+        args=base_args + [f"--server=https://{first_host_ip}:6443"],
     )
 
 files.put(
