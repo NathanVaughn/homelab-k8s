@@ -25,7 +25,8 @@ spec:
           securityContext:
             privileged: true # for access to the printer and webcame
           ports:
-            - containerPort: 8080
+            - containerPort: 8080 # webcam
+            - containerPort: 80 # http server
           volumeMounts:
             - mountPath: /octoprint
               name: data-vol

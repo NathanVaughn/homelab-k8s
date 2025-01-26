@@ -1,13 +1,13 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: octoprint-route
+  name: octoprint-cam-route
   namespace: octoprint
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`octoprint.nathanv.app`)
+    - match: Host(`octoprint-cam.nathanv.app`)
       kind: Rule
       services:
         - name: octoprint-service

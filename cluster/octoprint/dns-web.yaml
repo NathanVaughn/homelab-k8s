@@ -1,0 +1,9 @@
+apiVersion: nathanv.me/v1
+kind: DNSConfig
+metadata:
+  name: octoprint-web-dns-config
+  namespace: octoprint
+spec:
+  hostname: octoprint.nathanv.app
+  internalCNAME: reverse-proxy.svc.nathanv.home
+  # externalCNAME: tunnel.nathanv.app
