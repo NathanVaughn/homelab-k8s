@@ -27,6 +27,14 @@ spec:
               name: data-vol
             - mountPath: /config
               name: config-vol
+        # https://github.com/factoriotools/factorio-docker?tab=readme-ov-file#quick-start
+        - name: permission-fix
+          image: docker.io/library/busybox:1.37.0
+          command: ['sh', '-c']
+          args: ['chown -R 845:845 /factorio']
+          volumeMounts:
+            - mountPath: /factorio
+              name: data-vol
       containers:
         - image: docker.io/factoriotools/factorio:stable-2.0.32
           name: factorio
