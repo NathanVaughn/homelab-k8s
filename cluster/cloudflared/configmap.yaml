@@ -7,12 +7,8 @@ data:
   config.yaml: |-
     tunnel: k8s-tunnel
     credentials-file: /etc/cloudflared/creds/credentials.json
-    # Serves the metrics server under /metrics and the readiness server under /ready
     metrics: 0.0.0.0:2000
     no-autoupdate: true
-    # we need to explicity connect to services we want to expose
-    # otherwise, even for services without external DNS records,
-    # they could still be accessed through a manually set CNAME.
     ingress:
     - hostname: readsb.nathanv.app
       service: https://traefik.traefik.svc.cluster.local:443
@@ -49,7 +45,7 @@ data:
       originRequest:
         noTLSVerify: true
         originServerName: "*traefik*"
-    - hostname: headlamp.nathanv.app
+    - hostname: kubetail.nathanv.app
       service: https://traefik.traefik.svc.cluster.local:443
       originRequest:
         noTLSVerify: true
@@ -64,36 +60,21 @@ data:
       originRequest:
         noTLSVerify: true
         originServerName: "*traefik*"
-    # - hostname: octoprint.nathanv.app
-    #   service: https://traefik.traefik.svc.cluster.local:443
-    #   originRequest:
-    #     noTLSVerify: true
-    #     originServerName: "*traefik*"
-    # - hostname: omada.nathanv.app
-    #   service: https://traefik.traefik.svc.cluster.local:443
-    #   originRequest:
-    #     noTLSVerify: true
-    #     originServerName: "*traefik*"
     - hostname: pgadmin.nathanv.app
       service: https://traefik.traefik.svc.cluster.local:443
       originRequest:
         noTLSVerify: true
         originServerName: "*traefik*"
-    # - hostname: phpmyadmin.nathanv.app
-    #   service: https://traefik.traefik.svc.cluster.local:443
-    #   originRequest:
-    #     noTLSVerify: true
-    #     originServerName: "*traefik*"
-    - hostname: portainer.nathanv.app
+    - hostname: phpmyadmin.nathanv.app
       service: https://traefik.traefik.svc.cluster.local:443
       originRequest:
         noTLSVerify: true
         originServerName: "*traefik*"
-    # - hostname: prometheus.nathanv.app
-    #   service: https://traefik.traefik.svc.cluster.local:443
-    #   originRequest:
-    #     noTLSVerify: true
-    #     originServerName: "*traefik*"
+    - hostname: prometheus.nathanv.app
+      service: https://traefik.traefik.svc.cluster.local:443
+      originRequest:
+        noTLSVerify: true
+        originServerName: "*traefik*"
     - hostname: scrutiny.nathanv.app
       service: https://traefik.traefik.svc.cluster.local:443
       originRequest:
@@ -119,9 +100,4 @@ data:
       originRequest:
         noTLSVerify: true
         originServerName: "*traefik*"
-    # - hostname: webtrees-test.nathanv.app
-    #   service: https://traefik.traefik.svc.cluster.local:443
-    #   originRequest:
-    #     noTLSVerify: true
-    #     originServerName: "*traefik*"
     - service: http_status:404
