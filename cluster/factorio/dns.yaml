@@ -1,0 +1,8 @@
+apiVersion: nathanv.me/v1
+kind: DNSConfig
+metadata:
+  name: factorio-dns-config
+  namespace: factorio
+spec:
+  hostname: factorio.nathanv.app
+  internalService: factorio-service

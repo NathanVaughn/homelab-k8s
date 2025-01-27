@@ -3,9 +3,6 @@ kind: Service
 metadata:
   name: factorio-service
   namespace: factorio
-  annotations:
-    k8s-dns.nathanv.me/hostname: factorio.nathanv.app
-    k8s-dns.nathanv.me/internal: factorio.svc.nathanv.home
 spec:
   type: LoadBalancer
   # use a static IP, since this is easier to maintain in Omada.
