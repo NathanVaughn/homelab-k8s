@@ -6,4 +6,4 @@ metadata:
 spec:
   hostname: portainer.nathanv.app
   internalCNAME: reverse-proxy.svc.nathanv.home
-  # externalCNAME: tunnel.nathanv.app
+  externalCNAME: tunnel.nathanv.app
