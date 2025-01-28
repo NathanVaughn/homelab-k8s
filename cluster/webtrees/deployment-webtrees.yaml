@@ -46,7 +46,7 @@ spec:
           envFrom:
             - secretRef:
                 name: webtrees-env
-          image: ghcr.io/nathanvaughn/webtrees:2.1.22
+          image: ghcr.io/nathanvaughn/webtrees:2.2.1
           name: webtrees
           ports:
             - containerPort: 80
