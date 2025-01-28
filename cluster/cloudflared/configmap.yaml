@@ -1,103 +1,108 @@
 apiVersion: v1
+data:
+  config.yaml: |
+    credentials-file: /etc/cloudflared/creds/credentials.json
+    ingress:
+    - hostname: authentik.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
+    - hostname: bookstack.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
+    - hostname: christmas.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
+    - hostname: cr.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
+    - hostname: grafana.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
+    - hostname: guacamole.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
+    - hostname: kubetail.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
+    - hostname: longhorn.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
+    - hostname: lubelogger.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
+    - hostname: pgadmin.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
+    - hostname: phpmyadmin.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
+    - hostname: portainer.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
+    - hostname: prometheus.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
+    - hostname: readsb.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
+    - hostname: scrutiny.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
+    - hostname: snippet-box.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
+    - hostname: stirling-pdf.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
+    - hostname: technitium-dns.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
+    - hostname: webtrees.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
+    - service: http_status:404
+    metrics: 0.0.0.0:2000
+    no-autoupdate: true
+    tunnel: k8s-tunnel
 kind: ConfigMap
 metadata:
   name: cloudflared-configmap
   namespace: cloudflared
-data:
-  config.yaml: |-
-    tunnel: k8s-tunnel
-    credentials-file: /etc/cloudflared/creds/credentials.json
-    metrics: 0.0.0.0:2000
-    no-autoupdate: true
-    ingress:
-    - hostname: readsb.nathanv.app
-      service: https://traefik.traefik.svc.cluster.local:443
-      originRequest:
-        noTLSVerify: true
-        originServerName: "*traefik*"
-    - hostname: authentik.nathanv.app
-      service: https://traefik.traefik.svc.cluster.local:443
-      originRequest:
-        noTLSVerify: true
-        originServerName: "*traefik*"
-    - hostname: bookstack.nathanv.app
-      service: https://traefik.traefik.svc.cluster.local:443
-      originRequest:
-        noTLSVerify: true
-        originServerName: "*traefik*"
-    - hostname: christmas.nathanv.app
-      service: https://traefik.traefik.svc.cluster.local:443
-      originRequest:
-        noTLSVerify: true
-        originServerName: "*traefik*"
-    - hostname: grafana.nathanv.app
-      service: https://traefik.traefik.svc.cluster.local:443
-      originRequest:
-        noTLSVerify: true
-        originServerName: "*traefik*"
-    - hostname: guacamole.nathanv.app
-      service: https://traefik.traefik.svc.cluster.local:443
-      originRequest:
-        noTLSVerify: true
-        originServerName: "*traefik*"
-    - hostname: cr.nathanv.app
-      service: https://traefik.traefik.svc.cluster.local:443
-      originRequest:
-        noTLSVerify: true
-        originServerName: "*traefik*"
-    - hostname: kubetail.nathanv.app
-      service: https://traefik.traefik.svc.cluster.local:443
-      originRequest:
-        noTLSVerify: true
-        originServerName: "*traefik*"
-    - hostname: longhorn.nathanv.app
-      service: https://traefik.traefik.svc.cluster.local:443
-      originRequest:
-        noTLSVerify: true
-        originServerName: "*traefik*"
-    - hostname: lubelogger.nathanv.app
-      service: https://traefik.traefik.svc.cluster.local:443
-      originRequest:
-        noTLSVerify: true
-        originServerName: "*traefik*"
-    - hostname: pgadmin.nathanv.app
-      service: https://traefik.traefik.svc.cluster.local:443
-      originRequest:
-        noTLSVerify: true
-        originServerName: "*traefik*"
-    - hostname: phpmyadmin.nathanv.app
-      service: https://traefik.traefik.svc.cluster.local:443
-      originRequest:
-        noTLSVerify: true
-        originServerName: "*traefik*"
-    - hostname: prometheus.nathanv.app
-      service: https://traefik.traefik.svc.cluster.local:443
-      originRequest:
-        noTLSVerify: true
-        originServerName: "*traefik*"
-    - hostname: scrutiny.nathanv.app
-      service: https://traefik.traefik.svc.cluster.local:443
-      originRequest:
-        noTLSVerify: true
-        originServerName: "*traefik*"
-    - hostname: snippet-box.nathanv.app
-      service: https://traefik.traefik.svc.cluster.local:443
-      originRequest:
-        noTLSVerify: true
-        originServerName: "*traefik*"
-    - hostname: stirling-pdf.nathanv.app
-      service: https://traefik.traefik.svc.cluster.local:443
-      originRequest:
-        noTLSVerify: true
-        originServerName: "*traefik*"
-    - hostname: technitium-dns.nathanv.app
-      service: https://traefik.traefik.svc.cluster.local:443
-      originRequest:
-        noTLSVerify: true
-        originServerName: "*traefik*"
-    - hostname: webtrees.nathanv.app
-      service: https://traefik.traefik.svc.cluster.local:443
-      originRequest:
-        noTLSVerify: true
-        originServerName: "*traefik*"
-    - service: http_status:404

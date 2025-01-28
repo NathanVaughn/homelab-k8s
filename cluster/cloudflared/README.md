@@ -2,6 +2,9 @@
 
 ## Setup
 
+First, you can run `create-config.py` to generate the configuration file.
+This creates a config for services with an external DNS record set.
+
 [Install `cloudflared`](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/downloads/).
 
 ```bash
