@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: kube-vip-repo
         namespace: kube-vip
-      version: "0.6.5"
+      version: "0.6.6"
   interval: 1h0m0s
   values:
     config:
@@ -26,3 +26,5 @@ spec:
       svc_enable: "true"
       svc_election: "true"
       vip_leaderelection: "true"
+    podMonitor:
+      enabled: true

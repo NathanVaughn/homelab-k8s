@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: kubetail-repo
         namespace: kubetail
-      version: "0.9.0"
+      version: "0.9.1"
   interval: 1h0m0s
   values:
     kubetail:
