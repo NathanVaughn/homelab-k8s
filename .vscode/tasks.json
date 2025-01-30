@@ -23,7 +23,13 @@
             "dependsOn": ["install-pkgs"]
         },
         {
-            "label": "os-updates",
+            "label": "configure.py",
+            "command": "pyinfra inventory.py configure.py",
+            "type": "shell",
+            "options": {"cwd": "${workspaceFolder}${/}software"}
+        },
+        {
+            "label": "update.py",
             "command": "pyinfra inventory.py update.py",
             "type": "shell",
             "options": {"cwd": "${workspaceFolder}${/}software"}
