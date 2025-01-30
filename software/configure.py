@@ -216,7 +216,7 @@ for label in host.data.get("k8s_labels", []):  # type: ignore
 # Prevents chicken and egg problem.
 # Use `resolvectl status` for debugging
 files.directory(
-    name="Create resolvconf configuration director",
+    name="Create resolvconf configuration directory",
     path=os.path.dirname(resolvconf_config),
     present=True,
     _sudo=True,
