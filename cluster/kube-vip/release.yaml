@@ -28,3 +28,6 @@ spec:
       vip_leaderelection: "true"
     podMonitor:
       enabled: true
+    nodeSelector:
+      # don't run on wifi nodes
+      connectivity: eth
