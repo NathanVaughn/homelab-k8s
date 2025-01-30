@@ -1,3 +1,4 @@
+import retry.api
 from pyinfra import host  # type: ignore
 from pyinfra.facts import files as files_facts
 from pyinfra.facts import server as server_facts
@@ -19,7 +20,10 @@ def reboot_node():
     server.shell(
         name="Drain the node",
         # without --disable-eviction, longhorn may make it wait forever.
-        commands=f"kubectl drain --disable-eviction --delete-emptydir-data --ignore-daemonsets {host.get_fact(server_facts.Hostname)}",
+        # ---
+        # try without `--disable-eviction`, as this gives Longhorn
+        # time to replicate the volume before rebooting
+        commands=f"kubectl drain --delete-emptydir-data --ignore-daemonsets {host.get_fact(server_facts.Hostname)}",
         _sudo=True,
     )
 
@@ -45,11 +49,20 @@ def reboot_node():
     )
 
     # uncordon the node
-    server.shell(
-        name="Uncordon the node",
-        commands=f"kubectl uncordon {host.get_fact(server_facts.Hostname)}",
-        _sudo=True,
+    retry.api.retry_call(
+        server.shell,
+        fkwargs={
+            "name": "Uncordon the node",
+            "commands": f"kubectl uncordon {host.get_fact(server_facts.Hostname)}",
+            "_sudo": True,
+        },
+        delay=1,
     )
+    # server.shell(
+    #     name="Uncordon the node",
+    #     commands=f"kubectl uncordon {host.get_fact(server_facts.Hostname)}",
+    #     _sudo=True,
+    # )
 
 
 # check if server needs a reboot
