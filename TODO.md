@@ -1,5 +1,3 @@
-- Update webtrees
-- Setup Octoprint
 - Setup Factorio
 - Provision network controller
-- Provision game server
+- Move Omada to static IP
