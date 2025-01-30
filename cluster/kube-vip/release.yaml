@@ -26,6 +26,7 @@ spec:
       svc_enable: "true"
       svc_election: "true"
       vip_leaderelection: "true"
+      enable_node_labeling: "true"
     podMonitor:
       enabled: true
     nodeSelector:

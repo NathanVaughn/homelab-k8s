@@ -142,6 +142,7 @@ base_args = [
     "--embedded-registry",
     f"--tls-san={host.name}",
     f"--tls-san={CONTROL_PLANE_IP}",
+    "--etcd-expose-metrics",
     # https://github.com/Sheldonwl/rpi-cluster-k3s/blob/master/docs/setup-k3s-server.md
     # Increase speed at which pods will be rescheduled if a node goes down
     "--kube-apiserver-arg=default-not-ready-toleration-seconds=20",
