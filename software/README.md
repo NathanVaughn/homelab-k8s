@@ -53,6 +53,8 @@ On the failed node:
 sudo service k3s stop
 sudo rm -rf /var/lib/rancher/
 sudo rm -rf /etc/rancher/
+# if needed
+/usr/local/bin/k3s-killall.sh
 ```
 
 Then try again.

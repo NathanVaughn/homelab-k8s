@@ -53,8 +53,9 @@ multipath_config = files.block(
 systemd.service(
     name="Restart multipathd",
     service="multipathd",
-    restarted=multipath_config.did_change(),
+    restarted=True,
     _sudo=True,
+    _if=multipath_config.did_change,
 )
 
 # install packages
@@ -200,8 +201,10 @@ k3s_config = files.put(
 systemd.service(
     name="Restart k3s",
     service="k3s",
-    restarted=k3s_config.did_change(),
+    restarted=True,
     _sudo=True,
+    _if=k3s_config.did_change,
+    _serial=True,
 )
 
 for label in host.data.get("k8s_labels", []):  # type: ignore
@@ -235,6 +238,7 @@ resolvconf_config_edit = files.block(
 systemd.service(
     name="Restart systemd-resolved",
     service="systemd-resolved",
-    restarted=resolvconf_config_edit.did_change(),
+    restarted=True,
     _sudo=True,
+    _if=resolvconf_config_edit.did_change,
 )
