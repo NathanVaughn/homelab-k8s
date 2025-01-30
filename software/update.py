@@ -41,7 +41,7 @@ def reboot_node():
 
     server.shell(
         name="Fudge factor",
-        commands="sleep 3",
+        commands="sleep 10",
     )
 
     # uncordon the node
