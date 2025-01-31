@@ -15,4 +15,5 @@ spec:
       version: "2.10.2"
   interval: 1h0m0s
   values:
-    hostname: rancher.nathanv.app
+    ingress:
+      enabled: false
