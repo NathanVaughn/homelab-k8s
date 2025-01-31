@@ -21,7 +21,14 @@ spec:
             - name: ACTUAL_LOGIN_METHOD
               value: openid
             - name: ACTUAL_ALLOWED_LOGIN_METHODS
-              value: "['openid']"
+              value: openid
+            - name: ACTUAL_OPENID_DISCOVERY_URL
+              value: https://authentik.nathanv.app/application/o/actual/
+            - name: ACTUAL_OPENID_SERVER_HOSTNAME
+              value: actual.nathanv.app
+          envFrom:
+            - secretRef:
+                name: actual-env
           image: ghcr.io/actualbudget/actual-server:25.1.0
           name: actual
           ports:
@@ -29,14 +36,7 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: actual-vol
-            - mountPath: /data/config.json
-              name: actual-vol-oauth
-              subPath: config.json
-              readOnly: true
       volumes:
         - name: actual-vol
           persistentVolumeClaim:
             claimName: actual-pvc
-        - name: actual-vol-oauth
-          secret:
-            secretName: actual-oauth
