@@ -1,10 +1,11 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: actual-deployment
   namespace: actual
 spec:
   replicas: 1
+  serviceName: actual
   selector:
     matchLabels:
       app: actual
