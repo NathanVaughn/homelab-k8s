@@ -1,10 +1,9 @@
 apiVersion: nathanv.me/v1
 kind: DNSConfig
 metadata:
-  name: headlamp-dns-config
-  namespace: headlamp
+  name: rancher-dns-config
+  namespace: rancher
 spec:
-  hostname: headlamp.nathanv.app
+  hostname: rancher.nathanv.app
   internalCNAME: reverse-proxy.svc.nathanv.home
-  # auth doesn't work super well
   # externalCNAME: tunnel.nathanv.app
