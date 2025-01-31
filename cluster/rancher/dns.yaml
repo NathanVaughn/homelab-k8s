@@ -1,9 +1,0 @@
-apiVersion: nathanv.me/v1
-kind: DNSConfig
-metadata:
-  name: rancher-dns-config
-  namespace: rancher
-spec:
-  hostname: rancher.nathanv.app
-  internalCNAME: reverse-proxy.svc.nathanv.home
-  # externalCNAME: tunnel.nathanv.app
