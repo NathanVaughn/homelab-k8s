@@ -17,3 +17,8 @@ spec:
   values:
     ingress:
       enabled: false
+      # we don't use tls, since we have traefik
+      # but the chart is not smart enough to
+      # do nothing if ingress is disabled
+      tls:
+        source: secret
