@@ -12,6 +12,9 @@ spec:
       services:
         - name: actual-service
           port: 5006
+      middlewares:
+        - name: authentik-forward-auth
+          namespace: authentik
   tls:
     certResolver: le
     domains:
