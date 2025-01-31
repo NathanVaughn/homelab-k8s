@@ -3,9 +3,6 @@ kind: Service
 metadata:
   name: technitium-dns-service
   namespace: technitium-dns
-  annotations:
-    k8s-dns.nathanv.me/hostname: dns.svc.nathanv.home
-    k8s-dns.nathanv.me/internal: loadbalancer
 spec:
   type: LoadBalancer
   loadBalancerIP: "10.0.1.4"

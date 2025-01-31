@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: actual-deployment
+  namespace: actual
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: actual
+  template:
+    metadata:
+      labels:
+        app: actual
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+        - env:
+            - name: ACTUAL_LOGIN_METHOD
+              value: openid
+            - name: ACTUAL_ALLOWED_LOGIN_METHODS
+              value: "['openid']"
+          image: ghcr.io/actualbudget/actual-server:25.1.0
+          name: actual
+          ports:
+            - containerPort: 5006
+          volumeMounts:
+            - mountPath: /data
+              name: actual-vol
+            - mountPath: /data/config.json
+              name: actual-vol-oauth
+              subPath: config.json
+              readOnly: true
+      volumes:
+        - name: actual-vol
+          persistentVolumeClaim:
+            claimName: actual-pvc
+        - name: actual-vol-oauth
+          secret:
+            secretName: actual-oauth

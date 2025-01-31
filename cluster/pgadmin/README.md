@@ -66,7 +66,7 @@ kubectl -n pgadmin create secret generic pgadmin-oauth \
 --from-file=config_local.py \
 --dry-run=client -o yaml > secret.yaml
 
-kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
+kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret2.yaml
 # optional
 kubectl apply -f sealed-secret2.yaml
 ```
