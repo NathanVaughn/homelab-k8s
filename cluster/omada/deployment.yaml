@@ -48,37 +48,37 @@ spec:
           ports:
             - containerPort: 8088
               protocol: TCP
-              name: manage-http-port
+              name: manage-http
             - containerPort: 8043
               protocol: TCP
-              name: manage-https-port
+              name: manage-https
             - containerPort: 8843
               protocol: TCP
-              name: portal-https-port
+              name: portal-https
             - containerPort: 29812
               protocol: TCP
-              name: port-adopt-v1
+              name: adopt-v1
             - containerPort: 27001
               protocol: UDP
-              name: port-app-discovery
+              name: app-discovery
             - containerPort: 29810
               protocol: UDP
-              name: port-discovery
+              name: discovery
             - containerPort: 29811
               protocol: TCP
-              name: port-manager-v1
+              name: manager-v1
             - containerPort: 29814
               protocol: TCP
-              name: port-manager-v2
+              name: manager-v2
             - containerPort: 29815
               protocol: TCP
-              name: port-transfer-v2
+              name: transfer-v2
             - containerPort: 29816
               protocol: TCP
-              name: port-rtty
+              name: rtty
             - containerPort: 29813
               protocol: TCP
-              name: port-upgrade-v1
+              name: upgrade-v1
           volumeMounts:
             - mountPath: /opt/tplink/EAPController/data
               name: omada-vol-data
