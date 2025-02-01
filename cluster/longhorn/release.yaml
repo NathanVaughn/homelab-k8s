@@ -26,7 +26,10 @@ spec:
       backupTargetCredentialSecret: longhorn-env
     # let longhorn manager run on everything
     # just limit the 1-off components to the apps nodes
-    global:
+    longhornUI:
+      nodeSelector:
+        role: apps
+    longhornDriver:
       nodeSelector:
         role: apps
     metrics:
