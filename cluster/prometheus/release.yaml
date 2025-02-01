@@ -37,8 +37,8 @@ spec:
           volumeClaimTemplate:
             spec:
               storageClassName: longhorn
-              # TODO maybe need to revisit
-              accessModes: ["ReadWriteOnce"]
+              # need many as the helm chart deploys 2
+              accessModes: ["ReadWriteMany"]
               resources:
                 requests:
                   storage: 20Gi
