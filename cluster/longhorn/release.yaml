@@ -17,15 +17,16 @@ spec:
   values:
     persistence:
       defaultClassReplicaCount: 3
+      # tries to keep a replica on the node the volume is attached to
+      defaultDataLocality: best-effort
+      # prevents data from being deleted when pvc is deleted
+      reclaimPolicy: Retain
     defaultSettings:
       backupTarget: s3://nathanv-private@us-west-001/longhorn
       backupTargetCredentialSecret: longhorn-env
     # let longhorn manager run on everything
     # just limit the 1-off components to the apps nodes
-    longhornUI:
-      nodeSelector:
-        role: apps
-    longhornDriver:
+    global:
       nodeSelector:
         role: apps
     metrics:
