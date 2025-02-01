@@ -1,4 +1,7 @@
 app_servers = [
+    # order here is somewhat important. The first node listed will be used
+    # to bootstrap the cluster. Ensure it is a node that makes sense
+    # (one of the ThinkCenter boxes)
     (
         "billy.nathanv.home",
         {"ssh_user": "ubuntu", "k8s_labels": ["role=apps", "connectivity=eth"]},
