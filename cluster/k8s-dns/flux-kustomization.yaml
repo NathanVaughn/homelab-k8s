@@ -5,7 +5,7 @@ metadata:
   namespace: k8s-dns
 spec:
   interval: 1h0m0s
-  path: ./crds
+  path: ./manifests
   prune: true
   sourceRef:
     kind: GitRepository
