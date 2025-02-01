@@ -21,6 +21,8 @@ spec:
       enabled: true
     prometheus:
       prometheusSpec:
+        nodeSelector:
+          role: apps
         # https://prometheus.io/docs/prometheus/latest/storage/#right-sizing-retention-size
         retention: 14d
         retentionSize: 16GB
