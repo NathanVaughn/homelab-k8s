@@ -3,7 +3,10 @@
 ## Setup
 
 In Authentik, configure a OAuth2 provider.
-Use the redirect URL as `https://headlamp.nathanv.app/oidc-callback`
+Use the redirect URL as `https://headlamp.nathanv.app/oidc-callback`.
+
+Change the "Access Token validity" in the Advanced protocol settings,
+otherwise you will be constantly signed out.
 
 ```bash
 export HEADLAMP_CONFIG_OIDC_CLIENT_ID=$HEADLAMP_CONFIG_OIDC_CLIENT_ID
