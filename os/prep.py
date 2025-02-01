@@ -35,7 +35,7 @@ def main(hostname: str, password: str, ssid_name: str, ssid_password: str) -> No
         data["autoinstall"]["network"]["wifis"]["wlp2s0"]["access-points"] = {
             ssid_name: {"password": ssid_password}
         }
-        data["packages"] = ["wpasupplicant"]
+        data["packages"].append("wpasupplicant")
     else:
         del data["autoinstall"]["network"]["wifis"]
 
