@@ -6,8 +6,9 @@ metadata:
   namespace: system-upgrade
 spec:
   interval: 1h0m0s
-  path: ./
+  path: ./manifests
   prune: true
+  wait: true
   sourceRef:
     kind: GitRepository
     name: system-upgrade-repo
