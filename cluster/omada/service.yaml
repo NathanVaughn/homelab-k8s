@@ -12,34 +12,34 @@ spec:
     # https://github.com/mbentley/docker-omada-controller?tab=readme-ov-file#optional-variables
     - port: 8088
       protocol: TCP
-      name: manage_http_port
+      name: manage-http-port
     - port: 8043
       protocol: TCP
-      name: manage_https_port
+      name: manage-https-port
     - port: 8843
       protocol: TCP
-      name: portal_https_port
+      name: portal-https-port
     - port: 29812
       protocol: TCP
-      name: port_adopt_v1
+      name: port-adopt-v1
     - port: 27001
       protocol: UDP
-      name: port_app_discovery
+      name: port-app-discovery
     - port: 29810
       protocol: UDP
-      name: port_discovery
+      name: port-discovery
     - port: 29811
       protocol: TCP
-      name: port_manager_v1
+      name: port-manager-v1
     - port: 29814
       protocol: TCP
-      name: port_manager_v2
+      name: port-manager-v2
     - port: 29815
       protocol: TCP
-      name: port_transfer_v2
+      name: port-transfer-v2
     - port: 29816
       protocol: TCP
-      name: port_rtty
+      name: port-rtty
     - port: 29813
       protocol: TCP
-      name: port_upgrade_v1
+      name: port-upgrade-v1
