@@ -35,8 +35,6 @@ spec:
               name: omada-vol-data
             - mountPath: /opt/tplink/EAPController/logs
               name: omada-vol-logs
-      # lazy way out, a lot of ports need to be exposed
-      hostNetwork: true
       containers:
         - env:
             - name: PUID
@@ -47,6 +45,40 @@ spec:
               value: "America/Chicago"
           image: docker.io/mbentley/omada-controller:5.15.8.2
           name: omada
+          ports:
+            - containerPort: 8088
+              protocol: TCP
+              name: manage_http_port
+            - containerPort: 8043
+              protocol: TCP
+              name: manage_https_port
+            - containerPort: 8843
+              protocol: TCP
+              name: portal_https_port
+            - containerPort: 29812
+              protocol: TCP
+              name: port_adopt_v1
+            - containerPort: 27001
+              protocol: UDP
+              name: port_app_discovery
+            - containerPort: 29810
+              protocol: UDP
+              name: port_discovery
+            - containerPort: 29811
+              protocol: TCP
+              name: port_manager_v1
+            - containerPort: 29814
+              protocol: TCP
+              name: port_manager_v2
+            - containerPort: 29815
+              protocol: TCP
+              name: port_transfer_v2
+            - containerPort: 29816
+              protocol: TCP
+              name: port_rtty
+            - containerPort: 29813
+              protocol: TCP
+              name: port_upgrade_v1
           volumeMounts:
             - mountPath: /opt/tplink/EAPController/data
               name: omada-vol-data

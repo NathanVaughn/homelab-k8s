@@ -38,6 +38,7 @@
 | chrony (NTP)            | 10.0.1.3 | ntp.svc.nathanv.home               |
 | technitium (DNS)        | 10.0.1.4 | dns.svc.nathanv.home               |
 | Factorio                | 10.0.1.5 | factorio.svc.nathanv.home          |
+| Omada                   | 10.0.1.6 | omada.svc.nathanv.home             |
 
 ## IoT Network
 

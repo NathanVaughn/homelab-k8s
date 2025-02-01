@@ -1,0 +1,8 @@
+apiVersion: nathanv.me/v1
+kind: DNSConfig
+metadata:
+  name: omada-dns-config2
+  namespace: omada
+spec:
+  hostname: omada.svc.nathanv.home
+  internalService: omada-service

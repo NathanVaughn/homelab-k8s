@@ -29,10 +29,11 @@ app_servers = [
             "k8s_labels": ["role=3dprint", "connectivity=wifi", "hardware=3dprinter"],
         },
     ),
+    (
+        "butch.nathanv.home",
+        {"ssh_user": "ubuntu", "k8s_labels": ["role=network", "connectivity=eth"]},
+    ),
 ]
-
-# We don't want to schedule jobs on the 3d print server
-# as that's on wifi
 
 # Labels:
 # hardware=adsb

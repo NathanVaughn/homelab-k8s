@@ -4,9 +4,42 @@ metadata:
   name: omada-service
   namespace: omada
 spec:
-  type: ClusterIP
+  type: LoadBalancer
+  loadBalancerIP: "10.0.1.6"
   selector:
     app: omada
   ports:
+    # https://github.com/mbentley/docker-omada-controller?tab=readme-ov-file#optional-variables
+    - port: 8088
+      protocol: TCP
+      name: manage_http_port
     - port: 8043
       protocol: TCP
+      name: manage_https_port
+    - port: 8843
+      protocol: TCP
+      name: portal_https_port
+    - port: 29812
+      protocol: TCP
+      name: port_adopt_v1
+    - port: 27001
+      protocol: UDP
+      name: port_app_discovery
+    - port: 29810
+      protocol: UDP
+      name: port_discovery
+    - port: 29811
+      protocol: TCP
+      name: port_manager_v1
+    - port: 29814
+      protocol: TCP
+      name: port_manager_v2
+    - port: 29815
+      protocol: TCP
+      name: port_transfer_v2
+    - port: 29816
+      protocol: TCP
+      name: port_rtty
+    - port: 29813
+      protocol: TCP
+      name: port_upgrade_v1
