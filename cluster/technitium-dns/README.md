@@ -77,6 +77,4 @@ Cannot use a dash in the database name.
 
 ### Misc
 
-DNS over HTTPS can be enabled under Settings -> Optional Protocols.
-
 The hostname and default contact email can modified under Settings -> General.
