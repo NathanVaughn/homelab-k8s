@@ -203,7 +203,7 @@ systemd.service(
     service="k3s",
     restarted=True,
     _sudo=True,
-    _if=k3s_config.did_change or registries_config.did_change,
+    _if=[k3s_config.did_change, registries_config.did_change],
     _serial=True,
 )
 
