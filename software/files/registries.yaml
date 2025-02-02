@@ -17,7 +17,7 @@ mirrors:
       - "https://cr.nathanv.app/v2/ghcr.io"
   quay.io:
     endpoint:
-      - "https://cr.nathanv.app/v2/ghcr.io"
+      - "https://cr.nathanv.app/v2/quay.io"
   cr.nathanv.app:
     endpoint:
       - "https://cr.nathanv.app"
