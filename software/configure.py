@@ -184,7 +184,7 @@ else:
         args=base_args + [f"--server=https://{first_host_ip}:6443"],
     )
 
-files.put(
+registries_config = files.put(
     name="Upload k3s registry config",
     src=ROOT_DIR.joinpath("software", "files", "registries.yaml"),
     dest="/etc/rancher/k3s/registries.yaml",
@@ -203,7 +203,7 @@ systemd.service(
     service="k3s",
     restarted=True,
     _sudo=True,
-    _if=k3s_config.did_change,
+    _if=k3s_config.did_change or registries_config.did_change,
     _serial=True,
 )
 

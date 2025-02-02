@@ -1,3 +1,23 @@
 # https://docs.k3s.io/installation/registry-mirror
+
+# --------------------------------------------
+# This section will share images between nodes
+
+# mirrors:
+#   "*":
+
+# --------------------------------------------
+# This section will pull everything from Harbor
 mirrors:
-  "*":
+  docker.io:
+    endpoint:
+      - "https://cr.nathanv.app/v2/docker.io"
+  ghcr.io:
+    endpoint:
+      - "https://cr.nathanv.app/v2/ghcr.io"
+  quay.io:
+    endpoint:
+      - "https://cr.nathanv.app/v2/ghcr.io"
+  cr.nathanv.app:
+    endpoint:
+      - "https://cr.nathanv.app"
