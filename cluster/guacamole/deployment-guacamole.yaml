@@ -15,6 +15,7 @@ spec:
     spec:
       nodeSelector:
         role: apps
+      dnsPolicy: ClusterFirstWithHostNet
       containers:
         - env:
             - name: POSTGRESQL_HOSTNAME

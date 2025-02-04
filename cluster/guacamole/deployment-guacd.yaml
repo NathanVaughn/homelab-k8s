@@ -15,6 +15,7 @@ spec:
     spec:
       nodeSelector:
         role: apps
+      dnsPolicy: ClusterFirstWithHostNet
       containers:
         - image: docker.io/guacamole/guacd:1.5.5
           name: guacd

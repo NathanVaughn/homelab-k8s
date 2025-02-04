@@ -38,6 +38,8 @@ spec:
       # will not work without this
       # does not seem to like the controller running off exclusively a virtual ip
       hostNetwork: true
+      # https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy
+      dnsPolicy: ClusterFirstWithHostNet
       containers:
         - env:
             - name: PUID
