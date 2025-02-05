@@ -35,3 +35,8 @@ and grant them full admin privileges.
 You can now disable the `EXTENSION_PRIORITY` environment variable.
 
 Log in with this account, and disable the built-in `guacadmin` account.
+
+When adding connections, just use the hostname (`annie`),
+not the fully qualified domain name (`annie.nathanv.home`).
+These are already hardcoded in the CoreDNS config, but forwarding to the upstream
+home DNS server seems inconsistent.
