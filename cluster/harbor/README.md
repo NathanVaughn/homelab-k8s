@@ -5,6 +5,9 @@
 In Authentik, configure a OAuth2 provider. Use the redirect URL as
 `https://cr.nathanv.app/c/oidc/callback`
 
+Change the "Access Token validity" in the Advanced protocol settings,
+otherwise you will be constantly signed out.
+
 ```bash
 export ADMIN_PASSWORD=$ADMIN_PASSWORD
 export REGISTRY_PASSWORD=$REGISTRY_PASSWORD
