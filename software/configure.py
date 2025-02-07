@@ -203,7 +203,9 @@ systemd.service(
     service="k3s",
     restarted=True,
     _sudo=True,
-    _if=[k3s_config.did_change, registries_config.did_change],
+    # https://docs.pyinfra.com/en/3.x/using-operations.html#operation-changes-output
+    _if=lambda: k3s_config.did_change() or registries_config.did_change(),
+    # restart k3s one at a time
     _serial=True,
 )
 
