@@ -20,6 +20,9 @@ spec:
       type: clusterIP
       tls:
         enabled: false
+    nginx:
+      nodeSelector:
+        role: apps
     portal:
       nodeSelector:
         role: apps
@@ -27,11 +30,17 @@ spec:
       nodeSelector:
         role: apps
     jobservice:
+      replicas: 2
       nodeSelector:
         role: apps
     registry:
       # needed for reverse proxy
       relativeurls: true
+      nodeSelector:
+        role: apps
+    trivy:
+      # make the scan go faster
+      replicas: 3
       nodeSelector:
         role: apps
     database:
