@@ -75,8 +75,8 @@ spec:
           storageClass: longhorn
           accessMode: ReadWriteOnce
         trivy:
-          storageClass: longhorn-rwx
-          accessMode: ReadWriteMany
+          storageClass: longhorn
+          accessMode: ReadWriteOnce
   valuesFrom:
     - kind: Secret
       name: harbor-secrets
