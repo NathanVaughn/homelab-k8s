@@ -3,11 +3,13 @@
 ## Post Setup
 
 - Stream URL: `https://octoprint-cam.nathanv.app/?action=stream`
-- Snapshot URL: `https://octoprint-cam.nathanv.app/?action=snapshot`
+- Snapshot URL: `http://localhost/webcam/?action=snapshot`
 - Path to FFMPEG: `/usr/bin/ffmpeg`
 - Restart command: `s6-svc -r /var/run/s6/services/octoprint`
 
 While Octoprint does host the webcam on `/webcam/` as well, this seems less reliable.
+Due to DNS issues, it seems resolving `octoprint-cam.nathanv.app` within the
+container is challenging, so that URL helps.
 
 ### Ender 3 Config
 
