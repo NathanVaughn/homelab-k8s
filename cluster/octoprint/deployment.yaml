@@ -31,6 +31,10 @@ spec:
           volumeMounts:
             - mountPath: /octoprint
               name: data-vol
+              # *DON'T * mount the 3d printer as a USB device
+              # If you're not careful, Kubernetes will happily create
+              # a folder in it's place on the host if the 3d printer is not turned on
+              # when the container starts.
       volumes:
         - name: data-vol
           persistentVolumeClaim:
