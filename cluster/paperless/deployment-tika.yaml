@@ -1,11 +1,10 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: paperless-tika-deployment
   namespace: paperless
 spec:
   replicas: 1
-  serviceName: paperless-tika
   selector:
     matchLabels:
       app: paperless-tika
