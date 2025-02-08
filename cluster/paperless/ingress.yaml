@@ -10,7 +10,7 @@ spec:
     - match: Host(`paperless.nathanv.app`)
       kind: Rule
       services:
-        - name: paperless
+        - name: paperless-service
           port: 8000
   tls:
     certResolver: le
