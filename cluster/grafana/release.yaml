@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: grafana-repo
         namespace: grafana
-      version: "8.8.6"
+      version: "8.9.0"
   interval: 1h0m0s
   values:
     persistence:
