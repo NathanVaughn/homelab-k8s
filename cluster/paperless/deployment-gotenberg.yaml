@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: paperless-gotenberg-deployment
+  namespace: paperless
+spec:
+  replicas: 1
+  serviceName: paperless-gotenberg
+  selector:
+    matchLabels:
+      app: paperless-gotenberg
+  template:
+    metadata:
+      labels:
+        app: paperless-gotenberg
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+        - image: docker.io/gotenberg/gotenberg:8.7
+          name: gotenberg
+          command: ["gotenberg", "--chromium-disable-javascript=true", "--chromium-allow-list=file:///tmp/.*"]
+          ports:
+            - containerPort: 3000

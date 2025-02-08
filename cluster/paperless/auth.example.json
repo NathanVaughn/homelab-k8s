@@ -1,0 +1,16 @@
+{
+    "openid_connect": {
+        "APPS": [
+            {
+                "provider_id": "authentik",
+                "name": "Authentik",
+                "client_id": "<Client ID>",
+                "secret": "<Client Secret>",
+                "settings": {
+                    "server_url": "https://authentik.nathanv.app/application/o/paperless/.well-known/openid-configuration"
+                }
+            }
+        ],
+        "OAUTH_PKCE_ENABLED": "True"
+    }
+}

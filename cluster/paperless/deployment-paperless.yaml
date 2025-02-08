@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: paperless-deployment
+  namespace: paperless
+spec:
+  replicas: 1
+  serviceName: paperless
+  selector:
+    matchLabels:
+      app: paperless
+  template:
+    metadata:
+      labels:
+        app: paperless
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+        - env:
+            - name: PAPERLESS_REDIS
+              value: redis://paperless-redis-service.paperless.svc.cluster.local:6379
+            - name: PAPERLESS_DBENGINE
+              value: postgresql
+            - name: PAPERLESS_DBHOST
+              value: paperless-postgresql-service.paperless.svc.cluster.local
+            - name: PAPERLESS_DBUSER
+              value: paperless
+            - name: PAPERLESS_TIKA_ENABLED
+              value: "true"
+            - name: PAPERLESS_TIKA_ENDPOINT
+              value: http://paperless-tika-service.paperless.svc.cluster.local:9998
+            - name: PAPERLESS_TIKA_GOTENBERG_ENDPOINT
+              value: http://paperless-gotenberg-service.paperless.svc.cluster.local:3000
+            - name: PAPERLESS_URL
+              value: https://paperless.nathanv.app
+            - name: PAPERLESS_APPS
+              value: allauth.socialaccount.providers.openid_connect
+            - name: PAPERLESS_SOCIAL_AUTO_SIGNUP
+              value: "true"
+            - name: PAPERLESS_DISABLE_REGULAR_LOGIN
+              value: "true"
+            - name: PAPERLESS_REDIRECT_LOGIN_TO_SSO
+              value: "true"
+            - name: PAPERLESS_EMAIL_PORT
+              value: "587"
+            - name: PAPERLESS_EMAIL_FROM
+              value: "paperless@nathanv.app"
+            - name: PAPERLESS_EMAIL_USE_TLS
+              value: "true"
+          envFrom:
+            - secretRef:
+                name: paperless-env
+          image: docker.io/paperlessngx/paperless-ngx:2.14.7
+          name: paperless
+          ports:
+            - containerPort: 8000
+          volumeMounts:
+            - mountPath: /usr/src/paperless/data
+              name: paperless-data-vol
+            - mountPath: /usr/src/paperless/media
+              name: paperless-media-vol
+      volumes:
+        - name: paperless-data-vol
+          persistentVolumeClaim:
+            claimName: paperless-pvc-data
+        - name: paperless-media-vol
+          persistentVolumeClaim:
+            claimName: paperless-pvc-media

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: paperless-redis-deployment
+  namespace: paperless
+spec:
+  replicas: 1
+  serviceName: paperless-redis
+  selector:
+    matchLabels:
+      app: paperless-redis
+  template:
+    metadata:
+      labels:
+        app: paperless-redis
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+        - image: docker.io/library/redis:7.4
+          name: redis
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+            - mountPath: /data
+              name: redis-vol
+      volumes:
+        - name: redis-vol
+          persistentVolumeClaim:
+            claimName: paperless-pvc-redis
