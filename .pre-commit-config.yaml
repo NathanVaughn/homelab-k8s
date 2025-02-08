@@ -20,13 +20,13 @@ repos:
         id: ruff
       - id: ruff-format
     repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.9.0
+    rev: v0.9.5
   - hooks:
       - id: pyright
     repo: https://github.com/RobertCraigie/pyright-python
-    rev: v1.1.391
+    rev: v1.1.393
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.5.16
+    rev: 0.5.29
     hooks:
       - id: uv-lock
   - repo: https://github.com/tarioch/flux-check-hook
@@ -34,6 +34,6 @@ repos:
     hooks:
       - id: check-flux-helm-values
   - repo: https://github.com/google/yamlfmt
-    rev: v0.14.0
+    rev: v0.15.0
     hooks:
       - id: yamlfmt
