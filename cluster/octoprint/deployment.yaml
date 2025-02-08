@@ -22,9 +22,9 @@ spec:
               value: "true"
           image: docker.io/octoprint/octoprint:1.10.3
           name: octoprint
-          # securityContext:
-          #   privileged: true # for access to the printer and webcam
-          #   runAsUser: 0
+          securityContext:
+            privileged: true # for device access
+            runAsUser: 0
           ports:
             - containerPort: 8080 # webcam
             - containerPort: 80 # http server
