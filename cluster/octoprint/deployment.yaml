@@ -22,18 +22,18 @@ spec:
               value: "true"
           image: docker.io/octoprint/octoprint:1.10.3
           name: octoprint
-          securityContext:
-            privileged: true # for access to the printer and webcam
-            runAsUser: 0
+          # securityContext:
+          #   privileged: true # for access to the printer and webcam
+          #   runAsUser: 0
           ports:
             - containerPort: 8080 # webcam
             - containerPort: 80 # http server
           volumeMounts:
             - mountPath: /octoprint
               name: data-vol
-            - mountPath: /dev/ttyUSB0 # even with privleged, still needed for some reason
+            - mountPath: /dev/ttyUSB0
               name: printer-usb
-            - mountPath: /dev/video1
+            - mountPath: /dev/video0
               name: webcam-usb
       volumes:
         - name: data-vol
@@ -42,6 +42,8 @@ spec:
         - name: printer-usb
           hostPath:
             path: /dev/ttyUSB0
+            type: CharDevice
         - name: webcam-usb
           hostPath:
-            path: /dev/video1
+            path: /dev/video0
+            type: CharDevice
