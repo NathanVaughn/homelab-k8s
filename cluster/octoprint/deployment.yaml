@@ -31,17 +31,7 @@ spec:
           volumeMounts:
             - mountPath: /octoprint
               name: data-vol
-            - mountPath: /dev/ttyUSB0
-              name: printer-usb
-            - mountPath: /dev/video0
-              name: webcam-usb
       volumes:
         - name: data-vol
           persistentVolumeClaim:
             claimName: octoprint-pvc
-        - name: printer-usb
-          hostPath:
-            path: /dev/ttyUSB0
-        - name: webcam-usb
-          hostPath:
-            path: /dev/video0
