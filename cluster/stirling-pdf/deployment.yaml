@@ -19,7 +19,7 @@ spec:
         - env:
             - name: DOCKER_ENABLE_SECURITY
               value: "true"
-          image: ghcr.io/stirling-tools/stirling-pdf:0.40.1-fat
+          image: ghcr.io/stirling-tools/stirling-pdf:0.41.0-fat
           name: stirling-pdf
           ports:
             - containerPort: 8080

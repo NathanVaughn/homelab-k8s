@@ -28,7 +28,7 @@ spec:
         #     value: https://authentik.nathanv.app/application/o/actual/
         #   - name: ACTUAL_OPENID_SERVER_HOSTNAME
         #     value: actual.nathanv.app
-        - image: ghcr.io/actualbudget/actual-server:25.1.0
+        - image: ghcr.io/actualbudget/actual-server:25.2.1
           name: actual
           ports:
             - containerPort: 5006
