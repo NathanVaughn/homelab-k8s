@@ -18,13 +18,15 @@ spec:
       initContainers:
         - name: module-install
           image: ghcr.io/astral-sh/uv:python3.13-alpine
-          # forgive me for what i've done
           workingDir: /var/www/webtrees/
           command: ['uv']
-          args: ['run', 'https://raw.githubusercontent.com/NathanVaughn/homelab-k8s/refs/heads/main/cluster/webtrees/modules.py']
+          args: ['run', '/tmp/modules.py']
           volumeMounts:
             - mountPath: /var/www/webtrees/modules_v4/
               name: modules-vol
+            - mountPath: /tmp/modules.py
+              name: modules-config-vol
+              subPath: modules.py
       containers:
         - env:
             - name: BASE_URL
@@ -62,3 +64,6 @@ spec:
         - name: modules-vol
           persistentVolumeClaim:
             claimName: webtrees-pvc-modules
+        - name: modules-config-vol
+          configMap:
+            name: webtrees-modules-config

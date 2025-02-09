@@ -1,0 +1,97 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: webtrees-modules-config
+  namespace: webtrees
+data:
+  modules.py: |
+    import os
+    import shutil
+    import zipfile
+    from urllib.parse import urlparse
+    from urllib.request import urlopen
+
+    modules_dir = "modules_v4"
+    source_file = "source.txt"
+    sources = [
+        "https://github.com/UksusoFF/webtrees-faces/archive/refs/tags/v2.7.3.zip",
+        "https://github.com/JustCarmen/webtrees-fancy-imagebar/archive/refs/tags/2.4.1.zip",
+        "https://github.com/JustCarmen/webtrees-theme-justlight/archive/refs/tags/2.3.1.zip",
+        "https://github.com/vesta-webtrees-2-custom-modules/vesta_classic_laf/archive/cf105ae9c4e3b268c6e763aca0823bd6e8ad94a5.zip",
+        "https://github.com/vesta-webtrees-2-custom-modules/vesta_common/archive/afeb5b1fed5a5a00c10a010f12cf002e6c59ef52.zip",
+        "https://github.com/vytux-com/vytux_cousins/archive/refs/tags/2.1.1.zip",
+        "https://github.com/magicsunday/webtrees-fan-chart/releases/download/3.0.0/webtrees-fan-chart.zip",
+        "https://github.com/magicsunday/webtrees-pedigree-chart/releases/download/2.0.0/webtrees-pedigree-chart.zip",
+        "https://github.com/magicsunday/webtrees-descendants-chart/releases/download/2.0.0/webtrees-descendants-chart.zip",
+    ]
+
+
+    def check_existing_dir(dir: str, url: str) -> bool:
+        """
+        See if the existing directory came from the same source.
+        If not, delete. Returns result.
+        """
+        if not os.path.isdir(dir):
+            return False
+
+        # see if existing folder comes from the same upstream url
+        dir_source_file = os.path.join(dir, source_file)
+        if os.path.isfile(dir_source_file):
+            with open(dir_source_file, "r") as fp:
+                source = fp.read()
+                if source == url:
+                    return True
+
+        print(f"Deleting {dir}")
+        shutil.rmtree(dir)
+        return False
+
+
+    def download_and_extract_zip(url: str) -> None:
+        print("-------------------")
+        if not os.path.exists(modules_dir):
+            os.makedirs(modules_dir)
+
+        # Parse the file name from the URL
+        url_path = urlparse(url).path
+        # comes with a leading slash
+        repo_name = url_path.split("/")[2]
+        file_name = os.path.basename(url_path)
+        zip_path = os.path.join(modules_dir, file_name)
+        dst_path = os.path.join(modules_dir, repo_name)
+
+        # if already exists, break
+        if check_existing_dir(dst_path, url):
+            print(f"{url} already downloaded")
+            return
+
+        # Download the file
+        print(f"Downloading {url}...")
+        with urlopen(url) as response, open(zip_path, "wb") as file:
+            file.write(response.read())
+        print(f"Downloaded {file_name}.")
+
+        # Extract the file
+        print(f"Extracting {file_name}...")
+        with zipfile.ZipFile(zip_path, "r") as zip_ref:
+            # first item will be the top level directory name with no prefix
+            extracted_dir = zip_ref.namelist()[0]
+            zip_ref.extractall(modules_dir)
+        print(f"Extracted {file_name}")
+
+        # Delete the downloaded ZIP file
+        os.remove(zip_path)
+        print(f"Deleted {file_name}.")
+
+        # Rename zip
+        os.rename(os.path.join(modules_dir, extracted_dir), dst_path)
+        print(f"Renamed {extracted_dir} to {repo_name}.")
+
+        # Record source url
+        with open(os.path.join(dst_path, source_file), "w") as fp:
+            fp.write(url)
+
+
+    if __name__ == "__main__":
+        for source in sources:
+            download_and_extract_zip(source)
