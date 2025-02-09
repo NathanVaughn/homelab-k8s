@@ -30,3 +30,8 @@ kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < 
 # optional
 kubectl apply -f sealed-secret.yaml
 ```
+
+## Post Setup
+
+After the first login, you'll need to manually make the new account a super user.
+This is in the `auth_user` table.
