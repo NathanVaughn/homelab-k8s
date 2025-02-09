@@ -16,7 +16,7 @@ spec:
       nodeSelector:
         role: apps
       containers:
-        - image: docker.io/gotenberg/gotenberg:8.7
+        - image: docker.io/gotenberg/gotenberg:8.17
           name: gotenberg
           command: ["gotenberg", "--chromium-disable-javascript=true", "--chromium-allow-list=file:///tmp/.*"]
           ports:
