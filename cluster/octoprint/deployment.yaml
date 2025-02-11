@@ -20,6 +20,8 @@ spec:
         - env:
             - name: ENABLE_MJPG_STREAMER
               value: "true"
+            - name: TZ
+              value: America/Chicago # required for print time estimation
           image: docker.io/octoprint/octoprint:1.10.3
           name: octoprint
           securityContext:
