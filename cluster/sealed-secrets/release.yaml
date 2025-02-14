@@ -21,5 +21,8 @@ spec:
   upgrade:
     crds: CreateReplace
   values:
+    metrics:
+      serviceMonitor:
+        enabled: true
     nodeSelector:
       role: apps
