@@ -5,7 +5,8 @@ from pyinfra.facts import server as server_facts
 from pyinfra.operations import apt, python, server
 
 apt.update(name="Update apt cache", _sudo=True)
-apt.dist_upgrade(name="Upgrade all packages", _sudo=True)
+apt.dist_upgrade(name="apt dist-upgrade", _sudo=True)
+apt.upgrade(name="apt upgrade --autoremove", auto_remove=True, _sudo=True)
 
 
 def reboot_node():
