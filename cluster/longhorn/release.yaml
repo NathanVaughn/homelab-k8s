@@ -22,6 +22,8 @@ spec:
       # prevents data from being deleted when pvc is deleted
       reclaimPolicy: Retain
     defaultSettings:
+      # allow manually attached volumes to be detached. Important for rebooting.
+      detachManuallyAttachedVolumesWhenCordoned: true
       backupTarget: s3://nathanv-private@us-west-001/longhorn
       backupTargetCredentialSecret: longhorn-env
     # just limit the 1-off components to the apps nodes
