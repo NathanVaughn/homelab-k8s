@@ -40,17 +40,17 @@ Under Allowed, add the following domain names:
 
 Vimeo:
 
-- player-telemetry.vimeo.com
-- f.vimeocdn.com
-- collector.vhx.tv
+- `player-telemetry.vimeo.com`
+- `f.vimeocdn.com`
+- `collector.vhx.tv`
 
 Azure DevOps:
 
-- 37bvsblobprodcus311.blob.core.windows.net
+- `37bvsblobprodcus311.blob.core.windows.net`
 
 Under Blocked, add the following domain names:
 
-- tttturl.com
+- `tttturl.com`
 
 Under Settings -> Blocking, add the following blocklists:
 
