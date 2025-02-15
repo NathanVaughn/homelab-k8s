@@ -25,7 +25,7 @@ spec:
                     values:
                       - network
       containers:
-        - image: docker.io/technitium/dns-server:13.4.1
+        - image: docker.io/technitium/dns-server:13.4.2
           name: technitium-dns
           ports:
             - containerPort: 5380
