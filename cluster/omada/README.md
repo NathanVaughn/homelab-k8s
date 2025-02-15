@@ -53,3 +53,8 @@ Go into Devices -> Garage AP -> Config -> Advanced.
 Set the RSSI Threshold to -25 dBm for both channels.
 
 Optionally, enable OFDMA for both APs under Advanced.
+
+### Lock AP
+
+Select my desktop under clients. Lock to Primary AP. Otherwise it seems to switch
+to the Garage AP at the worst possible moments.
