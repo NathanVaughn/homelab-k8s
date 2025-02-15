@@ -26,7 +26,7 @@ spec:
           envFrom:
             - secretRef:
                 name: adsb-env
-          image: ghcr.io/sdr-enthusiasts/docker-planefinder:latest-build-445
+          image: ghcr.io/sdr-enthusiasts/docker-planefinder@sha256:bc826b388df4ace93ba439a1fa5696135355599be5717769ee6de73483b6aad6
           name: planefinder
           volumeMounts:
             - mountPath: /run

@@ -30,3 +30,8 @@ kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < 
 # optional
 kubectl apply -f sealed-secret.yaml
 ```
+
+## Discussion
+
+These Docker containers don't follow semver, so Renovate struggles updating them.
+Instead, I use hash pinning.

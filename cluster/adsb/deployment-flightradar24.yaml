@@ -28,7 +28,7 @@ spec:
           envFrom:
             - secretRef:
                 name: adsb-env
-          image: ghcr.io/sdr-enthusiasts/docker-flightradar24:latest-build-764
+          image: ghcr.io/sdr-enthusiasts/docker-flightradar24@sha256:25086edaee61c334681a7641b0b864653e18c798a0cf5a2cac24f8426eb9711f
           name: flightradar24
           volumeMounts:
             - mountPath: /run
