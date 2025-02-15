@@ -3,7 +3,7 @@
 ## Setup
 
 In Authentik, create a proxy provider for a single application with the URL
-`https://longhorn.nathanv.app`. Ensure you assign the application to an outpost.
+`https://phpmyadmin.nathanv.app`. Ensure you assign the application to an outpost.
 
 ```bash
 export MARIADB_PASSWORD=$MARIADB_PASSWORD
