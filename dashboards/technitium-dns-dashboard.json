@@ -92,7 +92,7 @@
             "editorMode": "code",
             "format": "table",
             "rawQuery": true,
-            "rawSql": "SELECT\r\n    CASE response_type\r\n        WHEN 1 THEN 'Authoritative'\r\n        WHEN 2 THEN 'Recursive'\r\n        WHEN 3 THEN 'Cached'\r\n        WHEN 4 THEN 'Blocked'\r\n        WHEN 5 THEN 'Upstream Blocked'\r\n        WHEN 6 THEN 'Cache Blocked'\r\n        WHEN 7 THEN 'Dropped'\r\n    END\r\nAS 'Response Type', COUNT(*) AS Quantity\r\nFROM dns_logs\r\nWHERE timestamp \u003e= DATE_SUB(NOW(), INTERVAL 1 DAY)\r\nGROUP BY response_type\r\nORDER BY Quantity DESC;",
+            "rawSql": "SELECT\r\n    CASE response_type\r\n        WHEN 1 THEN 'Authoritative'\r\n        WHEN 2 THEN 'Recursive'\r\n        WHEN 3 THEN 'Cached'\r\n        WHEN 4 THEN 'Blocked'\r\n        WHEN 5 THEN 'Upstream Blocked'\r\n        WHEN 6 THEN 'Cache Blocked'\r\n        WHEN 7 THEN 'Dropped'\r\n    END\r\nAS 'Response Type', COUNT(*) AS Quantity\r\nFROM dns_logs\r\nWHERE $__timeFilter(timestamp)\r\nGROUP BY response_type\r\nORDER BY Quantity DESC;",
             "refId": "A",
             "sql": {
               "columns": [
@@ -193,7 +193,7 @@
             "editorMode": "code",
             "format": "table",
             "rawQuery": true,
-            "rawSql": "SELECT qname as Domain, COUNT(*) AS Hits\r\nFROM dns_logs\r\nWHERE timestamp \u003e= DATE_SUB(NOW(), INTERVAL 1 DAY)\r\n/* Only get requests that were successfully Authoritative, Recursive, or Cached */\r\nAND (response_type = 1 OR response_type = 2 OR response_type = 3)\r\n/* Only show requests that returned a response */\r\nAND rcode = 0\r\nGROUP BY Domain\r\nORDER BY Hits DESC\r\nLIMIT 20;",
+            "rawSql": "SELECT qname as Domain, COUNT(*) AS Hits\r\nFROM dns_logs\r\nWHERE $__timeFilter(timestamp)\r\n/* Only get requests that were successfully Authoritative, Recursive, or Cached */\r\nAND (response_type = 1 OR response_type = 2 OR response_type = 3)\r\n/* Only show requests that returned a response */\r\nAND rcode = 0\r\nGROUP BY Domain\r\nORDER BY Hits DESC\r\nLIMIT 20;",
             "refId": "A",
             "sql": {
               "columns": [
@@ -220,7 +220,7 @@
             "table": "dns_logs"
           }
         ],
-        "title": "Top Allowed Domains (24 Hours)",
+        "title": "Top Allowed Domains",
         "type": "table"
       },
       {
@@ -283,7 +283,7 @@
             "editorMode": "code",
             "format": "table",
             "rawQuery": true,
-            "rawSql": "SELECT qname as Domain, COUNT(*) AS Hits\r\nFROM dns_logs\r\nWHERE timestamp \u003e= DATE_SUB(NOW(), INTERVAL 1 DAY)\r\n/* Only get requests that were blocked */\r\nAND (response_type = 4 OR response_type = 5 OR response_type = 6)\r\nGROUP BY Domain\r\nORDER BY Hits DESC\r\nLIMIT 20;",
+            "rawSql": "SELECT qname as Domain, COUNT(*) AS Hits\r\nFROM dns_logs\r\nWHERE $__timeFilter(timestamp)\r\n/* Only get requests that were blocked */\r\nAND (response_type = 4 OR response_type = 5 OR response_type = 6)\r\nGROUP BY Domain\r\nORDER BY Hits DESC\r\nLIMIT 20;",
             "refId": "A",
             "sql": {
               "columns": [
@@ -304,7 +304,7 @@
             }
           }
         ],
-        "title": "Top Blocked Domains (24 hours)",
+        "title": "Top Blocked Domains",
         "type": "table"
       }
     ],
@@ -327,7 +327,7 @@
       ]
     },
     "time": {
-      "from": "now-6h",
+      "from": "now-30m",
       "to": "now"
     },
     "timepicker": {},
