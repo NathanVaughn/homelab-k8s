@@ -120,7 +120,7 @@
             "format": "time_series",
             "hide": false,
             "rawQuery": true,
-            "rawSql": "SELECT\r\n    CASE response_type\r\n        WHEN 1 THEN 'Authoritative'\r\n        WHEN 2 THEN 'Recursive'\r\n        WHEN 3 THEN 'Cached'\r\n        WHEN 4 THEN 'Blocked'\r\n        WHEN 5 THEN 'Upstream Blocked'\r\n        WHEN 6 THEN 'Cache Blocked'\r\n        WHEN 7 THEN 'Dropped'\r\n    END as response_type_name,\r\nUNIX_TIMESTAMP(DATE_FORMAT(timestamp, '%Y-%m-%d %H:%i:00')) AS time, COUNT(*) AS Requests\r\nFROM dns_logs\r\nWHERE $__timeFilter(timestamp)\r\nGROUP BY time, response_type\r\nORDER BY time ASC;",
+            "rawSql": "SELECT\r\n    CASE response_type\r\n        WHEN 1 THEN 'Authoritative'\r\n        WHEN 2 THEN 'Recursive'\r\n        WHEN 3 THEN 'Cached'\r\n        WHEN 4 THEN 'Blocked'\r\n        WHEN 5 THEN 'Upstream Blocked'\r\n        WHEN 6 THEN 'Cache Blocked'\r\n        WHEN 7 THEN 'Dropped'\r\n    END as response_type_name,\r\nUNIX_TIMESTAMP(DATE_FORMAT(timestamp, '%Y-%m-%d %H:%i:00')) AS time, COUNT(*) AS Responses\r\nFROM dns_logs\r\nWHERE $__timeFilter(timestamp)\r\nGROUP BY time, response_type\r\nORDER BY time ASC;",
             "refId": "A",
             "sql": {
               "columns": [
