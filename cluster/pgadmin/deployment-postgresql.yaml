@@ -28,7 +28,7 @@ spec:
           envFrom:
             - secretRef:
                 name: pgadmin-env
-          image: docker.io/library/postgres:17.3
+          image: docker.io/library/postgres:17.4
           name: postgresql
           ports:
             - containerPort: 5432
