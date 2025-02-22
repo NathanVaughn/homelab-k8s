@@ -141,7 +141,7 @@
             }
           }
         ],
-        "title": "Panel Title",
+        "title": "Responses Over Time",
         "transformations": [
           {
             "id": "prepareTimeSeries",
