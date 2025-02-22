@@ -339,15 +339,6 @@ AND response_rtt IS NOT NULL
 
 ```sql
 SELECT qname as Domain,
-    CASE response_type
-        WHEN 1 THEN 'Authoritative'
-        WHEN 2 THEN 'Recursive'
-        WHEN 3 THEN 'Cached'
-        WHEN 4 THEN 'Blocked'
-        WHEN 5 THEN 'Upstream Blocked'
-        WHEN 6 THEN 'Cache Blocked'
-        WHEN 7 THEN 'Dropped'
-    END as "Response Type",
     CASE qtype
         WHEN 0 THEN 'Unknown'
         WHEN 1 THEN 'A'
@@ -449,6 +440,15 @@ SELECT qname as Domain,
         WHEN 65282 THEN 'APP'
         WHEN 65357 THEN 'ALIAS'
     END as "Query Type",
+    CASE response_type
+        WHEN 1 THEN 'Authoritative'
+        WHEN 2 THEN 'Recursive'
+        WHEN 3 THEN 'Cached'
+        WHEN 4 THEN 'Blocked'
+        WHEN 5 THEN 'Upstream Blocked'
+        WHEN 6 THEN 'Cache Blocked'
+        WHEN 7 THEN 'Dropped'
+    END as "Response Type",
     answer as Answer,
     DATE_FORMAT(timestamp, '%H:%i:%s') AS Time
 FROM dns_logs
