@@ -37,3 +37,5 @@ repos:
     rev: v0.15.0
     hooks:
       - id: yamlfmt
+        # exclude flux which is auto-generated
+        exclude: ^cluster/flux-system
