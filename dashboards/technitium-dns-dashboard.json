@@ -396,7 +396,12 @@
             "show": false
           },
           "showHeader": true,
-          "sortBy": []
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Time"
+            }
+          ]
         },
         "pluginVersion": "11.5.1",
         "targets": [
@@ -753,7 +758,7 @@
       }
     ],
     "preload": false,
-    "refresh": "",
+    "refresh": "10s",
     "schemaVersion": 40,
     "tags": [],
     "templating": {
