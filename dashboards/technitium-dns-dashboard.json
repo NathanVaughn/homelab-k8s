@@ -53,7 +53,8 @@
                   "value": 50
                 }
               ]
-            }
+            },
+            "unit": "ms"
           },
           "overrides": []
         },
@@ -82,6 +83,7 @@
           "wideLayout": true
         },
         "pluginVersion": "11.5.1",
+        "repeatDirection": "h",
         "targets": [
           {
             "dataset": "mysql",
@@ -113,7 +115,7 @@
             }
           }
         ],
-        "title": "Response Time (ms)",
+        "title": "Response Time",
         "type": "stat"
       },
       {
@@ -251,7 +253,20 @@
               ]
             }
           },
-          "overrides": []
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Domain"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 339
+                }
+              ]
+            }
+          ]
         },
         "gridPos": {
           "h": 19,
@@ -270,7 +285,8 @@
             ],
             "show": false
           },
-          "showHeader": true
+          "showHeader": true,
+          "sortBy": []
         },
         "pluginVersion": "11.5.1",
         "targets": [
@@ -507,7 +523,7 @@
       ]
     },
     "time": {
-      "from": "now-12h",
+      "from": "now-30m",
       "to": "now"
     },
     "timepicker": {},
