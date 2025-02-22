@@ -12,10 +12,6 @@ This folder contains Kubernetes manifests synced with [flux](https://fluxcd.io/)
 Individual folders have specific instructions for any manual actions
 needed like setting up secrets.
 
-### docs
-
-Some additional documentation.
-
 ### os
 
 Script and information to setup node operating systems.
