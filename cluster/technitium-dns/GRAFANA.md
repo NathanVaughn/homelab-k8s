@@ -4,6 +4,7 @@
 
 <https://github.com/TechnitiumSoftware/TechnitiumLibrary/blob/750bda6a8346cbfdd8d3d62a6944961ba88ec58f/TechnitiumLibrary.Net/Dns/ResourceRecords/DnsResourceRecord.cs#L27-L128>
 
+```
 Unknown = 0
 A = 1
 NS = 2
@@ -103,11 +104,13 @@ ANAME = 65280
 FWD = 65281
 APP = 65282
 ALIAS = 65357
+```
 
 ## Response Types
 
 <https://github.com/TechnitiumSoftware/DnsServer/blob/59b03b5bfe16114c467b1c9130b6a34b35bec9cc/DnsServerCore.ApplicationCommon/IDnsQueryLogger.cs#L27-L28>
 
+```
 1: Authoritative
 2: Recursive
 3: Cached
@@ -115,11 +118,13 @@ ALIAS = 65357
 5: UpstreamBlocked
 6: CacheBlocked
 7: Dropped
+```
 
 ## Response Codes
 
 <https://github.com/TechnitiumSoftware/TechnitiumLibrary/blob/750bda6a8346cbfdd8d3d62a6944961ba88ec58f/TechnitiumLibrary.Net/Dns/DnsDatagram.cs#L46>
 
+```
 0: NoError
 1: FormatError
 2: ServerFailure
@@ -133,6 +138,7 @@ ALIAS = 65357
 10: NotZone
 16: BADVERS
 17: BADCOOKIE
+```
 
 Everything other than 0 is an error of some kind.
 
@@ -321,7 +327,7 @@ ORDER BY Quantity DESC;
 ## Average Response Time
 
 ```sql
-SELECT AVG(response_rtt)
+SELECT response_rtt
 FROM dns_logs
 WHERE $__timeFilter(timestamp)
 AND response_rtt IS NOT NULL
