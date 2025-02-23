@@ -1,7 +1,9 @@
-import json
-import subprocess
+import pathlib
 
 import yaml
+
+THIS_DIR = pathlib.Path(__file__).parent
+CLUSTER_DIR = THIS_DIR.parent
 
 # Run this script to generate the config map
 
@@ -22,33 +24,31 @@ yaml.representer.SafeRepresenter.add_representer(str, str_presenter)
 
 
 def main():
-    # load DNS configs
-    dns_configs = json.loads(
-        subprocess.check_output(
-            [
-                "kubectl",
-                "get",
-                "dnsconfigs.nathanv.me",
-                "--all-namespaces",
-                "-o",
-                "json",
-            ]
-        )
-    )
-
     ingresses = []
-    for dns_config in dns_configs["items"]:
-        if dns_config["spec"].get("externalCNAME"):
-            ingresses.append(
-                {
-                    "hostname": dns_config["spec"].get("hostname"),
-                    "service": "https://traefik.traefik.svc.cluster.local:443",
-                    "originRequest": {
-                        "noTLSVerify": True,
-                        "originServerName": "*traefik*",
-                    },
-                }
-            )
+
+    for yaml_file in CLUSTER_DIR.glob("**/*.y*ml"):
+        with open(yaml_file, "r") as fp:
+            docs = yaml.safe_load_all(fp)
+            for doc in docs:
+                if not (
+                    doc.get("apiVersion") == "nathanv.me/v1"
+                    and doc.get("kind") == "DNSConfig"
+                ):
+                    continue
+
+                print(f"Parsing {yaml_file}")
+
+                if doc["spec"].get("externalCNAME"):
+                    ingresses.append(
+                        {
+                            "hostname": doc["spec"].get("hostname"),
+                            "service": "https://traefik.traefik.svc.cluster.local:443",
+                            "originRequest": {
+                                "noTLSVerify": True,
+                                "originServerName": "*traefik*",
+                            },
+                        }
+                    )
 
     # sort other services
     ingresses = sorted(ingresses, key=lambda i: i["hostname"])
@@ -77,7 +77,7 @@ def main():
     }
 
     # write to file
-    with open("configmap.yaml", "w") as fp:
+    with open(THIS_DIR.joinpath("configmap.yaml"), "w") as fp:
         yaml.dump(outer_data, fp)
 
 

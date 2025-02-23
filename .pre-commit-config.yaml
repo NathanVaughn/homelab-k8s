@@ -39,3 +39,9 @@ repos:
       - id: yamlfmt
         # exclude flux which is auto-generated
         exclude: ^cluster/flux-system
+  - repo: local
+    hooks:
+      - id: cloudflared-config
+        name: Cloudflared Config
+        entry: uv run cluster/cloudflared/create-config.py
+        language: system
