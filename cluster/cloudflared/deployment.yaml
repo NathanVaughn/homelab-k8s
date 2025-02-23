@@ -14,14 +14,6 @@ spec:
       labels:
         app: cloudflared
     spec:
-      initContainers:
-        - name: init-sysctl
-          image: docker.io/library/busybox:1.37.0
-          # this makes quic happy
-          # https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes
-          command: ["sh", "-c", "sysctl -w net.core.rmem_max=7500000 && sysctl -w net.core.wmem_max=7500000"]
-          securityContext:
-            privileged: true # Required to modify sysctl settings
       containers:
         - name: cloudflared
           image: docker.io/cloudflare/cloudflared:2025.2.0
