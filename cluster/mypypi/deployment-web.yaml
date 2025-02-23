@@ -17,6 +17,8 @@ spec:
         role: apps
       containers:
         - env:
+            - name: MYPYPI_BASE_URL
+              value: https://pypi.nathanv.app
             - name: MYPYPI_REPOSITORIES
               value: '[{"slug": "pypi", "simple_url": "https://pypi.org/simple/", "cache_minutes": 10, "timeout_seconds": 10}, {"slug": "pytorch", "simple_url": "https://download.pytorch.org/whl/", "cache_minutes": 10, "timeout_seconds": 10}, {"slug": "piwheels", "simple_url": "https://www.piwheels.org/simple/", "cache_minutes": 10, "timeout_seconds": 10}]'
             - name: MYPYPI_STORAGE__DRIVER
