@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mypypi-postgresql-deployment
+  namespace: mypypi
+spec:
+  replicas: 1
+  serviceName: mypypi-postgresql
+  selector:
+    matchLabels:
+      app: mypypi-postgresql
+  template:
+    metadata:
+      labels:
+        app: mypypi-postgresql
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+        - env:
+            - name: POSTGRES_USER
+              value: mypypi
+            - name: POSTGRES_DB
+              value: mypypi
+            # avoids issues with lost+found directory
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+          envFrom:
+            - secretRef:
+                name: mypypi-env
+          image: docker.io/library/postgres:17.4
+          name: postgresql
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgresql-vol
+      volumes:
+        - name: postgresql-vol
+          persistentVolumeClaim:
+            claimName: mypypi-pvc-postgresql

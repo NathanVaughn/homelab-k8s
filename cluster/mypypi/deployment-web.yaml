@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mypypi-deployment
+  namespace: mypypi
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mypypi
+  template:
+    metadata:
+      labels:
+        app: mypypi
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+        - env:
+            - name: MYPYPI_REPOSITORIES
+              value: '[{"slug": "pypi", "simple_url": "https://pypi.org/simple/", "cache_minutes": 10, "timeout_seconds": 10}, {"slug": "pytorch", "simple_url": "https://download.pytorch.org/whl/", "cache_minutes": 10, "timeout_seconds": 10}, {"slug": "piwheels", "simple_url": "https://www.piwheels.org/simple/", "cache_minutes": 10, "timeout_seconds": 10}]'
+            - name: MYPYPI_STORAGE__DRIVER
+              value: s3
+            - name: MYPYPI_STORAGE__S3__ENDPOINT_URL
+              value: https://57ac323804932b01e44e546ff34ba9a3.r2.cloudflarestorage.com/
+            - name: MYPYPI_STORAGE__S3__REGION_NAME
+              value: auto
+            - name: MYPYPI_STORAGE__S3__BUCKET_NAME
+              value: nathanv-public
+            - name: MYPYPI_STORAGE__S3__BUCKET_PREFIX
+              value: pip
+            - name: MYPYPI_STORAGE__S3__PUBLIC_URL_PREFIX
+              value: https://files.nathanv.me/pip/
+            - name: MYPYPI_STORAGE__S3__REDIRECT_CODE
+              value: '308'
+            - name: MYPYPI_CACHE__DRIVER
+              value: redis
+            - name: MYPYPI_CACHE__REDIS__HOST
+              value: mypypi-redis-service.mypypi.svc.cluster.local
+          envFrom:
+            - secretRef:
+                name: mypypi-env
+          image: ghcr.io/nathanvaughn/mypypi2:latest
+          name: mypypi
+          ports:
+            - containerPort: 80

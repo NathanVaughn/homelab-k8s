@@ -1,0 +1,19 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: mypypi-route
+  namespace: mypypi
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`pypi.nathanv.app`)
+      kind: Rule
+      services:
+        - name: mypypi-service
+          port: 80
+  tls:
+    certResolver: le
+    domains:
+      - sans:
+          - "*.nathanv.app"
