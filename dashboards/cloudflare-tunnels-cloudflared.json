@@ -1,5 +1,5 @@
 {
-  "apiVersion": "dashboard.grafana.app/v1beta1",
+  "apiVersion": "dashboard.grafana.app/v0alpha1",
   "kind": "Dashboard",
   "metadata": {
     "name": "V1SL92dVn"
@@ -607,8 +607,8 @@
         "type": "timeseries"
       }
     ],
-    "refresh": "",
-    "schemaVersion": 42,
+    "refresh": false,
+    "schemaVersion": 37,
     "style": "dark",
     "tags": [
       "cloudflared",
