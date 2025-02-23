@@ -4,7 +4,7 @@ metadata:
   name: cloudflared-metrics-service
   namespace: cloudflared
   labels:
-    app: cloudflared
+    app: cloudflared-metrics
 spec:
   type: ClusterIP
   selector:

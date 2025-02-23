@@ -13,4 +13,4 @@ spec:
       - cloudflared
   selector:
     matchLabels:
-      app: cloudflared
+      app: cloudflared-metrics
