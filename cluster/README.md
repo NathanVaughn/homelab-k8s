@@ -17,6 +17,9 @@ kubectl get events -n flux-system --field-selector type=Warning
 flux logs -n foo
 ```
 
+If a SealedSecret is getting stuck in `Progressing` state, delete the associated
+`Secret` and try the reconciliation again.
+
 ## Wipe namespace
 
 ```bash
