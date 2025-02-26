@@ -119,7 +119,7 @@
             "format": "time_series",
             "hide": false,
             "rawQuery": true,
-            "rawSql": "SELECT\r\n    CASE response_type\r\n        WHEN 1 THEN 'Authoritative'\r\n        WHEN 2 THEN 'Recursive'\r\n        WHEN 3 THEN 'Cached'\r\n        WHEN 4 THEN 'Blocked'\r\n        WHEN 5 THEN 'Upstream Blocked'\r\n        WHEN 6 THEN 'Cache Blocked'\r\n        WHEN 7 THEN 'Dropped'\r\n    END as response_type_name,\r\nUNIX_TIMESTAMP(DATE_FORMAT(timestamp, '%Y-%m-%d %H:%i:00')) AS time, COUNT(*) AS Responses\r\nFROM dns_logs\r\nWHERE $__timeFilter(timestamp)\r\nGROUP BY time, response_type\r\nORDER BY time ASC;",
+            "rawSql": "SELECT\r\n    CASE response_type\r\n        WHEN 1 THEN 'Authoritative'\r\n        WHEN 2 THEN 'Recursive'\r\n        WHEN 3 THEN 'Cached'\r\n        WHEN 4 THEN 'Blocked'\r\n        WHEN 5 THEN 'Upstream Blocked'\r\n        WHEN 6 THEN 'Cache Blocked'\r\n        WHEN 7 THEN 'Dropped'\r\n    END as response_type_name,\r\n    $__timeGroupAlias(timestamp, '1m'),\r\n    COUNT(*) AS Responses\r\nFROM dns_logs\r\nWHERE $__timeFilter(timestamp)\r\nGROUP BY time, response_type\r\nORDER BY time ASC;",
             "refId": "A",
             "sql": {
               "columns": [
@@ -322,6 +322,97 @@
           }
         ],
         "title": "Total Requests",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "eeb6ko6teq8lca"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "#EAB839",
+                  "value": 20
+                },
+                {
+                  "color": "red",
+                  "value": 50
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 2,
+          "x": 22,
+          "y": 4
+        },
+        "id": 11,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.2",
+        "targets": [
+          {
+            "dataset": "mysql",
+            "datasource": {
+              "type": "mysql",
+              "uid": "eeb6ko6teq8lca"
+            },
+            "editorMode": "code",
+            "format": "table",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n    (SELECT COUNT(qname)\r\n     FROM dns_logs\r\n     WHERE $__timeFilter(timestamp)\r\n     AND response_type IN (4, 5, 6))\r\n    /\r\n    (SELECT COUNT(qname)\r\n     FROM dns_logs\r\n     WHERE $__timeFilter(timestamp))\r\n    AS ratio;",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Blocked Requests",
         "type": "stat"
       },
       {
@@ -894,7 +985,7 @@
       ]
     },
     "time": {
-      "from": "now-1h",
+      "from": "now-6h",
       "to": "now"
     },
     "timepicker": {},
