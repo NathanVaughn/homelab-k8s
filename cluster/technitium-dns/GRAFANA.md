@@ -157,7 +157,8 @@ SELECT
         WHEN 6 THEN 'Cache Blocked'
         WHEN 7 THEN 'Dropped'
     END as response_type_name,
-UNIX_TIMESTAMP(DATE_FORMAT(timestamp, '%Y-%m-%d %H:%i:00')) AS time, COUNT(*) AS Responses
+    $__timeGroupAlias(timestamp, '1m'),
+    COUNT(*) AS Responses
 FROM dns_logs
 WHERE $__timeFilter(timestamp)
 GROUP BY time, response_type
@@ -173,7 +174,7 @@ SELECT qname as Domain, COUNT(*) AS Hits
 FROM dns_logs
 WHERE $__timeFilter(timestamp)
 /* Only get requests that were successfully Authoritative, Recursive, or Cached */
-AND (response_type = 1 OR response_type = 2 OR response_type = 3)
+AND response_type IN (1, 2, 3)
 /* Only show requests that returned a response */
 AND rcode = 0
 GROUP BY Domain
@@ -188,7 +189,7 @@ SELECT qname as Domain, COUNT(*) AS Hits
 FROM dns_logs
 WHERE $__timeFilter(timestamp)
 /* Only get requests that were blocked */
-AND (response_type = 4 OR response_type = 5 OR response_type = 6)
+AND response_type IN (4, 5, 6)
 GROUP BY Domain
 ORDER BY Hits DESC
 LIMIT 20;
@@ -455,4 +456,37 @@ FROM dns_logs
 WHERE $__timeFilter(timestamp)
 ORDER BY timestamp DESC
 LIMIT 50
+```
+
+## Request Count
+
+```sql
+SELECT COUNT(qname) FROM technitiumdns.dns_logs WHERE $__timeFilter(timestamp)
+```
+
+## Request Rate
+
+```sql
+SELECT
+    $__timeGroupAlias(timestamp, '1m'),
+    COUNT(*) / 60 AS rps
+FROM dns_logs
+WHERE $__timeFilter(timestamp)
+GROUP BY time
+ORDER BY time;
+```
+
+## Blocked Requests Percentage
+
+```sql
+SELECT
+    (SELECT COUNT(qname)
+     FROM dns_logs
+     WHERE $__timeFilter(timestamp)
+     AND response_type IN (4, 5, 6))
+    /
+    (SELECT COUNT(qname)
+     FROM dns_logs
+     WHERE $__timeFilter(timestamp))
+    AS ratio;
 ```
