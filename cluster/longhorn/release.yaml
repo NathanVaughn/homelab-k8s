@@ -24,8 +24,14 @@ spec:
     defaultSettings:
       # allow manually attached volumes to be detached. Important for rebooting.
       detachManuallyAttachedVolumesWhenCordoned: true
+    defaultBackupStore:
       backupTarget: s3://nathanv-private@us-west-001/longhorn
       backupTargetCredentialSecret: longhorn-env
+      # https://www.reddit.com/r/rancher/comments/yu5jqa/comment/iw85rvu/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+      # prevents longhorn from racking up a big cloud bill
+      # one month saw 7980086 listobject calls and 5404852 headobject calls
+      # resulted in a $30 bill
+      pollInterval: 0
     # just limit the 1-off components to the apps nodes
     # longhorn manager needs to run on all nodes
     longhornUI:
