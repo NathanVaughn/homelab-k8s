@@ -21,10 +21,10 @@ spec:
               value: "true"
             - name: SECURITY_ENABLE_LOGIN
               value: "true"
+            - name: SECURITY_LOGIN_METHOD
+              value: oauth2
             - name: SECURITY_OAUTH2_ENABLED
               value: "true"
-            - name: SECURITY_OAUTH2_LOGIN_METHOD
-              value: oauth2
             - name: SECURITY_OAUTH2_ISSUER
               value: https://authentik.nathanv.app/application/o/stirling-pdf/.well-known/openid-configuration
             - name: SECRET_OAUTH2_AUTO_CREATE_USER
