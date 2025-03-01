@@ -35,7 +35,7 @@ spec:
             - name: SECURITY_OAUTH2_SCOPES
               value: openid,profile,email
             - name: SECURITY_OAUTH2_PROVIDER
-              value: authentik
+              value: Authentik
           envFrom:
             - secretRef:
                 name: stirling-pdf-env

@@ -1,0 +1,11 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: stirling-pdf-login-redirect
+  namespace: stirling-pdf
+spec:
+  redirectRegex:
+    # MUST match exactly. The /login endpoint is used as part of the OIDC
+    # flow, so can't match things willy-nilly.
+    regex: "https://stirling-pdf.nathanv.app/login$"
+    replacement: https://stirling-pdf.nathanv.app/oauth2/authorization/oidc

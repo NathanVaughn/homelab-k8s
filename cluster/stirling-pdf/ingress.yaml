@@ -12,6 +12,8 @@ spec:
       services:
         - name: stirling-pdf-service
           port: 8080
+      middlewares:
+        - name: stirling-pdf-login-redirect
   tls:
     certResolver: le
     domains:
