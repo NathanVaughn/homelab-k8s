@@ -3,11 +3,6 @@ data:
   config.yaml: |
     credentials-file: /etc/cloudflared/creds/credentials.json
     ingress:
-    - hostname: actual.nathanv.app
-      originRequest:
-        noTLSVerify: true
-        originServerName: '*traefik*'
-      service: https://traefik.traefik.svc.cluster.local:443
     - hostname: authentik.nathanv.app
       originRequest:
         noTLSVerify: true
@@ -49,6 +44,11 @@ data:
         originServerName: '*traefik*'
       service: https://traefik.traefik.svc.cluster.local:443
     - hostname: lubelogger.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
+    - hostname: maybe.nathanv.app
       originRequest:
         noTLSVerify: true
         originServerName: '*traefik*'

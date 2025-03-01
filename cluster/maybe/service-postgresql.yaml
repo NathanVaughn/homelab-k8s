@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: maybe-postgresql-service
+  namespace: maybe
+spec:
+  type: ClusterIP
+  selector:
+    app: maybe-postgresql
+  ports:
+    - port: 5432
+      protocol: TCP
