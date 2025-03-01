@@ -44,8 +44,8 @@ spec:
             httpGet:
               path: /api/v1/info/status
               port: 8080
-            failureThreshold: 1
-            initialDelaySeconds: 10
+            failureThreshold: 5
+            initialDelaySeconds: 30
             periodSeconds: 10
           name: stirling-pdf
           ports:
