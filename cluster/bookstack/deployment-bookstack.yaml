@@ -66,7 +66,7 @@ spec:
           envFrom:
             - secretRef:
                 name: bookstack-env
-          image: ghcr.io/linuxserver/bookstack:24.12.20241223
+          image: ghcr.io/linuxserver/bookstack:25.02.20250226
           name: bookstack
           ports:
             - containerPort: 80
