@@ -1,4 +1,3 @@
-import retry.api
 from pyinfra import host  # type: ignore
 from pyinfra.facts import files as files_facts
 from pyinfra.facts import server as server_facts
@@ -10,6 +9,13 @@ apt.upgrade(name="apt upgrade --autoremove", auto_remove=True, _sudo=True)
 
 
 def reboot_node():
+    # first install netstat, since we need it after it reboots
+    apt.packages(
+        name="Install net-tools",
+        packages=["net-tools"],
+        _sudo=True,
+    )
+
     # cordon the node
     server.shell(
         name="Cordon the node",
@@ -33,37 +39,27 @@ def reboot_node():
 
     # wait for the kubernetes server to come back
     # this uses netstat
-    apt.packages(
-        name="Install net-tools",
-        packages=["net-tools"],
-        _sudo=True,
-    )
-
     server.wait(
         name="Wait for k3s to start",
         port=6443,
     )
 
-    server.shell(
-        name="Fudge factor",
-        commands="sleep 10",
-    )
-
     # uncordon the node
-    retry.api.retry_call(
-        server.shell,
-        fkwargs={
-            "name": "Uncordon the node",
-            "commands": f"kubectl uncordon {host.get_fact(server_facts.Hostname)}",
-            "_sudo": True,
-        },
-        delay=1,
-    )
-    # server.shell(
-    #     name="Uncordon the node",
-    #     commands=f"kubectl uncordon {host.get_fact(server_facts.Hostname)}",
-    #     _sudo=True,
-    # )
+    max_retries = 10
+    for attempt in range(1, max_retries + 1):
+        result = server.shell(
+            name="Uncordon the node",
+            commands=f"kubectl uncordon {host.get_fact(server_facts.Hostname)}",
+            _sudo=True,
+        )
+
+        if result.did_succeed():
+            break
+
+        server.shell(
+            name="Retry wait",
+            commands=f"sleep {attempt * 2}",
+        )
 
 
 # check if server needs a reboot
