@@ -27,9 +27,9 @@ spec:
               value: "true"
             - name: SECURITY_OAUTH2_ISSUER
               value: https://authentik.nathanv.app/application/o/stirling-pdf/.well-known/openid-configuration
-            - name: SECRET_OAUTH2_AUTO_CREATE_USER
+            - name: SECRET_OAUTH2_AUTOCREATEUSER
               value: "true"
-            - name: SECRET_OAUTH2_USE_AS_USERNAME
+            - name: SECRET_OAUTH2_USEASUSERNAME
               value: preferred_username
             - name: SECRET_OAUTH2_SCOPES
               value: openid,profile,email
