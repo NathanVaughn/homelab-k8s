@@ -19,7 +19,34 @@ spec:
         - env:
             - name: DOCKER_ENABLE_SECURITY
               value: "true"
+            - name: SECURITY_ENABLE_LOGIN
+              value: "true"
+            - name: SECURITY_LOGIN_METHOD
+              value: oauth2
+            - name: SECURITY_OAUTH2_ENABLED
+              value: "true"
+            - name: SECURITY_OAUTH2_ISSUER
+              # trailing slash is important
+              value: https://authentik.nathanv.app/application/o/stirling-pdf/
+            - name: SECURITY_OAUTH2_AUTOCREATEUSER
+              value: "true"
+            - name: SECURITY_OAUTH2_USEASUSERNAME
+              value: preferred_username
+            - name: SECURITY_OAUTH2_SCOPES
+              value: openid,profile,email
+            - name: SECURITY_OAUTH2_PROVIDER
+              value: Authentik
+          envFrom:
+            - secretRef:
+                name: stirling-pdf-env
           image: ghcr.io/stirling-tools/stirling-pdf:0.43.1-fat
+          livenessProbe:
+            httpGet:
+              path: /api/v1/info/status
+              port: 8080
+            failureThreshold: 1
+            initialDelaySeconds: 10
+            periodSeconds: 10
           name: stirling-pdf
           ports:
             - containerPort: 8080

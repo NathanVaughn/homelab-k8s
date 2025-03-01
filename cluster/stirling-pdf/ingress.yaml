@@ -13,8 +13,7 @@ spec:
         - name: stirling-pdf-service
           port: 8080
       middlewares:
-        - name: authentik-forward-auth
-          namespace: authentik
+        - name: stirling-pdf-login-redirect
   tls:
     certResolver: le
     domains:
