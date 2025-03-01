@@ -26,14 +26,14 @@ spec:
             - name: SECURITY_OAUTH2_ENABLED
               value: "true"
             - name: SECURITY_OAUTH2_ISSUER
-              value: https://authentik.nathanv.app/application/o/stirling-pdf/.well-known/openid-configuration
-            - name: SECRET_OAUTH2_AUTOCREATEUSER
+              value: https://authentik.nathanv.app/application/o/stirling-pdf
+            - name: SECURITY_OAUTH2_AUTOCREATEUSER
               value: "true"
-            - name: SECRET_OAUTH2_USEASUSERNAME
+            - name: SECURITY_OAUTH2_USEASUSERNAME
               value: preferred_username
-            - name: SECRET_OAUTH2_SCOPES
+            - name: SECURITY_OAUTH2_SCOPES
               value: openid,profile,email
-            - name: SECRET_OAUTH2_PROVIDER
+            - name: SECURITY_OAUTH2_PROVIDER
               value: authentik
           envFrom:
             - secretRef:
