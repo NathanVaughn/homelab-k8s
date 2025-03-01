@@ -39,7 +39,7 @@ spec:
           envFrom:
             - secretRef:
                 name: stirling-pdf-env
-          image: ghcr.io/stirling-tools/stirling-pdf:0.42.0-fat
+          image: ghcr.io/stirling-tools/stirling-pdf:0.43.1-fat
           livenessProbe:
             httpGet:
               path: /api/v1/info/status

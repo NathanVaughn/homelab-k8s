@@ -42,7 +42,7 @@ spec:
           envFrom:
             - secretRef:
                 name: pgadmin-env
-          image: docker.io/dpage/pgadmin4:9.0
+          image: docker.io/dpage/pgadmin4:9.1
           name: pgadmin
           ports:
             - containerPort: 80
