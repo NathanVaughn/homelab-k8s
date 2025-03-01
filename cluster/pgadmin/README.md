@@ -61,6 +61,7 @@ kubectl -n pgadmin create secret generic pgadmin-env \
 kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
 # optional
 kubectl apply -f sealed-secret.yaml
+kubectl delete secret -n pgadmin pgadmin-env
 
 kubectl -n pgadmin create secret generic pgadmin-oauth \
 --from-file=config_local.py \
@@ -69,4 +70,5 @@ kubectl -n pgadmin create secret generic pgadmin-oauth \
 kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret2.yaml
 # optional
 kubectl apply -f sealed-secret2.yaml
+kubectl delete secret -n pgadmin pgadmin-oauth
 ```

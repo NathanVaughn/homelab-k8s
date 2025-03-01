@@ -22,6 +22,7 @@ kubectl -n headlamp create secret generic headlamp-secrets \
 kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
 # optional
 kubectl apply -f sealed-secret.yaml
+kubectl delete secret -n headlamp headlamp-secrets
 ```
 
 See <https://elroy.fyi/posts/headlamp-setup-guide/> for more information.

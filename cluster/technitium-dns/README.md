@@ -17,6 +17,7 @@ kubectl -n technitium-dns create secret generic technitium-dns-env \
 kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
 # optional
 kubectl apply -f sealed-secret.yaml
+kubectl delete secret -n technitium-dns technitium-dns-env
 ```
 
 ## Post Setup

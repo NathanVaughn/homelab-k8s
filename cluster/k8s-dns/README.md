@@ -16,4 +16,5 @@ kubectl -n k8s-dns create secret generic k8s-dns-env \
 kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
 # optional
 kubectl apply -f sealed-secret.yaml
+kubectl delete secret -n k8s-dns k8s-dns-env
 ```

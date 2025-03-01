@@ -24,6 +24,7 @@ kubectl -n harbor create secret generic harbor-secrets \
 kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
 # optional
 kubectl apply -f sealed-secret.yaml
+kubectl delete secret -n harbor harbor-secrets
 ```
 
 ## Post Setup

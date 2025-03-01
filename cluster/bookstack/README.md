@@ -30,4 +30,5 @@ kubectl -n bookstack create secret generic bookstack-env \
 kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
 # optional
 kubectl apply -f sealed-secret.yaml
+kubectl delete secret -n bookstack bookstack-env
 ```

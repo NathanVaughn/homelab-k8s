@@ -15,6 +15,7 @@ kubectl -n factorio create secret generic factorio-config \
 kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
 # optional
 kubectl apply -f sealed-secret.yaml
+kubectl delete secret -n factorio factorio-config
 
 
 # This Cloudflare token needs Edit zone DNS permissions.
@@ -28,6 +29,7 @@ kubectl -n factorio create secret generic factorio-ddns-env \
 kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret2.yaml
 # optional
 kubectl apply -f sealed-secret2.yaml
+kubectl delete secret -n factorio factorio-ddns-env
 ```
 
 ## Post Setup
