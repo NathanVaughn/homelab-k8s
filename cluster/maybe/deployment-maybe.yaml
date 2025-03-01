@@ -31,6 +31,10 @@ spec:
               value: maybe
             - name: POSTGRES_USER
               value: maybe
+            - name: SMTP_PORT
+              value: "587"
+            - name: EMAIL_SENDER
+              value: "maybe@nvaughn.email"
           envFrom:
             - secretRef:
                 name: maybe-env
