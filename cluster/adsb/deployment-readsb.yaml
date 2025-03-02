@@ -41,7 +41,7 @@ spec:
           envFrom:
             - secretRef:
                 name: adsb-env
-          image: ghcr.io/sdr-enthusiasts/docker-readsb-protobuf@sha256:3e7e7d129bd4a0169342d4b80aaedb22afb05e74c66ed6f8feb3d6e57b56c4fc
+          image: ghcr.io/sdr-enthusiasts/docker-readsb-protobuf@sha256:4dedac2bc3eddd60585ab5c3024548a52e97067128210edff658f5992993b20d
           name: readsb
           securityContext:
             privileged: true # for access to the usb dongle
