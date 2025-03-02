@@ -198,7 +198,7 @@
           "percentChangeColorMode": "standard",
           "reduceOptions": {
             "calcs": [
-              "mean"
+              "lastNotNull"
             ],
             "fields": "/^response_rtt$/",
             "values": false
