@@ -35,7 +35,7 @@ def reboot_node():
     )
 
     # reboot
-    server.reboot(name="Reboot the server", interval=5, _sudo=True)
+    server.reboot(name="Reboot the server", interval=5, reboot_timeout=600, _sudo=True)
 
     # wait for the kubernetes server to come back
     # this uses netstat
