@@ -51,6 +51,8 @@ def reboot_node():
             name="Uncordon the node",
             commands=f"kubectl uncordon {host.get_fact(server_facts.Hostname)}",
             _sudo=True,
+            _ignore_errors=True,
+            _continue_on_error=True,
         )
 
         if result.did_succeed():
