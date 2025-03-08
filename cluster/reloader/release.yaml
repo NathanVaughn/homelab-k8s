@@ -17,6 +17,8 @@ spec:
   values:
     reloader:
       autoReloadAll: true
+      podMonitor:
+        enabled: true
       deployment:
         nodeSelector:
           role: apps
