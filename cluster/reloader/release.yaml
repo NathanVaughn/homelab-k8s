@@ -12,11 +12,13 @@ spec:
         kind: HelmRepository
         name: reloader-repo
         namespace: reloader
-      version: "1.3.0"
+      version: "2.0.0"
   interval: 1h0m0s
   values:
     reloader:
       autoReloadAll: true
+      podMonitor:
+        enabled: true
       deployment:
         nodeSelector:
           role: apps
