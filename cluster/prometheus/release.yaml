@@ -28,6 +28,10 @@ spec:
           group_by: ['alertname', 'job']
           repeat_interval: 6h
         receivers:
+          # https://github.com/prometheus-community/helm-charts/issues/4068#issuecomment-1848626909
+          # I wasted an hour on this
+          - name: 'null'
+          # ^^^ MUST KEEP ^^^
           - name: 'email-alerts'
             email_configs:
               - to: 'nvaughn51@gmail.com'
