@@ -19,6 +19,8 @@ spec:
       enabled: false
     alertmanager:
       enabled: true
+      alertmanagerSpec:
+        externalUrl: https://alertmanager.nathanv.app
       config:
         global:
           smtp_from: alertmanager@nvaughn.email
