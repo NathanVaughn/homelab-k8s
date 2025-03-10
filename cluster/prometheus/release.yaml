@@ -50,6 +50,7 @@ spec:
       enabled: false
     prometheus:
       prometheusSpec:
+        externalUrl: https://prometheus.nathanv.app
         nodeSelector:
           role: apps
         # https://prometheus.io/docs/prometheus/latest/storage/#right-sizing-retention-size
