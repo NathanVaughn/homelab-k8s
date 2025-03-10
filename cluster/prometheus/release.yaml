@@ -19,6 +19,19 @@ spec:
       enabled: false
     alertmanager:
       enabled: true
+      config:
+        global:
+          smtp_from: alertmanager@nvaughn.email
+          smtp_require_tls: true
+        route:
+          receiver: 'email-alerts'
+          group_by: ['alertname', 'job']
+          repeat_interval: 6h
+        receivers:
+          - name: 'email-alerts'
+            email_configs:
+              - to: 'nvaughn51@gmail.com'
+                send_resolved: false
     # https://github.com/SovereignCloudStack/k8s-observability/issues/48#issuecomment-2051128705
     # if i ever want to revisit this
     kubeControllerManager:
@@ -54,3 +67,16 @@ spec:
               resources:
                 requests:
                   storage: 20Gi
+  valuesFrom:
+    - kind: Secret
+      name: alertmanager-secrets
+      valuesKey: alertmanager.config.global.smtp_smarthost
+      targetPath: alertmanager.config.global.smtp_smarthost
+    - kind: Secret
+      name: alertmanager-secrets
+      valuesKey: alertmanager.config.global.smtp_auth_username
+      targetPath: alertmanager.config.global.smtp_auth_username
+    - kind: Secret
+      name: alertmanager-secrets
+      valuesKey: alertmanager.config.global.smtp_auth_password
+      targetPath: alertmanager.config.global.smtp_auth_password
