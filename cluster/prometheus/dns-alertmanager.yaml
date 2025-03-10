@@ -1,0 +1,9 @@
+apiVersion: nathanv.me/v1
+kind: DNSConfig
+metadata:
+  name: prometheus-alertmanager-dns-config
+  namespace: prometheus
+spec:
+  hostname: alertmanager.nathanv.app
+  internalCNAME: reverse-proxy.svc.nathanv.home
+  externalCNAME: tunnel.nathanv.app

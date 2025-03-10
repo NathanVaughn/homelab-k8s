@@ -1,0 +1,22 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: prometheus-alert-managerroute
+  namespace: prometheus
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`alertmanager.nathanv.app`)
+      kind: Rule
+      services:
+        - name: prometheus-kube-prometheus-alertmanager
+          port: 9093
+      middlewares:
+        - name: authentik-forward-auth
+          namespace: authentik
+  tls:
+    certResolver: le
+    domains:
+      - sans:
+          - "*.nathanv.app"

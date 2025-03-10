@@ -19,6 +19,16 @@ spec:
       enabled: false
     alertmanager:
       enabled: true
+    # https://github.com/SovereignCloudStack/k8s-observability/issues/48#issuecomment-2051128705
+    # if i ever want to revisit this
+    kubeControllerManager:
+      enabled: false
+    kubeEtcd:
+      enabled: false
+    kubeProxy:
+      enabled: false
+    kubeScheduler:
+      enabled: false
     prometheus:
       prometheusSpec:
         nodeSelector:

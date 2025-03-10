@@ -3,6 +3,11 @@ data:
   config.yaml: |
     credentials-file: /etc/cloudflared/creds/credentials.json
     ingress:
+    - hostname: alertmanager.nathanv.app
+      originRequest:
+        noTLSVerify: true
+        originServerName: '*traefik*'
+      service: https://traefik.traefik.svc.cluster.local:443
     - hostname: authentik.nathanv.app
       originRequest:
         noTLSVerify: true
