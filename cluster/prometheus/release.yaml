@@ -17,6 +17,11 @@ spec:
   values:
     grafana:
       enabled: false
+    # disable the node system saturation alert
+    # this constantly triggers
+    defaultRules:
+      disabled:
+        NodeSystemSaturation: true
     alertmanager:
       enabled: true
       alertmanagerSpec:
