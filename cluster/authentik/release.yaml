@@ -54,6 +54,7 @@ spec:
       # required for icon uploads
       initContainers:
         - name: permission-fix
+          # registry-proxy image-prefix
           image: cr.nathanv.app/docker.io/library/busybox:1.37.0
           command: ['sh', '-c']
           # https://docs.goauthentik.io/docs/troubleshooting/image_upload
