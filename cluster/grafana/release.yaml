@@ -15,6 +15,10 @@ spec:
       version: "8.10.3"
   interval: 1h0m0s
   values:
+    # registry-proxy block-start
+    global:
+      imageRegistry: cr.nathanv.app/docker.io
+    # registry-proxy block-end
     persistence:
       enabled: true
       type: pvc

@@ -17,8 +17,9 @@ spec:
       nodeSelector:
         role: apps
       containers:
-        - image: docker.io/pawelmalak/snippet-box:latest
-          name: snippet-box
+        - name: snippet-box
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/pawelmalak/snippet-box:latest
           ports:
             - containerPort: 5000
           volumeMounts:

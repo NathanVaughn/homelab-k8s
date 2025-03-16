@@ -17,8 +17,9 @@ spec:
       nodeSelector:
         role: apps
       containers:
-        - image: docker.io/library/redis:7.4
-          name: redis
+        - name: redis
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/library/redis:7.4
           ports:
             - containerPort: 6379
           volumeMounts:

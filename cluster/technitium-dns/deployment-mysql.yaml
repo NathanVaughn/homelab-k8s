@@ -27,7 +27,8 @@ spec:
                       - network
       initContainers:
         - name: lost-found-fix
-          image: docker.io/library/busybox:1.37.0
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/library/busybox:1.37.0
           command: ['sh', '-c']
           args: ['rm -rf /var/lib/mysql/lost+found']
           volumeMounts:
@@ -44,7 +45,8 @@ spec:
           envFrom:
             - secretRef:
                 name: technitium-dns-env
-          image: docker.io/library/mariadb:11.7.2
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/library/mariadb:11.7.2
           name: mariadb
           ports:
             - containerPort: 3306

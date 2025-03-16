@@ -23,7 +23,8 @@ spec:
     spec:
       containers:
         - name: scrutiny-collector
-          image: ghcr.io/analogj/scrutiny:v0.8.1-collector
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/ghcr.io/analogj/scrutiny:v0.8.1-collector
           env:
             - name: COLLECTOR_API_ENDPOINT
               value: http://scrutiny-web-service.scrutiny.svc.cluster.local:8080

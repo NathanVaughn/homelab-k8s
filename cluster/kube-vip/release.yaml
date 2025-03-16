@@ -15,6 +15,10 @@ spec:
       version: "0.6.6"
   interval: 1h0m0s
   values:
+    # registry-proxy block-start
+    image:
+      repository: cr.nathanv.app/ghcr.io/kube-vip/kube-vip
+    # registry-proxy block-end
     config:
       address: "10.0.1.1"
     env:

@@ -18,12 +18,26 @@ spec:
     kubetail:
       dashboard:
         enabled: true
+        # registry-proxy block-start
+        image:
+          registry: cr.nathanv.app/docker.io
+        # registry-proxy block-end
         authMode: auto
         podTemplate:
           nodeSelector:
             role: apps
       clusterAPI:
         enabled: true
+        # registry-proxy block-start
+        image:
+          registry: cr.nathanv.app/docker.io
+        # registry-proxy block-end
         podTemplate:
           nodeSelector:
             role: apps
+      clusterAgent:
+        enabled: true
+        # registry-proxy block-start
+        image:
+          registry: cr.nathanv.app/docker.io
+        # registry-proxy block-end

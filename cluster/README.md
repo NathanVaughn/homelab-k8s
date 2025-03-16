@@ -1,5 +1,30 @@
 # Cluster
 
+## Registry proxy
+
+To prefix the registry proxy `cr.nathanv.app`, the following syntax options can be used:
+
+### Prefix
+
+This requires that the immediately following line is in the format `image: {image name}`.
+
+```yaml
+# registry-proxy image-prefix
+image: cr.nathanv.app/docker.io/library/busybox:1.37.0
+```
+
+### Block
+
+This can be used when proxying the image requires adding additional lines.
+When disabled, the block will be commented out.
+
+```yaml
+# registry-proxy block-start
+outposts:
+    container_image_base: cr.nathanv.app/ghcr.io/goauthentik/%(type)s:%(version)s
+# registry-proxy block-end
+```
+
 ## Force update
 
 ```bash

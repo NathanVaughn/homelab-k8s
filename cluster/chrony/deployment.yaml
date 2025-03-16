@@ -30,7 +30,8 @@ spec:
               value: time.cloudflare.com
             - name: ENABLE_NTS
               value: "true"
-          image: ghcr.io/dockur/chrony:4.6.1
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/ghcr.io/dockur/chrony:4.6.1
           name: chrony
           ports:
             - containerPort: 123

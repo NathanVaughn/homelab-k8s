@@ -25,12 +25,17 @@ spec:
       oidc:
         issuerURL: https://authentik.nathanv.app/application/o/headlamp/
         scopes: profile,email
+    # registry-proxy block-start
+    image:
+      registry: cr.nathanv.app/ghcr.io
+    # registry-proxy block-end
     initContainers:
       - command:
           - /bin/sh
           - -c
           - mkdir -p /build/plugins && cp -r /plugins/* /build/plugins/
-        image: ghcr.io/headlamp-k8s/headlamp-plugin-flux:v0.1.0-beta-2
+        # registry-proxy image-prefix
+        image: cr.nathanv.app/ghcr.io/headlamp-k8s/headlamp-plugin-flux:v0.1.0-beta-2
         imagePullPolicy: Always
         name: headlamp-plugins
         volumeMounts:

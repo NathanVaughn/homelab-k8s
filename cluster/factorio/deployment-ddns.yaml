@@ -24,5 +24,5 @@ spec:
           envFrom:
             - secretRef:
                 name: factorio-ddns-env
-          image: docker.io/favonia/cloudflare-ddns:1.15.1
+          image: cr.nathanv.app/docker.io/favonia/cloudflare-ddns:1.15.1
           name: factorio-ddns

@@ -42,7 +42,8 @@ spec:
           envFrom:
             - secretRef:
                 name: mypypi-env
-          image: ghcr.io/nathanvaughn/mypypi2:latest
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/ghcr.io/nathanvaughn/mypypi2:latest
           name: mypypi
           ports:
             - containerPort: 80
