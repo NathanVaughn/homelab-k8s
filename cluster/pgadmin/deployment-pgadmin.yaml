@@ -17,7 +17,8 @@ spec:
         role: apps
       initContainers:
         - name: permission-fix
-          image: docker.io/library/busybox:1.37.0
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/library/busybox:1.37.0
           command: ['sh', '-c']
           # https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html#environment-variables
           args: ['chown -R 5050:5050 /var/lib/pgadmin']
@@ -42,7 +43,8 @@ spec:
           envFrom:
             - secretRef:
                 name: pgadmin-env
-          image: docker.io/dpage/pgadmin4:9.1
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/dpage/pgadmin4:9.1
           name: pgadmin
           ports:
             - containerPort: 80

@@ -17,7 +17,8 @@ spec:
         role: apps
       initContainers:
         - name: module-install
-          image: ghcr.io/astral-sh/uv:python3.13-alpine
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/ghcr.io/astral-sh/uv:python3.13-alpine
           workingDir: /var/www/webtrees/
           command: ['uv']
           args: ['run', '/tmp/modules.py']
@@ -48,7 +49,8 @@ spec:
           envFrom:
             - secretRef:
                 name: webtrees-env
-          image: ghcr.io/nathanvaughn/webtrees:2.2.1
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/ghcr.io/nathanvaughn/webtrees:2.2.1
           name: webtrees
           ports:
             - containerPort: 80

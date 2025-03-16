@@ -26,6 +26,10 @@ spec:
       enabled: true
       alertmanagerSpec:
         externalUrl: https://alertmanager.nathanv.app
+        # registry-proxy block-start
+        image:
+          registry: cr.nathanv.app/quay.io
+          # registry-proxy block-end
       config:
         global:
           smtp_from: alertmanager@nvaughn.email
@@ -55,6 +59,10 @@ spec:
       enabled: false
     prometheus:
       prometheusSpec:
+        # registry-proxy block-start
+        image:
+          registry: cr.nathanv.app/quay.io
+        # registry-proxy block-end
         externalUrl: https://prometheus.nathanv.app
         nodeSelector:
           role: apps
@@ -79,6 +87,27 @@ spec:
               resources:
                 requests:
                   storage: 20Gi
+    # registry-proxy block-start
+    prometheusOperator:
+      image:
+        registry: cr.nathanv.app/quay.io
+      thanosImage:
+        registry: cr.nathanv.app/quay.io
+      admissionWebhooks:
+        deployment:
+          image:
+            registry: cr.nathanv.app/quay.io
+        patch:
+          image:
+            registry: cr.nathanv.app/registry.k8s.io
+      prometheusConfigReloader:
+        image:
+          registry: cr.nathanv.app/quay.io
+    thanosRuler:
+      thanosRulerSpec:
+        image:
+          registry: cr.nathanv.app/quay.io
+          # registry-proxy block-end
   valuesFrom:
     - kind: Secret
       name: alertmanager-secrets

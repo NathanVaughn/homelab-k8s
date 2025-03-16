@@ -16,8 +16,9 @@ spec:
       nodeSelector:
         role: apps
       containers:
-        - image: docker.io/gotenberg/gotenberg:8.17
-          name: gotenberg
+        - name: gotenberg
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/gotenberg/gotenberg:8.17
           command: ["gotenberg", "--chromium-disable-javascript=true", "--chromium-allow-list=file:///tmp/.*"]
           ports:
             - containerPort: 3000

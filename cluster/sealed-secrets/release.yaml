@@ -21,6 +21,10 @@ spec:
   upgrade:
     crds: CreateReplace
   values:
+    # registry-proxy block-start
+    image:
+      registry: cr.nathanv.app/docker.io
+    # registry-proxy block-end
     metrics:
       serviceMonitor:
         enabled: true

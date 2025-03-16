@@ -42,7 +42,8 @@ spec:
           envFrom:
             - secretRef:
                 name: guacamole-env
-          image: docker.io/guacamole/guacamole:1.5.5
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/guacamole/guacamole:1.5.5
           name: guacamole
           ports:
             - containerPort: 8080

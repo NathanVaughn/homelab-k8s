@@ -18,7 +18,8 @@ spec:
         role: apps
       initContainers:
         - name: schema-gen
-          image: docker.io/guacamole/guacamole:1.5.5
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/guacamole/guacamole:1.5.5
           securityContext:
             runAsUser: 0 # required for script to work
           command: ['/bin/bash', '-c']
@@ -38,7 +39,8 @@ spec:
           envFrom:
             - secretRef:
                 name: guacamole-env
-          image: docker.io/library/postgres:17.4
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/library/postgres:17.4
           name: postgresql
           ports:
             - containerPort: 5432

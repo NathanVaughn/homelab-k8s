@@ -38,7 +38,8 @@ spec:
           envFrom:
             - secretRef:
                 name: maybe-env
-          image: ghcr.io/maybe-finance/maybe:0.4.3
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/ghcr.io/maybe-finance/maybe:0.4.3
           name: maybe
           ports:
             - containerPort: 3000

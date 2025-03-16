@@ -16,7 +16,8 @@ spec:
       nodeSelector:
         role: apps
       containers:
-        - image: docker.io/apache/tika:3.1.0.0
-          name: tika
+        - name: tika
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/apache/tika:3.1.0.0
           ports:
             - containerPort: 9998

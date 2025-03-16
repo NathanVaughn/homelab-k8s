@@ -15,6 +15,10 @@ spec:
       version: "0.2.5"
   interval: 1h0m0s
   values:
+    # registry-proxy block-start
+    image:
+      repository: cr.nathanv.app/ghcr.io/kube-vip/kube-vip-cloud-provider
+    # registry-proxy block-end
     cm:
       data:
         range-global: "10.0.1.1-10.0.1.254"

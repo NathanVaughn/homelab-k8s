@@ -22,7 +22,8 @@ spec:
         runAsGroup: 999
       initContainers:
         - name: lost-found-fix
-          image: docker.io/library/busybox:1.37.0
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/library/busybox:1.37.0
           command: ['sh', '-c']
           args: ['rm -rf /var/lib/mysql/lost+found']
           volumeMounts:
@@ -40,7 +41,8 @@ spec:
             - secretRef:
                 name: ghost-env
           # https://ghost.org/docs/faq/supported-databases/
-          image: docker.io/library/mysql:9.2.0
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/library/mysql:9.2.0
           name: mysql
           ports:
             - containerPort: 3306

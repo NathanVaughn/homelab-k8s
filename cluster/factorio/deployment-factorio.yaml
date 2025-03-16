@@ -23,7 +23,8 @@ spec:
       initContainers:
         # https://www.jeffgeerling.com/blog/2019/mounting-kubernetes-secret-single-file-inside-pod
         - name: config-copy
-          image: docker.io/library/busybox:1.37.0
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/library/busybox:1.37.0
           command: ['sh', '-c']
           args: ['mkdir -p /factorio/config && cp /config/server-settings.json /factorio/config/server-settings.json']
           volumeMounts:
@@ -33,15 +34,17 @@ spec:
               name: config-vol
         # https://github.com/factoriotools/factorio-docker?tab=readme-ov-file#quick-start
         - name: permission-fix
-          image: docker.io/library/busybox:1.37.0
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/library/busybox:1.37.0
           command: ['sh', '-c']
           args: ['chown -R 845:845 /factorio']
           volumeMounts:
             - mountPath: /factorio
               name: data-vol
       containers:
-        - image: docker.io/factoriotools/factorio:stable-2.0.32
-          name: factorio
+        - name: factorio
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/factoriotools/factorio:stable-2.0.32
           ports:
             - containerPort: 34197
               protocol: UDP

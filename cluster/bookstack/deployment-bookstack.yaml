@@ -17,7 +17,7 @@ spec:
         role: apps
       initContainers:
         - name: permission-fix
-          image: docker.io/library/busybox:1.37.0
+          image: cr.nathanv.app/docker.io/library/busybox:1.37.0
           command: ['sh', '-c']
           args: ['chown -R 911:911 /config']
           volumeMounts:
@@ -66,7 +66,8 @@ spec:
           envFrom:
             - secretRef:
                 name: bookstack-env
-          image: ghcr.io/linuxserver/bookstack:25.02.20250309
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/ghcr.io/linuxserver/bookstack:25.02.20250309
           name: bookstack
           ports:
             - containerPort: 80

@@ -28,7 +28,8 @@ spec:
           envFrom:
             - secretRef:
                 name: maybe-env
-          image: docker.io/library/postgres:17.4
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/library/postgres:17.4
           name: postgresql
           ports:
             - containerPort: 5432

@@ -17,7 +17,9 @@ spec:
       nodeSelector:
         role: apps
       containers:
-        - image: docker.io/library/influxdb:2.7
+        - name: scrutiny-influxdb
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/library/influxdb:2.7
           livenessProbe:
             exec:
               command:
@@ -27,7 +29,6 @@ spec:
             failureThreshold: 20
             periodSeconds: 5
             timeoutSeconds: 10
-          name: scrutiny-influxdb
           ports:
             - containerPort: 8086
           volumeMounts:
