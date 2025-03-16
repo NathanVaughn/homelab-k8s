@@ -26,6 +26,10 @@ spec:
         from: Authentik <authentik@nvaughn.email>
     postgresql:
       enabled: true
+      # registry-proxy block-start
+      image:
+        registry: cr.nathanv.app/docker.io
+      # registry-proxy block-end
       primary:
         persistence:
           enabled: true
@@ -33,6 +37,10 @@ spec:
       defaultStorageClass: longhorn
     redis:
       enabled: true
+      # registry-proxy block-start
+      image:
+        registry: cr.nathanv.app/docker.io
+      # registry-proxy block-end
       master:
         persistence:
           enabled: true
