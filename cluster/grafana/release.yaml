@@ -60,6 +60,12 @@ spec:
         from_name: Grafana
         skip_verify: false
         startTLS_policy: MandatoryStartTLS
+      database:
+        type: postgres
+        host: grafana-postgresql-service.grafana.svc.cluster.local:5432
+        name: grafana
+        user: grafana
+        password: $__file{/etc/secrets/grafana_secrets/grafana_ini.database.password}
     extraSecretMounts:
       - name: grafana-secrets-mount
         secretName: grafana-secrets

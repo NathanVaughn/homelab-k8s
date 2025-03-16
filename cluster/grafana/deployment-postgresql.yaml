@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: grafana-postgresql-deployment
+  namespace: grafana
+spec:
+  replicas: 1
+  serviceName: grafana-postgresql
+  selector:
+    matchLabels:
+      app: grafana-postgresql
+  template:
+    metadata:
+      labels:
+        app: grafana-postgresql
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+        - env:
+            - name: POSTGRES_USER
+              value: grafana
+            - name: POSTGRES_DB
+              value: grafana
+            # avoids issues with lost+found directory
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+          envFrom:
+            - secretRef:
+                name: grafana-secrets
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/library/postgres:17.4
+          name: postgresql
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgresql-vol
+      volumes:
+        - name: postgresql-vol
+          persistentVolumeClaim:
+            claimName: grafana-pvc-postgresql

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana-postgresql-service
+  namespace: grafana
+spec:
+  type: ClusterIP
+  selector:
+    app: grafana-postgresql
+  ports:
+    - port: 5432
+      protocol: TCP

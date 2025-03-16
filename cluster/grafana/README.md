@@ -14,6 +14,7 @@ export OAUTH_CLIENT_SECRET=$OAUTH_CLIENT_SECRET
 export SMTP_HOST=$SMTP_HOST
 export SMTP_USER=$SMTP_USER
 export SMTP_PASSWORD=$SMTP_PASSWORD
+export DATABASE_PASSWORD=$DATABASE_PASSWORD
 # change dollar sign variables above this line
 kubectl apply -f namespace.yaml
 
@@ -25,6 +26,8 @@ kubectl -n grafana create secret generic grafana-secrets \
 --from-literal=grafana_ini.smtp.host=$SMTP_HOST \
 --from-literal=grafana_ini.smtp.user=$SMTP_USER \
 --from-literal=grafana_ini.smtp.password=$SMTP_PASSWORD \
+--from-literal=grafana_ini.database.password=$DATABASE_PASSWORD \
+--from-literal=POSTGRES_PASSWORD=$DATABASE_PASSWORD \
 --dry-run=client -o yaml > secret.yaml
 
 kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
