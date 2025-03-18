@@ -13,7 +13,8 @@ spec:
         name: authentik-repo
         namespace: authentik
       # https://github.com/goauthentik/authentik/issues/12646
-      version: "2025.2.1"
+      # skip 2024.12.2
+      version: "2025.2.2"
   interval: 1h0m0s
   values:
     authentik:
