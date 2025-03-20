@@ -40,9 +40,13 @@ Now, go under Site Settings -> Network Security -> ACL.
 Create a rule for the gateway blocking traffic from LAN -> WAN, for the Google DNS
 IP group.
 
+!!! Amazon Prime Video does not work with this rule enabled. Temporarily disable
+when starting to stream a movie/show.
+
 ### Garage AP
 
-We want devices to connect to the Garage AP as a last resort.
+We want devices to connect to the Garage AP only if the main AP does not have
+a strong signal.
 
 First, set the Tx Power to High on the Primary AP.
 Go into Devices -> Primary AP -> Config -> Radios, and configure both
@@ -50,7 +54,8 @@ Go into Devices -> Primary AP -> Config -> Radios, and configure both
 
 Next, set the reception cut off on the Garage AP
 Go into Devices -> Garage AP -> Config -> Advanced.
-Set the RSSI Threshold to -25 dBm for both channels.
+Set the RSSI Threshold to -75 dBm for both channels.
+This seems to be working well.
 
 Optionally, enable OFDMA for both APs under Advanced.
 

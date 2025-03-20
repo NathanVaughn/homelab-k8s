@@ -16,24 +16,4 @@ kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < 
 # optional
 kubectl apply -f sealed-secret.yaml
 kubectl delete secret -n factorio factorio-config
-
-
-# This Cloudflare token needs Edit zone DNS permissions.
-export CLOUDFLARE_API_TOKEN=$CLOUDFLARE_API_TOKEN
-# change dollar sign variables above this line
-
-kubectl -n factorio create secret generic factorio-ddns-env \
---from-literal=CLOUDFLARE_API_TOKEN=$CLOUDFLARE_API_TOKEN \
---dry-run=client -o yaml > secret.yaml
-
-kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret2.yaml
-# optional
-kubectl apply -f sealed-secret2.yaml
-kubectl delete secret -n factorio factorio-ddns-env
 ```
-
-## Post Setup
-
-Set up a port forward in Omada for port `34197` to `10.0.1.5` for UDP traffic.
-
-Configured under Site Settings -> Transmission -> NAT -> Port Forwarding.
