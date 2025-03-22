@@ -42,7 +42,7 @@ spec:
             - secretRef:
                 name: adsb-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/ghcr.io/sdr-enthusiasts/docker-readsb-protobuf@sha256:761aa0d466831cbb066d8c2d2c156842b85ec242f08b3f2e88efc0914bdd13e5
+          image: cr.nathanv.app/ghcr.io/sdr-enthusiasts/docker-readsb-protobuf@sha256:a6df0d993fb08c4956770d7627f29764b424fb6387a39d28e805f295ddd414c1
           name: readsb
           securityContext:
             privileged: true # for access to the usb dongle
