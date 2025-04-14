@@ -46,6 +46,9 @@ spec:
             # this if off bv default
             - name: EnableAuth
               value: "true"
+            # https://stackoverflow.com/a/78052455/9944427
+            - name: DOTNET_USE_POLLING_FILE_WATCHER
+              value: "1"
           envFrom:
             - secretRef:
                 name: lubelogger-env
