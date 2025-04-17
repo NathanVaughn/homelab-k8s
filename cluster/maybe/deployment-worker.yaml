@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: maybe-deployment
+  name: maybe-worker-deployment
   namespace: maybe
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: maybe
+      app: maybe-worker
   template:
     metadata:
       labels:
-        app: maybe
+        app: maybe-worker
     spec:
       nodeSelector:
         role: apps
@@ -42,13 +42,5 @@ spec:
                 name: maybe-env
           # registry-proxy image-prefix
           image: cr.nathanv.app/ghcr.io/maybe-finance/maybe:0.5.0
-          name: maybe
-          ports:
-            - containerPort: 3000
-          volumeMounts:
-            - mountPath: /rails/storage
-              name: data-vol
-      volumes:
-        - name: data-vol
-          persistentVolumeClaim:
-            claimName: maybe-pvc-data
+          name: maybe-worker
+          command: ["bundle", "exec", "sidekiq"]
