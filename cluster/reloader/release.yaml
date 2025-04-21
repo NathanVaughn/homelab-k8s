@@ -13,7 +13,7 @@ spec:
         name: reloader-repo
         namespace: reloader
       # https://github.com/stakater/Reloader/issues/897
-      version: "2.0.0"
+      version: "2.1.2"
   interval: 1h0m0s
   values:
     # registry-proxy block-start
