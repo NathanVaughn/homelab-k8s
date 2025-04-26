@@ -30,7 +30,7 @@ spec:
       # allow manually attached volumes to be detached. Important for rebooting.
       detachManuallyAttachedVolumesWhenCordoned: true
     defaultBackupStore:
-      backupTarget: s3://nathanv-private@us-west-001/longhorn
+      backupTarget: s3://nathanv-private@auto/longhorn
       backupTargetCredentialSecret: longhorn-env
       # https://www.reddit.com/r/rancher/comments/yu5jqa/comment/iw85rvu/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
       # https://github.com/longhorn/longhorn/issues/1547

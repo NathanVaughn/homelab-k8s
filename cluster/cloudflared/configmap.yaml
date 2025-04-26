@@ -53,11 +53,6 @@ data:
         noTLSVerify: true
         originServerName: '*traefik*'
       service: https://traefik.traefik.svc.cluster.local:443
-    - hostname: maybe.nathanv.app
-      originRequest:
-        noTLSVerify: true
-        originServerName: '*traefik*'
-      service: https://traefik.traefik.svc.cluster.local:443
     - hostname: paperless.nathanv.app
       originRequest:
         noTLSVerify: true
