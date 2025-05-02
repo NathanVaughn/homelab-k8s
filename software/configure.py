@@ -209,12 +209,14 @@ systemd.service(
     _serial=True,
 )
 
-for label in host.data.get("k8s_labels", []):  # type: ignore
-    server.shell(
-        name=f"Label node with {label}",
-        commands=f"kubectl label nodes {host.get_fact(Hostname)} {label}",
-        _sudo=True,
-    )
+if first_host.name == host.name:
+    # only need to run in one spot on the cluster
+    for label in host.data.get("k8s_labels", []):  # type: ignore
+        server.shell(
+            name=f"Label node with {label}",
+            commands=f"kubectl label nodes {host.get_fact(Hostname)} {label}",
+            _sudo=True,
+        )
 # endregion
 
 # Allow servers to use upstream DNS in the event
