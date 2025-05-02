@@ -19,18 +19,17 @@
         {
             "label": "pre-commit",
             "command": "uv run pre-commit run --all-files",
-            "type": "shell",
-            "dependsOn": ["install-pkgs"]
+            "type": "shell"
         },
         {
             "label": "configure.py",
-            "command": "pyinfra inventory.py configure.py",
+            "command": "uv run pyinfra inventory.py configure.py",
             "type": "shell",
             "options": {"cwd": "${workspaceFolder}${/}software"}
         },
         {
             "label": "update.py",
-            "command": "pyinfra inventory.py update.py",
+            "command": "uv run pyinfra inventory.py update.py",
             "type": "shell",
             "options": {"cwd": "${workspaceFolder}${/}software"}
         },
