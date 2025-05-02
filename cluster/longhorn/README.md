@@ -28,6 +28,9 @@ kubectl delete secret -n longhorn longhorn-env
 
 ## Post Setup
 
+In the web UI, manually modify the reserved storage space for each node.
+20 GB tends to work well.
+
 All persistent volume claims should use the storage class name "longhorn".
 This is a ReadWriteOnce storage class which means that only one node can
 access the volume for writing at a time.

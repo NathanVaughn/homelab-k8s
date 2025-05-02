@@ -43,19 +43,7 @@ IP group.
 !!! Amazon Prime Video does not work with this rule enabled. Temporarily disable
 when starting to stream a movie/show.
 
-### Garage AP
-
-We want devices to connect to the Garage AP only if the main AP does not have
-a strong signal.
-
-First, set the Tx Power to High on the Primary AP.
-Go into Devices -> Primary AP -> Config -> Radios, and configure both
-2.4 Ghz and 5 Ghz.
-
-Next, set the reception cut off on the Garage AP
-Go into Devices -> Garage AP -> Config -> Advanced.
-Set the RSSI Threshold to -75 dBm for both channels.
-This seems to be working well.
+### APs
 
 Optionally, enable OFDMA for both APs under Advanced.
 
