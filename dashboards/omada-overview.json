@@ -1,5 +1,5 @@
 {
-  "apiVersion": "dashboard.grafana.app/v1beta1",
+  "apiVersion": "dashboard.grafana.app/v0alpha1",
   "kind": "Dashboard",
   "metadata": {
     "name": "omada-overview"
@@ -319,8 +319,7 @@
           "legend": {
             "calcs": [],
             "displayMode": "table",
-            "placement": "right",
-            "showLegend": true
+            "placement": "right"
           },
           "tooltip": {
             "mode": "single",
@@ -415,8 +414,7 @@
               "mean"
             ],
             "displayMode": "table",
-            "placement": "bottom",
-            "showLegend": true
+            "placement": "bottom"
           },
           "tooltip": {
             "mode": "single",
@@ -513,8 +511,7 @@
               "mean"
             ],
             "displayMode": "table",
-            "placement": "bottom",
-            "showLegend": true
+            "placement": "bottom"
           },
           "tooltip": {
             "mode": "single",
@@ -759,9 +756,8 @@
               "max",
               "mean"
             ],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": false
+            "displayMode": "hidden",
+            "placement": "bottom"
           },
           "tooltip": {
             "mode": "single",
@@ -853,9 +849,8 @@
         "options": {
           "legend": {
             "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": false
+            "displayMode": "hidden",
+            "placement": "bottom"
           },
           "tooltip": {
             "mode": "single",
@@ -968,8 +963,8 @@
         "type": "stat"
       }
     ],
-    "refresh": "",
-    "schemaVersion": 42,
+    "refresh": false,
+    "schemaVersion": 36,
     "style": "dark",
     "tags": [],
     "templating": {
