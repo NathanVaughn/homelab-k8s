@@ -9,4 +9,6 @@ spec:
     app: omada-exporter
   ports:
     - port: 9202
+      targetPort: metrics
       protocol: TCP
+      name: metrics

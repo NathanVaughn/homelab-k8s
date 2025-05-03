@@ -6,7 +6,8 @@ metadata:
 spec:
   endpoints:
     - interval: 30s
-      targetPort: 9202
+      honorLabels: true
+      port: metrics
       path: /metrics
   namespaceSelector:
     matchNames:
