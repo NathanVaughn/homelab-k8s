@@ -5,7 +5,6 @@ metadata:
   namespace: omada
 spec:
   replicas: 1
-  serviceName: omada-exporter
   selector:
     matchLabels:
       app: omada-exporter
@@ -28,7 +27,7 @@ spec:
       containers:
         - env:
             - name: OMADA_HOST
-              value: https://omada-service.omada.svc.cluster.local
+              value: https://omada-service.omada.svc.cluster.local:8043
             - name: OMADA_USER
               value: prometheus
             - name: OMADA_SITE
