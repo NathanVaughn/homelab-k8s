@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: omada-exporter-deployment
+  namespace: omada
+spec:
+  replicas: 1
+  serviceName: omada-exporter
+  selector:
+    matchLabels:
+      app: omada-exporter
+  template:
+    metadata:
+      labels:
+        app: omada-exporter
+    spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              preference:
+                # when possible, run on the network controller
+                matchExpressions:
+                  - key: role
+                    operator: In
+                    values:
+                      - network
+      containers:
+        - env:
+            - name: OMADA_HOST
+              value: https://omada-service.omada.svc.cluster.local
+            - name: OMADA_USER
+              value: prometheus
+            - name: OMADA_SITE
+              value: Home
+            - name: OMADA_INSECURE
+              value: "true"
+          envFrom:
+            - secretRef:
+                name: omada-exporter-env
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/ghcr.io/charlie-haley/omada_exporter:0.13.1
+          name: omada-exporter
+          ports:
+            - name: metrics
+              containerPort: 9202
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: metrics
+          readinessProbe:
+            httpGet:
+              path: /
+              port: metrics

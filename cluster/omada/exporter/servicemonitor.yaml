@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: servicemonitor-omada-exporter
+  namespace: omada
+spec:
+  endpoints:
+    - interval: 30s
+      targetPort: 9202
+      path: /metrics
+  namespaceSelector:
+    matchNames:
+      - omada
+  selector:
+    matchLabels:
+      app: omada-exporter
