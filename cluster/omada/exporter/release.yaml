@@ -18,7 +18,7 @@ spec:
     nodeSelector:
       role: apps
     omada:
-      host: https://omada-service.omada.svc.cluster.local:8043
+      host: https://omada.nathanv.app/
       insecure: true
       site: Home
       username: prometheus
