@@ -3,12 +3,12 @@ kind: Service
 metadata:
   name: omada-exporter-service
   namespace: omada
+  labels:
+    app: omada-exporter
 spec:
   type: ClusterIP
   selector:
     app: omada-exporter
   ports:
     - port: 9202
-      targetPort: metrics
       protocol: TCP
-      name: metrics
