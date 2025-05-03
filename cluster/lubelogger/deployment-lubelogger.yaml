@@ -53,7 +53,7 @@ spec:
             - secretRef:
                 name: lubelogger-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/ghcr.io/hargata/lubelogger:v1.4.6
+          image: cr.nathanv.app/ghcr.io/hargata/lubelogger:v1.4.7
           name: lubelogger
           ports:
             - containerPort: 8080
