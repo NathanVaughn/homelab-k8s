@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: grafana-repo
         namespace: grafana
-      version: "8.14.2"
+      version: "8.15.0"
   interval: 1h0m0s
   values:
     # registry-proxy block-start
