@@ -29,7 +29,7 @@ spec:
             - secretRef:
                 name: pgadmin-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/library/postgres:17.4
+          image: cr.nathanv.app/docker.io/library/postgres:17.5
           name: postgresql
           ports:
             - containerPort: 5432
