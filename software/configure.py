@@ -60,9 +60,13 @@ systemd.service(
 
 # install packages
 # https://longhorn.io/docs/1.7.2/deploy/install/#installing-nfsv4-client
+# nfs for longhorn
+# network manager for managing network connections
+# systemd-resolved for DNS
+# htop and nano for debugging
 apt.packages(
     name="Install required packages",
-    packages=["nfs-common", "network-manager", "systemd-resolved"],
+    packages=["nfs-common", "network-manager", "systemd-resolved", "htop", "nano"],
     update=True,
     _sudo=True,
 )
