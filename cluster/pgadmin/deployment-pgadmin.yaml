@@ -44,7 +44,7 @@ spec:
             - secretRef:
                 name: pgadmin-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/dpage/pgadmin4:9.3
+          image: cr.nathanv.app/docker.io/dpage/pgadmin4:9.4
           name: pgadmin
           ports:
             - containerPort: 80

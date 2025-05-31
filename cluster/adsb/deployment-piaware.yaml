@@ -29,7 +29,7 @@ spec:
             - secretRef:
                 name: adsb-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/ghcr.io/sdr-enthusiasts/docker-piaware@sha256:27ccd493158b42884bbbc8049f65158af95a7578782a483e9ed294d7eac369b8
+          image: cr.nathanv.app/ghcr.io/sdr-enthusiasts/docker-piaware@sha256:f0cf9edf172693c819241d0a0cc6969b0217a0b021b84718f3563dfeefdac98d
           name: piaware
           volumeMounts:
             - mountPath: /run
