@@ -4888,7 +4888,7 @@ spec:
               containerName: manager
               resource: limits.memory
         # registry-proxy image-prefix
-        image: cr.nathanv.app/ghcr.io/fluxcd/source-controller:v1.6.0
+        image: cr.nathanv.app/ghcr.io/fluxcd/source-controller:v1.5.0
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -6778,7 +6778,7 @@ spec:
               containerName: manager
               resource: limits.memory
         # registry-proxy image-prefix
-        image: cr.nathanv.app/ghcr.io/fluxcd/kustomize-controller:v1.6.0
+        image: cr.nathanv.app/ghcr.io/fluxcd/kustomize-controller:v1.5.1
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -10581,7 +10581,7 @@ spec:
               containerName: manager
               resource: limits.memory
         # registry-proxy image-prefix
-        image: cr.nathanv.app/ghcr.io/fluxcd/helm-controller:v1.3.0
+        image: cr.nathanv.app/ghcr.io/fluxcd/helm-controller:v1.2.0
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -12534,7 +12534,7 @@ spec:
               containerName: manager
               resource: limits.memory
         # registry-proxy image-prefix
-        image: cr.nathanv.app/ghcr.io/fluxcd/notification-controller:v1.6.0
+        image: cr.nathanv.app/ghcr.io/fluxcd/notification-controller:v1.5.0
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
