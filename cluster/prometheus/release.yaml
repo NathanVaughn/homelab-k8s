@@ -46,7 +46,7 @@ spec:
           - name: 'email-alerts'
             email_configs:
               - to: 'nvaughn51@gmail.com'
-                send_resolved: false
+                send_resolved: true
     # https://github.com/SovereignCloudStack/k8s-observability/issues/48#issuecomment-2051128705
     # if i ever want to revisit this
     kubeControllerManager:
