@@ -11,6 +11,10 @@
     "kubernetes": {
         "fileMatch": [
             "cluster/.+\\.yaml$"
+        ],
+        // don't update flux-system resources, that manifest is auto-generated
+        "ignorePaths": [
+            "cluster/flux-system/gotk-components.yaml"
         ]
     },
     "packageRules": [
