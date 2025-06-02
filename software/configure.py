@@ -252,9 +252,9 @@ systemd.service(
 )
 
 # taint wifi nodes for longhorn replicas
-if "connectivity=wifi" in host.data.get("k8s_labels", []):  # type: ignore
-    server.shell(
-        name="Taint wifi nodes for longhorn replicas",
-        commands=f"kubectl taint node {host.get_fact(Hostname)} longhorn.io/replica=true:NoSchedule",
-        _sudo=True,
-    )
+# if "connectivity=wifi" in host.data.get("k8s_labels", []):  # type: ignore
+#     server.shell(
+#         name="Taint wifi nodes for longhorn replicas",
+#         commands=f"kubectl taint node {host.get_fact(Hostname)} longhorn.io/replica=true:NoSchedule",
+#         _sudo=True,
+#     )
