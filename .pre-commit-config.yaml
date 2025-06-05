@@ -29,9 +29,6 @@ repos:
     rev: v0.8.0
     hooks:
       - id: check-flux-helm-values
-        # TEMPORARY, until authentik releases an updated chart
-        # TODO
-        exclude: ^cluster/authentik/release.yaml
   - repo: https://github.com/google/yamlfmt
     rev: v0.17.0
     hooks:
