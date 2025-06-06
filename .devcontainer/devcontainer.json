@@ -4,9 +4,17 @@
         "context": ".."
     },
     "features": {
-        "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
-        "ghcr.io/jsburckhardt/devcontainer-features/flux:1": {},
-        "ghcr.io/gickis/devcontainer-features/kubeseal:1": {},
+        "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+            "version": "1.33.1",
+            "helm": "3.18.2",
+            "minikube": "1.36.0"
+        },
+        "ghcr.io/jsburckhardt/devcontainer-features/flux:1": {
+            "version": "v2.6.1"
+        },
+        "ghcr.io/gickis/devcontainer-features/kubeseal:1": {
+            "version": "0.29.0"
+        },
         "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
     },
     "customizations": {
