@@ -65,7 +65,7 @@ mv /bitnami/postgresql/data /bitnami/postgresql/data-old
 # Upgrade the chart
 
 kubectl exec -it -n $namespace $pod -- bash
-psql -U postgres -h localhost -f /bitnami/postgresql/backup.sql
+psql -U $user -h localhost -f /bitnami/postgresql/backup.sql
 
 # Once checked
 
