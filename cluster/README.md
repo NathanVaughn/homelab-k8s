@@ -69,6 +69,6 @@ psql -U postgres -h localhost -f /bitnami/postgresql/backup.sql
 
 # Once checked
 
-rm -rf /bitnami/postgresql/data-old
-
+rm -r /bitnami/postgresql/data-old
+rm /bitnami/postgresql/backup.sql
 ```
