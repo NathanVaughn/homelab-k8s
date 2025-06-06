@@ -52,3 +52,23 @@ kubectl delete --all pods --namespace=foo
 # or
 kubectl delete --all deployments --namespace=foo
 ```
+
+## Upgrading PostgreSQL Databases
+
+<https://github.com/bitnami/charts/issues/14926#issuecomment-2551470705>
+
+```bash
+kubectl exec -it -n $namespace $pod -- bash
+pg_dump -U $user $database > /bitnami/postgresql/backup.sql
+mv /bitnami/postgresql/data /bitnami/postgresql/data-old
+
+# Upgrade the chart
+
+kubectl exec -it -n $namespace $pod -- bash
+psql -U postgres -h localhost -f /bitnami/postgresql/backup.sql
+
+# Once checked
+
+rm -rf /bitnami/postgresql/data-old
+
+```
