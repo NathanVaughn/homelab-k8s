@@ -23,7 +23,7 @@ spec:
             - name: TZ
               value: America/Chicago # required for print time estimation
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/octoprint/octoprint:1.11.1
+          image: cr.nathanv.app/docker.io/octoprint/octoprint:1.11.2
           name: octoprint
           securityContext:
             privileged: true # for device access
