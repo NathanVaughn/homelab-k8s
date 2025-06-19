@@ -16,7 +16,7 @@ spec:
       # skip 2024.12.2
       # chart is broken with Helm 3.18
       # https://github.com/goauthentik/helm/pull/356/commits/f1af007bb82b6e7e5ab7274d7e9ff8b650baf274
-      version: "2025.6.1"
+      version: "2025.6.2"
   interval: 1h0m0s
   values:
     authentik:
