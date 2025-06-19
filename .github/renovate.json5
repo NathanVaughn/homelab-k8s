@@ -3,6 +3,7 @@
     "extends": [
         "github>nathanvaughn/renovate-config"
     ],
+    "dependencyDashboard": true,
     "flux": {
         "fileMatch": [
             "cluster/.+\\.yaml$"
