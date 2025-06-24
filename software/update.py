@@ -1,5 +1,4 @@
 from pyinfra import host  # type: ignore
-from pyinfra.facts import files as files_facts
 from pyinfra.facts import server as server_facts
 from pyinfra.operations import apt, python, server
 
@@ -65,6 +64,14 @@ def reboot_node():
 
 
 # check if server needs a reboot
-# https://docs.pyinfra.com/en/3.x/facts/files.html#files-file
-if host.get_fact(files_facts.File, "/var/run/reboot-required"):
-    python.call(name="Reboot the server", function=reboot_node, _serial=True)
+result = server.shell(
+    name="Check if server needs a reboot",
+    commands="test -f /var/run/reboot-required",
+    _ignore_errors=True,
+)
+python.call(
+    name="Reboot the server",
+    function=reboot_node,
+    _serial=True,
+    _if=result.did_succeed,
+)
