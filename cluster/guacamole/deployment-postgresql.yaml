@@ -19,7 +19,7 @@ spec:
       initContainers:
         - name: schema-gen
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/guacamole/guacamole:1.5.5
+          image: cr.nathanv.app/docker.io/guacamole/guacamole:1.6.0
           securityContext:
             runAsUser: 0 # required for script to work
           command: ['/bin/bash', '-c']
