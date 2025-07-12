@@ -46,7 +46,7 @@ spec:
             - secretRef:
                 name: ghost-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/library/ghost:5.129.0
+          image: cr.nathanv.app/docker.io/library/ghost:5.129.2
           name: ghost
           ports:
             - containerPort: 2368
