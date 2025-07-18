@@ -23,6 +23,7 @@ spec:
       storage:
         type: filesystem
         # https://grafana.com/docs/loki/latest/setup/install/helm/install-monolithic/
+      auth_enabled: false
       commonConfig:
         replication_factor: 1
       schemaConfig:
