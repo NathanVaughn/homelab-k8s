@@ -27,16 +27,20 @@ spec:
           volumeMounts:
             - mountPath: /docker-entrypoint-initdb.d
               name: initdb-vol
-        - name: upgrade
-          # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/guacamole/guacamole:1.6.0
-          securityContext:
-            runAsUser: 0 # required for script to work
-          command: ['/bin/bash', '-c']
-          args: ['cp /opt/guacamole/extensions/guacamole-auth-jdbc/postgresql/schema/upgrade/upgrade-pre-1.6.0.sql /docker-entrypoint-initdb.d/upgrade-pre-1.6.0.sql']
-          volumeMounts:
-            - mountPath: /docker-entrypoint-initdb.d
-              name: initdb-vol
+              # Some versions of guacamole have a pre-upgrade script that needs to be run.
+              # If database is already initialized, it will not be automatic.
+              # This block below does help with copying the .sql file into the postgres container for exection.
+              # https://guacamole.apache.org/doc/1.6.0/gug/postgresql-auth.html#granting-guacamole-access-to-the-database
+              # - name: upgrade
+              #   # registry-proxy image-prefix
+              #   image: cr.nathanv.app/docker.io/guacamole/guacamole:1.6.0
+              #   securityContext:
+              #     runAsUser: 0 # required for script to work
+              #   command: ['/bin/bash', '-c']
+              #   args: ['cp /opt/guacamole/extensions/guacamole-auth-jdbc/postgresql/schema/upgrade/upgrade-pre-1.6.0.sql /docker-entrypoint-initdb.d/upgrade-pre-1.6.0.sql']
+              #   volumeMounts:
+              #     - mountPath: /docker-entrypoint-initdb.d
+              #       name: initdb-vol
       containers:
         - env:
             - name: POSTGRES_USER

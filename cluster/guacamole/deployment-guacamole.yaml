@@ -22,6 +22,8 @@ spec:
               value: guacamole-postgresql-service.guacamole.svc.cluster.local
             - name: POSTGRESQL_USER
               value: guacamole
+            - name: POSTGRESQL_USERNAME
+              value: guacamole
             - name: POSTGRESQL_DATABASE
               value: guacamole
             - name: OPENID_AUTHORIZATION_ENDPOINT
