@@ -19,6 +19,6 @@ spec:
       containers:
         - name: guacd
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/guacamole/guacd:1.5.5
+          image: cr.nathanv.app/docker.io/guacamole/guacd:1.6.0
           ports:
             - containerPort: 4822
