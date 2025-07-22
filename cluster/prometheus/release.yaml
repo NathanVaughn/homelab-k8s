@@ -107,7 +107,10 @@ spec:
       thanosRulerSpec:
         image:
           registry: cr.nathanv.app/quay.io
-          # registry-proxy block-end
+    prometheus-node-exporter:
+      image:
+        registry: cr.nathanv.app/quay.io
+        # registry-proxy block-end
   valuesFrom:
     - kind: Secret
       name: alertmanager-secrets
