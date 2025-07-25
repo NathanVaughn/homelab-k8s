@@ -15,11 +15,11 @@ spec:
       version: "6.32.0"
   interval: 1h0m0s
   values:
-    # registry-proxy block-start
-    global:
-      imageRegistry: cr.nathanv.app/docker.io
-    # registry-proxy block-end
     loki:
+      # registry-proxy block-start
+      image:
+        registry: cr.nathanv.app/docker.io
+      # registry-proxy block-end
       storage:
         type: filesystem
       auth_enabled: false
