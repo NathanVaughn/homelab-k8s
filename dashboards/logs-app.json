@@ -1,5 +1,5 @@
 {
-  "apiVersion": "dashboard.grafana.app/v1beta1",
+  "apiVersion": "dashboard.grafana.app/v0alpha1",
   "kind": "Dashboard",
   "metadata": {
     "name": "sadlil-loki-apps-dashboard"
@@ -10,9 +10,7 @@
         {
           "$$hashKey": "object:75",
           "builtIn": 1,
-          "datasource": {
-            "uid": "-- Grafana --"
-          },
+          "datasource": "-- Grafana --",
           "enable": true,
           "hide": true,
           "iconColor": "rgba(0, 211, 255, 1)",
@@ -54,10 +52,7 @@
         "bars": true,
         "dashLength": 10,
         "dashes": false,
-        "datasource": {
-          "type": "loki",
-          "uid": "eescm44n26lfkd"
-        },
+        "datasource": "eescm44n26lfkd",
         "fieldConfig": {
           "defaults": {
             "custom": {},
@@ -98,10 +93,6 @@
         "steppedLine": false,
         "targets": [
           {
-            "datasource": {
-              "type": "loki",
-              "uid": "eescm44n26lfkd"
-            },
             "expr": "sum(count_over_time({job=\"$app\"} |= \"$search\" [$__interval]))",
             "legendFormat": "",
             "refId": "A"
@@ -151,10 +142,7 @@
         }
       },
       {
-        "datasource": {
-          "type": "loki",
-          "uid": "eescm44n26lfkd"
-        },
+        "datasource": "eescm44n26lfkd",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -177,10 +165,6 @@
         },
         "targets": [
           {
-            "datasource": {
-              "type": "loki",
-              "uid": "eescm44n26lfkd"
-            },
             "expr": "{job=\"$app\"} |= \"$search\" | logfmt",
             "hide": false,
             "legendFormat": "",
@@ -194,8 +178,8 @@
         "type": "logs"
       }
     ],
-    "refresh": "",
-    "schemaVersion": 42,
+    "refresh": false,
+    "schemaVersion": 26,
     "style": "dark",
     "tags": [],
     "templating": {
@@ -203,10 +187,7 @@
         {
           "allValue": null,
           "current": {},
-          "datasource": {
-            "type": "loki",
-            "uid": "eescm44n26lfkd"
-          },
+          "datasource": "eescm44n26lfkd",
           "definition": "label_values(job)",
           "hide": 0,
           "includeAll": false,
@@ -219,7 +200,11 @@
           "regex": "",
           "skipUrlSync": false,
           "sort": 0,
-          "type": "query"
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
         },
         {
           "current": {
