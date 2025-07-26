@@ -38,11 +38,6 @@ data:
         noTLSVerify: true
         originServerName: '*traefik*'
       service: https://traefik.traefik.svc.cluster.local:443
-    - hostname: kubetail.nathanv.app
-      originRequest:
-        noTLSVerify: true
-        originServerName: '*traefik*'
-      service: https://traefik.traefik.svc.cluster.local:443
     - hostname: longhorn.nathanv.app
       originRequest:
         noTLSVerify: true
