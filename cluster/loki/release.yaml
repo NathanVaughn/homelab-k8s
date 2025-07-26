@@ -74,3 +74,8 @@ spec:
       replicas: 0
     bloomGateway:
       replicas: 0
+    # disable testing
+    test:
+      enabled: false
+    lokiCanary:
+      enabled: false
