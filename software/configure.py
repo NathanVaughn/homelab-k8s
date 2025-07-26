@@ -251,6 +251,30 @@ systemd.service(
     _if=resolvconf_config_edit.did_change,
 )
 
+# increase the number of open files
+# https://serverfault.com/a/1137212
+server.sysctl(
+    name="Change the fs.inotify.max_user_watches value",
+    key="fs.inotify.max_user_watches",
+    value=2099999999,
+    persist=True,
+    _sudo=True,
+)
+server.sysctl(
+    name="Change the fs.inotify.max_user_watches value",
+    key="fs.inotify.max_user_watches",
+    value=2099999999,
+    persist=True,
+    _sudo=True,
+)
+server.sysctl(
+    name="Change the fs.inotify.max_queued_events value",
+    key="fs.inotify.max_queued_events",
+    value=2099999999,
+    persist=True,
+    _sudo=True,
+)
+
 # taint wifi nodes for longhorn replicas
 # if "connectivity=wifi" in host.data.get("k8s_labels", []):  # type: ignore
 #     server.shell(
