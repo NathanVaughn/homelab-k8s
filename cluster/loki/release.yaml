@@ -15,6 +15,11 @@ spec:
       version: "6.33.0"
   interval: 1h0m0s
   values:
+    # registry-proxy block-start
+    sidecar:
+      image:
+        repository: cr.nathanv.app/docker.io/kiwigrid/k8s-sidecar
+    # registry-proxy block-end
     loki:
       # registry-proxy block-start
       image:
