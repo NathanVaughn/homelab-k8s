@@ -24,6 +24,8 @@ spec:
               value: guacamole
             - name: POSTGRESQL_DATABASE
               value: guacamole
+            - name: OPENID_ENABLED
+              value: "true"
             - name: OPENID_AUTHORIZATION_ENDPOINT
               value: https://authentik.nathanv.app/application/o/authorize/
             - name: OPENID_ISSUER
@@ -36,9 +38,10 @@ spec:
               value: preferred_username
             - name: GUACD_HOSTNAME
               value: guacamole-guacd-service.guacamole.svc.cluster.local
+            - name: EXTENSION_PRIORITY
+              value: openid
               # only set this for first time
-              # - name: EXTENSION_PRIORITY
-              #   value: "*, openid"
+              # value: "*, openid"
           envFrom:
             - secretRef:
                 name: guacamole-env
@@ -46,6 +49,7 @@ spec:
           # https://x.com/jimsgarage_/status/1937878663900324095
           # issue with 1.6.0
           # https://www.encrypted.at/apache-guacamole-postgres-error-after-upgrade-1-6/
+          # All POSTGRES_ environment variables are deprecated in 1.6.0 and will cause issues
           image: cr.nathanv.app/docker.io/guacamole/guacamole:1.6.0
           name: guacamole
           ports:

@@ -52,7 +52,7 @@ spec:
               value: /var/lib/postgresql/data/pgdata
           envFrom:
             - secretRef:
-                name: guacamole-env
+                name: postgres-env
           # registry-proxy image-prefix
           image: cr.nathanv.app/docker.io/library/postgres:17.5
           name: postgresql
