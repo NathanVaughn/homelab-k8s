@@ -261,8 +261,8 @@ server.sysctl(
     _sudo=True,
 )
 server.sysctl(
-    name="Change the fs.inotify.max_user_watches value",
-    key="fs.inotify.max_user_watches",
+    name="Change the fs.inotify.max_user_instances value",
+    key="fs.inotify.max_user_instances",
     value=2099999999,
     persist=True,
     _sudo=True,
