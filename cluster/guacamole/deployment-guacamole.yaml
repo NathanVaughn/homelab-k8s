@@ -20,8 +20,6 @@ spec:
         - env:
             - name: POSTGRESQL_HOSTNAME
               value: guacamole-postgresql-service.guacamole.svc.cluster.local
-            - name: POSTGRESQL_SSL_MODE
-              value: allow
             - name: POSTGRESQL_USERNAME
               value: guacamole
             - name: POSTGRESQL_DATABASE
