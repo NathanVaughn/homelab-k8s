@@ -5,12 +5,12 @@
     ],
     "dependencyDashboard": true,
     "flux": {
-        "fileMatch": [
+        "managerFilePatterns": [
             "cluster/.+\\.yaml$"
         ]
     },
     "kubernetes": {
-        "fileMatch": [
+        "managerFilePatterns": [
             "cluster/.+\\.yaml$"
         ],
         // don't update flux-system resources, that manifest is auto-generated
@@ -35,7 +35,7 @@
         {
             "customType": "regex",
             "description": "Update webtrees versioned modules",
-            "fileMatch": [
+            "managerFilePatterns": [
                 "cluster/webtrees-test/module-config.yaml"
             ],
             "matchStrings": [
@@ -47,7 +47,7 @@
         {
             "customType": "regex",
             "description": "Update webtrees git modules",
-            "fileMatch": [
+            "managerFilePatterns": [
                 "cluster/webtrees-test/module-config.yaml"
             ],
             "currentValueTemplate": "master",
