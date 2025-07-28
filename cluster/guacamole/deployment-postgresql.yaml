@@ -33,7 +33,7 @@ spec:
               # https://guacamole.apache.org/doc/1.6.0/gug/postgresql-auth.html#granting-guacamole-access-to-the-database
               # - name: upgrade
               #   # registry-proxy image-prefix
-              #   image: cr.nathanv.app/docker.io/guacamole/guacamole:1.5.5
+              #   image: cr.nathanv.app/docker.io/guacamole/guacamole:1.6.0
               #   securityContext:
               #     runAsUser: 0 # required for script to work
               #   command: ['/bin/bash', '-c']
