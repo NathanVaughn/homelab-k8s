@@ -19,6 +19,12 @@ spec:
     sidecar:
       image:
         repository: cr.nathanv.app/docker.io/kiwigrid/k8s-sidecar
+    memcached:
+      image:
+        repository: cr.nathanv.app/docker.io/library/memcached
+    memcachedExporter:
+      image:
+        repository: cr.nathanv.app/docker.io/prom/memcached-exporter
     # registry-proxy block-end
     loki:
       # registry-proxy block-start
@@ -63,6 +69,10 @@ spec:
     gateway:
       nodeSelector:
         role: apps
+      # registry-proxy block-start
+      image:
+        registry: cr.nathanv.app/docker.io
+        # registry-proxy block-end
     # Zero out replica counts of other deployment modes
     backend:
       replicas: 0
