@@ -30,7 +30,7 @@ def normalize_image(image: str) -> str:
     return image
 
 
-def get_image_list() -> set[str]:
+def get_image_list() -> list[str]:
     """
     Return a list of all images used in the cluster
     """
@@ -46,7 +46,7 @@ def get_image_list() -> set[str]:
         ]
     ).decode("utf-8")
     # output is space seperated
-    return set(output.split(" "))
+    return sorted(list(set(output.split(" "))))
 
 
 if __name__ == "__main__":
