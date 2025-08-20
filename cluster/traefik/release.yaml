@@ -22,10 +22,6 @@ spec:
       version: "37.0.0"
   interval: 1h0m0s
   values:
-    # registry-proxy block-start
-    image:
-      registry: cr.nathanv.app/docker.io
-    # registry-proxy block-end
     persistence:
       enabled: true
       storageClass: longhorn
