@@ -50,7 +50,7 @@ spec:
             - secretRef:
                 name: webtrees-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/ghcr.io/nathanvaughn/webtrees:2.2.1
+          image: cr.nathanv.app/ghcr.io/nathanvaughn/webtrees:2.2.4
           name: webtrees
           ports:
             - containerPort: 80
