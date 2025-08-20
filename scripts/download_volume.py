@@ -1,5 +1,10 @@
-import common
+import sys
+
 import fabric
+
+sys.path.append(".")
+
+from scripts import common
 
 
 def main(namespace: str, name: str):

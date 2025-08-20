@@ -1,6 +1,7 @@
 import pathlib
 
 import yaml
+import yaml.representer
 
 THIS_DIR = pathlib.Path(__file__).parent
 CLUSTER_DIR = THIS_DIR.parent
