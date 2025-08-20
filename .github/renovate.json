@@ -6,12 +6,12 @@
     "dependencyDashboard": true,
     "flux": {
         "managerFilePatterns": [
-            "cluster/.+\\.yaml$"
+            "/cluster/.+\\.yaml$/"
         ]
     },
     "kubernetes": {
         "managerFilePatterns": [
-            "cluster/.+\\.yaml$"
+            "/cluster/.+\\.yaml$/"
         ],
         "ignorePaths": [
             "cluster/flux-system/gotk-components.yaml"
