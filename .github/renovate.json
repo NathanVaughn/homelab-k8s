@@ -23,7 +23,7 @@
                 "flux",
                 "helm-values",
                 "kubernetes",
-                "regex"
+                "custom.regex"
             ],
             "schedule": [
                 "* * * * 0,6"
@@ -38,8 +38,8 @@
                 "cluster/webtrees-test/module-config.yaml"
             ],
             "matchStrings": [
-                "https:\/\/github\\.com\/(?<depName>.+?\/.+?)\/releases\/download\/(?<currentValue>.+?)\/.+\\.zip",
-                "https:\/\/github\\.com\/(?<depName>.+?\/.+?)\/archive\/refs\/tags\/(?<currentValue>.+?)\\.zip"
+                "https://github\\.com/(?<depName>.+?/.+?)/releases/download/(?<currentValue>.+?)/.+\\.zip",
+                "https://github\\.com/(?<depName>.+?/.+?)/archive/refs/tags/(?<currentValue>.+?)\\.zip"
             ],
             "datasourceTemplate": "github-releases"
         },
@@ -51,7 +51,7 @@
             ],
             "currentValueTemplate": "master",
             "matchStrings": [
-                "(?<depName>https:\/\/github\\.com\/.+?\/.+?)\/archive\/(?<currentDigest>[a-z0-9]+?)\\.zip"
+                "(?<depName>https://github\\.com/.+?/.+?)/archive/(?<currentDigest>[a-z0-9]+?)\\.zip"
             ],
             "datasourceTemplate": "git-refs"
         }
