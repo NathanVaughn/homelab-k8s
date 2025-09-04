@@ -19,7 +19,7 @@
     venv                       = ".venv"
     reportMissingParameterType = true
 
-# [[tool.uv.index]]
-#     name = "mypypi"
-#     url = "https://pypi.nathanv.app/pypi/simple"
-#     default = true
+[[tool.uv.index]]
+    name = "mypypi"
+    url = "https://pypi.nathanv.app/pypi/simple"
+    default = true
