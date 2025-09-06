@@ -80,7 +80,7 @@ if "connectivity=eth" in host.data.get("k8s_labels", []):  # type: ignore
 if "hardware=adsb" in host.data.get("k8s_labels", []):  # type: ignore
     files.put(
         name="Upload rtlsdr blacklist",
-        src=ROOT_DIR.joinpath("software", "files", "blacklist-rtlsdr.conf"),
+        src=str(ROOT_DIR.joinpath("software", "files", "blacklist-rtlsdr.conf")),
         dest="/etc/modprobe.d/blacklist-rtlsdr.conf",
         _sudo=True,
     )
@@ -160,7 +160,7 @@ base_args = [
 if first_host.name == host.name:
     server.script(
         name="Run k3s install script on first node",
-        src=k3s_install_script,
+        src=str(k3s_install_script),
         _env={"K3S_TOKEN": k3s_token},
         args=base_args + ["--cluster-init"],
     )
@@ -183,21 +183,21 @@ else:
     first_host_ip = socket.gethostbyname(first_host.name)
     server.script(
         name="Run k3s install script on other nodes",
-        src=k3s_install_script,
+        src=str(k3s_install_script),
         _env={"K3S_TOKEN": k3s_token},
         args=base_args + [f"--server=https://{first_host_ip}:6443"],
     )
 
 registries_config = files.put(
     name="Upload k3s registry config",
-    src=ROOT_DIR.joinpath("software", "files", "registries.yaml"),
+    src=str(ROOT_DIR.joinpath("software", "files", "registries.yaml")),
     dest="/etc/rancher/k3s/registries.yaml",
     _sudo=True,
 )
 
 k3s_config = files.put(
     name="Upload k3s config",
-    src=ROOT_DIR.joinpath("software", "secrets", "config.yaml"),
+    src=str(ROOT_DIR.joinpath("software", "secrets", "config.yaml")),
     dest="/etc/rancher/k3s/config.yaml",
     _sudo=True,
 )
