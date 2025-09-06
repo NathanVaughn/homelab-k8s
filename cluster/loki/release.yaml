@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: loki-repo
         namespace: loki
-      version: "6.38.0"
+      version: "6.39.0"
   interval: 1h0m0s
   values:
     # registry-proxy block-start
