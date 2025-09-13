@@ -29,7 +29,7 @@ spec:
             - secretRef:
                 name: adsb-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/ghcr.io/sdr-enthusiasts/docker-flightradar24@sha256:48b32c7ed4f70a69976c2371aa866d99a61e6bc778f92bb76ce0c1de8f31a279
+          image: cr.nathanv.app/ghcr.io/sdr-enthusiasts/docker-flightradar24@sha256:5df06425593f08b03a1e9001375095726fc8026777246090fa6236b75edc7103
           name: flightradar24
           volumeMounts:
             - mountPath: /run
