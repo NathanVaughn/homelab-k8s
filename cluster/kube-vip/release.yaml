@@ -15,8 +15,8 @@ spec:
       version: "0.8.2"
   interval: 1h0m0s
   values:
-    # registry-proxy block-start
     image:
+      # registry-proxy block-start
       repository: cr.nathanv.app/ghcr.io/kube-vip/kube-vip
       # registry-proxy block-end
       # https://github.com/kube-vip/kube-vip/issues/1190
