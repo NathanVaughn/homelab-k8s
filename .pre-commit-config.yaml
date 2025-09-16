@@ -16,13 +16,13 @@ repos:
         id: ruff-check
       - id: ruff-format
     repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.12.11
+    rev: v0.13.0
   - hooks:
       - id: pyright
     repo: https://github.com/RobertCraigie/pyright-python
-    rev: v1.1.404
+    rev: v1.1.405
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.8.14
+    rev: 0.8.17
     hooks:
       - id: uv-lock
   - repo: https://github.com/tarioch/flux-check-hook
