@@ -54,7 +54,7 @@ spec:
             - secretRef:
                 name: postgres-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/library/postgres:17.6
+          image: cr.nathanv.app/docker.io/library/postgres:18.0
           name: postgresql
           ports:
             - containerPort: 5432
