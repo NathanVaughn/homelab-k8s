@@ -30,9 +30,17 @@ spec:
               value: time.cloudflare.com
             - name: ENABLE_NTS
               value: "true"
+            - name: LOG_LEVEL
+              value: "0"
+            - name: ENABLE_SYSCLK
+              value: "true"
           # registry-proxy image-prefix
           image: cr.nathanv.app/ghcr.io/dockur/chrony:4.6.1
           name: chrony
+          securityContext:
+            capabilities:
+              add:
+                - SYS_TIME
           ports:
             - containerPort: 123
               protocol: UDP
