@@ -31,7 +31,7 @@ spec:
       detachManuallyAttachedVolumesWhenCordoned: true
       # percentage of disks reserved for system usage
       # defaults to 30% which is pretty high
-      storageReservedPercentageForDefaultDisk: 15
+      storageReservedPercentageForDefaultDisk: "15"
     defaultBackupStore:
       backupTarget: s3://nathanv-private@auto/longhorn
       backupTargetCredentialSecret: longhorn-env
