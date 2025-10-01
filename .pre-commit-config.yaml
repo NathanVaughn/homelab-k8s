@@ -20,7 +20,7 @@ repos:
   - hooks:
       - id: pyright
     repo: https://github.com/RobertCraigie/pyright-python
-    rev: v1.1.404
+    rev: v1.1.405
   - repo: https://github.com/astral-sh/uv-pre-commit
     rev: 0.8.22
     hooks:
