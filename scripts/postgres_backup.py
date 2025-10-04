@@ -8,14 +8,21 @@ BASE_DIR = THIS_DIR.parent
 CLUSTER_DIR = BASE_DIR.joinpath("cluster")
 
 
-def kubectl_exec(namespace: str, container: str, command: list[str]) -> str:
+def kubectl_exec(
+    namespace: str, container: str, command: list[str], capture_stdout: bool = False
+) -> str:
     cmd = ["kubectl", "exec", "-n", namespace, container, "--"] + command
     print("> " + " ".join(cmd))
-    return subprocess.run(
-        cmd,
-        text=True,
-        capture_output=True,
-    ).stdout
+
+    if not capture_stdout:
+        subprocess.run(cmd)
+        return ""
+    else:
+        return subprocess.run(
+            cmd,
+            text=True,
+            capture_output=True,
+        ).stdout
 
 
 def find_postgres_namespaces() -> list[str]:
@@ -66,26 +73,8 @@ def create_backup(namespace: str, container: str) -> None:
                     # user and database should be same as namespace
                     f"pg_dump -U {namespace} {namespace}",
                 ],
+                capture_stdout=True,
             )
-        )
-
-
-def wipe_data(namespace: str, container: str) -> None:
-    """
-    Wipe the existing directory to allow for an upgrade
-    """
-    if (
-        input("Are you sure you want to delete the data directory? (y/n) ").lower()
-        == "y"
-    ):
-        kubectl_exec(
-            namespace,
-            container,
-            [
-                "rm",
-                "-rf",
-                "/var/lib/postgresql/data/pgdata/*",
-            ],
         )
 
 
@@ -123,9 +112,33 @@ def restore_backup(namespace: str, container: str) -> None:
             f"psql -U {namespace} -h localhost -c 'ALTER DATABASE {namespace} REFRESH COLLATION VERSION;'",
         ],
     )
+    kubectl_exec(
+        namespace,
+        container,
+        [
+            "rm",
+            f"/tmp/{namespace}.sql",
+        ],
+    )
 
 
-def main(namespace: str | None, action: Literal["backup", "wipe", "restore"]) -> None:
+def delete_old_data(namespace: str, container: str) -> None:
+    """
+    Delete old data from the PostgreSQL database in the given namespace and container.
+    """
+    kubectl_exec(
+        namespace,
+        container,
+        ["rm", "/var/lib/postgresql/pgdata"],
+    )
+    kubectl_exec(
+        namespace,
+        container,
+        ["rm", "/var/lib/postgresql/backup.sql"],
+    )
+
+
+def main(namespace: str | None, action: Literal["backup", "delete", "restore"]) -> None:
     # Determine namespaces to operate on
     if namespace:
         namespaces = [namespace]
@@ -138,16 +151,16 @@ def main(namespace: str | None, action: Literal["backup", "wipe", "restore"]) ->
         if action == "backup":
             print(f"Creating backup for namespace: {namespace}, container: {container}")
             create_backup(namespace, container)
-        elif action == "wipe":
-            print(
-                f"Wiping data directory for namespace: {namespace}, container: {container}"
-            )
-            wipe_data(namespace, container)
         elif action == "restore":
             print(
                 f"Restoring backup for namespace: {namespace}, container: {container}"
             )
             restore_backup(namespace, container)
+        elif action == "delete":
+            print(
+                f"Deleting old data for namespace: {namespace}, container: {container}"
+            )
+            delete_old_data(namespace, container)
         print()
 
 
@@ -162,7 +175,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "action",
         type=str,
-        choices=["backup", "wipe", "restore"],
+        choices=["backup", "restore"],
         help="Action to perform",
     )
     args = parser.parse_args()

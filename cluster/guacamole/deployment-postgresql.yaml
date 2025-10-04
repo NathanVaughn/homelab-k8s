@@ -47,19 +47,16 @@ spec:
               value: guacamole
             - name: POSTGRES_DB
               value: guacamole
-            # avoids issues with lost+found directory
-            - name: PGDATA
-              value: /var/lib/postgresql/data/pgdata
           envFrom:
             - secretRef:
                 name: postgres-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/library/postgres:17.6
+          image: cr.nathanv.app/docker.io/library/postgres:18.0
           name: postgresql
           ports:
             - containerPort: 5432
           volumeMounts:
-            - mountPath: /var/lib/postgresql/data
+            - mountPath: /var/lib/postgresql/
               name: postgresql-vol
             - mountPath: /docker-entrypoint-initdb.d
               name: initdb-vol
