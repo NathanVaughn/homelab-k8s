@@ -186,6 +186,7 @@ else:
         src=str(k3s_install_script),
         _env={"K3S_TOKEN": k3s_token},
         args=base_args + [f"--server=https://{first_host_ip}:6443"],
+        _serial=True,  # join one at a time
     )
 
 registries_config = files.put(
