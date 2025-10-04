@@ -22,19 +22,16 @@ spec:
               value: paperless
             - name: POSTGRES_DB
               value: paperless
-            # avoids issues with lost+found directory
-            - name: PGDATA
-              value: /var/lib/postgresql/data/pgdata
           envFrom:
             - secretRef:
                 name: paperless-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/library/postgres:17.6
+          image: cr.nathanv.app/docker.io/library/postgres:18.0
           name: postgresql
           ports:
             - containerPort: 5432
           volumeMounts:
-            - mountPath: /var/lib/postgresql/data
+            - mountPath: /var/lib/postgresql/
               name: postgresql-vol
       volumes:
         - name: postgresql-vol

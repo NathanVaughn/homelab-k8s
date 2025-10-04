@@ -71,7 +71,7 @@ def create_backup(namespace: str, container: str) -> None:
                     "sh",
                     "-c",
                     # user and database should be same as namespace
-                    f"pg_dump -U {namespace} {namespace}",
+                    f"pg_dump -U {namespace} {namespace} --clean",
                 ],
                 capture_stdout=True,
             )
@@ -138,7 +138,7 @@ def delete_old_data(namespace: str, container: str) -> None:
     )
 
 
-def main(namespace: str | None, action: Literal["backup", "delete", "restore"]) -> None:
+def main(namespace: str | None, action: Literal["backup", "clean", "restore"]) -> None:
     # Determine namespaces to operate on
     if namespace:
         namespaces = [namespace]
@@ -156,7 +156,7 @@ def main(namespace: str | None, action: Literal["backup", "delete", "restore"]) 
                 f"Restoring backup for namespace: {namespace}, container: {container}"
             )
             restore_backup(namespace, container)
-        elif action == "delete":
+        elif action == "clean":
             print(
                 f"Deleting old data for namespace: {namespace}, container: {container}"
             )
@@ -175,7 +175,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "action",
         type=str,
-        choices=["backup", "restore"],
+        choices=["backup", "restore", "clean"],
         help="Action to perform",
     )
     args = parser.parse_args()
