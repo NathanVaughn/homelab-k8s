@@ -21,7 +21,7 @@ Script and information to setup node operating systems.
 Scripts for cluster management. Outside the `cluster` directory to not annoy
 `flux`.
 
-### software
+### deployment
 
 This uses [pyinfra](https://pyinfra.com/) to deploy [k3s](https://k3s.io/)
 and other operating system settings and packages.

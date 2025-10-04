@@ -15,13 +15,13 @@
             "label": "configure.py",
             "command": "uv run pyinfra inventory.py configure.py",
             "type": "shell",
-            "options": {"cwd": "${workspaceFolder}${/}software"}
+            "options": {"cwd": "${workspaceFolder}${/}deployment"}
         },
         {
             "label": "update.py",
             "command": "uv run pyinfra inventory.py update.py",
             "type": "shell",
-            "options": {"cwd": "${workspaceFolder}${/}software"}
+            "options": {"cwd": "${workspaceFolder}${/}deployment"}
         },
         {
             "label": "force-sync",

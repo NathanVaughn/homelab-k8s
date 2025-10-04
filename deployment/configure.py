@@ -17,7 +17,7 @@ DNS_IP = "10.0.1.4"
 resolvconf_config = "/etc/systemd/resolved.conf.d/fallback.conf"
 
 # load k3s data
-k3s_install_script = ROOT_DIR.joinpath("software", "downloaded", "k3s_install.sh")
+k3s_install_script = ROOT_DIR.joinpath("deployment", "downloaded", "k3s_install.sh")
 
 if not k3s_install_script.exists():
     req = urllib.request.Request(
@@ -30,7 +30,7 @@ if not k3s_install_script.exists():
         with open(k3s_install_script, "wb") as fp:
             fp.write(response.read())
 
-with open(ROOT_DIR.joinpath("software", "secrets", "k3s_token"), "r") as fp:
+with open(ROOT_DIR.joinpath("deployment", "secrets", "k3s_token"), "r") as fp:
     k3s_token = fp.read().strip()
 
 # setup passwordless sudo
@@ -46,7 +46,7 @@ files.block(
 multipath_config = files.block(
     name="Configure multipath",
     path="/etc/multipath.conf",
-    content=pathlib.Path(ROOT_DIR, "software", "files", "multipath.conf").read_text(),
+    content=pathlib.Path(ROOT_DIR, "deployment", "files", "multipath.conf").read_text(),
     _sudo=True,
 )
 
@@ -80,7 +80,7 @@ if "connectivity=eth" in host.data.get("k8s_labels", []):  # type: ignore
 if "hardware=adsb" in host.data.get("k8s_labels", []):  # type: ignore
     files.put(
         name="Upload rtlsdr blacklist",
-        src=str(ROOT_DIR.joinpath("software", "files", "blacklist-rtlsdr.conf")),
+        src=str(ROOT_DIR.joinpath("deployment", "files", "blacklist-rtlsdr.conf")),
         dest="/etc/modprobe.d/blacklist-rtlsdr.conf",
         _sudo=True,
     )
@@ -191,14 +191,14 @@ else:
 
 registries_config = files.put(
     name="Upload k3s registry config",
-    src=str(ROOT_DIR.joinpath("software", "files", "registries.yaml")),
+    src=str(ROOT_DIR.joinpath("deployment", "files", "registries.yaml")),
     dest="/etc/rancher/k3s/registries.yaml",
     _sudo=True,
 )
 
 k3s_config = files.put(
     name="Upload k3s config",
-    src=str(ROOT_DIR.joinpath("software", "secrets", "config.yaml")),
+    src=str(ROOT_DIR.joinpath("deployment", "secrets", "config.yaml")),
     dest="/etc/rancher/k3s/config.yaml",
     _sudo=True,
 )
