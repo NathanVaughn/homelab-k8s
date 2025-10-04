@@ -59,16 +59,14 @@ kubectl delete --all deployments --namespace=foo
 
 ```bash
 kubectl exec -it -n $namespace $pod -- bash
-pg_dump -U $user $database > /bitnami/postgresql/backup.sql
-mv /bitnami/postgresql/data /bitnami/postgresql/data-old
+pg_dump -U $user $database > /var/lib/postgresql/18/docker/backup.sql
 
 # Upgrade the chart
 
 kubectl exec -it -n $namespace $pod -- bash
-psql -U $user -h localhost -f /bitnami/postgresql/backup.sql
+psql -U $user -h localhost -f /var/lib/postgresql/18/docker/backup.sql
 
 # Once checked
 
-rm -r /bitnami/postgresql/data-old
-rm /bitnami/postgresql/backup.sql
+rm -rf /var/lib/postgresql/18
 ```
