@@ -22,10 +22,6 @@ spec:
               value: mypypi
             - name: POSTGRES_DB
               value: mypypi
-            # avoids issues with lost+found directory
-            # https://github.com/docker-library/postgres/pull/1259
-            - name: PGDATA
-              value: /var/lib/postgresql/18/docker/pgdata
           envFrom:
             - secretRef:
                 name: mypypi-env
