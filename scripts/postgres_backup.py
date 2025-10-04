@@ -3,8 +3,19 @@ import pathlib
 import subprocess
 from typing import Literal
 
-THIS_DIR = pathlib.Path(__file__).parent.parent
-CLUSTER_DIR = THIS_DIR.joinpath("cluster")
+THIS_DIR = pathlib.Path(__file__).parent
+BASE_DIR = THIS_DIR.parent
+CLUSTER_DIR = BASE_DIR.joinpath("cluster")
+
+
+def kubectl_exec(namespace: str, container: str, command: list[str]) -> str:
+    cmd = ["kubectl", "exec", "-n", namespace, container, "--"] + command
+    print("> " + " ".join(cmd))
+    return subprocess.run(
+        cmd,
+        text=True,
+        capture_output=True,
+    ).stdout
 
 
 def find_postgres_namespaces() -> list[str]:
@@ -44,75 +55,77 @@ def create_backup(namespace: str, container: str) -> None:
     """
     Create a backup of the PostgreSQL database in the given namespace and container.
     """
-    subprocess.run(
-        [
-            "kubectl",
-            "exec",
-            "-n",
-            namespace,
-            container,
-            "--",
-            "sh",
-            "-c",
-            # user and database should be same as namespace
-            f"pg_dump -U {namespace} {namespace} > /var/lib/postgresql/data/backup.sql",
-        ]
-    )
+    with open(THIS_DIR.joinpath("postgres", f"{namespace}.sql"), "w") as fp:
+        fp.write(
+            kubectl_exec(
+                namespace,
+                container,
+                [
+                    "sh",
+                    "-c",
+                    # user and database should be same as namespace
+                    f"pg_dump -U {namespace} {namespace}",
+                ],
+            )
+        )
 
 
-def rename_data(namespace: str, container: str) -> None:
+def wipe_data(namespace: str, container: str) -> None:
     """
-    Rename the existing directory to allow for an upgrade
+    Wipe the existing directory to allow for an upgrade
     """
-    subprocess.run(
-        [
-            "kubectl",
-            "exec",
-            "-n",
+    if (
+        input("Are you sure you want to delete the data directory? (y/n) ").lower()
+        == "y"
+    ):
+        kubectl_exec(
             namespace,
             container,
-            "--",
-            "mv",
-            "/var/lib/postgresql/data/pgdata",
-            "/var/lib/postgresql/data/pgdata-old",
-        ]
-    )
+            [
+                "rm",
+                "-rf",
+                "/var/lib/postgresql/data/pgdata",
+            ],
+        )
 
 
 def restore_backup(namespace: str, container: str) -> None:
     """
     Restore the backup of the PostgreSQL database in the given namespace and container.
     """
+
     subprocess.run(
         [
             "kubectl",
-            "exec",
-            "-n",
-            namespace,
-            container,
-            "--",
+            "cp",
+            THIS_DIR.joinpath("postgres", f"{namespace}.sql"),
+            f"{namespace}/{container}:/tmp/{namespace}.sql",
+        ],
+        check=True,
+    )
+
+    kubectl_exec(
+        namespace,
+        container,
+        [
             "sh",
             "-c",
             # user and database should be same as namespace
-            f"psql -U {namespace} -h localhost -f /var/lib/postgresql/data/backup.sql",
-        ]
+            f"psql -U {namespace} -h localhost -f /tmp/{namespace}.sql",
+        ],
     )
-    subprocess.run(
+    kubectl_exec(
+        namespace,
+        container,
         [
-            "kubectl",
-            "exec",
-            "-n",
-            namespace,
-            container,
-            "--",
             "sh",
             "-c",
             f"psql -U {namespace} -h localhost -c 'ALTER DATABASE {namespace} REFRESH COLLATION VERSION;'",
-        ]
+        ],
     )
 
 
-def main(namespace: str | None, action: Literal["backup", "rename", "restore"]) -> None:
+def main(namespace: str | None, action: Literal["backup", "wipe", "restore"]) -> None:
     # Determine namespaces to operate on
     if namespace:
         namespaces = [namespace]
@@ -125,16 +138,17 @@ def main(namespace: str | None, action: Literal["backup", "rename", "restore"]) 
         if action == "backup":
             print(f"Creating backup for namespace: {namespace}, container: {container}")
             create_backup(namespace, container)
-        elif action == "rename":
+        elif action == "wipe":
             print(
-                f"Renaming data directory for namespace: {namespace}, container: {container}"
+                f"Wiping data directory for namespace: {namespace}, container: {container}"
             )
-            rename_data(namespace, container)
+            wipe_data(namespace, container)
         elif action == "restore":
             print(
                 f"Restoring backup for namespace: {namespace}, container: {container}"
             )
             restore_backup(namespace, container)
+        print()
 
 
 if __name__ == "__main__":
@@ -148,7 +162,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "action",
         type=str,
-        choices=["backup", "rename", "restore"],
+        choices=["backup", "wipe", "restore"],
         help="Action to perform",
     )
     args = parser.parse_args()
