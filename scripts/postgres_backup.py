@@ -84,7 +84,7 @@ def wipe_data(namespace: str, container: str) -> None:
             [
                 "rm",
                 "-rf",
-                "/var/lib/postgresql/data/pgdata",
+                "/var/lib/postgresql/data/pgdata/*",
             ],
         )
 
