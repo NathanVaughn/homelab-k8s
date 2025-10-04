@@ -22,19 +22,16 @@ spec:
               value: pgadmin
             - name: POSTGRES_DB
               value: pgadmin
-            # avoids issues with lost+found directory
-            - name: PGDATA
-              value: /var/lib/postgresql/data/pgdata
           envFrom:
             - secretRef:
                 name: pgadmin-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/library/postgres:17.6
+          image: cr.nathanv.app/docker.io/library/postgres:18.0
           name: postgresql
           ports:
             - containerPort: 5432
           volumeMounts:
-            - mountPath: /var/lib/postgresql/data
+            - mountPath: /var/lib/postgresql/
               name: postgresql-vol
       volumes:
         - name: postgresql-vol
