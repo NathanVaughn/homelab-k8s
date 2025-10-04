@@ -129,7 +129,7 @@ def delete_old_data(namespace: str, container: str) -> None:
     kubectl_exec(
         namespace,
         container,
-        ["rm", "/var/lib/postgresql/pgdata"],
+        ["rm", "-rf", "/var/lib/postgresql/pgdata"],
     )
     kubectl_exec(
         namespace,
