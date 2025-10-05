@@ -47,4 +47,4 @@ python.call(
 # `for i in `ls /var/lib/rancher/k3s/server/tls/*.crt`; do echo $i; openssl x509 -enddate -noout -in $i; done`
 
 # Or run
-# `curl -v -k https://localhost:6443 [https://localhost:6443] to confirm the new date of your app host cert`
+# `curl -v -k https://localhost:6443` to confirm the new date of your app host cert
