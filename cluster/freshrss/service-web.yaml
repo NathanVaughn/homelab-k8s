@@ -8,5 +8,5 @@ spec:
   selector:
     app: freshrss
   ports:
-    - port: 8000
+    - port: 80
       protocol: TCP
