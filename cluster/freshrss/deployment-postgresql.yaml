@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: freshrss-postgresql-deployment
+  namespace: freshrss
+spec:
+  replicas: 1
+  serviceName: freshrss-postgresql
+  selector:
+    matchLabels:
+      app: freshrss-postgresql
+  template:
+    metadata:
+      labels:
+        app: freshrss-postgresql
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+        - env:
+            - name: POSTGRES_USER
+              value: freshrss
+            - name: POSTGRES_DB
+              value: freshrss
+          envFrom:
+            - secretRef:
+                name: freshrss-env
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/library/postgres:18.0
+          name: postgresql
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/
+              name: postgresql-vol
+      volumes:
+        - name: postgresql-vol
+          persistentVolumeClaim:
+            claimName: freshrss-pvc-postgresql

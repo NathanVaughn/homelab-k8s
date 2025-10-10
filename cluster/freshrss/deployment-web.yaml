@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: freshrss-deployment
+  namespace: freshrss
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: freshrss
+  template:
+    metadata:
+      labels:
+        app: freshrss
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+        - env:
+            - name: BASE_URL
+              value: https://freshrss.nathanv.app
+            - name: SERVER_DNS
+              value: freshrss.nathanv.app
+            - name: CRON_MIN
+              value: '5,35'
+            - name: DB_HOST
+              value: freshrss-postgresql-service.freshrss.svc.cluster.local
+            - name: DB_BASE
+              value: freshrss
+            - name: DB_USER
+              value: freshrss
+          envFrom:
+            - secretRef:
+                name: freshrss-env
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/freshrss/freshrss:1.27.1
+          name: freshrss
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /var/www/FreshRSS/data
+              name: freshrss-data-vol
+            - mountPath: /var/www/FreshRSS/extensions
+              name: freshrss-extensions-vol
+      volumes:
+        - name: freshrss-data-vol
+          persistentVolumeClaim:
+            claimName: freshrss-pvc-data
+        - name: freshrss-extensions-vol
+          persistentVolumeClaim:
+            claimName: freshrss-pvc-extensions
