@@ -29,6 +29,14 @@ spec:
               value: freshrss
             - name: DB_USER
               value: freshrss
+            - name: OIDC_ENABLED
+              value: '1'
+            - name: OIDC_PROVIDER_METADATA_URL
+              value: https://authentik.nathanv.app/application/o/fresh-rss/.well-known/openid-configuration
+            - name: OIDC_X_FORWARDED_HEADERS
+              value: X-Forwarded-Port X-Forwarded-Proto X-Forwarded-Host
+            - name: OIDC_SCOPES
+              value: openid email profile
           envFrom:
             - secretRef:
                 name: freshrss-env
