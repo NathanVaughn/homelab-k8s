@@ -3,7 +3,8 @@
 ## Setup
 
 In Authentik, configure a OAuth2 provider. Use the redirect URL as
-`https://freshrss.nathanv.app/i/oidc/`.
+`https://freshrss.nathanv.app/i/oidc/` as well as
+`https://freshrss.nathanv.app:443/i/oidc/`.
 
 ```bash
 export POSTGRES_PASSWORD=$POSTGRES_PASSWORD
