@@ -1,4 +1,6 @@
 # Homelab K8s
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FNathanVaughn%2Fhomelab-k8s.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FNathanVaughn%2Fhomelab-k8s?ref=badge_shield)
+
 
 This repository is for my homelab, utilizing Kubernetes.
 
@@ -25,3 +27,7 @@ Scripts for cluster management. Outside the `cluster` directory to not annoy
 
 This uses [pyinfra](https://pyinfra.com/) to deploy [k3s](https://k3s.io/)
 and other operating system settings and packages.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FNathanVaughn%2Fhomelab-k8s.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FNathanVaughn%2Fhomelab-k8s?ref=badge_large)
