@@ -1,5 +1,5 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.13"
 resolution-markers = [
     "python_full_version >= '3.14' and platform_python_implementation != 'PyPy'",
@@ -260,11 +260,11 @@ wheels = [
 
 [[package]]
 name = "filelock"
-version = "3.19.1"
+version = "3.20.0"
 source = { registry = "https://pypi.nathanv.app/pypi/simple" }
-sdist = { url = "https://pypi.nathanv.app/pypi/file/filelock/3.19.1/filelock-3.19.1.tar.gz", hash = "sha256:66eda1888b0171c998b35be2bcc0f6d75c388a7ce20c3f3f37aa8e96c2dddf58" }
+sdist = { url = "https://pypi.nathanv.app/pypi/file/filelock/3.20.0/filelock-3.20.0.tar.gz", hash = "sha256:711e943b4ec6be42e1d4e6690b48dc175c822967466bb31c0c293f34334c13f4" }
 wheels = [
-    { url = "https://pypi.nathanv.app/pypi/file/filelock/3.19.1/filelock-3.19.1-py3-none-any.whl", hash = "sha256:d38e30481def20772f5baf097c122c3babc4fcdb7e14e57049eb9d88c6dc017d" },
+    { url = "https://pypi.nathanv.app/pypi/file/filelock/3.20.0/filelock-3.20.0-py3-none-any.whl", hash = "sha256:339b4732ffda5cd79b13f4e2711a31b0365ce445d95d243bb996273d072546a2" },
 ]
 
 [[package]]
@@ -357,11 +357,11 @@ wheels = [
 
 [[package]]
 name = "invoke"
-version = "2.2.0"
+version = "2.2.1"
 source = { registry = "https://pypi.nathanv.app/pypi/simple" }
-sdist = { url = "https://pypi.nathanv.app/pypi/file/invoke/2.2.0/invoke-2.2.0.tar.gz", hash = "sha256:ee6cbb101af1a859c7fe84f2a264c059020b0cb7fe3535f9424300ab568f6bd5" }
+sdist = { url = "https://pypi.nathanv.app/pypi/file/invoke/2.2.1/invoke-2.2.1.tar.gz", hash = "sha256:515bf49b4a48932b79b024590348da22f39c4942dff991ad1fb8b8baea1be707" }
 wheels = [
-    { url = "https://pypi.nathanv.app/pypi/file/invoke/2.2.0/invoke-2.2.0-py3-none-any.whl", hash = "sha256:6ea924cc53d4f78e3d98bc436b08069a03077e6f85ad1ddaa8a116d7dad15820" },
+    { url = "https://pypi.nathanv.app/pypi/file/invoke/2.2.1/invoke-2.2.1-py3-none-any.whl", hash = "sha256:2413bc441b376e5cd3f55bb5d364f973ad8bdd7bf87e53c79de3c11bf3feecc8" },
 ]
 
 [[package]]
@@ -462,11 +462,11 @@ wheels = [
 
 [[package]]
 name = "platformdirs"
-version = "4.4.0"
+version = "4.5.0"
 source = { registry = "https://pypi.nathanv.app/pypi/simple" }
-sdist = { url = "https://pypi.nathanv.app/pypi/file/platformdirs/4.4.0/platformdirs-4.4.0.tar.gz", hash = "sha256:ca753cf4d81dc309bc67b0ea38fd15dc97bc30ce419a7f58d13eb3bf14c4febf" }
+sdist = { url = "https://pypi.nathanv.app/pypi/file/platformdirs/4.5.0/platformdirs-4.5.0.tar.gz", hash = "sha256:70ddccdd7c99fc5942e9fc25636a8b34d04c24b335100223152c2803e4063312" }
 wheels = [
-    { url = "https://pypi.nathanv.app/pypi/file/platformdirs/4.4.0/platformdirs-4.4.0-py3-none-any.whl", hash = "sha256:abd01743f24e5287cd7a5db3752faf1a2d65353f38ec26d98e25a6db65958c85" },
+    { url = "https://pypi.nathanv.app/pypi/file/platformdirs/4.5.0/platformdirs-4.5.0-py3-none-any.whl", hash = "sha256:e578a81bb873cbb89a41fcc904c7ef523cc18284b7e3b3ccf06aca1403b7ebd3" },
 ]
 
 [[package]]
@@ -639,16 +639,16 @@ wheels = [
 
 [[package]]
 name = "virtualenv"
-version = "20.34.0"
+version = "20.35.3"
 source = { registry = "https://pypi.nathanv.app/pypi/simple" }
 dependencies = [
     { name = "distlib" },
     { name = "filelock" },
     { name = "platformdirs" },
 ]
-sdist = { url = "https://pypi.nathanv.app/pypi/file/virtualenv/20.34.0/virtualenv-20.34.0.tar.gz", hash = "sha256:44815b2c9dee7ed86e387b842a84f20b93f7f417f95886ca1996a72a4138eb1a" }
+sdist = { url = "https://pypi.nathanv.app/pypi/file/virtualenv/20.35.3/virtualenv-20.35.3.tar.gz", hash = "sha256:4f1a845d131133bdff10590489610c98c168ff99dc75d6c96853801f7f67af44" }
 wheels = [
-    { url = "https://pypi.nathanv.app/pypi/file/virtualenv/20.34.0/virtualenv-20.34.0-py3-none-any.whl", hash = "sha256:341f5afa7eee943e4984a9207c025feedd768baff6753cd660c857ceb3e36026" },
+    { url = "https://pypi.nathanv.app/pypi/file/virtualenv/20.35.3/virtualenv-20.35.3-py3-none-any.whl", hash = "sha256:63d106565078d8c8d0b206d48080f938a8b25361e19432d2c9db40d2899c810a" },
 ]
 
 [[package]]
