@@ -29,7 +29,7 @@ spec:
             - secretRef:
                 name: phpmyadmin-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/library/phpmyadmin:5.2.2
+          image: cr.nathanv.app/docker.io/library/phpmyadmin:5.2.3
           name: phpmyadmin
           ports:
             - containerPort: 80

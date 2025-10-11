@@ -18,7 +18,7 @@ spec:
       containers:
         - name: gotenberg
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/gotenberg/gotenberg:8.23
+          image: cr.nathanv.app/docker.io/gotenberg/gotenberg:8.24
           command: ["gotenberg", "--chromium-disable-javascript=true", "--chromium-allow-list=file:///tmp/.*"]
           ports:
             - containerPort: 3000
