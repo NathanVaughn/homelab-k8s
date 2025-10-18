@@ -32,6 +32,12 @@ flux reconcile source git flux-system
 flux reconcile kustomization flux-system -n flux-system
 ```
 
+## Force reconcile stuck HelmRelease
+
+```bash
+flux reconcile helmrelease $helmreleasename --force -n $namespace
+```
+
 ## Troubleshooting
 
 ```bash
