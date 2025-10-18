@@ -88,4 +88,7 @@ kubectl -n longhorn delete nodes.longhorn.io $server # may need to do this in th
 ssh-keygen -R $server.nathanv.home
 
 # !! reinstall OS and re-run configure.py
+
+# restart all daemonsets to ensure pods get scheduled on the node correctly
+uv run scripts/restart_daemonsets.py
 ```
