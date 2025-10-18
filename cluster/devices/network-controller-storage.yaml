@@ -1,0 +1,10 @@
+apiVersion: longhorn.io/v1beta2
+kind: Node
+metadata:
+  name: butch
+  namespace: longhorn
+spec:
+  # disable shceduling replicas
+  allowScheduling: false
+  evictionRequested: true
+  name: butch

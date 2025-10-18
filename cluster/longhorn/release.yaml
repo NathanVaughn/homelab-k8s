@@ -27,6 +27,8 @@ spec:
       # prevents data from being deleted when pvc is deleted
       reclaimPolicy: Retain
     defaultSettings:
+      # enable auto balancing of replicas across nodes
+      replicaAutoBalance: true
       # allow manually attached volumes to be detached. Important for rebooting.
       detachManuallyAttachedVolumesWhenCordoned: true
       # percentage of disks reserved for system usage
