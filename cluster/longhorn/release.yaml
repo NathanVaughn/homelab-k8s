@@ -28,7 +28,7 @@ spec:
       reclaimPolicy: Retain
     defaultSettings:
       # enable auto balancing of replicas across nodes
-      replicaAutoBalance: true
+      replicaAutoBalance: best-effort
       # allow manually attached volumes to be detached. Important for rebooting.
       detachManuallyAttachedVolumesWhenCordoned: true
       # percentage of disks reserved for system usage
