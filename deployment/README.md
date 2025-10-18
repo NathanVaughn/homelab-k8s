@@ -75,6 +75,8 @@ pyinfra inventory.py update.py
 kubectl cordon $server
 kubectl drain --delete-emptydir-data --ignore-daemonsets $server
 
+# !! request eviction in longhorn UI
+
 # uninstall k3s on node for good measure
 /usr/local/bin/k3s-uninstall.sh
 
