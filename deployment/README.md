@@ -76,8 +76,8 @@ kubectl cordon $server
 kubectl drain --delete-emptydir-data --ignore-daemonsets $server
 
 # delete from cluster
-kubectl delete node $server
 kubectl -n longhorn delete nodes.longhorn.io $server # may need to do this in the UI
+kubectl delete node $server
 
 # uninstall k3s on node for good measure
 /usr/local/bin/k3s-uninstall.sh
