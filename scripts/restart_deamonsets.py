@@ -43,7 +43,7 @@ def get_all_daemonsets() -> list[tuple[str, str]]:
     )
 
     daemonsets = []
-    for line in result.stdout.strip().split("\n"):
+    for line in result.stdout.strip().splitlines():
         namespace, name = line.split()
         daemonsets.append((namespace, name))
 
