@@ -35,7 +35,7 @@ spec:
       # defaults to 30% which is pretty high
       storageReservedPercentageForDefaultDisk: "15"
       # let longhorn automatically upgrade engines
-      concurrentAutomaticEngineUpgradePerNodeLimit: 1
+      concurrentAutomaticEngineUpgradePerNodeLimit: "1"
     defaultBackupStore:
       backupTarget: s3://nathanv-private@auto/longhorn
       backupTargetCredentialSecret: longhorn-env
