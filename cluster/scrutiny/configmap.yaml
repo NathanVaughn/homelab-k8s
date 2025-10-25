@@ -63,3 +63,57 @@ data:
         ignore: true
       - device: /dev/sdz
         ignore: true
+      - device: /dev/sdaa
+        ignore: true
+      - device: /dev/sdab
+        ignore: true
+      - device: /dev/sdac
+        ignore: true
+      - device: /dev/sdad
+        ignore: true
+      - device: /dev/sdab
+        ignore: true
+      - device: /dev/sdae
+        ignore: true
+      - device: /dev/sdaf
+        ignore: true
+      - device: /dev/sdag
+        ignore: true
+      - device: /dev/sdah
+        ignore: true
+      - device: /dev/sdai
+        ignore: true
+      - device: /dev/sdaj
+        ignore: true
+      - device: /dev/sdak
+        ignore: true
+      - device: /dev/sdal
+        ignore: true
+      - device: /dev/sdam
+        ignore: true
+      - device: /dev/sdan
+        ignore: true
+      - device: /dev/sdao
+        ignore: true
+      - device: /dev/sdap
+        ignore: true
+      - device: /dev/sdaq
+        ignore: true
+      - device: /dev/sdar
+        ignore: true
+      - device: /dev/sdas
+        ignore: true
+      - device: /dev/sdat
+        ignore: true
+      - device: /dev/sdau
+        ignore: true
+      - device: /dev/sdav
+        ignore: true
+      - device: /dev/sdaw
+        ignore: true
+      - device: /dev/sdax
+        ignore: true
+      - device: /dev/sday
+        ignore: true
+      - device: /dev/sdaz
+        ignore: true
