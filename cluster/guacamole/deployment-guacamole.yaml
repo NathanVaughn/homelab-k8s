@@ -45,11 +45,11 @@ spec:
           envFrom:
             - secretRef:
                 name: guacamole-env
-          # registry-proxy image-prefix
           # https://x.com/jimsgarage_/status/1937878663900324095
           # issue with 1.6.0
           # https://www.encrypted.at/apache-guacamole-postgres-error-after-upgrade-1-6/
           # All POSTGRES_ environment variables are deprecated in 1.6.0 and will cause issues
+          # registry-proxy image-prefix
           image: cr.nathanv.app/docker.io/guacamole/guacamole:1.6.0
           name: guacamole
           ports:
