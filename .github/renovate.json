@@ -54,6 +54,18 @@
                 "(?<depName>https://github\\.com/.+?/.+?)/archive/(?<currentDigest>[a-z0-9]+?)\\.zip"
             ],
             "datasourceTemplate": "git-refs"
+        },
+        {
+            "customType": "regex",
+            "description": "Update Devcontainer features",
+            "managerFilePatterns": [
+                ".devcontainer/devcontainer.json"
+            ],
+            "currentValueTemplate": "master",
+            "matchStrings": [
+                "\/\/ renovate:(?: depName=(?<depName>.+?))? packageName=(?<packageName>.+?)\\s+\"\\S+\": \"(?<currentValue>.+?)\""
+            ],
+            "datasourceTemplate": "github-releases"
         }
     ]
 }

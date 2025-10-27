@@ -68,12 +68,15 @@ spec:
           role: apps
         # https://prometheus.io/docs/prometheus/latest/storage/#right-sizing-retention-size
         retention: 14d
-        retentionSize: 12GB
+        retentionSize: 16GB
         # https://github.com/prometheus-operator/kube-prometheus/issues/1392#issuecomment-1411719953
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
+        # try to limit to 1 container
+        replicas: 1
+        shards: 1
         # https://github.com/prometheus-operator/prometheus-operator/issues/5197#issuecomment-1382210067
         scrapeInterval: 30s
         evaluationInterval: 30s
@@ -82,8 +85,8 @@ spec:
           volumeClaimTemplate:
             spec:
               storageClassName: longhorn
-              # need many as the helm chart deploys 2
-              accessModes: ["ReadWriteMany"]
+              # NFS shares cause problems
+              accessModes: ["ReadWriteOne"]
               resources:
                 requests:
                   storage: 20Gi
