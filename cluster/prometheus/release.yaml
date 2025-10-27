@@ -86,7 +86,7 @@ spec:
             spec:
               storageClassName: longhorn
               # NFS shares cause problems
-              accessModes: ["ReadWriteOne"]
+              accessModes: ["ReadWriteOnce"]
               resources:
                 requests:
                   storage: 20Gi
