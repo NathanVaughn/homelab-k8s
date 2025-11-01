@@ -43,7 +43,7 @@ spec:
             - secretRef:
                 name: mypypi-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/ghcr.io/nathanvaughn/mypypi2:0.1.4
+          image: cr.nathanv.app/ghcr.io/nathanvaughn/mypypi2:0.1.5
           name: mypypi
           ports:
             - containerPort: 80
