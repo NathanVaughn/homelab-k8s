@@ -24,7 +24,7 @@ spec:
             - secretRef:
                 name: k8s-dns-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/ghcr.io/nathanvaughn/k8s-dns:0.1.3
+          image: cr.nathanv.app/ghcr.io/nathanvaughn/k8s-dns:0.1.4
           name: k8s-dns
           livenessProbe:
             httpGet:
