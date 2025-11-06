@@ -20,15 +20,16 @@ spec:
     clusterRoleBinding:
       create: false
     # https://github.com/headlamp-k8s/plugins/tree/main/flux
-    config:
-      pluginsDir: /build/plugins
-      pluginsManager:
-        enabled: true
-        configContent: |
-          plugins:
-            - name: headlamp_flux
-              source: https://artifacthub.io/packages/headlamp/headlamp-plugins/headlamp_flux
-              version: 0.5.0
+    pluginsManager:
+      enabled: true
+      # registry-proxy block-start
+      baseImage: cr.nathanv.app/docker.io/node:lts-alpine
+      # registry-proxy block-end
+      configContent: |
+        plugins:
+          - name: headlamp_flux
+            source: https://artifacthub.io/packages/headlamp/headlamp-plugins/headlamp_flux
+            version: 0.5.0
       oidc:
         issuerURL: https://authentik.nathanv.app/application/o/headlamp/
         scopes: openid,profile,email
@@ -43,7 +44,7 @@ spec:
       accessModes:
         - ReadWriteMany
     volumeMounts:
-      - mountPath: /build/plugins
+      - mountPath: /headlamp/plugins
         name: headlamp-plugins
     volumes:
       - name: headlamp-plugins
