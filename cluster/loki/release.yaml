@@ -12,7 +12,8 @@ spec:
         kind: HelmRepository
         name: loki-repo
         namespace: loki
-      version: "6.45.2"
+      # https://github.com/grafana/loki/issues/19655
+      version: "6.45.0"
   interval: 1h0m0s
   values:
     # registry-proxy block-start

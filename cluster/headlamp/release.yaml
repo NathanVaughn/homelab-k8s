@@ -18,7 +18,7 @@ spec:
     nodeSelector:
       role: apps
     clusterRoleBinding:
-      create: true
+      create: false
     # https://github.com/headlamp-k8s/plugins/tree/main/flux
     pluginsManager:
       enabled: true
