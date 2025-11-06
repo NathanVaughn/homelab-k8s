@@ -43,13 +43,6 @@ spec:
       size: 100Mi
       accessModes:
         - ReadWriteMany
-    volumeMounts:
-      - mountPath: /headlamp/plugins
-        name: headlamp-plugins
-    volumes:
-      - name: headlamp-plugins
-        persistentVolumeClaim:
-          claimName: headlamp
   valuesFrom:
     - kind: Secret
       name: headlamp-secrets
