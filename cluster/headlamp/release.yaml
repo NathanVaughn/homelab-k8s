@@ -18,7 +18,7 @@ spec:
     nodeSelector:
       role: apps
     clusterRoleBinding:
-      create: false
+      create: true
     # https://github.com/headlamp-k8s/plugins/tree/main/flux
     pluginsManager:
       enabled: true
@@ -30,9 +30,9 @@ spec:
           - name: headlamp_flux
             source: https://artifacthub.io/packages/headlamp/headlamp-plugins/headlamp_flux
             version: 0.5.0
-      oidc:
-        issuerURL: https://authentik.nathanv.app/application/o/headlamp/
-        scopes: openid,profile,email
+    oidc:
+      issuerURL: https://authentik.nathanv.app/application/o/headlamp/
+      scopes: openid,profile,email
     # registry-proxy block-start
     image:
       registry: cr.nathanv.app/ghcr.io
