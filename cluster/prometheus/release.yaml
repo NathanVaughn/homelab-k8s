@@ -68,7 +68,7 @@ spec:
           role: apps
         # https://prometheus.io/docs/prometheus/latest/storage/#right-sizing-retention-size
         retention: 14d
-        retentionSize: 16GB
+        retentionSize: 12GB
         # https://github.com/prometheus-operator/kube-prometheus/issues/1392#issuecomment-1411719953
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
