@@ -41,20 +41,9 @@ spec:
           enabled: true
           size: 1Gi
       defaultStorageClass: longhorn
+    # no longer uses redis as of 2025.10
     redis:
-      enabled: true
-      # registry-proxy block-start
-      global:
-        security:
-          allowInsecureImages: true
-      image:
-        registry: cr.nathanv.app/docker.io
-      # registry-proxy block-end
-      master:
-        persistence:
-          enabled: true
-          size: 1Gi
-      defaultStorageClass: longhorn
+      enabled: false
     server:
       metrics:
         enabled: true
