@@ -46,7 +46,7 @@ spec:
             - secretRef:
                 name: ghost-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/library/ghost:6.5.3
+          image: cr.nathanv.app/docker.io/library/ghost:6.7.0
           # downgrade, 6.4.0 not aviable on amd64
           name: ghost
           ports:
