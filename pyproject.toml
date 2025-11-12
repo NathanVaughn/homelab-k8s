@@ -11,7 +11,10 @@
     ]
 
 [dependency-groups]
-    dev = ["pre-commit>=4.0.1"]
+    dev = [
+    "pre-commit>=4.0.1",
+    "pre-commit-uv>=4.2.0",
+]
 
 [tool.pyright]
     typeCheckingMode           = "basic"

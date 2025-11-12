@@ -1,11 +1,6 @@
 version = 1
 revision = 3
 requires-python = ">=3.13"
-resolution-markers = [
-    "python_full_version >= '3.14' and platform_python_implementation != 'PyPy'",
-    "python_full_version < '3.14' and platform_python_implementation != 'PyPy'",
-    "platform_python_implementation == 'PyPy'",
-]
 
 [[package]]
 name = "bcrypt"
@@ -215,14 +210,14 @@ wheels = [
 
 [[package]]
 name = "deprecated"
-version = "1.2.18"
+version = "1.3.1"
 source = { registry = "https://pypi.nathanv.app/pypi/simple" }
 dependencies = [
     { name = "wrapt" },
 ]
-sdist = { url = "https://pypi.nathanv.app/pypi/file/deprecated/1.2.18/deprecated-1.2.18.tar.gz", hash = "sha256:422b6f6d859da6f2ef57857761bfb392480502a64c3028ca9bbe86085d72115d" }
+sdist = { url = "https://pypi.nathanv.app/pypi/file/deprecated/1.3.1/deprecated-1.3.1.tar.gz", hash = "sha256:b1b50e0ff0c1fddaa5708a2c6b0a6588bb09b892825ab2b214ac9ea9d92a5223" }
 wheels = [
-    { url = "https://pypi.nathanv.app/pypi/file/deprecated/1.2.18/Deprecated-1.2.18-py2.py3-none-any.whl", hash = "sha256:bd5011788200372a32418f888e326a09ff80d0214bd961147cfed01b5c018eec" },
+    { url = "https://pypi.nathanv.app/pypi/file/deprecated/1.3.1/deprecated-1.3.1-py2.py3-none-any.whl", hash = "sha256:597bfef186b6f60181535a29fbe44865ce137a5079f295b479886c82729d5f3f" },
 ]
 
 [[package]]
@@ -311,6 +306,8 @@ wheels = [
     { url = "https://pypi.nathanv.app/pypi/file/greenlet/3.2.4/greenlet-3.2.4-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:23768528f2911bcd7e475210822ffb5254ed10d71f4028387e5a99b4c6699671" },
     { url = "https://pypi.nathanv.app/pypi/file/greenlet/3.2.4/greenlet-3.2.4-cp313-cp313-musllinux_1_1_aarch64.whl", hash = "sha256:00fadb3fedccc447f517ee0d3fd8fe49eae949e1cd0f6a611818f4f6fb7dc83b" },
     { url = "https://pypi.nathanv.app/pypi/file/greenlet/3.2.4/greenlet-3.2.4-cp313-cp313-musllinux_1_1_x86_64.whl", hash = "sha256:d25c5091190f2dc0eaa3f950252122edbbadbb682aa7b1ef2f8af0f8c0afefae" },
+    { url = "https://pypi.nathanv.app/pypi/file/greenlet/3.2.4/greenlet-3.2.4-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:6e343822feb58ac4d0a1211bd9399de2b3a04963ddeec21530fc426cc121f19b" },
+    { url = "https://pypi.nathanv.app/pypi/file/greenlet/3.2.4/greenlet-3.2.4-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:ca7f6f1f2649b89ce02f6f229d7c19f680a6238af656f61e0115b24857917929" },
     { url = "https://pypi.nathanv.app/pypi/file/greenlet/3.2.4/greenlet-3.2.4-cp313-cp313-win_amd64.whl", hash = "sha256:554b03b6e73aaabec3745364d6239e9e012d64c68ccd0b8430c64ccc14939a8b" },
     { url = "https://pypi.nathanv.app/pypi/file/greenlet/3.2.4/greenlet-3.2.4-cp314-cp314-macosx_11_0_universal2.whl", hash = "sha256:49a30d5fda2507ae77be16479bdb62a660fa51b1eb4928b524975b3bde77b3c0" },
     { url = "https://pypi.nathanv.app/pypi/file/greenlet/3.2.4/greenlet-3.2.4-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:299fd615cd8fc86267b47597123e3f43ad79c9d8a22bebdce535e53550763e2f" },
@@ -318,6 +315,8 @@ wheels = [
     { url = "https://pypi.nathanv.app/pypi/file/greenlet/3.2.4/greenlet-3.2.4-cp314-cp314-manylinux2014_s390x.manylinux_2_17_s390x.whl", hash = "sha256:b4a1870c51720687af7fa3e7cda6d08d801dae660f75a76f3845b642b4da6ee1" },
     { url = "https://pypi.nathanv.app/pypi/file/greenlet/3.2.4/greenlet-3.2.4-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:061dc4cf2c34852b052a8620d40f36324554bc192be474b9e9770e8c042fd735" },
     { url = "https://pypi.nathanv.app/pypi/file/greenlet/3.2.4/greenlet-3.2.4-cp314-cp314-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:44358b9bf66c8576a9f57a590d5f5d6e72fa4228b763d0e43fee6d3b06d3a337" },
+    { url = "https://pypi.nathanv.app/pypi/file/greenlet/3.2.4/greenlet-3.2.4-cp314-cp314-musllinux_1_2_aarch64.whl", hash = "sha256:2917bdf657f5859fbf3386b12d68ede4cf1f04c90c3a6bc1f013dd68a22e2269" },
+    { url = "https://pypi.nathanv.app/pypi/file/greenlet/3.2.4/greenlet-3.2.4-cp314-cp314-musllinux_1_2_x86_64.whl", hash = "sha256:015d48959d4add5d6c9f6c5210ee3803a830dce46356e3bc326d6776bde54681" },
     { url = "https://pypi.nathanv.app/pypi/file/greenlet/3.2.4/greenlet-3.2.4-cp314-cp314-win_amd64.whl", hash = "sha256:e37ab26028f12dbb0ff65f29a8d3d44a765c61e729647bf2ddfbbed621726f01" },
 ]
 
@@ -334,6 +333,7 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "pre-commit" },
+    { name = "pre-commit-uv" },
 ]
 
 [package.metadata]
@@ -344,7 +344,10 @@ requires-dist = [
 ]
 
 [package.metadata.requires-dev]
-dev = [{ name = "pre-commit", specifier = ">=4.0.1" }]
+dev = [
+    { name = "pre-commit", specifier = ">=4.0.1" },
+    { name = "pre-commit-uv", specifier = ">=4.2.0" },
+]
 
 [[package]]
 name = "identify"
@@ -471,7 +474,7 @@ wheels = [
 
 [[package]]
 name = "pre-commit"
-version = "4.3.0"
+version = "4.4.0"
 source = { registry = "https://pypi.nathanv.app/pypi/simple" }
 dependencies = [
     { name = "cfgv" },
@@ -480,9 +483,22 @@ dependencies = [
     { name = "pyyaml" },
     { name = "virtualenv" },
 ]
-sdist = { url = "https://pypi.nathanv.app/pypi/file/pre-commit/4.3.0/pre_commit-4.3.0.tar.gz", hash = "sha256:499fe450cc9d42e9d58e606262795ecb64dd05438943c62b66f6a8673da30b16" }
+sdist = { url = "https://pypi.nathanv.app/pypi/file/pre-commit/4.4.0/pre_commit-4.4.0.tar.gz", hash = "sha256:f0233ebab440e9f17cabbb558706eb173d19ace965c68cdce2c081042b4fab15" }
 wheels = [
-    { url = "https://pypi.nathanv.app/pypi/file/pre-commit/4.3.0/pre_commit-4.3.0-py2.py3-none-any.whl", hash = "sha256:2b0747ad7e6e967169136edffee14c16e148a778a54e4f967921aa1ebf2308d8" },
+    { url = "https://pypi.nathanv.app/pypi/file/pre-commit/4.4.0/pre_commit-4.4.0-py2.py3-none-any.whl", hash = "sha256:b35ea52957cbf83dcc5d8ee636cbead8624e3a15fbfa61a370e42158ac8a5813" },
+]
+
+[[package]]
+name = "pre-commit-uv"
+version = "4.2.0"
+source = { registry = "https://pypi.nathanv.app/pypi/simple" }
+dependencies = [
+    { name = "pre-commit" },
+    { name = "uv" },
+]
+sdist = { url = "https://pypi.nathanv.app/pypi/file/pre-commit-uv/4.2.0/pre_commit_uv-4.2.0.tar.gz", hash = "sha256:c32bb1d90235507726eee2aeef2be5fdab431a6f1906e3f1addb0a4e99b369d1" }
+wheels = [
+    { url = "https://pypi.nathanv.app/pypi/file/pre-commit-uv/4.2.0/pre_commit_uv-4.2.0-py3-none-any.whl", hash = "sha256:cc1b56641e6c62d90a4d8b4f0af6f2610f1c397ce81af024e768c0f33715cb81" },
 ]
 
 [[package]]
@@ -515,39 +531,39 @@ wheels = [
 
 [[package]]
 name = "pynacl"
-version = "1.6.0"
+version = "1.6.1"
 source = { registry = "https://pypi.nathanv.app/pypi/simple" }
 dependencies = [
     { name = "cffi", marker = "platform_python_implementation != 'PyPy'" },
 ]
-sdist = { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0.tar.gz", hash = "sha256:cb36deafe6e2bce3b286e5d1f3e1c246e0ccdb8808ddb4550bb2792f2df298f2" }
+sdist = { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1.tar.gz", hash = "sha256:8d361dac0309f2b6ad33b349a56cd163c98430d409fa503b10b70b3ad66eaa1d" }
 wheels = [
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp314-cp314t-macosx_10_10_universal2.whl", hash = "sha256:f46386c24a65383a9081d68e9c2de909b1834ec74ff3013271f1bca9c2d233eb" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:dea103a1afcbc333bc0e992e64233d360d393d1e63d0bc88554f572365664348" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp314-cp314t-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:04f20784083014e265ad58c1b2dd562c3e35864b5394a14ab54f5d150ee9e53e" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp314-cp314t-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:bbcc4452a1eb10cd5217318c822fde4be279c9de8567f78bad24c773c21254f8" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp314-cp314t-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:51fed9fe1bec9e7ff9af31cd0abba179d0e984a2960c77e8e5292c7e9b7f7b5d" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp314-cp314t-manylinux_2_34_aarch64.whl", hash = "sha256:10d755cf2a455d8c0f8c767a43d68f24d163b8fe93ccfaabfa7bafd26be58d73" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp314-cp314t-manylinux_2_34_x86_64.whl", hash = "sha256:536703b8f90e911294831a7fbcd0c062b837f3ccaa923d92a6254e11178aaf42" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp314-cp314t-musllinux_1_2_aarch64.whl", hash = "sha256:6b08eab48c9669d515a344fb0ef27e2cbde847721e34bba94a343baa0f33f1f4" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:5789f016e08e5606803161ba24de01b5a345d24590a80323379fc4408832d290" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp314-cp314t-win32.whl", hash = "sha256:4853c154dc16ea12f8f3ee4b7e763331876316cc3a9f06aeedf39bcdca8f9995" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp314-cp314t-win_amd64.whl", hash = "sha256:347dcddce0b4d83ed3f32fd00379c83c425abee5a9d2cd0a2c84871334eaff64" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp314-cp314t-win_arm64.whl", hash = "sha256:2d6cd56ce4998cb66a6c112fda7b1fdce5266c9f05044fa72972613bef376d15" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp38-abi3-macosx_10_10_universal2.whl", hash = "sha256:f4b3824920e206b4f52abd7de621ea7a44fd3cb5c8daceb7c3612345dfc54f2e" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp38-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:16dd347cdc8ae0b0f6187a2608c0af1c8b7ecbbe6b4a06bff8253c192f696990" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:16c60daceee88d04f8d41d0a4004a7ed8d9a5126b997efd2933e08e93a3bd850" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp38-abi3-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:25720bad35dfac34a2bcdd61d9e08d6bfc6041bebc7751d9c9f2446cf1e77d64" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp38-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:8bfaa0a28a1ab718bad6239979a5a57a8d1506d0caf2fba17e524dbb409441cf" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp38-abi3-manylinux_2_34_aarch64.whl", hash = "sha256:ef214b90556bb46a485b7da8258e59204c244b1b5b576fb71848819b468c44a7" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp38-abi3-manylinux_2_34_x86_64.whl", hash = "sha256:49c336dd80ea54780bcff6a03ee1a476be1612423010472e60af83452aa0f442" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp38-abi3-musllinux_1_1_aarch64.whl", hash = "sha256:f3482abf0f9815e7246d461fab597aa179b7524628a4bc36f86a7dc418d2608d" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp38-abi3-musllinux_1_1_x86_64.whl", hash = "sha256:140373378e34a1f6977e573033d1dd1de88d2a5d90ec6958c9485b2fd9f3eb90" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp38-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:6b393bc5e5a0eb86bb85b533deb2d2c815666665f840a09e0aa3362bb6088736" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp38-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:4a25cfede801f01e54179b8ff9514bd7b5944da560b7040939732d1804d25419" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp38-abi3-win32.whl", hash = "sha256:dcdeb41c22ff3c66eef5e63049abf7639e0db4edee57ba70531fc1b6b133185d" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp38-abi3-win_amd64.whl", hash = "sha256:cf831615cc16ba324240de79d925eacae8265b7691412ac6b24221db157f6bd1" },
-    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.0/pynacl-1.6.0-cp38-abi3-win_arm64.whl", hash = "sha256:84709cea8f888e618c21ed9a0efdb1a59cc63141c403db8bf56c469b71ad56f2" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp314-cp314t-macosx_10_10_universal2.whl", hash = "sha256:7d7c09749450c385301a3c20dca967a525152ae4608c0a096fe8464bfc3df93d" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:fc734c1696ffd49b40f7c1779c89ba908157c57345cf626be2e0719488a076d3" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp314-cp314t-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:3cd787ec1f5c155dc8ecf39b1333cfef41415dc96d392f1ce288b4fe970df489" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp314-cp314t-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:6b35d93ab2df03ecb3aa506be0d3c73609a51449ae0855c2e89c7ed44abde40b" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp314-cp314t-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:dece79aecbb8f4640a1adbb81e4aa3bfb0e98e99834884a80eb3f33c7c30e708" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp314-cp314t-manylinux_2_34_aarch64.whl", hash = "sha256:c2228054f04bf32d558fb89bb99f163a8197d5a9bf4efa13069a7fa8d4b93fc3" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp314-cp314t-manylinux_2_34_x86_64.whl", hash = "sha256:2b12f1b97346f177affcdfdc78875ff42637cb40dcf79484a97dae3448083a78" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp314-cp314t-musllinux_1_2_aarch64.whl", hash = "sha256:e735c3a1bdfde3834503baf1a6d74d4a143920281cb724ba29fb84c9f49b9c48" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:3384a454adf5d716a9fadcb5eb2e3e72cd49302d1374a60edc531c9957a9b014" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp314-cp314t-win32.whl", hash = "sha256:d8615ee34d01c8e0ab3f302dcdd7b32e2bcf698ba5f4809e7cc407c8cdea7717" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp314-cp314t-win_amd64.whl", hash = "sha256:5f5b35c1a266f8a9ad22525049280a600b19edd1f785bccd01ae838437dcf935" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp314-cp314t-win_arm64.whl", hash = "sha256:d984c91fe3494793b2a1fb1e91429539c6c28e9ec8209d26d25041ec599ccf63" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp38-abi3-macosx_10_10_universal2.whl", hash = "sha256:a6f9fd6d6639b1e81115c7f8ff16b8dedba1e8098d2756275d63d208b0e32021" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp38-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:e49a3f3d0da9f79c1bec2aa013261ab9fa651c7da045d376bd306cf7c1792993" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:7713f8977b5d25f54a811ec9efa2738ac592e846dd6e8a4d3f7578346a841078" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp38-abi3-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:5a3becafc1ee2e5ea7f9abc642f56b82dcf5be69b961e782a96ea52b55d8a9fc" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp38-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:4ce50d19f1566c391fedc8dc2f2f5be265ae214112ebe55315e41d1f36a7f0a9" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp38-abi3-manylinux_2_34_aarch64.whl", hash = "sha256:543f869140f67d42b9b8d47f922552d7a967e6c116aad028c9bfc5f3f3b3a7b7" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp38-abi3-manylinux_2_34_x86_64.whl", hash = "sha256:a2bb472458c7ca959aeeff8401b8efef329b0fc44a89d3775cffe8fad3398ad8" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp38-abi3-musllinux_1_1_aarch64.whl", hash = "sha256:3206fa98737fdc66d59b8782cecc3d37d30aeec4593d1c8c145825a345bba0f0" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp38-abi3-musllinux_1_1_x86_64.whl", hash = "sha256:53543b4f3d8acb344f75fd4d49f75e6572fce139f4bfb4815a9282296ff9f4c0" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp38-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:319de653ef84c4f04e045eb250e6101d23132372b0a61a7acf91bac0fda8e58c" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp38-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:262a8de6bba4aee8a66f5edf62c214b06647461c9b6b641f8cd0cb1e3b3196fe" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp38-abi3-win32.whl", hash = "sha256:9fd1a4eb03caf8a2fe27b515a998d26923adb9ddb68db78e35ca2875a3830dde" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp38-abi3-win_amd64.whl", hash = "sha256:a569a4069a7855f963940040f35e87d8bc084cb2d6347428d5ad20550a0a1a21" },
+    { url = "https://pypi.nathanv.app/pypi/file/pynacl/1.6.1/pynacl-1.6.1-cp38-abi3-win_arm64.whl", hash = "sha256:5953e8b8cfadb10889a6e7bd0f53041a745d1b3d30111386a1bb37af171e6daf" },
 ]
 
 [[package]]
@@ -599,15 +615,6 @@ wheels = [
 ]
 
 [[package]]
-name = "setuptools"
-version = "80.9.0"
-source = { registry = "https://pypi.nathanv.app/pypi/simple" }
-sdist = { url = "https://pypi.nathanv.app/pypi/file/setuptools/80.9.0/setuptools-80.9.0.tar.gz", hash = "sha256:f36b47402ecde768dbfafc46e8e4207b4360c654f1f3bb84475f0a28628fb19c" }
-wheels = [
-    { url = "https://pypi.nathanv.app/pypi/file/setuptools/80.9.0/setuptools-80.9.0-py3-none-any.whl", hash = "sha256:062d34222ad13e0cc312a4c02d73f059e86a4acbfbdea8f8f76b28c99f306922" },
-]
-
-[[package]]
 name = "six"
 version = "1.17.0"
 source = { registry = "https://pypi.nathanv.app/pypi/simple" }
@@ -638,80 +645,125 @@ wheels = [
 ]
 
 [[package]]
+name = "uv"
+version = "0.9.8"
+source = { registry = "https://pypi.nathanv.app/pypi/simple" }
+sdist = { url = "https://pypi.nathanv.app/pypi/file/uv/0.9.8/uv-0.9.8.tar.gz", hash = "sha256:99b18bfe92c33c3862b65d74677697e799763e669e0064685f405e7e27517f25" }
+wheels = [
+    { url = "https://pypi.nathanv.app/pypi/file/uv/0.9.8/uv-0.9.8-py3-none-linux_armv6l.whl", hash = "sha256:d93a2227d23e81ab3a16c30363559afc483e8aca40ea9343b3f326a9a41718c9" },
+    { url = "https://pypi.nathanv.app/pypi/file/uv/0.9.8/uv-0.9.8-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:7038a552159f2291dd0d1f4f66a36261b5f3ed5fcd92e2869186f8e910b2c935" },
+    { url = "https://pypi.nathanv.app/pypi/file/uv/0.9.8/uv-0.9.8-py3-none-macosx_11_0_arm64.whl", hash = "sha256:9f2f3576c4518ff4f15e48dbca70585a513523c4738bc8cc2e48b20fd1190ce3" },
+    { url = "https://pypi.nathanv.app/pypi/file/uv/0.9.8/uv-0.9.8-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_1_aarch64.whl", hash = "sha256:50d130c46d97d7f10675ebea8608b7b4722c84b5745cd1bb0c8ae6d7984c05d5" },
+    { url = "https://pypi.nathanv.app/pypi/file/uv/0.9.8/uv-0.9.8-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:6df2e16f6df32018047c60bab2c0284868ad5c309addba9183ea2eeb71746bf0" },
+    { url = "https://pypi.nathanv.app/pypi/file/uv/0.9.8/uv-0.9.8-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:543693def38fa41b9706aba391111fe8d9dd6be86899d76f9581faf045ac1cb6" },
+    { url = "https://pypi.nathanv.app/pypi/file/uv/0.9.8/uv-0.9.8-py3-none-manylinux_2_17_ppc64.manylinux2014_ppc64.whl", hash = "sha256:1b8b5bdcda3e10ea70b618d0609acddc5c725cb58d4caf933030ddedd7c2e98f" },
+    { url = "https://pypi.nathanv.app/pypi/file/uv/0.9.8/uv-0.9.8-py3-none-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:a4010b3fdabbb3c4f2cf2f7aa3bf6002d00049dcbc54ce0ee5ada32a933b2290" },
+    { url = "https://pypi.nathanv.app/pypi/file/uv/0.9.8/uv-0.9.8-py3-none-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:75671150d6eb9d5ee829e1fdb8cf86b8e44a66d27cbb996fe807e986c4107b5d" },
+    { url = "https://pypi.nathanv.app/pypi/file/uv/0.9.8/uv-0.9.8-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:14670bf55ecb5cfd0f3654fbf51c58a21dec3ad8ab531079b3ed8599271dc77b" },
+    { url = "https://pypi.nathanv.app/pypi/file/uv/0.9.8/uv-0.9.8-py3-none-manylinux_2_28_aarch64.whl", hash = "sha256:40253d00c1e900a0a61b132b1e0dd4aa83575cfd5302d3671899b6de29b1ef67" },
+    { url = "https://pypi.nathanv.app/pypi/file/uv/0.9.8/uv-0.9.8-py3-none-manylinux_2_31_riscv64.whl", hash = "sha256:f52c6a99197028a314d4c1825f7ccb696eb9a88b822d2e2f17046266c75e543e" },
+    { url = "https://pypi.nathanv.app/pypi/file/uv/0.9.8/uv-0.9.8-py3-none-musllinux_1_1_armv7l.whl", hash = "sha256:5af28f1645eb3c50fd34a78508792db2d0799816f4eb5f55e1e6e2c724dfb125" },
+    { url = "https://pypi.nathanv.app/pypi/file/uv/0.9.8/uv-0.9.8-py3-none-musllinux_1_1_i686.whl", hash = "sha256:cdbfadca9522422ab9820f5ada071c9c5c869bcd6fee719d20d91d5ec85b2a7d" },
+    { url = "https://pypi.nathanv.app/pypi/file/uv/0.9.8/uv-0.9.8-py3-none-musllinux_1_1_x86_64.whl", hash = "sha256:87c3b65b6d5fcbdeab199d54c74fbf75de19cb534a690c936c5616478a038576" },
+    { url = "https://pypi.nathanv.app/pypi/file/uv/0.9.8/uv-0.9.8-py3-none-win32.whl", hash = "sha256:0f03bc413c933dbf850ad0dc2dba3df6b80c860a5c65cd767add49da19dadef0" },
+    { url = "https://pypi.nathanv.app/pypi/file/uv/0.9.8/uv-0.9.8-py3-none-win_amd64.whl", hash = "sha256:6a01d7cd41953ffac583139b10ad1df004a67c0246a6b694eb5bcdbc8c99deaf" },
+    { url = "https://pypi.nathanv.app/pypi/file/uv/0.9.8/uv-0.9.8-py3-none-win_arm64.whl", hash = "sha256:bb0f8e83c2a2fc5a802e930cc8a7b71ab068180300a3f27ba38037f9fcb3d430" },
+]
+
+[[package]]
 name = "virtualenv"
-version = "20.35.3"
+version = "20.35.4"
 source = { registry = "https://pypi.nathanv.app/pypi/simple" }
 dependencies = [
     { name = "distlib" },
     { name = "filelock" },
     { name = "platformdirs" },
 ]
-sdist = { url = "https://pypi.nathanv.app/pypi/file/virtualenv/20.35.3/virtualenv-20.35.3.tar.gz", hash = "sha256:4f1a845d131133bdff10590489610c98c168ff99dc75d6c96853801f7f67af44" }
+sdist = { url = "https://pypi.nathanv.app/pypi/file/virtualenv/20.35.4/virtualenv-20.35.4.tar.gz", hash = "sha256:643d3914d73d3eeb0c552cbb12d7e82adf0e504dbf86a3182f8771a153a1971c" }
 wheels = [
-    { url = "https://pypi.nathanv.app/pypi/file/virtualenv/20.35.3/virtualenv-20.35.3-py3-none-any.whl", hash = "sha256:63d106565078d8c8d0b206d48080f938a8b25361e19432d2c9db40d2899c810a" },
+    { url = "https://pypi.nathanv.app/pypi/file/virtualenv/20.35.4/virtualenv-20.35.4-py3-none-any.whl", hash = "sha256:c21c9cede36c9753eeade68ba7d523529f228a403463376cf821eaae2b650f1b" },
 ]
 
 [[package]]
 name = "wrapt"
-version = "1.17.3"
+version = "2.0.1"
 source = { registry = "https://pypi.nathanv.app/pypi/simple" }
-sdist = { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3.tar.gz", hash = "sha256:f66eb08feaa410fe4eebd17f2a2c8e2e46d3476e9f8c783daa8e09e0faa666d0" }
+sdist = { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1.tar.gz", hash = "sha256:9c9c635e78497cacb81e84f8b11b23e0aacac7a136e73b8e5b2109a1d9fc468f" }
 wheels = [
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp313-cp313-macosx_10_13_universal2.whl", hash = "sha256:a47681378a0439215912ef542c45a783484d4dd82bac412b71e59cf9c0e1cea0" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:54a30837587c6ee3cd1a4d1c2ec5d24e77984d44e2f34547e2323ddb4e22eb77" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:16ecf15d6af39246fe33e507105d67e4b81d8f8d2c6598ff7e3ca1b8a37213f7" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl", hash = "sha256:6fd1ad24dc235e4ab88cda009e19bf347aabb975e44fd5c2fb22a3f6e4141277" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:0ed61b7c2d49cee3c027372df5809a59d60cf1b6c2f81ee980a091f3afed6a2d" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:423ed5420ad5f5529db9ce89eac09c8a2f97da18eb1c870237e84c5a5c2d60aa" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:e01375f275f010fcbf7f643b4279896d04e571889b8a5b3f848423d91bf07050" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp313-cp313-win32.whl", hash = "sha256:53e5e39ff71b3fc484df8a522c933ea2b7cdd0d5d15ae82e5b23fde87d44cbd8" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp313-cp313-win_amd64.whl", hash = "sha256:1f0b2f40cf341ee8cc1a97d51ff50dddb9fcc73241b9143ec74b30fc4f44f6cb" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp313-cp313-win_arm64.whl", hash = "sha256:7425ac3c54430f5fc5e7b6f41d41e704db073309acfc09305816bc6a0b26bb16" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp314-cp314-macosx_10_13_universal2.whl", hash = "sha256:cf30f6e3c077c8e6a9a7809c94551203c8843e74ba0c960f4a98cd80d4665d39" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp314-cp314-macosx_10_13_x86_64.whl", hash = "sha256:e228514a06843cae89621384cfe3a80418f3c04aadf8a3b14e46a7be704e4235" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:5ea5eb3c0c071862997d6f3e02af1d055f381b1d25b286b9d6644b79db77657c" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp314-cp314-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl", hash = "sha256:281262213373b6d5e4bb4353bc36d1ba4084e6d6b5d242863721ef2bf2c2930b" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:dc4a8d2b25efb6681ecacad42fca8859f88092d8732b170de6a5dddd80a1c8fa" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp314-cp314-musllinux_1_2_aarch64.whl", hash = "sha256:373342dd05b1d07d752cecbec0c41817231f29f3a89aa8b8843f7b95992ed0c7" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp314-cp314-musllinux_1_2_x86_64.whl", hash = "sha256:d40770d7c0fd5cbed9d84b2c3f2e156431a12c9a37dc6284060fb4bec0b7ffd4" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp314-cp314-win32.whl", hash = "sha256:fbd3c8319de8e1dc79d346929cd71d523622da527cca14e0c1d257e31c2b8b10" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp314-cp314-win_amd64.whl", hash = "sha256:e1a4120ae5705f673727d3253de3ed0e016f7cd78dc463db1b31e2463e1f3cf6" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp314-cp314-win_arm64.whl", hash = "sha256:507553480670cab08a800b9463bdb881b2edeed77dc677b0a5915e6106e91a58" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp314-cp314t-macosx_10_13_universal2.whl", hash = "sha256:ed7c635ae45cfbc1a7371f708727bf74690daedc49b4dba310590ca0bd28aa8a" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp314-cp314t-macosx_10_13_x86_64.whl", hash = "sha256:249f88ed15503f6492a71f01442abddd73856a0032ae860de6d75ca62eed8067" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp314-cp314t-macosx_11_0_arm64.whl", hash = "sha256:5a03a38adec8066d5a37bea22f2ba6bbf39fcdefbe2d91419ab864c3fb515454" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp314-cp314t-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl", hash = "sha256:5d4478d72eb61c36e5b446e375bbc49ed002430d17cdec3cecb36993398e1a9e" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:223db574bb38637e8230eb14b185565023ab624474df94d2af18f1cdb625216f" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp314-cp314t-musllinux_1_2_aarch64.whl", hash = "sha256:e405adefb53a435f01efa7ccdec012c016b5a1d3f35459990afc39b6be4d5056" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:88547535b787a6c9ce4086917b6e1d291aa8ed914fdd3a838b3539dc95c12804" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp314-cp314t-win32.whl", hash = "sha256:41b1d2bc74c2cac6f9074df52b2efbef2b30bdfe5f40cb78f8ca22963bc62977" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp314-cp314t-win_amd64.whl", hash = "sha256:73d496de46cd2cdbdbcce4ae4bcdb4afb6a11234a1df9c085249d55166b95116" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-cp314-cp314t-win_arm64.whl", hash = "sha256:f38e60678850c42461d4202739f9bf1e3a737c7ad283638251e79cc49effb6b6" },
-    { url = "https://pypi.nathanv.app/pypi/file/wrapt/1.17.3/wrapt-1.17.3-py3-none-any.whl", hash = "sha256:7171ae35d2c33d326ac19dd8facb1e82e5fd04ef8c6c0e394d7af55a55051c22" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313-macosx_10_13_universal2.whl", hash = "sha256:47b0f8bafe90f7736151f61482c583c86b0693d80f075a58701dd1549b0010a9" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:cbeb0971e13b4bd81d34169ed57a6dda017328d1a22b62fda45e1d21dd06148f" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:eb7cffe572ad0a141a7886a1d2efa5bef0bf7fe021deeea76b3ab334d2c38218" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl", hash = "sha256:c8d60527d1ecfc131426b10d93ab5d53e08a09c5fa0175f6b21b3252080c70a9" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:c654eafb01afac55246053d67a4b9a984a3567c3808bb7df2f8de1c1caba2e1c" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313-manylinux_2_31_riscv64.manylinux_2_39_riscv64.whl", hash = "sha256:98d873ed6c8b4ee2418f7afce666751854d6d03e3c0ec2a399bb039cd2ae89db" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:c9e850f5b7fc67af856ff054c71690d54fa940c3ef74209ad9f935b4f66a0233" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313-musllinux_1_2_riscv64.whl", hash = "sha256:e505629359cb5f751e16e30cf3f91a1d3ddb4552480c205947da415d597f7ac2" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:2879af909312d0baf35f08edeea918ee3af7ab57c37fe47cb6a373c9f2749c7b" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313-win32.whl", hash = "sha256:d67956c676be5a24102c7407a71f4126d30de2a569a1c7871c9f3cabc94225d7" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313-win_amd64.whl", hash = "sha256:9ca66b38dd642bf90c59b6738af8070747b610115a39af2498535f62b5cdc1c3" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313-win_arm64.whl", hash = "sha256:5a4939eae35db6b6cec8e7aa0e833dcca0acad8231672c26c2a9ab7a0f8ac9c8" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313t-macosx_10_13_universal2.whl", hash = "sha256:a52f93d95c8d38fed0669da2ebdb0b0376e895d84596a976c15a9eb45e3eccb3" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313t-macosx_10_13_x86_64.whl", hash = "sha256:4e54bbf554ee29fcceee24fa41c4d091398b911da6e7f5d7bffda963c9aed2e1" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313t-macosx_11_0_arm64.whl", hash = "sha256:908f8c6c71557f4deaa280f55d0728c3bca0960e8c3dd5ceeeafb3c19942719d" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313t-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl", hash = "sha256:e2f84e9af2060e3904a32cea9bb6db23ce3f91cfd90c6b426757cf7cc01c45c7" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313t-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:e3612dc06b436968dfb9142c62e5dfa9eb5924f91120b3c8ff501ad878f90eb3" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313t-manylinux_2_31_riscv64.manylinux_2_39_riscv64.whl", hash = "sha256:6d2d947d266d99a1477cd005b23cbd09465276e302515e122df56bb9511aca1b" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313t-musllinux_1_2_aarch64.whl", hash = "sha256:7d539241e87b650cbc4c3ac9f32c8d1ac8a54e510f6dca3f6ab60dcfd48c9b10" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313t-musllinux_1_2_riscv64.whl", hash = "sha256:4811e15d88ee62dbf5c77f2c3ff3932b1e3ac92323ba3912f51fc4016ce81ecf" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313t-musllinux_1_2_x86_64.whl", hash = "sha256:c1c91405fcf1d501fa5d55df21e58ea49e6b879ae829f1039faaf7e5e509b41e" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313t-win32.whl", hash = "sha256:e76e3f91f864e89db8b8d2a8311d57df93f01ad6bb1e9b9976d1f2e83e18315c" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313t-win_amd64.whl", hash = "sha256:83ce30937f0ba0d28818807b303a412440c4b63e39d3d8fc036a94764b728c92" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp313-cp313t-win_arm64.whl", hash = "sha256:4b55cacc57e1dc2d0991dbe74c6419ffd415fb66474a02335cb10efd1aa3f84f" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314-macosx_10_13_universal2.whl", hash = "sha256:5e53b428f65ece6d9dad23cb87e64506392b720a0b45076c05354d27a13351a1" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314-macosx_10_13_x86_64.whl", hash = "sha256:ad3ee9d0f254851c71780966eb417ef8e72117155cff04821ab9b60549694a55" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:d7b822c61ed04ee6ad64bc90d13368ad6eb094db54883b5dde2182f67a7f22c0" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl", hash = "sha256:7164a55f5e83a9a0b031d3ffab4d4e36bbec42e7025db560f225489fa929e509" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:e60690ba71a57424c8d9ff28f8d006b7ad7772c22a4af432188572cd7fa004a1" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314-manylinux_2_31_riscv64.manylinux_2_39_riscv64.whl", hash = "sha256:3cd1a4bd9a7a619922a8557e1318232e7269b5fb69d4ba97b04d20450a6bf970" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314-musllinux_1_2_aarch64.whl", hash = "sha256:b4c2e3d777e38e913b8ce3a6257af72fb608f86a1df471cb1d4339755d0a807c" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314-musllinux_1_2_riscv64.whl", hash = "sha256:3d366aa598d69416b5afedf1faa539fac40c1d80a42f6b236c88c73a3c8f2d41" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314-musllinux_1_2_x86_64.whl", hash = "sha256:c235095d6d090aa903f1db61f892fffb779c1eaeb2a50e566b52001f7a0f66ed" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314-win32.whl", hash = "sha256:bfb5539005259f8127ea9c885bdc231978c06b7a980e63a8a61c8c4c979719d0" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314-win_amd64.whl", hash = "sha256:4ae879acc449caa9ed43fc36ba08392b9412ee67941748d31d94e3cedb36628c" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314-win_arm64.whl", hash = "sha256:8639b843c9efd84675f1e100ed9e99538ebea7297b62c4b45a7042edb84db03e" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314t-macosx_10_13_universal2.whl", hash = "sha256:9219a1d946a9b32bb23ccae66bdb61e35c62773ce7ca6509ceea70f344656b7b" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314t-macosx_10_13_x86_64.whl", hash = "sha256:fa4184e74197af3adad3c889a1af95b53bb0466bced92ea99a0c014e48323eec" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314t-macosx_11_0_arm64.whl", hash = "sha256:c5ef2f2b8a53b7caee2f797ef166a390fef73979b15778a4a153e4b5fedce8fa" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314t-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl", hash = "sha256:e042d653a4745be832d5aa190ff80ee4f02c34b21f4b785745eceacd0907b815" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:2afa23318136709c4b23d87d543b425c399887b4057936cd20386d5b1422b6fa" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314t-manylinux_2_31_riscv64.manylinux_2_39_riscv64.whl", hash = "sha256:6c72328f668cf4c503ffcf9434c2b71fdd624345ced7941bc6693e61bbe36bef" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314t-musllinux_1_2_aarch64.whl", hash = "sha256:3793ac154afb0e5b45d1233cb94d354ef7a983708cc3bb12563853b1d8d53747" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314t-musllinux_1_2_riscv64.whl", hash = "sha256:fec0d993ecba3991645b4857837277469c8cc4c554a7e24d064d1ca291cfb81f" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:949520bccc1fa227274da7d03bf238be15389cd94e32e4297b92337df9b7a349" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314t-win32.whl", hash = "sha256:be9e84e91d6497ba62594158d3d31ec0486c60055c49179edc51ee43d095f79c" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314t-win_amd64.whl", hash = "sha256:61c4956171c7434634401db448371277d07032a81cc21c599c22953374781395" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-cp314-cp314t-win_arm64.whl", hash = "sha256:35cdbd478607036fee40273be8ed54a451f5f23121bd9d4be515158f9498f7ad" },
+    { url = "https://pypi.nathanv.app/pypi/file/wrapt/2.0.1/wrapt-2.0.1-py3-none-any.whl", hash = "sha256:4d2ce1bf1a48c5277d7969259232b57645aae5686dba1eaeade39442277afbca" },
 ]
 
 [[package]]
 name = "zope-event"
-version = "6.0"
+version = "6.1"
 source = { registry = "https://pypi.nathanv.app/pypi/simple" }
-dependencies = [
-    { name = "setuptools" },
-]
-sdist = { url = "https://pypi.nathanv.app/pypi/file/zope-event/6.0/zope_event-6.0.tar.gz", hash = "sha256:0ebac894fa7c5f8b7a89141c272133d8c1de6ddc75ea4b1f327f00d1f890df92" }
+sdist = { url = "https://pypi.nathanv.app/pypi/file/zope-event/6.1/zope_event-6.1.tar.gz", hash = "sha256:6052a3e0cb8565d3d4ef1a3a7809336ac519bc4fe38398cb8d466db09adef4f0" }
 wheels = [
-    { url = "https://pypi.nathanv.app/pypi/file/zope-event/6.0/zope_event-6.0-py3-none-any.whl", hash = "sha256:6f0922593407cc673e7d8766b492c519f91bdc99f3080fe43dcec0a800d682a3" },
+    { url = "https://pypi.nathanv.app/pypi/file/zope-event/6.1/zope_event-6.1-py3-none-any.whl", hash = "sha256:0ca78b6391b694272b23ec1335c0294cc471065ed10f7f606858fc54566c25a0" },
 ]
 
 [[package]]
 name = "zope-interface"
-version = "8.0.1"
+version = "8.1"
 source = { registry = "https://pypi.nathanv.app/pypi/simple" }
-sdist = { url = "https://pypi.nathanv.app/pypi/file/zope-interface/8.0.1/zope_interface-8.0.1.tar.gz", hash = "sha256:eba5610d042c3704a48222f7f7c6ab5b243ed26f917e2bc69379456b115e02d1" }
+sdist = { url = "https://pypi.nathanv.app/pypi/file/zope-interface/8.1/zope_interface-8.1.tar.gz", hash = "sha256:a02ee40770c6a2f3d168a8f71f09b62aec3e4fb366da83f8e849dbaa5b38d12f" }
 wheels = [
-    { url = "https://pypi.nathanv.app/pypi/file/zope-interface/8.0.1/zope_interface-8.0.1-cp313-cp313-macosx_10_9_x86_64.whl", hash = "sha256:c7cc027fc5c61c5d69e5080c30b66382f454f43dc379c463a38e78a9c6bab71a" },
-    { url = "https://pypi.nathanv.app/pypi/file/zope-interface/8.0.1/zope_interface-8.0.1-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:fcf9097ff3003b7662299f1c25145e15260ec2a27f9a9e69461a585d79ca8552" },
-    { url = "https://pypi.nathanv.app/pypi/file/zope-interface/8.0.1/zope_interface-8.0.1-cp313-cp313-manylinux1_i686.manylinux2014_i686.manylinux_2_17_i686.manylinux_2_5_i686.whl", hash = "sha256:6d965347dd1fb9e9a53aa852d4ded46b41ca670d517fd54e733a6b6a4d0561c2" },
-    { url = "https://pypi.nathanv.app/pypi/file/zope-interface/8.0.1/zope_interface-8.0.1-cp313-cp313-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_5_x86_64.whl", hash = "sha256:9a3b8bb77a4b89427a87d1e9eb969ab05e38e6b4a338a9de10f6df23c33ec3c2" },
-    { url = "https://pypi.nathanv.app/pypi/file/zope-interface/8.0.1/zope_interface-8.0.1-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:87e6b089002c43231fb9afec89268391bcc7a3b66e76e269ffde19a8112fb8d5" },
-    { url = "https://pypi.nathanv.app/pypi/file/zope-interface/8.0.1/zope_interface-8.0.1-cp313-cp313-win_amd64.whl", hash = "sha256:64a43f5280aa770cbafd0307cb3d1ff430e2a1001774e8ceb40787abe4bb6658" },
+    { url = "https://pypi.nathanv.app/pypi/file/zope-interface/8.1/zope_interface-8.1-cp313-cp313-macosx_10_9_x86_64.whl", hash = "sha256:afc2bbd1c5d9ecda8c2114a2793bda811ea175742c93dc77a02d5ed49c7a732e" },
+    { url = "https://pypi.nathanv.app/pypi/file/zope-interface/8.1/zope_interface-8.1-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:827a9ad0ebfef467f047d17d83868f66eb44feb00daf2e3dbd404b6f1cb08858" },
+    { url = "https://pypi.nathanv.app/pypi/file/zope-interface/8.1/zope_interface-8.1-cp313-cp313-manylinux1_i686.manylinux2014_i686.manylinux_2_17_i686.manylinux_2_5_i686.whl", hash = "sha256:3913ad3fced813c4af551aae4511dc000c6d4df648430060593aec851bb5fc19" },
+    { url = "https://pypi.nathanv.app/pypi/file/zope-interface/8.1/zope_interface-8.1-cp313-cp313-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_5_x86_64.whl", hash = "sha256:c073ba91caeff93aaf9569c9c3ec3fd790290329cefa69eb6dcb43eabb832c2c" },
+    { url = "https://pypi.nathanv.app/pypi/file/zope-interface/8.1/zope_interface-8.1-cp313-cp313-win_amd64.whl", hash = "sha256:eef72e1726fa055510c1442c3bc3614a4fd0cd056e26c824c26a27d02ad9cfdd" },
+    { url = "https://pypi.nathanv.app/pypi/file/zope-interface/8.1/zope_interface-8.1-cp314-cp314-macosx_10_9_x86_64.whl", hash = "sha256:04ee726e6939be1c2924d8513a17eb819217129e25d3217ca009cf9c8832e3fe" },
+    { url = "https://pypi.nathanv.app/pypi/file/zope-interface/8.1/zope_interface-8.1-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:b931e7241d089df18e0e34a7bfba019bc89c5bf49af8894b4540a0857cb70b79" },
+    { url = "https://pypi.nathanv.app/pypi/file/zope-interface/8.1/zope_interface-8.1-cp314-cp314-manylinux1_i686.manylinux2014_i686.manylinux_2_17_i686.manylinux_2_5_i686.whl", hash = "sha256:c09a4a25007f113c82fcdf4b40ffcbcfaa3f26e428d9cbb9ea322fe27149bc39" },
+    { url = "https://pypi.nathanv.app/pypi/file/zope-interface/8.1/zope_interface-8.1-cp314-cp314-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_5_x86_64.whl", hash = "sha256:26c515e2f92da839d531ef86a3bbaafc3f22bd9aea5eb0c1dc397f67abff56d7" },
+    { url = "https://pypi.nathanv.app/pypi/file/zope-interface/8.1/zope_interface-8.1-cp314-cp314-win_amd64.whl", hash = "sha256:76dfe5580cac661b0aad5f0d308c09d25b567c908a1695bd68986507fd61b61d" },
 ]
