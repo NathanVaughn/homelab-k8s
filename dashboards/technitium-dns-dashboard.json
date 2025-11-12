@@ -1,0 +1,996 @@
+{
+  "apiVersion": "dashboard.grafana.app/v1beta1",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "ceb6m5g1lljpce"
+  },
+  "spec": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations \u0026 Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "links": [],
+    "panels": [
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "eeb6ko6teq8lca"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": true,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "Requests per Minute",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "smooth",
+              "lineStyle": {
+                "fill": "solid"
+              },
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "normal"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "fieldMinMax": false,
+            "mappings": [],
+            "noValue": "0",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 20,
+          "x": 0,
+          "y": 0
+        },
+        "id": 8,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.2",
+        "targets": [
+          {
+            "dataset": "mysql",
+            "datasource": {
+              "type": "mysql",
+              "uid": "eeb6ko6teq8lca"
+            },
+            "editorMode": "code",
+            "format": "time_series",
+            "hide": false,
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n    CASE response_type\r\n        WHEN 1 THEN 'Authoritative'\r\n        WHEN 2 THEN 'Recursive'\r\n        WHEN 3 THEN 'Cached'\r\n        WHEN 4 THEN 'Blocked'\r\n        WHEN 5 THEN 'Upstream Blocked'\r\n        WHEN 6 THEN 'Cache Blocked'\r\n        WHEN 7 THEN 'Dropped'\r\n    END as response_type_name,\r\n    $__timeGroupAlias(timestamp, '1m'),\r\n    COUNT(*) AS Responses\r\nFROM dns_logs\r\nWHERE $__timeFilter(timestamp)\r\nGROUP BY time, response_type\r\nORDER BY time ASC;",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Responses Over Time",
+        "transformations": [
+          {
+            "id": "prepareTimeSeries",
+            "options": {
+              "format": "multi"
+            }
+          }
+        ],
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "eeb6ko6teq8lca"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "#EAB839",
+                  "value": 20
+                },
+                {
+                  "color": "red",
+                  "value": 50
+                }
+              ]
+            },
+            "unit": "ms"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 2,
+          "x": 20,
+          "y": 0
+        },
+        "id": 6,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^response_rtt$/",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.2",
+        "targets": [
+          {
+            "dataset": "mysql",
+            "datasource": {
+              "type": "mysql",
+              "uid": "eeb6ko6teq8lca"
+            },
+            "editorMode": "code",
+            "format": "table",
+            "rawQuery": true,
+            "rawSql": "SELECT response_rtt\r\nFROM dns_logs\r\nWHERE $__timeFilter(timestamp)\r\nAND response_rtt IS NOT NULL",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Response Time",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "eeb6ko6teq8lca"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "text",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 2,
+          "x": 22,
+          "y": 0
+        },
+        "id": 10,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.2",
+        "targets": [
+          {
+            "dataset": "technitiumdns",
+            "datasource": {
+              "type": "mysql",
+              "uid": "eeb6ko6teq8lca"
+            },
+            "editorMode": "code",
+            "format": "table",
+            "rawQuery": true,
+            "rawSql": "SELECT COUNT(qname) FROM technitiumdns.dns_logs WHERE $__timeFilter(timestamp)",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "name": "COUNT",
+                  "parameters": [
+                    {
+                      "name": "qname",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [],
+              "limit": 50
+            },
+            "table": "dns_logs"
+          }
+        ],
+        "title": "Total Requests",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "eeb6ko6teq8lca"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "#EAB839",
+                  "value": 20
+                },
+                {
+                  "color": "red",
+                  "value": 50
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 2,
+          "x": 22,
+          "y": 4
+        },
+        "id": 11,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.2",
+        "targets": [
+          {
+            "dataset": "mysql",
+            "datasource": {
+              "type": "mysql",
+              "uid": "eeb6ko6teq8lca"
+            },
+            "editorMode": "code",
+            "format": "table",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n    (SELECT COUNT(qname)\r\n     FROM dns_logs\r\n     WHERE $__timeFilter(timestamp)\r\n     AND response_type IN (4, 5, 6))\r\n    /\r\n    (SELECT COUNT(qname)\r\n     FROM dns_logs\r\n     WHERE $__timeFilter(timestamp))\r\n    AS ratio;",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Blocked Requests",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "eeb6ko6teq8lca"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": []
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 0,
+          "y": 8
+        },
+        "id": 7,
+        "options": {
+          "displayLabels": [
+            "name",
+            "percent"
+          ],
+          "legend": {
+            "displayMode": "list",
+            "placement": "right",
+            "showLegend": true,
+            "values": [
+              "value"
+            ]
+          },
+          "pieType": "pie",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^Quantity$/",
+            "values": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.2",
+        "targets": [
+          {
+            "dataset": "mysql",
+            "datasource": {
+              "type": "mysql",
+              "uid": "eeb6ko6teq8lca"
+            },
+            "editorMode": "code",
+            "format": "table",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n    CASE qtype\r\n        WHEN 0 THEN 'Unknown'\r\n        WHEN 1 THEN 'A'\r\n        WHEN 2 THEN 'NS'\r\n        WHEN 3 THEN 'MD'\r\n        WHEN 4 THEN 'MF'\r\n        WHEN 5 THEN 'CNAME'\r\n        WHEN 6 THEN 'SOA'\r\n        WHEN 7 THEN 'MB'\r\n        WHEN 8 THEN 'MG'\r\n        WHEN 9 THEN 'MR'\r\n        WHEN 10 THEN 'NULL'\r\n        WHEN 11 THEN 'WKS'\r\n        WHEN 12 THEN 'PTR'\r\n        WHEN 13 THEN 'HINFO'\r\n        WHEN 14 THEN 'MINFO'\r\n        WHEN 15 THEN 'MX'\r\n        WHEN 16 THEN 'TXT'\r\n        WHEN 17 THEN 'RP'\r\n        WHEN 18 THEN 'AFSDB'\r\n        WHEN 19 THEN 'X25'\r\n        WHEN 20 THEN 'ISDN'\r\n        WHEN 21 THEN 'RT'\r\n        WHEN 22 THEN 'NSAP'\r\n        WHEN 23 THEN 'NSAP_PTR'\r\n        WHEN 24 THEN 'SIG'\r\n        WHEN 25 THEN 'KEY'\r\n        WHEN 26 THEN 'PX'\r\n        WHEN 27 THEN 'GPOS'\r\n        WHEN 28 THEN 'AAAA'\r\n        WHEN 29 THEN 'LOC'\r\n        WHEN 30 THEN 'NXT'\r\n        WHEN 31 THEN 'EID'\r\n        WHEN 32 THEN 'NIMLOC'\r\n        WHEN 33 THEN 'SRV'\r\n        WHEN 34 THEN 'ATMA'\r\n        WHEN 35 THEN 'NAPTR'\r\n        WHEN 36 THEN 'KX'\r\n        WHEN 37 THEN 'CERT'\r\n        WHEN 38 THEN 'A6'\r\n        WHEN 39 THEN 'DNAME'\r\n        WHEN 40 THEN 'SINK'\r\n        WHEN 41 THEN 'OPT'\r\n        WHEN 42 THEN 'APL'\r\n        WHEN 43 THEN 'DS'\r\n        WHEN 44 THEN 'SSHFP'\r\n        WHEN 45 THEN 'IPSECKEY'\r\n        WHEN 46 THEN 'RRSIG'\r\n        WHEN 47 THEN 'NSEC'\r\n        WHEN 48 THEN 'DNSKEY'\r\n        WHEN 49 THEN 'DHCID'\r\n        WHEN 50 THEN 'NSEC3'\r\n        WHEN 51 THEN 'NSEC3PARAM'\r\n        WHEN 52 THEN 'TLSA'\r\n        WHEN 53 THEN 'SMIMEA'\r\n        WHEN 55 THEN 'HIP'\r\n        WHEN 56 THEN 'NINFO'\r\n        WHEN 57 THEN 'RKEY'\r\n        WHEN 58 THEN 'TALINK'\r\n        WHEN 59 THEN 'CDS'\r\n        WHEN 60 THEN 'CDNSKEY'\r\n        WHEN 61 THEN 'OPENPGPKEY'\r\n        WHEN 62 THEN 'CSYNC'\r\n        WHEN 63 THEN 'ZONEMD'\r\n        WHEN 64 THEN 'SVCB'\r\n        WHEN 65 THEN 'HTTPS'\r\n        WHEN 99 THEN 'SPF'\r\n        WHEN 100 THEN 'UINFO'\r\n        WHEN 101 THEN 'UID'\r\n        WHEN 102 THEN 'GID'\r\n        WHEN 103 THEN 'UNSPEC'\r\n        WHEN 104 THEN 'NID'\r\n        WHEN 105 THEN 'L32'\r\n        WHEN 106 THEN 'L64'\r\n        WHEN 107 THEN 'LP'\r\n        WHEN 108 THEN 'EUI48'\r\n        WHEN 109 THEN 'EUI64'\r\n        WHEN 128 THEN 'NXNAME'\r\n        WHEN 249 THEN 'TKEY'\r\n        WHEN 250 THEN 'TSIG'\r\n        WHEN 251 THEN 'IXFR'\r\n        WHEN 252 THEN 'AXFR'\r\n        WHEN 253 THEN 'MAILB'\r\n        WHEN 254 THEN 'MAILA'\r\n        WHEN 255 THEN 'ANY'\r\n        WHEN 256 THEN 'URI'\r\n        WHEN 257 THEN 'CAA'\r\n        WHEN 258 THEN 'AVC'\r\n        WHEN 259 THEN 'DOA'\r\n        WHEN 260 THEN 'AMTRELAY'\r\n        WHEN 261 THEN 'RESINFO'\r\n        WHEN 262 THEN 'WALLET'\r\n        WHEN 263 THEN 'CLA'\r\n        WHEN 264 THEN 'IPN'\r\n        WHEN 32768 THEN 'TA'\r\n        WHEN 32769 THEN 'DLV'\r\n        WHEN 65280 THEN 'ANAME'\r\n        WHEN 65281 THEN 'FWD'\r\n        WHEN 65282 THEN 'APP'\r\n        WHEN 65357 THEN 'ALIAS'\r\n    END\r\nAS 'Query Type', COUNT(*) AS Quantity\r\nFROM dns_logs\r\nWHERE $__timeFilter(timestamp)\r\nGROUP BY qtype\r\nORDER BY Quantity DESC;",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Query Types",
+        "type": "piechart"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "eeb6ko6teq8lca"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Domain"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 366
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Query Type"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 147
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Response Type"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 142
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Answer"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 1402
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 18,
+          "x": 6,
+          "y": 8
+        },
+        "id": 9,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Time"
+            }
+          ]
+        },
+        "pluginVersion": "11.5.2",
+        "targets": [
+          {
+            "dataset": "technitiumdns",
+            "datasource": {
+              "type": "mysql",
+              "uid": "eeb6ko6teq8lca"
+            },
+            "editorMode": "code",
+            "format": "table",
+            "rawQuery": true,
+            "rawSql": "SELECT qname as Domain,\r\n    CASE qtype\r\n        WHEN 0 THEN 'Unknown'\r\n        WHEN 1 THEN 'A'\r\n        WHEN 2 THEN 'NS'\r\n        WHEN 3 THEN 'MD'\r\n        WHEN 4 THEN 'MF'\r\n        WHEN 5 THEN 'CNAME'\r\n        WHEN 6 THEN 'SOA'\r\n        WHEN 7 THEN 'MB'\r\n        WHEN 8 THEN 'MG'\r\n        WHEN 9 THEN 'MR'\r\n        WHEN 10 THEN 'NULL'\r\n        WHEN 11 THEN 'WKS'\r\n        WHEN 12 THEN 'PTR'\r\n        WHEN 13 THEN 'HINFO'\r\n        WHEN 14 THEN 'MINFO'\r\n        WHEN 15 THEN 'MX'\r\n        WHEN 16 THEN 'TXT'\r\n        WHEN 17 THEN 'RP'\r\n        WHEN 18 THEN 'AFSDB'\r\n        WHEN 19 THEN 'X25'\r\n        WHEN 20 THEN 'ISDN'\r\n        WHEN 21 THEN 'RT'\r\n        WHEN 22 THEN 'NSAP'\r\n        WHEN 23 THEN 'NSAP_PTR'\r\n        WHEN 24 THEN 'SIG'\r\n        WHEN 25 THEN 'KEY'\r\n        WHEN 26 THEN 'PX'\r\n        WHEN 27 THEN 'GPOS'\r\n        WHEN 28 THEN 'AAAA'\r\n        WHEN 29 THEN 'LOC'\r\n        WHEN 30 THEN 'NXT'\r\n        WHEN 31 THEN 'EID'\r\n        WHEN 32 THEN 'NIMLOC'\r\n        WHEN 33 THEN 'SRV'\r\n        WHEN 34 THEN 'ATMA'\r\n        WHEN 35 THEN 'NAPTR'\r\n        WHEN 36 THEN 'KX'\r\n        WHEN 37 THEN 'CERT'\r\n        WHEN 38 THEN 'A6'\r\n        WHEN 39 THEN 'DNAME'\r\n        WHEN 40 THEN 'SINK'\r\n        WHEN 41 THEN 'OPT'\r\n        WHEN 42 THEN 'APL'\r\n        WHEN 43 THEN 'DS'\r\n        WHEN 44 THEN 'SSHFP'\r\n        WHEN 45 THEN 'IPSECKEY'\r\n        WHEN 46 THEN 'RRSIG'\r\n        WHEN 47 THEN 'NSEC'\r\n        WHEN 48 THEN 'DNSKEY'\r\n        WHEN 49 THEN 'DHCID'\r\n        WHEN 50 THEN 'NSEC3'\r\n        WHEN 51 THEN 'NSEC3PARAM'\r\n        WHEN 52 THEN 'TLSA'\r\n        WHEN 53 THEN 'SMIMEA'\r\n        WHEN 55 THEN 'HIP'\r\n        WHEN 56 THEN 'NINFO'\r\n        WHEN 57 THEN 'RKEY'\r\n        WHEN 58 THEN 'TALINK'\r\n        WHEN 59 THEN 'CDS'\r\n        WHEN 60 THEN 'CDNSKEY'\r\n        WHEN 61 THEN 'OPENPGPKEY'\r\n        WHEN 62 THEN 'CSYNC'\r\n        WHEN 63 THEN 'ZONEMD'\r\n        WHEN 64 THEN 'SVCB'\r\n        WHEN 65 THEN 'HTTPS'\r\n        WHEN 99 THEN 'SPF'\r\n        WHEN 100 THEN 'UINFO'\r\n        WHEN 101 THEN 'UID'\r\n        WHEN 102 THEN 'GID'\r\n        WHEN 103 THEN 'UNSPEC'\r\n        WHEN 104 THEN 'NID'\r\n        WHEN 105 THEN 'L32'\r\n        WHEN 106 THEN 'L64'\r\n        WHEN 107 THEN 'LP'\r\n        WHEN 108 THEN 'EUI48'\r\n        WHEN 109 THEN 'EUI64'\r\n        WHEN 128 THEN 'NXNAME'\r\n        WHEN 249 THEN 'TKEY'\r\n        WHEN 250 THEN 'TSIG'\r\n        WHEN 251 THEN 'IXFR'\r\n        WHEN 252 THEN 'AXFR'\r\n        WHEN 253 THEN 'MAILB'\r\n        WHEN 254 THEN 'MAILA'\r\n        WHEN 255 THEN 'ANY'\r\n        WHEN 256 THEN 'URI'\r\n        WHEN 257 THEN 'CAA'\r\n        WHEN 258 THEN 'AVC'\r\n        WHEN 259 THEN 'DOA'\r\n        WHEN 260 THEN 'AMTRELAY'\r\n        WHEN 261 THEN 'RESINFO'\r\n        WHEN 262 THEN 'WALLET'\r\n        WHEN 263 THEN 'CLA'\r\n        WHEN 264 THEN 'IPN'\r\n        WHEN 32768 THEN 'TA'\r\n        WHEN 32769 THEN 'DLV'\r\n        WHEN 65280 THEN 'ANAME'\r\n        WHEN 65281 THEN 'FWD'\r\n        WHEN 65282 THEN 'APP'\r\n        WHEN 65357 THEN 'ALIAS'\r\n    END as \"Query Type\",\r\n    CASE response_type\r\n        WHEN 1 THEN 'Authoritative'\r\n        WHEN 2 THEN 'Recursive'\r\n        WHEN 3 THEN 'Cached'\r\n        WHEN 4 THEN 'Blocked'\r\n        WHEN 5 THEN 'Upstream Blocked'\r\n        WHEN 6 THEN 'Cache Blocked'\r\n        WHEN 7 THEN 'Dropped'\r\n    END as \"Response Type\",\r\n    answer as Answer,\r\n    DATE_FORMAT(timestamp, '%H:%i:%s') AS Time\r\nFROM dns_logs\r\nWHERE $__timeFilter(timestamp)\r\nORDER BY timestamp DESC\r\nLIMIT 50",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "qname",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "timestamp",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50,
+              "orderBy": {
+                "property": {
+                  "name": "timestamp",
+                  "type": "string"
+                },
+                "type": "property"
+              },
+              "orderByDirection": "DESC"
+            },
+            "table": "dns_logs"
+          }
+        ],
+        "title": "Query Log",
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "eeb6ko6teq8lca"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": []
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 0,
+          "y": 16
+        },
+        "id": 5,
+        "options": {
+          "displayLabels": [
+            "percent"
+          ],
+          "legend": {
+            "displayMode": "list",
+            "placement": "right",
+            "showLegend": true,
+            "values": [
+              "value"
+            ]
+          },
+          "pieType": "pie",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^Quantity$/",
+            "values": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.2",
+        "targets": [
+          {
+            "dataset": "mysql",
+            "datasource": {
+              "type": "mysql",
+              "uid": "eeb6ko6teq8lca"
+            },
+            "editorMode": "code",
+            "format": "table",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n    CASE response_type\r\n        WHEN 1 THEN 'Authoritative'\r\n        WHEN 2 THEN 'Recursive'\r\n        WHEN 3 THEN 'Cached'\r\n        WHEN 4 THEN 'Blocked'\r\n        WHEN 5 THEN 'Upstream Blocked'\r\n        WHEN 6 THEN 'Cache Blocked'\r\n        WHEN 7 THEN 'Dropped'\r\n    END\r\nAS 'Response Type', COUNT(*) AS Quantity\r\nFROM dns_logs\r\nWHERE $__timeFilter(timestamp)\r\nGROUP BY response_type\r\nORDER BY Quantity DESC;",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Response Types",
+        "type": "piechart"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "eeb6ko6teq8lca"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto",
+                "wrapText": false
+              },
+              "filterable": false,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Domain"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 924
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 20,
+          "w": 10,
+          "x": 6,
+          "y": 16
+        },
+        "id": 3,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "enablePagination": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "11.5.2",
+        "targets": [
+          {
+            "dataset": "technitiumdns",
+            "datasource": {
+              "type": "mysql",
+              "uid": "eeb6ko6teq8lca"
+            },
+            "editorMode": "code",
+            "format": "table",
+            "rawQuery": true,
+            "rawSql": "SELECT qname as Domain, COUNT(*) AS Hits\r\nFROM dns_logs\r\nWHERE $__timeFilter(timestamp)\r\n/* Only get requests that were successfully Authoritative, Recursive, or Cached */\r\nAND (response_type = 1 OR response_type = 2 OR response_type = 3)\r\n/* Only show requests that returned a response */\r\nAND rcode = 0\r\nGROUP BY Domain\r\nORDER BY Hits DESC\r\nLIMIT 20;",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "qname",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "dns_logs"
+          }
+        ],
+        "title": "Top Allowed Domains",
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "eeb6ko6teq8lca"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Domain"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 712
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 20,
+          "w": 8,
+          "x": 16,
+          "y": 16
+        },
+        "id": 4,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "11.5.2",
+        "targets": [
+          {
+            "dataset": "mysql",
+            "datasource": {
+              "type": "mysql",
+              "uid": "eeb6ko6teq8lca"
+            },
+            "editorMode": "code",
+            "format": "table",
+            "rawQuery": true,
+            "rawSql": "SELECT qname as Domain, COUNT(*) AS Hits\r\nFROM dns_logs\r\nWHERE $__timeFilter(timestamp)\r\n/* Only get requests that were blocked */\r\nAND (response_type = 4 OR response_type = 5 OR response_type = 6)\r\nGROUP BY Domain\r\nORDER BY Hits DESC\r\nLIMIT 20;",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          }
+        ],
+        "title": "Top Blocked Domains",
+        "type": "table"
+      }
+    ],
+    "preload": false,
+    "refresh": "10s",
+    "schemaVersion": 42,
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "baseFilters": [],
+          "datasource": {
+            "type": "mysql",
+            "uid": "eeb6ko6teq8lca"
+          },
+          "filters": [],
+          "name": "Filters",
+          "type": "adhoc"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "browser",
+    "title": "Technitium DNS Dashboard",
+    "weekStart": ""
+  }
+}
