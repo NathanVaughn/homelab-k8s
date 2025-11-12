@@ -50,7 +50,7 @@ spec:
             - name: TZ
               value: "America/Chicago"
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/mbentley/omada-controller:5.15.24.19
+          image: cr.nathanv.app/docker.io/mbentley/omada-controller:6.0.0.24
           name: omada
           ports:
             - containerPort: 8088
