@@ -79,6 +79,7 @@
 10. Commit the changes to main
 
     ```
+    flux reconcile source git flux-system
     flux resume kustomization flux-system
     ```
 

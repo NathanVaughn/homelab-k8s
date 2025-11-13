@@ -4,7 +4,7 @@ kind: Job
 metadata:
   name: omada-mongodb-migration
   annotations:
-    flux.weave.works/ignore: "true"
+    kustomize.toolkit.fluxcd.io/reconcile: disabled
   # This job runs in your current namespace after temporarily setting it to privileged
   labels:
     app: omada
