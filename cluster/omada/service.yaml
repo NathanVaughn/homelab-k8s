@@ -44,3 +44,6 @@ spec:
     - port: 29813
       protocol: TCP
       name: upgrade-v1
+    - port: 29817
+      protocol: TCP
+      name: device-monitor
