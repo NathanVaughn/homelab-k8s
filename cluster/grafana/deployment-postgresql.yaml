@@ -26,7 +26,7 @@ spec:
             - secretRef:
                 name: grafana-secrets
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/library/postgres:18.0
+          image: cr.nathanv.app/docker.io/library/postgres:18.1
           name: postgresql
           ports:
             - containerPort: 5432
