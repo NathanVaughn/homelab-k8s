@@ -19,7 +19,7 @@ spec:
       containers:
         - name: redis
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/library/redis:8.2
+          image: cr.nathanv.app/docker.io/library/redis:8.4
           ports:
             - containerPort: 6379
           volumeMounts:
