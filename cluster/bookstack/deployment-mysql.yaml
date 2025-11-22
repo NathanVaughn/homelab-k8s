@@ -37,7 +37,7 @@ spec:
             - secretRef:
                 name: bookstack-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/library/mariadb:12.0.2
+          image: cr.nathanv.app/docker.io/library/mariadb:12.1.2
           name: mariadb
           ports:
             - containerPort: 3306
