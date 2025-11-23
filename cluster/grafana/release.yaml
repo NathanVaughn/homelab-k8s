@@ -12,7 +12,8 @@ spec:
         kind: HelmRepository
         name: grafana-repo
         namespace: grafana
-      version: "10.2.0"
+      # healthcheck issue with 10.2.0
+      version: "10.1.4"
   interval: 1h0m0s
   values:
     # registry-proxy block-start
