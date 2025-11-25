@@ -27,8 +27,6 @@ spec:
       storageClassName: longhorn-rwx
       accessModes:
         - ReadWriteMany
-    # adminUser:
-    # adminPassword:
     grafana.ini:
       server:
         root_url: https://grafana.nathanv.app
