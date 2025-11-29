@@ -40,7 +40,7 @@ spec:
             - secretRef:
                 name: stirling-pdf-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/ghcr.io/stirling-tools/stirling-pdf:2.0.1-fat
+          image: cr.nathanv.app/ghcr.io/stirling-tools/stirling-pdf:2.0.2-fat
           livenessProbe:
             httpGet:
               path: /api/v1/info/status
