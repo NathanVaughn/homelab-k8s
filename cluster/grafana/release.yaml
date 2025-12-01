@@ -12,14 +12,18 @@ spec:
         kind: HelmRepository
         name: grafana-repo
         namespace: grafana
-      # healthcheck issue with 10.2.0
-      version: "10.3.0"
+      # healthcheck issue with 10.2.0+
+      version: "10.1.4"
   interval: 1h0m0s
   values:
     # registry-proxy block-start
     global:
       imageRegistry: cr.nathanv.app/docker.io
     # registry-proxy block-end
+    serviceMonitor:
+      enabled: true
+    nodeSelector:
+      role: apps
     persistence:
       enabled: true
       type: pvc
