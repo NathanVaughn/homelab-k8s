@@ -17,11 +17,13 @@ spec:
         role: apps
       containers:
         - env:
+            - name: DISABLE_ADDITIONAL_FEATURES
+              value: "false"
             - name: DOCKER_ENABLE_SECURITY
               value: "true"
-            - name: SECURITY_ENABLE_LOGIN
+            - name: SECURITY_ENABLELOGIN
               value: "true"
-            - name: SECURITY_LOGIN_METHOD
+            - name: SECURITY_LOGINMETHOD
               value: oauth2
             - name: SECURITY_OAUTH2_ENABLED
               value: "true"
@@ -39,8 +41,9 @@ spec:
           envFrom:
             - secretRef:
                 name: stirling-pdf-env
+          # https://github.com/Stirling-Tools/Stirling-PDF/issues/5066
           # registry-proxy image-prefix
-          image: cr.nathanv.app/ghcr.io/stirling-tools/stirling-pdf:2.0.2-fat
+          image: cr.nathanv.app/ghcr.io/stirling-tools/stirling-pdf:1.6.0-fat
           livenessProbe:
             httpGet:
               path: /api/v1/info/status
