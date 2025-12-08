@@ -4,6 +4,8 @@
 
 In Authentik, configure a OAuth2 provider. Use the redirect URL as
 `https://stirling-pdf.nathanv.app/login/oauth2/code/oidc`.
+and
+`https://stirling-pdf.nathanv.app/login/oauth2/code/Authentik`.
 
 ```bash
 export SECURITY_OAUTH2_CLIENTID=$SECURITY_OAUTH2_CLIENT_ID
