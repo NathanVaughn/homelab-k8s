@@ -13,7 +13,7 @@ spec:
         name: loki-repo
         namespace: loki
       # https://github.com/grafana/loki/issues/19655
-      version: "6.46.0"
+      version: "6.48.0"
   interval: 1h0m0s
   values:
     # registry-proxy block-start
