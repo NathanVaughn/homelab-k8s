@@ -222,32 +222,6 @@ for label in host.data.get("k8s_labels", []):  # type: ignore
     )
 # endregion
 
-# Allow servers to use upstream DNS in the event
-# they need to pull the DNS server image
-# Prevents chicken and egg problem.
-# Use `resolvectl status` for debugging
-netplan_config = files.put(
-    name="Upload netplan config",
-    src=str(ROOT_DIR.joinpath("deployment", "files", "netplan.yaml")),
-    dest="/etc/netplan/50-cloud-init.yaml",
-    _sudo=True,
-)
-
-server.shell(
-    name="Apply netplan change",
-    commands="netplan apply",
-    _sudo=True,
-    _if=netplan_config.did_change,
-)
-
-systemd.service(
-    name="Restart systemd-resolved",
-    service="systemd-resolved",
-    restarted=True,
-    _sudo=True,
-    # _if=netplan_config.did_change,
-)
-
 # increase the number of open files
 # https://serverfault.com/a/1137212
 server.sysctl(
@@ -271,11 +245,3 @@ server.sysctl(
     persist=True,
     _sudo=True,
 )
-
-# taint wifi nodes for longhorn replicas
-# if "connectivity=wifi" in host.data.get("k8s_labels", []):  # type: ignore
-#     server.shell(
-#         name="Taint wifi nodes for longhorn replicas",
-#         commands=f"kubectl taint node {host.get_fact(Hostname)} longhorn.io/replica=true:NoSchedule",
-#         _sudo=True,
-#     )

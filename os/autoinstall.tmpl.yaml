@@ -22,10 +22,22 @@ autoinstall:
         match:
           name: en* # Matches all Ethernet interfaces
         dhcp4: true
+        # Allow servers to use upstream DNS in the event
+        # they need to pull the DNS server image
+        # Prevents chicken and egg problem.
+        # Use `resolvectl status` for debugging
+        dhcp4-overrides:
+          use-dns: false # disables netplan merging DHCP DNS
+        nameservers:
+          addresses: [10.0.1.4, 1.1.1.1]
     wifis:
       # match not allowed for WiFi. Hopefully this is consistent
       wlp2s0:
         dhcp4: true
+        dhcp4-overrides:
+          use-dns: false
+        nameservers:
+          addresses: [10.0.1.4, 1.1.1.1]
         access-points:
           TODO:
             password: TODO
