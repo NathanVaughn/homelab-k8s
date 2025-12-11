@@ -12,9 +12,7 @@ from pyinfra.operations import apt, files, python, server, systemd
 
 ROOT_DIR = pathlib.Path(__file__).absolute().parent.parent
 CONTROL_PLANE_IP = "10.0.1.1"
-DNS_IP = "10.0.1.4"
 
-resolvconf_config = "/etc/systemd/resolved.conf.d/fallback.conf"
 
 # load k3s data
 k3s_install_script = ROOT_DIR.joinpath("deployment", "downloaded", "k3s_install.sh")
@@ -228,20 +226,18 @@ for label in host.data.get("k8s_labels", []):  # type: ignore
 # they need to pull the DNS server image
 # Prevents chicken and egg problem.
 # Use `resolvectl status` for debugging
-files.directory(
-    name="Create resolvconf configuration directory",
-    path=os.path.dirname(resolvconf_config),
-    present=True,
+netplan_config = files.put(
+    name="Upload netplan config",
+    src=str(ROOT_DIR.joinpath("deployment", "files", "netplan.yaml")),
+    dest="/etc/netplan/50-cloud-init.yaml",
     _sudo=True,
 )
 
-resolvconf_config_edit = files.block(
-    name="Edit resolvconf configuration",
-    path=resolvconf_config,
-    # as kubernetes adds its own nameserver, the linux kernel has a max of 3
-    # We cannot define more than 2.
-    content=f"[Resolve]\nDNS={DNS_IP} 1.1.1.1\nDomains=~.\n",
+server.shell(
+    name="Apply netplan change",
+    commands="netplan apply",
     _sudo=True,
+    _if=netplan_config.did_change,
 )
 
 systemd.service(
@@ -249,7 +245,7 @@ systemd.service(
     service="systemd-resolved",
     restarted=True,
     _sudo=True,
-    _if=resolvconf_config_edit.did_change,
+    # _if=netplan_config.did_change,
 )
 
 # increase the number of open files
