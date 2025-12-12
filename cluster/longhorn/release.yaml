@@ -15,11 +15,11 @@ spec:
       version: "1.10.1"
   interval: 1h0m0s
   values:
-    # registry-proxy block-start
-    global:
-      cattle:
-        systemDefaultRegistry: cr.nathanv.app/docker.io
-    # registry-proxy block-end
+    # # registry-proxy block-start
+    # global:
+    #   cattle:
+    #     systemDefaultRegistry: cr.nathanv.app/docker.io
+    # # registry-proxy block-end
     persistence:
       defaultClassReplicaCount: 3
       # tries to keep a replica on the node the volume is attached to
