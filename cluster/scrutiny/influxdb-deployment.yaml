@@ -19,7 +19,7 @@ spec:
       containers:
         - name: scrutiny-influxdb
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/library/influxdb:2.7
+          image: cr.nathanv.app/docker.io/library/influxdb:2.8
           livenessProbe:
             exec:
               command:
