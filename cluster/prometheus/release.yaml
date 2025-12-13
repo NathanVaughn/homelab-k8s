@@ -109,7 +109,8 @@ spec:
             registry: cr.nathanv.app/quay.io
         patch:
           image:
-            registry: cr.nathanv.app/registry.k8s.io
+            # https://github.com/jkroepke/prometheus-community-helm-charts/blob/d7754d615bbc982933919d84395b6569c2a4d888/charts/prometheus-operator-admission-webhook/values.yaml#L80-L82
+            registry: cr.nathanv.app/ghcr.io
       prometheusConfigReloader:
         image:
           registry: cr.nathanv.app/quay.io
