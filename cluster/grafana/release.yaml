@@ -27,12 +27,13 @@ spec:
       # hopefully fixes issues with db lock being held
       type: Recreate
     persistence:
-      enabled: true
-      type: pvc
-      size: 200Mi
-      storageClassName: longhorn
-      accessModes:
-        - ReadWriteOnce
+      enabled: false # not needed since dashboards are managed via git
+      # and postgres is used for data storage
+      # type: pvc
+      # size: 200Mi
+      # storageClassName: longhorn
+      # accessModes:
+      #   - ReadWriteOnce
     grafana.ini:
       server:
         root_url: https://grafana.nathanv.app
