@@ -12,7 +12,6 @@ spec:
         kind: HelmRepository
         name: grafana-repo
         namespace: grafana
-      # healthcheck issue with 10.2.0+
       version: "10.3.1"
   interval: 1h0m0s
   values:
@@ -24,13 +23,16 @@ spec:
       enabled: true
     nodeSelector:
       role: apps
+    deploymentStrategy:
+      # hopefully fixes issues with db lock being held
+      type: Recreate
     persistence:
       enabled: true
       type: pvc
       size: 200Mi
-      storageClassName: longhorn-rwx
+      storageClassName: longhorn
       accessModes:
-        - ReadWriteMany
+        - ReadWriteOnce
     grafana.ini:
       server:
         root_url: https://grafana.nathanv.app
