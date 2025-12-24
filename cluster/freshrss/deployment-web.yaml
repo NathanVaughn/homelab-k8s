@@ -41,7 +41,7 @@ spec:
             - secretRef:
                 name: freshrss-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/freshrss/freshrss:1.27.1
+          image: cr.nathanv.app/docker.io/freshrss/freshrss:1.28.0
           name: freshrss
           ports:
             - containerPort: 80
