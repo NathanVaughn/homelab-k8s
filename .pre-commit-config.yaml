@@ -12,20 +12,20 @@ repos:
   - hooks:
       - id: check-json5
     repo: https://gitlab.com/bmares/check-json5
-    rev: v1.0.0
+    rev: v1.0.1
   - hooks:
       - args:
           - --fix
         id: ruff-check
       - id: ruff-format
     repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.8
+    rev: v0.14.10
   - hooks:
       - id: pyright
     repo: https://github.com/RobertCraigie/pyright-python
     rev: v1.1.407
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.9.17
+    rev: 0.9.21
     hooks:
       - id: uv-lock
   - repo: https://github.com/tarioch/flux-check-hook
