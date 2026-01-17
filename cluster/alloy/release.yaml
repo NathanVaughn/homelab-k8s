@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: alloy-repo
         namespace: alloy
-      version: "1.5.1"
+      version: "1.5.2"
   interval: 1h0m0s
   values:
     # registry-proxy block-start
