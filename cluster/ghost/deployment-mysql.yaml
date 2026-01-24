@@ -42,7 +42,7 @@ spec:
                 name: ghost-env
           # https://ghost.org/docs/faq/supported-databases/
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/library/mysql:9.5.0
+          image: cr.nathanv.app/docker.io/library/mysql:9.6.0
           name: mysql
           ports:
             - containerPort: 3306
