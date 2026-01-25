@@ -19,7 +19,7 @@ spec:
         kind: HelmRepository
         name: traefik-repo
         namespace: traefik
-      version: "38.0.2"
+      version: "39.0.0"
   interval: 1h0m0s
   values:
     persistence:
@@ -58,8 +58,10 @@ spec:
           enabled: true
     ports:
       websecure:
-        tls:
-          certResolver: le
+        # https://github.com/traefik/traefik-helm-chart/pull/1603
+        http:
+          tls:
+            certResolver: le
     envFrom:
       - secretRef:
           name: traefik-cf-token
