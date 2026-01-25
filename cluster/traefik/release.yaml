@@ -58,8 +58,10 @@ spec:
           enabled: true
     ports:
       websecure:
-        tls:
-          certResolver: le
+        # https://github.com/traefik/traefik-helm-chart/pull/1603
+        http:
+          tls:
+            certResolver: le
     envFrom:
       - secretRef:
           name: traefik-cf-token
