@@ -51,7 +51,7 @@ spec:
             - secretRef:
                 name: paperless-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/paperlessngx/paperless-ngx:2.20.5
+          image: cr.nathanv.app/ghcr.io/paperless-ngx/paperless-ngx:2.20.5
           name: paperless
           ports:
             - containerPort: 8000
