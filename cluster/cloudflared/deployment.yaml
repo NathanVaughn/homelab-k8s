@@ -17,7 +17,7 @@ spec:
       containers:
         - name: cloudflared
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/cloudflare/cloudflared:2026.1.1
+          image: cr.nathanv.app/docker.io/cloudflare/cloudflared:2026.1.2
           args:
             - tunnel
             # Points cloudflared to the config file, which configures what
