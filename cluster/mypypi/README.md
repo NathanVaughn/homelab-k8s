@@ -21,3 +21,32 @@ kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < 
 kubectl apply -f sealed-secret.yaml
 kubectl delete secret -n mypypi mypypi-env
 ```
+
+## Data Corruption
+
+If a package gets corrupted:
+
+```sql
+DELETE FROM metadata_file_hash
+WHERE metadata_file_id IN (
+    SELECT id
+    FROM metadata_file
+    WHERE filename LIKE 'name%'
+);
+
+DELETE FROM metadata_file
+WHERE filename LIKE 'name%';
+
+DELETE FROM code_file_hash
+WHERE code_file_id IN (
+    SELECT id
+    FROM code_file
+    WHERE filename LIKE 'name%'
+);
+
+DELETE FROM code_file
+WHERE filename LIKE 'name%';
+
+DELETE FROM package
+WHERE name = 'name';
+```
