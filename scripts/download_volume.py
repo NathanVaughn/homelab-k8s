@@ -16,7 +16,7 @@ def main(namespace: str, name: str):
     # create archive
     tar_file_base = f"{name}.tar"
     remote_tar_file = f"/tmp/{tar_file_base}"
-    local_tar_file = f"tar/{tar_file_base}"
+    local_tar_file = f"{common.SCRIPTS_DIR}/tar/{tar_file_base}"
     print(f"Creating archive from {mount_path}")
     connection.run(
         f"sudo tar --create --verbose --file {remote_tar_file} --directory {mount_path} --exclude='lost+found' .",

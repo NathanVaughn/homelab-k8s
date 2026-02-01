@@ -1,5 +1,8 @@
 import json
+import os
 import subprocess
+
+SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 def make_list_of_pvc_names(pod_info: dict) -> list[str]:

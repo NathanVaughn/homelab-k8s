@@ -16,7 +16,7 @@ def main(namespace: str, name: str):
     # upload it
     tar_file_base = f"{name}.tar"
     remote_tar_file = f"/tmp/{tar_file_base}"
-    local_tar_file = f"tar/{tar_file_base}"
+    local_tar_file = f"{common.SCRIPTS_DIR}/tar/{tar_file_base}"
     print("Uploading archive")
     connection.put(local=local_tar_file, remote=remote_tar_file)
 
