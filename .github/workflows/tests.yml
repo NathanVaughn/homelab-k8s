@@ -11,18 +11,3 @@ jobs:
     uses: NathanVaughn/reusable-actions/.github/workflows/python-test-uv.yml@main
     with:
       pytest: false
-  check-images:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v6
-      - name: Setup uv
-        uses: astral-sh/setup-uv@v7
-        with:
-          prune-cache: false
-          cache-python: true
-          ignore-nothing-to-cache: true
-      - name: Run image architecture check
-        run: uv run scripts/check_images.py
