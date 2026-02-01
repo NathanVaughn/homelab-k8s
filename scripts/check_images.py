@@ -10,7 +10,7 @@ def check_image(image_name: str) -> bool:
     Checks if a Docker image has a manifest for amd64 architecture.
     """
     try:
-        print("Checking image:", image_name)
+        print("Checking image:", image_name, flush=True)
         result = subprocess.run(
             ["docker", "manifest", "inspect", image_name],
             capture_output=True,
