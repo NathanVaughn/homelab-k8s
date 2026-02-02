@@ -12,7 +12,8 @@ spec:
         kind: HelmRepository
         name: longhorn-repo
         namespace: longhorn
-      version: "1.11.0"
+      # https://github.com/longhorn/longhorn/issues/12578
+      version: "1.10.1"
   interval: 1h0m0s
   values:
     # registry-proxy block-start
