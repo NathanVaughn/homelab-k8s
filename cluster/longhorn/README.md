@@ -11,6 +11,7 @@ export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 export AWS_ENDPOINTS=$S3_ENDPOINT
 export VIRTUAL_HOSTED_STYLE=false
 # change dollar sign variables above this line
+# AWS_ENDPOINTS must include protocol
 kubectl apply -f namespace.yaml
 
 kubectl -n longhorn create secret generic longhorn-env \
