@@ -43,7 +43,7 @@ spec:
                 name: stirling-pdf-env
           # https://github.com/Stirling-Tools/Stirling-PDF/issues/5066
           # registry-proxy image-prefix
-          image: cr.nathanv.app/ghcr.io/stirling-tools/stirling-pdf:2.4.3-fat
+          image: cr.nathanv.app/ghcr.io/stirling-tools/stirling-pdf:2.4.5-fat
           livenessProbe:
             httpGet:
               path: /api/v1/info/status
