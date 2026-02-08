@@ -68,3 +68,12 @@ Check when it's done with
 ```bash
 kubectl get jobs -n longhorn nightly-backup-oneshot
 ```
+
+### Restore From Backup
+
+- Stop pod
+- Delete corrupted volume in Longhorn UI
+- Delete PVC with `kubectl`
+- Restore backup copy to same name in Longhorn UI
+- Add PVC to volume with Longhorn UI
+- Restart pod
