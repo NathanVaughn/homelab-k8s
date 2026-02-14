@@ -46,7 +46,7 @@ spec:
             - secretRef:
                 name: technitium-dns-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/library/mariadb:12.1.2
+          image: cr.nathanv.app/docker.io/library/mariadb:12.2.2
           name: mariadb
           ports:
             - containerPort: 3306
