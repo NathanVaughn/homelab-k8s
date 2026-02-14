@@ -19,7 +19,7 @@ spec:
         - env:
             - name: SCRUTINY_WEB_INFLUXDB_HOST
               value: scrutiny-influxdb-service.scrutiny.svc.cluster.local
-          image: cr.nathanv.app/ghcr.io/analogj/scrutiny:v0.8.2-web
+          image: cr.nathanv.app/ghcr.io/analogj/scrutiny:v0.8.6-web
           livenessProbe:
             exec:
               command:

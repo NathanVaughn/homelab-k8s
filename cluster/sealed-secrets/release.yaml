@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: sealed-secrets-repo
         namespace: sealed-secrets
-      version: "2.18.0"
+      version: "2.18.1"
   install:
     crds: Create
   interval: 1h0m0s
