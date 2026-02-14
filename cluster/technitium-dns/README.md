@@ -79,3 +79,5 @@ Cannot use a dash in the database name.
 ### Misc
 
 The hostname and default contact email can modified under Settings -> General.
+
+To clear out old stat files, run `rm /etc/dns/stats/{year}*`
