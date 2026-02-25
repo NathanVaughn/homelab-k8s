@@ -39,7 +39,7 @@ spec:
       primary:
         persistence:
           enabled: true
-          size: 2Gi
+          size: 1.5Gi
       defaultStorageClass: longhorn
     # no longer uses redis as of 2025.10
     redis:
