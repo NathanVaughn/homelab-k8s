@@ -31,7 +31,9 @@ kubectl delete secret -n authentik authentik-secrets
 Check table size with `\dt+` in the `psql` shell.
 
 <https://github.com/goauthentik/authentik/issues/18139#issuecomment-3532818322>
+<https://github.com/goauthentik/authentik/issues/19302>
+<https://github.com/goauthentik/authentik/issues/19299>
 
-```bash
-TRUNCATE django_channels_postgres_message;
+```sql
+TRUNCATE TABLE django_channels_postgres_message;
 ```
