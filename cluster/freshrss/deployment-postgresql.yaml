@@ -26,7 +26,7 @@ spec:
             - secretRef:
                 name: freshrss-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/library/postgres:18.2
+          image: cr.nathanv.app/docker.io/library/postgres:18.3
           name: postgresql
           ports:
             - containerPort: 5432
