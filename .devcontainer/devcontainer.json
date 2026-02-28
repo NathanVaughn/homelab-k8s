@@ -14,7 +14,7 @@
         },
         "ghcr.io/jsburckhardt/devcontainer-features/flux:1": {
             // renovate: depName=flux2 packageName=fluxcd/flux2
-            "version": "v2.7.2"
+            "version": "v2.8.1"
         },
         "ghcr.io/gickis/devcontainer-features/kubeseal:1": {
             // renovate: depName=sealed-secrets packageName=bitnami-labs/sealed-secrets

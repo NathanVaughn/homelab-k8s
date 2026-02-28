@@ -63,7 +63,7 @@
             ],
             "currentValueTemplate": "master",
             "matchStrings": [
-                "\/\/ renovate:(?: depName=(?<depName>.+?))? packageName=(?<packageName>.+?)\\s+\"\\S+\": \"(?<currentValue>.+?)\""
+                "renovate: depName=(?<depName>.+?) packageName=(?<packageName>.+?)\\s+\"\\S+\": \"(?<currentValue>.+?)\""
             ],
             "datasourceTemplate": "github-releases"
         }

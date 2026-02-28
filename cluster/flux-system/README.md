@@ -2,9 +2,12 @@
 
 ## Upgrading Flux
 
+<https://github.com/fluxcd/flux2/discussions/5572>
+
 ```bash
 flux check --pre
 flux install --registry cr.nathanv.app/ghcr.io/fluxcd --export > ./cluster/flux-system/gotk-components.yaml
+flux migrate
 ```
 
 ## Failed Helm Release Upgrade
