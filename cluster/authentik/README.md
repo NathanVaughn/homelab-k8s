@@ -30,6 +30,11 @@ kubectl delete secret -n authentik authentik-secrets
 
 Check table size with `\dt+` in the `psql` shell.
 
+```bash
+kubectl exec --stdin --tty -n authentik authentik-postgresql-0 -- /bin/bash
+psql -U authentik -d authentik
+```
+
 <https://github.com/goauthentik/authentik/issues/18139#issuecomment-3532818322>
 <https://github.com/goauthentik/authentik/issues/19302>
 <https://github.com/goauthentik/authentik/issues/19299>
