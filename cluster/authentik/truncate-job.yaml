@@ -17,7 +17,7 @@ spec:
         spec:
           containers:
             - name: psql-client
-              image: postgres:15-alpine
+              image: postgres:18-alpine
               env:
                 - name: PGHOST
                   value: "authentik-postgresql.authentik.svc.cluster.local"
