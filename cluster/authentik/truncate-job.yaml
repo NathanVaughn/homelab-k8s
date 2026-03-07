@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: truncate-table-cron
+  namespace: authentik
+spec:
+  # Runs at minute 0 past every 6th hour (e.g., 00:00, 06:00, 12:00, 18:00)
+  schedule: "0 */6 * * *"
+  # Prevents a new job from starting if the previous one is hung up
+  concurrencyPolicy: Forbid
+  # Keeps a short history of successful/failed pods for debugging
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: psql-client
+              image: postgres:15-alpine
+              env:
+                - name: PGHOST
+                  value: "authentik-postgresql.authentik.svc.cluster.local"
+                - name: PGPORT
+                  value: "5432"
+                - name: PGUSER
+                  value: "authentik"
+                - name: PGDATABASE
+                  value: "authentik"
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: authentik-secrets
+                      key: authentik.postgresql.password
+              # Execute the truncate command
+              command: ["/bin/sh", "-c"]
+              args:
+                - psql -c "TRUNCATE TABLE django_channels_postgres_message;"
+          restartPolicy: OnFailure
