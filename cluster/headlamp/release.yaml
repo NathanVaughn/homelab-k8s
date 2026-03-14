@@ -40,13 +40,7 @@ spec:
     # registry-proxy block-start
     image:
       registry: cr.nathanv.app/ghcr.io
-    # registry-proxy block-end
-    persistentVolumeClaim:
-      enabled: true
-      storageClassName: longhorn-rwx
-      size: 100Mi
-      accessModes:
-        - ReadWriteMany
+      # registry-proxy block-end
   valuesFrom:
     - kind: Secret
       name: headlamp-secrets
