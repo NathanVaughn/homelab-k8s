@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: portainer-repo
         namespace: portainer
-      version: "239.0.2"
+      version: "239.1.0"
   interval: 1h0m0s
   values:
     # registry-proxy block-start
