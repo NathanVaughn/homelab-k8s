@@ -82,7 +82,9 @@ kubectl drain --delete-emptydir-data --ignore-daemonsets $server
 
 # delete from cluster
 kubectl delete node $server
-kubectl -n longhorn delete nodes.longhorn.io $server # may need to do this in the UI
+# disable webhook perventing delection
+kubectl delete validatingwebhookconfiguration longhorn-webhook-validator
+kubectl -n longhorn delete nodes.longhorn.io $server
 
 # clear known hosts
 ssh-keygen -R $server.nathanv.home
