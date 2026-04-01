@@ -90,6 +90,8 @@ kubectl -n longhorn delete nodes.longhorn.io $server
 ssh-keygen -R $server.nathanv.home
 
 # !! reinstall OS and re-run configure.py
+# May need to run configure.py on all other nodes first
+# to update k3s versions to be consistent
 
 # restart all daemonsets to ensure pods get scheduled on the node correctly
 uv run scripts/restart_daemonsets.py
