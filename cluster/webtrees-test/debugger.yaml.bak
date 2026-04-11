@@ -1,0 +1,18 @@
+# debugger.yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: volume-debugger
+  namespace: webtrees-test
+spec:
+  containers:
+  - name: debugger
+    image: busybox
+    command: ['sleep', '3600']
+    volumeMounts:
+      - mountPath: /var/www/webtrees/modules_v4/
+        name: modules-vol
+  volumes:
+    - name: modules-vol
+      persistentVolumeClaim:
+        claimName: webtrees-test-pvc-modules
