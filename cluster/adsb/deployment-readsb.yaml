@@ -25,6 +25,8 @@ spec:
             # prometheus
             - name: PROMETHEUS_ENABLE
               value: "true"
+            - name: TAR1090_ENABLE_AC_DB
+              value: "true"
             # web ui
             - name: TAR1090_FLIGHTAWARELINKS
               value: "true"
@@ -45,6 +47,7 @@ spec:
             - containerPort: 80 # http server
             - containerPort: 30005 # ads-b data
             - containerPort: 9273 # metrics
+            - containerPort: 9274 # metrics
           volumeMounts:
             - mountPath: /var/globe_history
               name: readsb-globe-history-vol
