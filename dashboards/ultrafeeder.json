@@ -101,7 +101,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "max(readsb_aircraft_total{job=\"ultrafeeder\"})",
+            "expr": "max(readsb_aircraft_total{job=\"readsb-metrics-service\"})",
             "legendFormat": "__auto",
             "range": true,
             "refId": "A"
@@ -167,7 +167,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "readsb_distance_max{job=\"ultrafeeder\"} * 0.000539957",
+            "expr": "readsb_distance_max{job=\"readsb-metrics-service\"} * 0.000539957",
             "legendFormat": "__auto",
             "range": true,
             "refId": "A"
@@ -235,7 +235,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "readsb_aircraft_rssi_average{job=\"ultrafeeder\"}",
+            "expr": "readsb_aircraft_rssi_average{job=\"readsb-metrics-service\"}",
             "legendFormat": "__auto",
             "range": true,
             "refId": "A"
@@ -246,7 +246,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "code",
-            "expr": "readsb_local_noise{job=\"ultrafeeder\"}",
+            "expr": "readsb_local_noise{job=\"readsb-metrics-service\"}",
             "hide": false,
             "legendFormat": "__auto",
             "range": true,
@@ -342,7 +342,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "code",
-            "expr": "readsb_aircraft_total{job=\"ultrafeeder\"}",
+            "expr": "readsb_aircraft_total{job=\"readsb-metrics-service\"}",
             "legendFormat": "total",
             "range": true,
             "refId": "A"
@@ -353,7 +353,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "readsb_aircraft_adsb_icao{job=\"ultrafeeder\"}",
+            "expr": "readsb_aircraft_adsb_icao{job=\"readsb-metrics-service\"}",
             "hide": false,
             "legendFormat": "ADS-B",
             "range": true,
@@ -365,7 +365,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "readsb_aircraft_mlat{job=\"ultrafeeder\"}",
+            "expr": "readsb_aircraft_mlat{job=\"readsb-metrics-service\"}",
             "hide": false,
             "legendFormat": "MLAT",
             "range": true,
@@ -377,7 +377,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "readsb_aircraft_mode_ac{job=\"ultrafeeder\"}",
+            "expr": "readsb_aircraft_mode_ac{job=\"readsb-metrics-service\"}",
             "hide": false,
             "legendFormat": "Mode-A/C",
             "range": true,
@@ -389,7 +389,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "readsb_aircraft_tisb_icao{job=\"ultrafeeder\"}",
+            "expr": "readsb_aircraft_tisb_icao{job=\"readsb-metrics-service\"}",
             "hide": false,
             "legendFormat": "TIS-B",
             "range": true,
@@ -401,7 +401,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "readsb_aircraft_adsr_icao{job=\"ultrafeeder\"}",
+            "expr": "readsb_aircraft_adsr_icao{job=\"readsb-metrics-service\"}",
             "hide": false,
             "legendFormat": "ADS-R",
             "range": true,
@@ -413,7 +413,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "readsb_aircraft_adsc{job=\"ultrafeeder\"}",
+            "expr": "readsb_aircraft_adsc{job=\"readsb-metrics-service\"}",
             "hide": false,
             "legendFormat": "ADS-C",
             "range": true,
@@ -522,7 +522,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "readsb_distance_max{job=\"ultrafeeder\"} * 0.000539957",
+            "expr": "readsb_distance_max{job=\"readsb-metrics-service\"} * 0.000539957",
             "legendFormat": "max range (nm)",
             "range": true,
             "refId": "A"
@@ -533,7 +533,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "readsb_distance_min{job=\"ultrafeeder\"} * 0.000539957",
+            "expr": "readsb_distance_min{job=\"readsb-metrics-service\"} * 0.000539957",
             "hide": false,
             "legendFormat": "min range (nm)",
             "range": true,
@@ -615,7 +615,7 @@
             {
               "matcher": {
                 "id": "byName",
-                "options": "topk by(t) (10, count by(t) (readsb_aircraft_seen{job=\"ultrafeeder\"}))"
+                "options": "topk by(t) (10, count by(t) (readsb_aircraft_seen{job=\"readsb-metrics-service\"}))"
               },
               "properties": [
                 {
@@ -664,7 +664,7 @@
             },
             "editorMode": "builder",
             "exemplar": false,
-            "expr": "topk by(t) (10, count by(t) (readsb_aircraft_seen{job=\"ultrafeeder\"}))",
+            "expr": "topk by(t) (10, count by(t) (readsb_aircraft_seen{job=\"readsb-metrics-service\"}))",
             "format": "time_series",
             "instant": false,
             "interval": "",
@@ -815,7 +815,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "max(readsb_messages{job=\"ultrafeeder\"})",
+            "expr": "max(readsb_messages{job=\"readsb-metrics-service\"})",
             "legendFormat": "Messages Received",
             "range": true,
             "refId": "A"
@@ -826,7 +826,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "readsb_local_strong_signals{job=\"ultrafeeder\"}",
+            "expr": "readsb_local_strong_signals{job=\"readsb-metrics-service\"}",
             "hide": false,
             "legendFormat": "Messages \u003e 3dbFS",
             "range": true,
@@ -838,7 +838,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "max(readsb_cpr_local_ok{job=\"ultrafeeder\"}) / 60",
+            "expr": "max(readsb_cpr_local_ok{job=\"readsb-metrics-service\"}) / 60",
             "hide": false,
             "legendFormat": "Positions/s ",
             "range": true,
@@ -941,7 +941,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "max(readsb_position_count_total{job=\"ultrafeeder\"})",
+            "expr": "max(readsb_position_count_total{job=\"readsb-metrics-service\"})",
             "legendFormat": "ADS-B",
             "range": true,
             "refId": "A"
@@ -1059,7 +1059,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "max(readsb_tracks_all{job=\"ultrafeeder\"})",
+            "expr": "max(readsb_tracks_all{job=\"readsb-metrics-service\"})",
             "legendFormat": "Tracks",
             "range": true,
             "refId": "A"
@@ -1070,7 +1070,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "max(readsb_tracks_single_message{job=\"ultrafeeder\"})",
+            "expr": "max(readsb_tracks_single_message{job=\"readsb-metrics-service\"})",
             "hide": false,
             "legendFormat": "Tracks with single message",
             "range": true,
@@ -1174,7 +1174,7 @@
             },
             "editorMode": "builder",
             "exemplar": false,
-            "expr": "readsb_aircraft_rssi_max{job=\"ultrafeeder\"}",
+            "expr": "readsb_aircraft_rssi_max{job=\"readsb-metrics-service\"}",
             "instant": false,
             "legendFormat": "Peak",
             "range": true,
@@ -1187,7 +1187,7 @@
             },
             "editorMode": "builder",
             "exemplar": false,
-            "expr": "readsb_aircraft_rssi_min{job=\"ultrafeeder\"}",
+            "expr": "readsb_aircraft_rssi_min{job=\"readsb-metrics-service\"}",
             "hide": false,
             "instant": false,
             "legendFormat": "Min signal",
@@ -1201,7 +1201,7 @@
             },
             "editorMode": "builder",
             "exemplar": false,
-            "expr": "readsb_aircraft_rssi_median{job=\"ultrafeeder\"}",
+            "expr": "readsb_aircraft_rssi_median{job=\"readsb-metrics-service\"}",
             "hide": false,
             "instant": false,
             "legendFormat": "Median",
@@ -1214,7 +1214,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "readsb_aircraft_rssi_quart1{job=\"ultrafeeder\"}",
+            "expr": "readsb_aircraft_rssi_quart1{job=\"readsb-metrics-service\"}",
             "hide": false,
             "legendFormat": "1st quartile",
             "range": true,
@@ -1226,7 +1226,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "readsb_aircraft_rssi_quart3{job=\"ultrafeeder\"}",
+            "expr": "readsb_aircraft_rssi_quart3{job=\"readsb-metrics-service\"}",
             "hide": false,
             "legendFormat": "3rd quartil",
             "range": true,
@@ -1326,7 +1326,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "max(readsb_cpu_reader{job=\"ultrafeeder\"}) / 60000",
+            "expr": "max(readsb_cpu_reader{job=\"readsb-metrics-service\"}) / 60000",
             "legendFormat": "SDR Reader",
             "range": true,
             "refId": "A"
@@ -1337,7 +1337,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "max(readsb_cpu_demod{job=\"ultrafeeder\"}) / 60000",
+            "expr": "max(readsb_cpu_demod{job=\"readsb-metrics-service\"}) / 60000",
             "hide": false,
             "legendFormat": "Demodulator",
             "range": true,
@@ -1349,7 +1349,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "max(readsb_cpu_background{job=\"ultrafeeder\"}) / 60000",
+            "expr": "max(readsb_cpu_background{job=\"readsb-metrics-service\"}) / 60000",
             "hide": false,
             "legendFormat": "Background",
             "range": true,
@@ -1472,7 +1472,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "builder",
-            "expr": "readsb_sdr_gain{job=\"ultrafeeder\"}",
+            "expr": "readsb_sdr_gain{job=\"readsb-metrics-service\"}",
             "legendFormat": "SDR gain (dB)",
             "range": true,
             "refId": "A"
@@ -1588,7 +1588,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "code",
-            "expr": "readsb_demod_estimated_ppm{job=\"ultrafeeder\"}",
+            "expr": "readsb_demod_estimated_ppm{job=\"readsb-metrics-service\"}",
             "format": "time_series",
             "legendFormat": "SDR freq drift (ppm)",
             "range": true,
@@ -1600,7 +1600,7 @@
               "uid": "aeaihzsgrbpc0f"
             },
             "editorMode": "code",
-            "expr": "avg_over_time(readsb_demod_estimated_ppm{job=\"ultrafeeder\"}[15m])",
+            "expr": "avg_over_time(readsb_demod_estimated_ppm{job=\"readsb-metrics-service\"}[15m])",
             "hide": false,
             "legendFormat": "15 min avg",
             "range": true,
@@ -1717,7 +1717,7 @@
             },
             "editorMode": "code",
             "exemplar": false,
-            "expr": "count by(flight, t, r, nav_modes) (readsb_aircraft_seen{job=\"ultrafeeder\"})",
+            "expr": "count by(flight, t, r, nav_modes) (readsb_aircraft_seen{job=\"readsb-metrics-service\"})",
             "format": "table",
             "instant": true,
             "interval": "",
