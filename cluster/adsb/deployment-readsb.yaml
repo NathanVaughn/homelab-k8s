@@ -18,53 +18,57 @@ spec:
         hardware: adsb
       containers:
         - env:
-            - name: READSB_DCFILTER
-              value: "true"
             - name: READSB_DEVICE_TYPE
               value: rtlsdr
-            - name: READSB_FIX
-              value: "true"
-            - name: READSB_GAIN
-              value: autogain
-            - name: READSB_MODEAC
-              value: "true"
-            - name: READSB_RX_LOCATION_ACCURACY
-              value: "2"
             - name: READSB_STATS_RANGE
               value: "true"
-            - name: READSB_NET_ENABLE
+            # prometheus
+            - name: PROMETHEUS_ENABLE
               value: "true"
-            - name: ENABLE_PROMETHEUS
+            # web ui
+            - name: TAR1090_FLIGHTAWARELINKS
               value: "true"
-            - name: PROMETHEUSPORT
-              value: "9273"
+            # graphs
+            - name: GRAPHS1090_DARKMODE
+              value: "true"
+            - name: GRAPHS1090_HIDE_SYSTEM
+              value: "true"
           envFrom:
             - secretRef:
                 name: adsb-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/ghcr.io/sdr-enthusiasts/docker-readsb-protobuf@sha256:a6df0d993fb08c4956770d7627f29764b424fb6387a39d28e805f295ddd414c1
+          image: cr.nathanv.app/ghcr.io/sdr-enthusiasts/sdr-enthusiasts/docker-adsb-ultrafeeder@telegraf-build-912
           name: readsb
           securityContext:
             privileged: true # for access to the usb dongle
           ports:
-            - containerPort: 8080 # http server
+            - containerPort: 80 # http server
             - containerPort: 30005 # ads-b data
             - containerPort: 9273 # metrics
           volumeMounts:
-            - mountPath: /run/collectd
-              name: readsb-rrd-vol
-            - mountPath: /run/autogain
-              name: readsb-autogain-vol
-            - mountPath: /run/readsb
-              name: readsb-run-vol
+            - mountPath: /var/globe_history
+              name: readsb-globe-history-vol
+            - mountPath: /var/lib/collectd
+              name: readsb-collectd-vol
+            - mountPath: /run
+              name: ultrafeeder-tmpfs0
+            - mountPath: /tmp
+              name: ultrafeeder-tmpfs1
+            - mountPath: /var/log
+              name: ultrafeeder-tmpfs2
       volumes:
-        - name: readsb-rrd-vol
+        - name: readsb-globe-history-vol
           persistentVolumeClaim:
-            claimName: adsb-pvc-readsb-rrd
-        - name: readsb-autogain-vol
+            claimName: adsb-pvc-readsb-globe-history
+        - name: readsb-collectd-vol
           persistentVolumeClaim:
-            claimName: adsb-pvc-readsb-autogain
-        - name: readsb-run-vol
-          emptyDir:
+            claimName: adsb-pvc-readsb-collectd
+        - emptyDir:
             medium: Memory
-            sizeLimit: 64M
+          name: ultrafeeder-tmpfs0
+        - emptyDir:
+            medium: Memory
+          name: ultrafeeder-tmpfs1
+        - emptyDir:
+            medium: Memory
+          name: ultrafeeder-tmpfs2

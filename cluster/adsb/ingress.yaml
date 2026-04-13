@@ -11,7 +11,7 @@ spec:
       kind: Rule
       services:
         - name: readsb-web-service
-          port: 8080
+          port: 80
       middlewares:
         - name: authentik-forward-auth
           namespace: authentik
