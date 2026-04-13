@@ -1,3 +1,5 @@
 secret.yaml
 temp.sh
 modules_v4/*
+
+*.py
