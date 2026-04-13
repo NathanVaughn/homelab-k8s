@@ -37,7 +37,7 @@ spec:
             - secretRef:
                 name: adsb-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/ghcr.io/sdr-enthusiasts/sdr-enthusiasts/docker-adsb-ultrafeeder@telegraf-build-912
+          image: cr.nathanv.app/ghcr.io/sdr-enthusiasts/sdr-enthusiasts/docker-adsb-ultrafeeder:telegraf-build-912
           name: readsb
           securityContext:
             privileged: true # for access to the usb dongle
