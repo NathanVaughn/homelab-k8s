@@ -1729,69 +1729,6 @@
         "title": "ADSB List of Aircrafts",
         "transparent": true,
         "type": "table"
-      },
-      {
-        "collapsed": false,
-        "gridPos": {
-          "h": 1,
-          "w": 24,
-          "x": 0,
-          "y": 69
-        },
-        "id": 49,
-        "panels": [],
-        "title": "ADSB/UAT Maps",
-        "type": "row"
-      },
-      {
-        "fieldConfig": {
-          "defaults": {},
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 20,
-          "w": 24,
-          "x": 0,
-          "y": 70
-        },
-        "id": 44,
-        "options": {
-          "code": {
-            "language": "html",
-            "showLineNumbers": false,
-            "showMiniMap": false
-          },
-          "content": "\n\n\u003ciframe sandbox=\"allow-scripts\" src=\"https://readsb.nathanv.app/graphs1090\" title=\"Stats\" style=\"width:100%; height:100%; padding:0; margin:0; border:none;\"\u003e\u003c/iframe\u003e",
-          "mode": "html"
-        },
-        "pluginVersion": "12.3.1",
-        "title": "Tar1090 Stats",
-        "type": "text"
-      },
-      {
-        "fieldConfig": {
-          "defaults": {},
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 20,
-          "w": 24,
-          "x": 0,
-          "y": 90
-        },
-        "id": 43,
-        "options": {
-          "code": {
-            "language": "html",
-            "showLineNumbers": false,
-            "showMiniMap": false
-          },
-          "content": "\n\n\u003ciframe sandbox=\"allow-scripts\" src=\"https://readsb.nathanv.app/?heatmap\u0026realheat\u0026hideSidebar\u0026hideButtons\u0026centerReceiver\u0026zoom=7\" title=\"Heat Map\" style=\"width:100%; height:100%; padding:0; margin:0; border:none;\"\u003e\u003c/iframe\u003e",
-          "mode": "html"
-        },
-        "pluginVersion": "12.3.1",
-        "title": "Traffic Heatmap",
-        "type": "text"
       }
     ],
     "preload": false,
