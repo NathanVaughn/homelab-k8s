@@ -1,9 +1,0 @@
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: authentik-iframe
-  namespace: authentik
-spec:
-  headers:
-    contentSecurityPolicy: "frame-ancestors 'self' https://grafana.nathanv.app"
-    customFrameOptionsValue: "allow-from https://grafana.nathanv.app"
