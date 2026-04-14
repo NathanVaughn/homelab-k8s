@@ -234,23 +234,11 @@
               "type": "prometheus",
               "uid": "aeaihzsgrbpc0f"
             },
-            "editorMode": "builder",
+            "editorMode": "code",
             "expr": "readsb_aircraft_rssi_average{job=\"readsb-metrics-service\"}",
             "legendFormat": "__auto",
             "range": true,
             "refId": "A"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "aeaihzsgrbpc0f"
-            },
-            "editorMode": "code",
-            "expr": "readsb_local_noise{job=\"readsb-metrics-service\"}",
-            "hide": false,
-            "legendFormat": "__auto",
-            "range": true,
-            "refId": "B"
           }
         ],
         "timeFrom": "24h",
@@ -1739,7 +1727,7 @@
       "list": []
     },
     "time": {
-      "from": "now-5m",
+      "from": "now-30m",
       "to": "now"
     },
     "timepicker": {},
