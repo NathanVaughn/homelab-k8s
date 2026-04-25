@@ -28,8 +28,8 @@
     "panels": [
       {
         "datasource": {
-          "type": "mysql",
-          "uid": "eeb6ko6teq8lca"
+          "type": "grafana-postgresql-datasource",
+          "uid": "afk5ujlkyqbr4b"
         },
         "fieldConfig": {
           "defaults": {
@@ -112,8 +112,8 @@
           {
             "dataset": "mysql",
             "datasource": {
-              "type": "mysql",
-              "uid": "eeb6ko6teq8lca"
+              "type": "grafana-postgresql-datasource",
+              "uid": "afk5ujlkyqbr4b"
             },
             "editorMode": "code",
             "format": "time_series",
@@ -153,8 +153,8 @@
       },
       {
         "datasource": {
-          "type": "mysql",
-          "uid": "eeb6ko6teq8lca"
+          "type": "grafana-postgresql-datasource",
+          "uid": "afk5ujlkyqbr4b"
         },
         "fieldConfig": {
           "defaults": {
@@ -212,8 +212,8 @@
           {
             "dataset": "mysql",
             "datasource": {
-              "type": "mysql",
-              "uid": "eeb6ko6teq8lca"
+              "type": "grafana-postgresql-datasource",
+              "uid": "afk5ujlkyqbr4b"
             },
             "editorMode": "code",
             "format": "table",
@@ -244,8 +244,8 @@
       },
       {
         "datasource": {
-          "type": "mysql",
-          "uid": "eeb6ko6teq8lca"
+          "type": "grafana-postgresql-datasource",
+          "uid": "afk5ujlkyqbr4b"
         },
         "fieldConfig": {
           "defaults": {
@@ -294,8 +294,8 @@
           {
             "dataset": "technitiumdns",
             "datasource": {
-              "type": "mysql",
-              "uid": "eeb6ko6teq8lca"
+              "type": "grafana-postgresql-datasource",
+              "uid": "afk5ujlkyqbr4b"
             },
             "editorMode": "code",
             "format": "table",
@@ -326,8 +326,8 @@
       },
       {
         "datasource": {
-          "type": "mysql",
-          "uid": "eeb6ko6teq8lca"
+          "type": "grafana-postgresql-datasource",
+          "uid": "afk5ujlkyqbr4b"
         },
         "fieldConfig": {
           "defaults": {
@@ -385,8 +385,8 @@
           {
             "dataset": "mysql",
             "datasource": {
-              "type": "mysql",
-              "uid": "eeb6ko6teq8lca"
+              "type": "grafana-postgresql-datasource",
+              "uid": "afk5ujlkyqbr4b"
             },
             "editorMode": "code",
             "format": "table",
@@ -417,8 +417,8 @@
       },
       {
         "datasource": {
-          "type": "mysql",
-          "uid": "eeb6ko6teq8lca"
+          "type": "grafana-postgresql-datasource",
+          "uid": "afk5ujlkyqbr4b"
         },
         "fieldConfig": {
           "defaults": {
@@ -475,8 +475,8 @@
           {
             "dataset": "mysql",
             "datasource": {
-              "type": "mysql",
-              "uid": "eeb6ko6teq8lca"
+              "type": "grafana-postgresql-datasource",
+              "uid": "afk5ujlkyqbr4b"
             },
             "editorMode": "code",
             "format": "table",
@@ -507,8 +507,8 @@
       },
       {
         "datasource": {
-          "type": "mysql",
-          "uid": "eeb6ko6teq8lca"
+          "type": "grafana-postgresql-datasource",
+          "uid": "afk5ujlkyqbr4b"
         },
         "fieldConfig": {
           "defaults": {
@@ -618,8 +618,8 @@
           {
             "dataset": "technitiumdns",
             "datasource": {
-              "type": "mysql",
-              "uid": "eeb6ko6teq8lca"
+              "type": "grafana-postgresql-datasource",
+              "uid": "afk5ujlkyqbr4b"
             },
             "editorMode": "code",
             "format": "table",
@@ -673,8 +673,8 @@
       },
       {
         "datasource": {
-          "type": "mysql",
-          "uid": "eeb6ko6teq8lca"
+          "type": "grafana-postgresql-datasource",
+          "uid": "afk5ujlkyqbr4b"
         },
         "fieldConfig": {
           "defaults": {
@@ -730,8 +730,8 @@
           {
             "dataset": "mysql",
             "datasource": {
-              "type": "mysql",
-              "uid": "eeb6ko6teq8lca"
+              "type": "grafana-postgresql-datasource",
+              "uid": "afk5ujlkyqbr4b"
             },
             "editorMode": "code",
             "format": "table",
@@ -762,8 +762,8 @@
       },
       {
         "datasource": {
-          "type": "mysql",
-          "uid": "eeb6ko6teq8lca"
+          "type": "grafana-postgresql-datasource",
+          "uid": "afk5ujlkyqbr4b"
         },
         "fieldConfig": {
           "defaults": {
@@ -831,8 +831,8 @@
           {
             "dataset": "technitiumdns",
             "datasource": {
-              "type": "mysql",
-              "uid": "eeb6ko6teq8lca"
+              "type": "grafana-postgresql-datasource",
+              "uid": "afk5ujlkyqbr4b"
             },
             "editorMode": "code",
             "format": "table",
@@ -869,8 +869,8 @@
       },
       {
         "datasource": {
-          "type": "mysql",
-          "uid": "eeb6ko6teq8lca"
+          "type": "grafana-postgresql-datasource",
+          "uid": "afk5ujlkyqbr4b"
         },
         "fieldConfig": {
           "defaults": {
@@ -935,8 +935,8 @@
           {
             "dataset": "mysql",
             "datasource": {
-              "type": "mysql",
-              "uid": "eeb6ko6teq8lca"
+              "type": "grafana-postgresql-datasource",
+              "uid": "afk5ujlkyqbr4b"
             },
             "editorMode": "code",
             "format": "table",
@@ -975,8 +975,8 @@
         {
           "baseFilters": [],
           "datasource": {
-            "type": "mysql",
-            "uid": "eeb6ko6teq8lca"
+            "type": "grafana-postgresql-datasource",
+            "uid": "afk5ujlkyqbr4b"
           },
           "filters": [],
           "name": "Filters",

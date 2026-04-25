@@ -70,7 +70,7 @@ Change the configuration:
   "maxLogDays": 30,
   "maxLogRecords": 0,
   "databaseName": "technitiumdns",
-  "connectionString": "Server=technitium-dns-postgres-service.technitium-dns.svc.cluster.local; Port=5432; Uid=technitiumdns; Pwd=$POSTGRES_PASSWORD;"
+  "connectionString": "Server=technitium-dns-postgresql-service.technitium-dns.svc.cluster.local; Port=5432; Username=technitiumdns; Password=$POSTGRES_PASSWORD;"
 }
 ```
 
