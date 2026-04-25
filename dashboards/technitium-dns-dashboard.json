@@ -392,7 +392,7 @@
             "editorMode": "code",
             "format": "table",
             "rawQuery": true,
-            "rawSql": "SELECT\r\n    (SELECT COUNT(qname)\r\n     FROM dns_logs\r\n     WHERE $__timeFilter(timestamp)\r\n     AND response_type IN (4, 5, 6))\r\n    /\r\n    (SELECT COUNT(qname)\r\n     FROM dns_logs\r\n     WHERE $__timeFilter(timestamp))\r\n    AS ratio;",
+            "rawSql": "SELECT\r\n    (SELECT COUNT(qname)::NUMERIC\r\n     FROM dns_logs\r\n     WHERE $__timeFilter(timestamp)\r\n     AND response_type IN (4, 5, 6))\r\n    /\r\n    (SELECT COUNT(qname)::NUMERIC\r\n     FROM dns_logs\r\n     WHERE $__timeFilter(timestamp))\r\n    AS ratio;",
             "refId": "A",
             "sql": {
               "columns": [
@@ -975,7 +975,7 @@
       ]
     },
     "time": {
-      "from": "now-5m",
+      "from": "now-30m",
       "to": "now"
     },
     "timepicker": {},
