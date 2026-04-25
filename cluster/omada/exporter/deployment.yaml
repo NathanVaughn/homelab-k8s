@@ -38,7 +38,7 @@ spec:
             - secretRef:
                 name: omada-exporter-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/ghcr.io/charlie-haley/omada_exporter:0.13.1
+          image: cr.nathanv.app/docker.io/rcooler/omada_exporter:2.1.1
           name: omada-exporter
           ports:
             - name: metrics
