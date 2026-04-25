@@ -6,12 +6,12 @@ In Authentik, create a proxy provider for a single application with the URL
 `https://technitium-dns.nathanv.app`. Ensure you assign the application to an outpost.
 
 ```bash
-export MARIADB_PASSWORD=$MARIADB_PASSWORD
+export POSTGRES_PASSWORD=$POSTGRES_PASSWORD
 # change dollar sign variables above this line
 kubectl apply -f namespace.yaml
 
 kubectl -n technitium-dns create secret generic technitium-dns-env \
---from-literal=MARIADB_PASSWORD=$MARIADB_PASSWORD \
+--from-literal=POSTGRES_PASSWORD=$POSTGRES_PASSWORD \
 --dry-run=client -o yaml > secret.yaml
 
 kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
@@ -60,7 +60,7 @@ Under Settings -> Blocking, add the following blocklists:
 
 ### Apps
 
-Install "Query Logs (MySQL)".
+Install "Query Logs (PostgreSQL)".
 Change the configuration:
 
 ```json
@@ -70,7 +70,7 @@ Change the configuration:
   "maxLogDays": 30,
   "maxLogRecords": 0,
   "databaseName": "technitiumdns",
-  "connectionString": "Server=technitium-dns-mysql-service.technitium-dns.svc.cluster.local; Port=3306; Uid=technitiumdns; Pwd=$MARIADB_PASSWORD;"
+  "connectionString": "Server=technitium-dns-postgres-service.technitium-dns.svc.cluster.local; Port=5432; Uid=technitiumdns; Pwd=$POSTGRES_PASSWORD;"
 }
 ```
 

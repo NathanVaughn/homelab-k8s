@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: technitium-dns-postgresql-deployment
+  namespace: technitium-dns
+spec:
+  replicas: 1
+  serviceName: technitium-dns-postgresql
+  selector:
+    matchLabels:
+      app: technitium-dns-postgresql
+  template:
+    metadata:
+      labels:
+        app: technitium-dns-postgresql
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+        - env:
+            - name: POSTGRES_USER
+              value: technitiumdns
+            - name: POSTGRES_DB
+              value: technitiumdns
+          envFrom:
+            - secretRef:
+                name: technitium-dns-env
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/library/postgres:18.3
+          name: postgresql
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/
+              name: postgresql-vol
+      volumes:
+        - name: postgresql-vol
+          persistentVolumeClaim:
+            claimName: technitium-dns-pvc-postgresql

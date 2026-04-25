@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: technitium-dns-pvc-mysql
+  name: technitium-dns-pvc-postgresql
   namespace: technitium-dns
 spec:
   storageClassName: longhorn
