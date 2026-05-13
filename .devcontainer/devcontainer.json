@@ -20,7 +20,9 @@
             // renovate: depName=sealed-secrets packageName=bitnami-labs/sealed-secrets
             "version": "0.32.2"
         },
-        "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+        "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+            "moby": false
+        }
     },
     "customizations": {
         "vscode": {
