@@ -1,0 +1,24 @@
+{
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "version": "1.9.1",
+      "resolved": "ghcr.io/devcontainers/features/docker-outside-of-docker@sha256:dc89605f01ff2f24252c61f7c8ba2a58ccdbc14f2ebf87a7952d9e2b89834850",
+      "integrity": "sha256:dc89605f01ff2f24252c61f7c8ba2a58ccdbc14f2ebf87a7952d9e2b89834850"
+    },
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+      "version": "1.3.1",
+      "resolved": "ghcr.io/devcontainers/features/kubectl-helm-minikube@sha256:bbe8adf6b37fff8c67412ab0a4579f4c2f30bbaba1d9a5cebd9e38bade54025b",
+      "integrity": "sha256:bbe8adf6b37fff8c67412ab0a4579f4c2f30bbaba1d9a5cebd9e38bade54025b"
+    },
+    "ghcr.io/gickis/devcontainer-features/kubeseal:1": {
+      "version": "1.0.1",
+      "resolved": "ghcr.io/gickis/devcontainer-features/kubeseal@sha256:f8de6984c05fab92e9cb61d62de27feb8e229cc6ffda9891479863f211e936cc",
+      "integrity": "sha256:f8de6984c05fab92e9cb61d62de27feb8e229cc6ffda9891479863f211e936cc"
+    },
+    "ghcr.io/jsburckhardt/devcontainer-features/flux:1": {
+      "version": "1.0.0",
+      "resolved": "ghcr.io/jsburckhardt/devcontainer-features/flux@sha256:9d81685acf08318a1751131f04e4bc83b5780ef2054484eab46acc74a3f7ed67",
+      "integrity": "sha256:9d81685acf08318a1751131f04e4bc83b5780ef2054484eab46acc74a3f7ed67"
+    }
+  }
+}

@@ -18,6 +18,7 @@ CONTROL_PLANE_IP = "10.0.1.1"
 k3s_install_script = ROOT_DIR.joinpath("deployment", "downloaded", "k3s_install.sh")
 
 if not k3s_install_script.exists():
+    k3s_install_script.parent.mkdir(parents=True, exist_ok=True)
     req = urllib.request.Request(
         "https://get.k3s.io",
         headers={  # default user agent is blocked, pretend to be a browser
