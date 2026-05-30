@@ -1,5 +1,8 @@
 apiVersion: descheduler/v1alpha2
 kind: DeschedulerPolicy
+metadata:
+  name: descheduler-policy
+  namespace: descheduler
 strategies:
   RemovePodsViolatingNodeAffinity:
     enabled: true
