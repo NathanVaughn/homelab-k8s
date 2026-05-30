@@ -21,3 +21,17 @@ spec:
     # registry-proxy block-end
     nodeSelector:
       role: apps
+    # override policy
+    deschedulerPolicy:
+      profiles:
+      - name: ProfileName
+        pluginConfig:
+        - name: RemovePodsViolatingNodeAffinity"
+          args:
+            nodeAffinityType:
+            - requiredDuringSchedulingIgnoredDuringExecution
+            - preferredDuringSchedulingIgnoredDuringExecution
+        plugins:
+          deschedule:
+            enabled:
+              - RemovePodsViolatingNodeAffinity
