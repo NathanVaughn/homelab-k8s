@@ -24,9 +24,9 @@ spec:
     # override policy
     deschedulerPolicy:
       profiles:
-      - name: ProfileName
+      - name: Remove Pods Violating Node Affinity
         pluginConfig:
-        - name: RemovePodsViolatingNodeAffinity"
+        - name: RemovePodsViolatingNodeAffinity
           args:
             nodeAffinityType:
             - requiredDuringSchedulingIgnoredDuringExecution
