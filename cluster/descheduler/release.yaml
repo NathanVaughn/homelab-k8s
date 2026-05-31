@@ -22,6 +22,7 @@ spec:
     nodeSelector:
       role: apps
     # override policy
+    schedule: "*/10 * * * *"
     deschedulerPolicy:
       profiles:
         - name: Remove Pods Violating Node Affinity
