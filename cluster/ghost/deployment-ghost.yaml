@@ -18,7 +18,7 @@ spec:
       initContainers:
         - name: permission-fix
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/library/busybox:1.37.0
+          image: cr.nathanv.app/docker.io/library/busybox:1.38.0
           command: ['sh', '-c']
           args: ['chown -R 1000:1000 /var/lib/ghost/content']
           volumeMounts:
@@ -46,7 +46,7 @@ spec:
             - secretRef:
                 name: ghost-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/library/ghost:6.30.0
+          image: cr.nathanv.app/docker.io/library/ghost:6.42.0
           # 6.4.0 not aviable on amd64
           # hash issue with 6.10.3
           name: ghost
