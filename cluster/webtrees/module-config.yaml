@@ -66,7 +66,7 @@ data:
             return
 
         # Download the file
-        print(f"Downloading {url}...")
+        print(f"Downloading {url} to {zip_path}...")
         with urlopen(url) as response, open(zip_path, "wb") as file:
             file.write(response.read())
         print(f"Downloaded {file_name}.")
@@ -78,10 +78,12 @@ data:
             # almost always, the first item will be a top level directory inside the zip file
             zip_first_item = zip_ref.namelist()[0]
             if zip_first_item.endswith("/"):
+                print(f"Extracting to {modules_dir}")
                 zip_ref.extractall(modules_dir)
             else:
                 # if not, extract to a sub directory in the modules folder
                 needs_rename = False
+                print(f"Extracting to {dst_path}")
                 zip_ref.extractall(dst_path)
 
         print(f"Extracted {file_name}")
