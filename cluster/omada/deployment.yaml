@@ -28,7 +28,7 @@ spec:
       initContainers:
         - name: permission-fix
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/library/busybox:1.37.0
+          image: cr.nathanv.app/docker.io/library/busybox:1.38.0
           command: ['sh', '-c']
           args: ['chown -R 508:508 /opt/tplink/EAPController/']
           volumeMounts:
@@ -50,7 +50,7 @@ spec:
             - name: TZ
               value: "America/Chicago"
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/mbentley/omada-controller:6.2.0.17
+          image: cr.nathanv.app/docker.io/mbentley/omada-controller:6.2.10.17
           name: omada
           ports:
             - containerPort: 8088
