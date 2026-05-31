@@ -31,6 +31,10 @@ data:
         See if the existing directory came from the same source.
         If not, delete. Returns result.
         """
+        if os.path.isfile(dir):
+            os.remove(dir)
+            return False
+
         if not os.path.isdir(dir):
             return False
 
