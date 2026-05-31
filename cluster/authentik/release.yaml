@@ -29,6 +29,9 @@ spec:
         from: Authentik <authentik@nvaughn.email>
     postgresql:
       enabled: true
+      # avoid getting locked out
+      passwordUpdateJob:
+        enabled: true
       # registry-proxy block-start
       global:
         security:
