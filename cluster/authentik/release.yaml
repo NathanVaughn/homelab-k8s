@@ -37,6 +37,10 @@ spec:
         registry: cr.nathanv.app/docker.io
       # registry-proxy block-end
       primary:
+        # to login as the super user, uncomment the line below, to enable passwordless auth
+        # pgHbaConfiguration: "host     all             all             0.0.0.0/0               scram-sha-256\nhost     all             all             ::/0                    scram-sha-256\nlocal    all             all                                     trust\nhost     all             all        127.0.0.1/32                 trust\nhost     all             all        ::1/128                      scram-sha-256\n"
+        # Then login on a container shell:
+        # psql -U postgres -d authentik
         persistence:
           enabled: true
           size: 4Gi
