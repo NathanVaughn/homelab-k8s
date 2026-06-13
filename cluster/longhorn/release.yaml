@@ -15,7 +15,7 @@ spec:
       # https://github.com/longhorn/longhorn/issues/12578
       # workaround is to run
       # kubectl delete validatingwebhookconfiguration longhorn-webhook-validator
-      version: "1.11.2"
+      version: "1.12.0"
   interval: 1h0m0s
   values:
     # registry-proxy block-start
