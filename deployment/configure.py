@@ -6,7 +6,7 @@ import subprocess
 import urllib.request
 
 import yaml
-from pyinfra import host, inventory  # type: ignore
+from pyinfra import host, inventory
 from pyinfra.facts.server import Hostname, User
 from pyinfra.operations import apt, files, python, server, systemd
 
@@ -71,12 +71,12 @@ apt.packages(
 )
 
 # disable wifi
-if "connectivity=eth" in host.data.get("k8s_labels", []):  # type: ignore
+if "connectivity=eth" in host.data.get("k8s_labels", []):
     server.shell(name="Disable wifi", commands="nmcli radio wifi off", _sudo=True)
 
 # adsb prerequisites
 # https://github.com/sdr-enthusiasts/docker-readsb-protobuf?tab=readme-ov-file#kernel-module-configuration
-if "hardware=adsb" in host.data.get("k8s_labels", []):  # type: ignore
+if "hardware=adsb" in host.data.get("k8s_labels", []):
     files.put(
         name="Upload rtlsdr blacklist",
         src=str(ROOT_DIR.joinpath("deployment", "files", "blacklist-rtlsdr.conf")),
@@ -214,7 +214,7 @@ systemd.service(
 )
 
 # only need to run in one spot on the cluster
-for label in host.data.get("k8s_labels", []):  # type: ignore
+for label in host.data.get("k8s_labels", []):
     server.shell(
         name=f"Label node with {label}",
         commands=f"kubectl label nodes {host.get_fact(Hostname)} {label}",
