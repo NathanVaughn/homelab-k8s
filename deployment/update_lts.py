@@ -1,7 +1,7 @@
 from pyinfra.operations import apt, python, server
 
 
-def upgrade_lts():
+def upgrade_lts() -> None:
     apt.update(name="Update apt cache", _sudo=True)
     apt.packages(
         name="Install update-manager-core",

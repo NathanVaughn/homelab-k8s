@@ -7,7 +7,7 @@ apt.dist_upgrade(name="apt dist-upgrade", _sudo=True)
 apt.upgrade(name="apt upgrade --autoremove", auto_remove=True, _sudo=True)
 
 
-def reboot_node():
+def reboot_node() -> None:
     # first install netstat, since we need it after it reboots
     apt.packages(
         name="Install net-tools",

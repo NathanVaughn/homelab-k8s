@@ -7,7 +7,7 @@ sys.path.append(".")
 from scripts import common
 
 
-def main(namespace: str, name: str):
+def main(namespace: str, name: str) -> None:
     node_hostname, mount_path = common.find_volume(namespace, name)
 
     # ssh into node

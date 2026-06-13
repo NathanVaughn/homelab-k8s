@@ -47,7 +47,7 @@ def discover_images() -> list[str]:
     return list(images)
 
 
-def main():
+def main() -> None:
     images = discover_images()
     missing_amd64: list[str] = []
 

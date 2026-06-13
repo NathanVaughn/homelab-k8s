@@ -24,7 +24,7 @@ yaml.add_representer(str, str_presenter)
 yaml.representer.SafeRepresenter.add_representer(str, str_presenter)
 
 
-def main():
+def main() -> None:
     ingresses = []
 
     for yaml_file in CLUSTER_DIR.glob("**/*.y*ml"):

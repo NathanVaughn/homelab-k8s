@@ -83,7 +83,7 @@ def process_lines(lines: list[str], mode: OPTIONS) -> tuple[list[str], bool]:
     return new_lines, changes
 
 
-def process_files(mode: OPTIONS):
+def process_files(mode: OPTIONS) -> None:
     for yaml_file in CLUSTER_DIR.glob("**/*.yaml"):
         with yaml_file.open("r") as fp:
             lines = fp.readlines()
@@ -97,7 +97,7 @@ def process_files(mode: OPTIONS):
             print(f"Processed {yaml_file}")
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("action", choices=["add", "remove"])
     args = parser.parse_args()

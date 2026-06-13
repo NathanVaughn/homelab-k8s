@@ -5,7 +5,7 @@ sys.path.append(".")
 from scripts import common
 
 
-def main(namespace: str, name: str):
+def main(namespace: str, name: str) -> None:
     print(common.find_volume(namespace, name))
 
 

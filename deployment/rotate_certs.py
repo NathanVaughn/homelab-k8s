@@ -7,7 +7,7 @@ from pyinfra.operations import python, server, systemd
 # sudo k3s certificate check --output table
 
 
-def rotate_certs():
+def rotate_certs() -> None:
     systemd.service(name="Stop k3s", service="k3s", running=False, _sudo=True)
     server.shell(
         name="Rotate k3s certificates", commands="k3s certificate rotate", _sudo=True

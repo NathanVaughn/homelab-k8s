@@ -116,7 +116,7 @@ if "hardware=adsb" in host.data.get("k8s_labels", []):  # type: ignore
 first_host = inventory.hosts[next(iter(inventory.hosts))]
 
 
-def update_kubeconfig():
+def update_kubeconfig() -> None:
     # replace the server address with the first host
     with open(kube_config, "r") as fp:
         kube_config_data = yaml.safe_load(fp)

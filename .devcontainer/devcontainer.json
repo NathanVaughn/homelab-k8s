@@ -37,12 +37,12 @@
                 "DavidAnson.vscode-markdownlint",
                 "ms-python.python",
                 "charliermarsh.ruff",
-                "sourcery.sourcery",
                 "actboy168.tasks",
                 "shardulm94.trailing-spaces",
                 "redhat.vscode-yaml",
                 "twixes.pypi-assistant",
-                "ms-kubernetes-tools.vscode-kubernetes-tools"
+                "ms-kubernetes-tools.vscode-kubernetes-tools",
+                "astral-sh.ty"
             ]
         }
     },
