@@ -27,6 +27,8 @@ spec:
       image:
         registry: cr.nathanv.app/docker.io
     # registry-proxy block-end
+    containerSecurityContext:
+      privileged: true
     nodeSelector:
       role: apps
     # enable alertmanager
