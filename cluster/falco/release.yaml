@@ -38,5 +38,5 @@ spec:
       # registry-proxy block-end
       config:
         alertmanager:
-          hostport: http://prometheus-kube-prometheus-alertmanager.prometheus.svc.cluster.internal:9093
+          hostport: http://prometheus-kube-prometheus-alertmanager.prometheus.svc.cluster.local:9093
           minimumpriority: "warning"
