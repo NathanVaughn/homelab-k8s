@@ -30,7 +30,7 @@ if not k3s_install_script.exists():
         with open(k3s_install_script, "wb") as fp:
             fp.write(response.read())
 
-with open(ROOT_DIR.joinpath("deployment", "secrets", "k3s_token"), "r") as fp:
+with open(ROOT_DIR.joinpath("deployment", "secrets", "k3s_token")) as fp:
     k3s_token = fp.read().strip()
 
 # setup passwordless sudo
@@ -126,7 +126,7 @@ first_host = inventory.hosts[next(iter(inventory.hosts))]
 
 def update_kubeconfig() -> None:
     # replace the server address with the first host
-    with open(kube_config, "r") as fp:
+    with open(kube_config) as fp:
         kube_config_data = yaml.safe_load(fp)
 
     # check if static ip is available
@@ -169,7 +169,7 @@ if first_host.name == host.name:
         name="Run k3s install script on first node",
         src=str(k3s_install_script),
         _env={"K3S_TOKEN": k3s_token},
-        args=base_args + ["--cluster-init"],
+        args=[*base_args, "--cluster-init"],
     )
 
     # download the kubeconfig file
@@ -192,7 +192,7 @@ else:
         name="Run k3s install script on other nodes",
         src=str(k3s_install_script),
         _env={"K3S_TOKEN": k3s_token},
-        args=base_args + [f"--server=https://{first_host_ip}:6443"],
+        args=[*base_args, f"--server=https://{first_host_ip}:6443"],
         _serial=True,  # join one at a time
     )
 
@@ -236,21 +236,24 @@ for label in host.data.get("k8s_labels", []):
 server.sysctl(
     name="Change the fs.inotify.max_user_watches value",
     key="fs.inotify.max_user_watches",
-    value=2099999999,
+    value=524288,
     persist=True,
+    persist_file="/etc/sysctl.d/99-inotify.conf",
     _sudo=True,
 )
 server.sysctl(
     name="Change the fs.inotify.max_user_instances value",
     key="fs.inotify.max_user_instances",
-    value=2099999999,
+    value=8192,
     persist=True,
+    persist_file="/etc/sysctl.d/99-inotify.conf",
     _sudo=True,
 )
 server.sysctl(
     name="Change the fs.inotify.max_queued_events value",
     key="fs.inotify.max_queued_events",
-    value=2099999999,
+    value=16384,
     persist=True,
+    persist_file="/etc/sysctl.d/99-inotify.conf",
     _sudo=True,
 )

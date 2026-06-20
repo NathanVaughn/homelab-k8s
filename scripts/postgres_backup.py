@@ -11,7 +11,7 @@ CLUSTER_DIR = BASE_DIR.joinpath("cluster")
 def kubectl_exec(
     namespace: str, container: str, command: list[str], capture_stdout: bool = False
 ) -> str:
-    cmd = ["kubectl", "exec", "-n", namespace, container, "--"] + command
+    cmd = ["kubectl", "exec", "-n", namespace, container, "--", *command]
     print("> " + " ".join(cmd))
 
     if not capture_stdout:

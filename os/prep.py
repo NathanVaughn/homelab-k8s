@@ -11,7 +11,7 @@ OUTPUT_FILE = os.path.join(THIS_DIR, "autoinstall.yaml")
 
 
 def main(hostname: str, password: str, ssid_name: str, ssid_password: str) -> None:
-    with open(TEMPLATE_FILE, "r") as f:
+    with open(TEMPLATE_FILE) as f:
         data = yaml.load(f, Loader=yaml.FullLoader)
 
     # Download the SSH public key

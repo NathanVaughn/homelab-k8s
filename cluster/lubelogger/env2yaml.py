@@ -1,4 +1,4 @@
-with open("temp.env", "r") as fp:
+with open("temp.env") as fp:
     lines = fp.readlines()
 
 with open("temp.yaml", "w") as fp:

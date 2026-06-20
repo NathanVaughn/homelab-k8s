@@ -34,7 +34,7 @@ def discover_images() -> list[str]:
     images = set()
 
     for yml_file in cluster_dir.glob("**/*.y*ml"):
-        with open(yml_file, "r") as f:
+        with open(yml_file) as f:
             for line in f:
                 if "image:" in line and "#" not in line:
                     image = line.split("image:")[1].strip()

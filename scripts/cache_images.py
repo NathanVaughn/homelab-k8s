@@ -46,7 +46,7 @@ def get_image_list() -> list[str]:
         ]
     ).decode("utf-8")
     # output is space seperated
-    return sorted(list(set(output.split(" "))))
+    return sorted(set(output.split(" ")))
 
 
 if __name__ == "__main__":

@@ -28,7 +28,7 @@ def main() -> None:
     ingresses = []
 
     for yaml_file in CLUSTER_DIR.glob("**/*.y*ml"):
-        with open(yaml_file, "r") as fp:
+        with open(yaml_file) as fp:
             docs = yaml.safe_load_all(fp)
             for doc in docs:
                 if not (
