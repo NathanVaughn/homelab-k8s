@@ -29,7 +29,7 @@ def reboot_node() -> None:
         # ---
         # try without `--disable-eviction`, as this gives Longhorn
         # time to replicate the volume before rebooting
-        commands=f"kubectl drain --delete-emptydir-data --ignore-daemonsets {host.get_fact(server_facts.Hostname)}",
+        commands=f"kubectl drain --delete-emptydir-data --v=2 --ignore-daemonsets {host.get_fact(server_facts.Hostname)}",
         _sudo=True,
     )
 
