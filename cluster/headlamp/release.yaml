@@ -34,12 +34,12 @@ spec:
       # https://github.com/kubernetes-sigs/headlamp/issues/4883#issuecomment-4057465035
       sessionTTL: null
       watchPlugins: true
-      unsafeUseServiceAccountToken: true
-      extraArgs:
-        - "-proxy-auth=true"
-        # oidc:
-        #   issuerURL: https://authentik.nathanv.app/application/o/headlamp/
-        #   scopes: openid,profile,email
+      # unsafeUseServiceAccountToken: true
+      # extraArgs:
+      #   - "-proxy-auth=true"
+      oidc:
+        issuerURL: https://authentik.nathanv.app/application/o/headlamp/
+        scopes: openid,profile,email
     # registry-proxy block-start
     image:
       registry: cr.nathanv.app/ghcr.io
