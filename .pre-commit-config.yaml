@@ -14,18 +14,18 @@ repos:
     hooks:
       - id: check-json5
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.18
+    rev: v0.15.19
     hooks:
       - args:
           - --fix
         id: ruff-check
       - id: ruff-format
   - repo: https://github.com/astral-sh/ty-pre-commit
-    rev: v0.0.51
+    rev: v0.0.52
     hooks:
       - id: ty
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.11.23
+    rev: 0.11.24
     hooks:
       - id: uv-lock
   - repo: https://github.com/tarioch/flux-check-hook
