@@ -1,4 +1,4 @@
-from pyinfra import host  # type: ignore
+from pyinfra import host
 from pyinfra.facts import server as server_facts
 from pyinfra.operations import apt, python, server
 
