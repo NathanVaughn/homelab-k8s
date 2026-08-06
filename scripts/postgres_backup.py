@@ -15,14 +15,10 @@ def kubectl_exec(
     print("> " + " ".join(cmd))
 
     if not capture_stdout:
-        subprocess.run(cmd)
+        subprocess.run(cmd, check=True)
         return ""
     else:
-        return subprocess.run(
-            cmd,
-            text=True,
-            capture_output=True,
-        ).stdout
+        return subprocess.run(cmd, text=True, capture_output=True, check=True).stdout
 
 
 def find_postgres_namespaces() -> list[str]:
@@ -53,6 +49,7 @@ def find_container(namespace: str) -> str:
         ],
         capture_output=True,
         text=True,
+        check=True,
     ).stdout.split()
 
     return next(name for name in names if "postgresql" in name or "postgres" in name)
@@ -145,7 +142,7 @@ def main(namespace: str | None, action: Literal["backup", "clean", "restore"]) -
     else:
         namespaces = find_postgres_namespaces()
 
-    for namespace in namespaces:
+    for namespace in namespaces:  # noqa: PLR1704
         container = find_container(namespace)
 
         if action == "backup":

@@ -9,7 +9,7 @@ def cache_image(image: str, i: int, total: int) -> None:
     if not image.startswith("cr.nathanv.app"):
         image = f"cr.nathanv.app/{image}"
 
-    subprocess.run(["docker", "pull", image])
+    subprocess.run(["docker", "pull", image], check=True)
     # subprocess.run(["docker", "image", "rm", new_image])
 
 

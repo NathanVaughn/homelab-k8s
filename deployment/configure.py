@@ -26,9 +26,8 @@ if not k3s_install_script.exists():
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
         },
     )
-    with urllib.request.urlopen(req) as response:
-        with open(k3s_install_script, "wb") as fp:
-            fp.write(response.read())
+    with urllib.request.urlopen(req) as response, open(k3s_install_script, "wb") as fp:
+        fp.write(response.read())
 
 with open(ROOT_DIR.joinpath("deployment", "secrets", "k3s_token")) as fp:
     k3s_token = fp.read().strip()
@@ -135,7 +134,7 @@ def update_kubeconfig() -> None:
         json.loads(
             subprocess.check_output(["curl", "-k", host], stderr=subprocess.DEVNULL)
         )
-    except Exception:
+    except Exception:  # noqa: BLE001
         # if not, use a host
         host = f"https://{first_host.name}:6443"
 
