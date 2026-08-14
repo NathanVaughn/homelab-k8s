@@ -6,6 +6,7 @@ metadata:
 spec:
   storageClassName: longhorn-rwx
   accessModes:
+    # Lockfiles on NFS don't work well, must be on a single reader storage path
     - ReadWriteOnce
   resources:
     requests:
