@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: prometheus-repo
         namespace: prometheus
-      version: "88.3.0"
+      version: "88.5.3"
   interval: 1h0m0s
   values:
     grafana:
