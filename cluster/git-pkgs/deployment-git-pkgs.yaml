@@ -35,7 +35,3 @@ spec:
           name: git-pkgs
           ports:
             - containerPort: 8080
-      volumes:
-        - name: git-pkgs-vol
-          persistentVolumeClaim:
-            claimName: git-pkgs-pvc
