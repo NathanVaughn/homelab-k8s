@@ -23,8 +23,6 @@ spec:
               value: "https://pkgs-ui.nathanv.app"
             - name: PROXY_DATABASE_DRIVER
               value: postgres
-            - name: PROXY_DATABASE_URL
-              value: git-pkgs-mysql-service.git-pkgs.svc.cluster.local
             - name: PROXY_STORAGE_MAX_SIZE
               value: 10GB
           envFrom:
