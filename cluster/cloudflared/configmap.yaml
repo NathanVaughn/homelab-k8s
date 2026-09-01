@@ -68,11 +68,6 @@ data:
         noTLSVerify: true
         originServerName: '*traefik*'
       service: https://traefik.traefik.svc.cluster.local:443
-    - hostname: pkgs-ui.nathanv.app
-      originRequest:
-        noTLSVerify: true
-        originServerName: '*traefik*'
-      service: https://traefik.traefik.svc.cluster.local:443
     - hostname: pkgs.nathanv.app
       originRequest:
         noTLSVerify: true

@@ -12,6 +12,14 @@ spec:
       services:
         - name: git-pkgs-service
           port: 8080
+    - match: Host(`pkgs.nathanv.app`) && PathPrefix(`/ui`)
+      kind: Rule
+      services:
+        - name: git-pkgs-service
+          port: 8080
+      middlewares:
+        - name: authentik-forward-auth
+          namespace: authentik
   tls:
     certResolver: le
     domains:
