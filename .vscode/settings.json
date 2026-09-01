@@ -1,5 +1,9 @@
 {
     "yaml.schemas": {
         "https://raw.githubusercontent.com/canonical/subiquity/main/autoinstall-schema.json": "file:///workspaces/homelab-k8s/os/autoinstall.yaml"
-    }
+    },
+    "cSpell.words": [
+        "nathanv",
+        "pkgs"
+    ]
 }

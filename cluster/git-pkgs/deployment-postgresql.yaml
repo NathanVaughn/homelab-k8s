@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: git-pkgs-postgresql-deployment
+  namespace: git-pkgs
+spec:
+  replicas: 1
+  serviceName: git-pkgs-postgresql
+  selector:
+    matchLabels:
+      app: git-pkgs-postgresql
+  template:
+    metadata:
+      labels:
+        app: git-pkgs-postgresql
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+        - env:
+            - name: POSTGRES_USER
+              value: gitpkgs
+            - name: POSTGRES_DB
+              value: gitpkgs
+          envFrom:
+            - secretRef:
+                name: git-pkgs-secrets
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/library/postgres:18.4
+          name: postgresql
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/
+              name: postgresql-vol
+      volumes:
+        - name: postgresql-vol
+          persistentVolumeClaim:
+            claimName: git-pkgs-pvc-postgresql

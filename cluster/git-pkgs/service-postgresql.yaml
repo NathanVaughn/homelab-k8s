@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: git-pkgs-postgresql-service
+  namespace: git-pkgs
+spec:
+  type: ClusterIP
+  selector:
+    app: git-pkgs-postgresql
+  ports:
+    - port: 5432
+      protocol: TCP
