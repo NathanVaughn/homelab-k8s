@@ -12,7 +12,7 @@ spec:
       services:
         - name: git-pkgs-service
           port: 8080
-    - match: Host(`pkgs.nathanv.app`) && PathPrefix(`/ui`)
+    - match: Host(`pkgs.nathanv.app`) && (PathPrefix(`/ui`) || PathPrefix(`/api`) || PathPrefix(`/health`) || PathPrefix(`/stats`))
       kind: Rule
       services:
         - name: git-pkgs-service
