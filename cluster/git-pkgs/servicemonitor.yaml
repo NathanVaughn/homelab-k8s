@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: servicemonitor-git-pkgs
+  namespace: git-pkgs
+spec:
+  endpoints:
+    - interval: 30s
+      targetPort: 8080
+      path: /metrics
+  namespaceSelector:
+    matchNames:
+      - git-pkgs
+  selector:
+    matchLabels:
+      app: git-pkgs
