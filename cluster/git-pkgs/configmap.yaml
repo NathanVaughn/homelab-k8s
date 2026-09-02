@@ -1,0 +1,23 @@
+apiVersion: v1
+data:
+  config.yaml: |
+    upstream:
+      helm:
+        alloy: https://grafana.github.io/helm-charts
+        authentik: https://charts.goauthentik.io
+        descheduler: https://kubernetes-sigs.github.io/descheduler/
+        grafana: https://grafana.github.io/helm-charts
+        harbor: https://helm.goharbor.io
+        headlamp: https://kubernetes-sigs.github.io/headlamp/
+        kube-vip: https://kube-vip.github.io/helm-charts
+        loki: https://grafana.github.io/helm-charts
+        longhorn: https://charts.longhorn.io
+        portainer: https://portainer.github.io/k8s/
+        prometheus: https://prometheus-community.github.io/helm-charts
+        reloader: https://stakater.github.io/stakater-charts
+        sealed-secrets: https://bitnami.github.io/sealed-secrets
+        traefik: https://traefik.github.io/charts
+kind: ConfigMap
+metadata:
+  name: git-pkgs-configmap
+  namespace: git-pkgs
