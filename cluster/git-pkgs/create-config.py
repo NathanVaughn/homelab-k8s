@@ -46,7 +46,14 @@ def main() -> None:
 
     # create inner data object
     inner_data = {
-        "upstream": {"helm": repos, "generic": {"github": "https://github.com"}}
+        "upstream": {
+            "helm": repos,
+            "generic": {
+                "github": "https://github.com",
+                "astral": "https://releases.astral.sh",
+            },
+            "oci": {"ghcr": "https://ghcr.io"},
+        }
     }
 
     # convert to text
