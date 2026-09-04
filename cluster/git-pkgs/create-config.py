@@ -45,7 +45,9 @@ def main() -> None:
     repos = dict(sorted(repos.items()))
 
     # create inner data object
-    inner_data = {"upstream": {"helm": repos}}
+    inner_data = {
+        "upstream": {"helm": repos, "generic": {"github": "https://github.com"}}
+    }
 
     # convert to text
     inner_data_text = yaml.dump(inner_data, indent=2)
