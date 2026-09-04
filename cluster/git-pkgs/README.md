@@ -9,7 +9,9 @@ export AWS_REGION=$AWS_REGION
 export POSTGRES_PASSWORD=$DB_PASSWORD
 export S3_BUCKET=$S3_BUCKET
 export S3_ENDPOINT=$S3_ENDPOINT
-export PROXY_STORAGE_DIRECT_SERVE=true
+# This being set to True seems to incur a performance penalty.
+# Additionally, cache doesn't work as well due to the AWS signature
+export PROXY_STORAGE_DIRECT_SERVE=false
 export PROXY_STORAGE_DIRECT_SERVE_BASE_URL=$PROXY_STORAGE_DIRECT_SERVE_BASE_URL
 # change dollar sign variables above this line
 kubectl apply -f namespace.yaml
