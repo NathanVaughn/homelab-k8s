@@ -19,7 +19,7 @@ kubectl -n git-pkgs create secret generic git-pkgs-env \
 --from-literal=AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
 --from-literal=AWS_REGION=$AWS_REGION \
 --from-literal=PROXY_DATABASE_URL=postgres://gitpkgs:$POSTGRES_PASSWORD@git-pkgs-postgresql-service.git-pkgs.svc.cluster.local:5432/gitpkgs?sslmode=disable \
---from-literal="PROXY_STORAGE_URL=s3://$S3_BUCKET?endpoint=$S3_ENDPOINT&prefix=pkgs/&s3ForcePathStyle=true" \
+--from-literal="PROXY_STORAGE_URL=s3://$S3_BUCKET?endpoint=$S3_ENDPOINT&prefix=pkgs/&use_path_style=false" \
 --from-literal=POSTGRES_PASSWORD=$POSTGRES_PASSWORD \
 --from-literal=PROXY_STORAGE_DIRECT_SERVE=$PROXY_STORAGE_DIRECT_SERVE \
 --from-literal=PROXY_STORAGE_DIRECT_SERVE_BASE_URL=$PROXY_STORAGE_DIRECT_SERVE_BASE_URL \
