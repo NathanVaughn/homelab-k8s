@@ -11,22 +11,22 @@ Create a Python file like below in order to setup OIDC Authentication as
 ```python
 OAUTH2_CONFIG = [
     {
-        'OAUTH2_NAME': 'authentik',
-        'OAUTH2_DISPLAY_NAME': 'Authentik',
-        'OAUTH2_CLIENT_ID': '{TODO}',
-        'OAUTH2_CLIENT_SECRET': '{TODO}',
-        'OAUTH2_TOKEN_URL': 'https://authentik.nathanv.app/application/o/token/',
-        'OAUTH2_AUTHORIZATION_URL': 'https://authentik.nathanv.app/application/o/authorize/',
-        'OAUTH2_SERVER_METADATA_URL': 'https://authentik.nathanv.app/application/o/pgadmin/.well-known/openid-configuration',
-        'OAUTH2_API_BASE_URL': 'https://authentik.nathanv.app',
-        'OAUTH2_USERINFO_ENDPOINT': 'https://authentik.nathanv.app/application/o/userinfo/',
-        'OAUTH2_SCOPE': 'openid email profile name',
-        'OAUTH2_USERNAME_CLAIM': 'email',
-        'OAUTH2_ICON': 'fa-hive',
-        'OAUTH2_BUTTON_COLOR': '#0000ff',
-        'OAUTH2_ADDITIONAL_CLAIMS': None,
-        'OAUTH2_SSL_CERT_VERIFICATION': True,
-        'OAUTH2_LOGOUT_URL': 'https://authentik.nathanv.app/application/o/pgadmin/end-session/'
+        "OAUTH2_NAME": "authentik",
+        "OAUTH2_DISPLAY_NAME": "Authentik",
+        "OAUTH2_CLIENT_ID": "{TODO}",
+        "OAUTH2_CLIENT_SECRET": "{TODO}",
+        "OAUTH2_TOKEN_URL": "https://authentik.nathanv.app/application/o/token/",
+        "OAUTH2_AUTHORIZATION_URL": "https://authentik.nathanv.app/application/o/authorize/",
+        "OAUTH2_SERVER_METADATA_URL": "https://authentik.nathanv.app/application/o/pgadmin/.well-known/openid-configuration",
+        "OAUTH2_API_BASE_URL": "https://authentik.nathanv.app",
+        "OAUTH2_USERINFO_ENDPOINT": "https://authentik.nathanv.app/application/o/userinfo/",
+        "OAUTH2_SCOPE": "openid email profile name",
+        "OAUTH2_USERNAME_CLAIM": "email",
+        "OAUTH2_ICON": "fa-hive",
+        "OAUTH2_BUTTON_COLOR": "#0000ff",
+        "OAUTH2_ADDITIONAL_CLAIMS": None,
+        "OAUTH2_SSL_CERT_VERIFICATION": True,
+        "OAUTH2_LOGOUT_URL": "https://authentik.nathanv.app/application/o/pgadmin/end-session/",
     }
 ]
 ```
