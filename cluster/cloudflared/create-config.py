@@ -52,7 +52,7 @@ def main() -> None:
                     )
 
     # sort other services
-    ingresses = sorted(ingresses, key=lambda i: i["hostname"])
+    ingresses = sorted(ingresses, key=lambda i: i["hostname"])  # ty: ignore[no-matching-overload]
 
     # add 404 service at the end
     ingresses.append({"service": "http_status:404"})
