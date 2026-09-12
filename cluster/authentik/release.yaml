@@ -54,6 +54,8 @@ spec:
         serviceMonitor:
           enabled: true
       # required for icon uploads
+      deploymentStrategy:
+        type: Recreate
       initContainers:
         - name: permission-fix
           # registry-proxy image-prefix
