@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mediacms-postgresql-service
+  namespace: mediacms
+spec:
+  type: ClusterIP
+  selector:
+    app: mediacms-postgresql
+  ports:
+    - port: 5432
+      protocol: TCP

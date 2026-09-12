@@ -55,6 +55,8 @@ sudo rm -rf /var/lib/rancher/
 sudo rm -rf /etc/rancher/
 # if needed
 /usr/local/bin/k3s-killall.sh
+/usr/local/bin/k3s-agent-uninstall.sh
+/usr/local/bin/k3s-uninstall.sh
 ```
 
 Then try again.

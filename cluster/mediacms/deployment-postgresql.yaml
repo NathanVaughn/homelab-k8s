@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mediacms-postgresql-deployment
+  namespace: mediacms
+spec:
+  replicas: 1
+  serviceName: mediacms-postgresql
+  selector:
+    matchLabels:
+      app: mediacms-postgresql
+  template:
+    metadata:
+      labels:
+        app: mediacms-postgresql
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+        - env:
+            - name: POSTGRES_USER
+              value: mediacms
+            - name: POSTGRES_DB
+              value: mediacms
+          envFrom:
+            - secretRef:
+                name: mediacms-env
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/library/postgres:18.6
+          name: postgresql
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/
+              name: postgresql-vol
+      volumes:
+        - name: postgresql-vol
+          persistentVolumeClaim:
+            claimName: mediacms-pvc-postgresql

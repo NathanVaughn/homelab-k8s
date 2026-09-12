@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mediacms-redis-deployment
+  namespace: mediacms
+spec:
+  replicas: 1
+  serviceName: mediacms-redis
+  selector:
+    matchLabels:
+      app: mediacms-redis
+  template:
+    metadata:
+      labels:
+        app: mediacms-redis
+    spec:
+      nodeSelector:
+        role: apps
+      initContainers:
+        - name: permission-fix
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/library/busybox:1.38.0
+          command: ['sh', '-c']
+          args: ['chown -R 999:999 /data']
+          volumeMounts:
+            - mountPath: /data
+              name: redis-vol
+      containers:
+        - name: redis
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/library/redis:8.10
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+            - mountPath: /data
+              name: redis-vol
+      volumes:
+        - name: redis-vol
+          persistentVolumeClaim:
+            claimName: mediacms-pvc-redis

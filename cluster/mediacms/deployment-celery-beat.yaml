@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mediacms-celery-beat-deployment
+  namespace: mediacms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mediacms-celery-beat
+  template:
+    metadata:
+      labels:
+        app: mediacms-celery-beat
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+        - name: celery-beat
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/mediacms/mediacms:latest
+          env:
+            - name: ENABLE_UWSGI
+              value: "no"
+            - name: ENABLE_NGINX
+              value: "no"
+            - name: ENABLE_CELERY_SHORT
+              value: "no"
+            - name: ENABLE_CELERY_LONG
+              value: "no"
+            - name: ENABLE_MIGRATIONS
+              value: "no"
+            - name: ENABLE_CELERY_BEAT
+              value: "yes"
+          envFrom:
+            - secretRef:
+                name: mediacms-env
+          volumeMounts:
+            - mountPath: /home/mediacms.io/mediacms/media_files/
+              name: mediacms-media-vol
+            - mountPath: /home/mediacms.io/mediacms/deploy/docker/local_settings.py
+              name: mediacms-vol-settings
+              subPath: local_settings.py
+      volumes:
+        - name: mediacms-media-vol
+          persistentVolumeClaim:
+            claimName: mediacms-pvc-media
+        - name: mediacms-vol-settings
+          configMap:
+            name: mediacms-configmap

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mediacms-redis-service
+  namespace: mediacms
+spec:
+  type: ClusterIP
+  selector:
+    app: mediacms-redis
+  ports:
+    - port: 6379
+      protocol: TCP

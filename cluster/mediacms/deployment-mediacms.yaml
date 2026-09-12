@@ -1,0 +1,92 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mediacms-deployment
+  namespace: mediacms
+spec:
+  replicas: 1
+  serviceName: mediacms
+  selector:
+    matchLabels:
+      app: mediacms
+  template:
+    metadata:
+      labels:
+        app: mediacms
+    spec:
+      nodeSelector:
+        role: apps
+      initContainers:
+        - name: migrations
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/mediacms/mediacms:latest
+          args: ["./deploy/docker/prestart.sh"]
+          env:
+            - name: ENABLE_MIGRATIONS
+              value: "yes"
+            - name: ENABLE_UWSGI
+              value: "no"
+            - name: ENABLE_NGINX
+              value: "no"
+            - name: ENABLE_CELERY_SHORT
+              value: "no"
+            - name: ENABLE_CELERY_LONG
+              value: "no"
+            - name: ENABLE_CELERY_BEAT
+              value: "no"
+          envFrom:
+            - secretRef:
+                name: mediacms-env
+          volumeMounts:
+            - mountPath: /home/mediacms.io/mediacms/media_files/
+              name: mediacms-media-vol
+            - mountPath: /home/mediacms.io/mediacms/deploy/docker/local_settings.py
+              name: mediacms-vol-settings
+              subPath: local_settings.py
+        - name: permission-fix
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/library/busybox:1.38.0
+          command: ['sh', '-c']
+          args: ['chmod -R 777 /home/mediacms.io/mediacms/media_files/']
+          volumeMounts:
+            - mountPath: /home/mediacms.io/mediacms/media_files/
+              name: mediacms-media-vol
+        - name: seed-files
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/curlimages/curl:8.22.0
+          command: ['sh', '-c']
+          args: ['mkdir -p /home/mediacms.io/mediacms/media_files/userlogos/ && cd /home/mediacms.io/mediacms/media_files/userlogos/ && curl -o banner.jpg https://raw.githubusercontent.com/mediacms-io/mediacms/refs/heads/main/media_files/userlogos/banner.jpg && curl -o poster_audio.jpg https://raw.githubusercontent.com/mediacms-io/mediacms/refs/heads/main/media_files/userlogos/poster_audio.jpg && curl -o user.jpg https://raw.githubusercontent.com/mediacms-io/mediacms/refs/heads/main/media_files/userlogos/user.jpg']
+          volumeMounts:
+            - mountPath: /home/mediacms.io/mediacms/media_files/
+              name: mediacms-media-vol
+      containers:
+        - name: mediacms
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/mediacms/mediacms:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: ENABLE_MIGRATIONS
+              value: "no"
+            - name: ENABLE_CELERY_SHORT
+              value: "no"
+            - name: ENABLE_CELERY_LONG
+              value: "no"
+            - name: ENABLE_CELERY_BEAT
+              value: "no"
+          envFrom:
+            - secretRef:
+                name: mediacms-env
+          volumeMounts:
+            - mountPath: /home/mediacms.io/mediacms/media_files/
+              name: mediacms-media-vol
+            - mountPath: /home/mediacms.io/mediacms/deploy/docker/local_settings.py
+              name: mediacms-vol-settings
+              subPath: local_settings.py
+      volumes:
+        - name: mediacms-media-vol
+          persistentVolumeClaim:
+            claimName: mediacms-pvc-media
+        - name: mediacms-vol-settings
+          configMap:
+            name: mediacms-configmap

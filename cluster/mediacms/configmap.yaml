@@ -1,0 +1,69 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mediacms-configmap
+  namespace: mediacms
+data:
+  local_settings.py: |
+    import os
+
+    FRONTEND_HOST = 'https://videos.nathanv.app'
+    PORTAL_NAME = 'MediaCMS'
+    REDIS_LOCATION = 'redis://mediacms-redis-service.mediacms.svc.cluster.local:6379/1'
+
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": 'mediacms',
+            "HOST": 'mediacms-postgresql-service.mediacms.svc.cluster.local',
+            "PORT": '5432',
+            "USER": 'mediacms',
+            "PASSWORD": os.environ['POSTGRES_PASSWORD'],
+            "OPTIONS": {
+                "pool": {
+                    "min_size": 2,
+                    "max_size": 8,
+                    "timeout": 10,
+                    "max_lifetime": 30 * 60,
+                    "max_idle": 10 * 60,
+                }
+            },
+        }
+    }
+
+    CACHES = {
+        "default": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": REDIS_LOCATION,
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            },
+        }
+    }
+
+    # CELERY STUFF
+    BROKER_URL = REDIS_LOCATION
+    CELERY_RESULT_BACKEND = BROKER_URL
+    MP4HLS_COMMAND = "/home/mediacms.io/mediacms/bento4/bin/mp4hls"
+
+    DEBUG = os.getenv('DEBUG', 'False') == 'True'
+
+    # Theme
+    DEFAULT_THEME = 'dark'
+
+    # Make private
+    GLOBAL_LOGIN_REQUIRED = True
+    REGISTER_ALLOWED = False
+    CAN_LIKE_MEDIA = False
+    CAN_DISLIKE_MEDIA = False
+    CAN_REPORT_MEDIA = False
+    CAN_SHARE_MEDIA = False
+
+    # Email
+    DEFAULT_FROM_EMAIL = "mediacms@nathanv.app"
+    EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
+    EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
+    EMAIL_USE_TLS = True
+    SERVER_EMAIL = DEFAULT_FROM_EMAIL
+    EMAIL_HOST = "nathanv.app"
+    EMAIL_PORT = 587
