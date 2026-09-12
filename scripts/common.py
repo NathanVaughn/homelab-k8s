@@ -48,10 +48,10 @@ def find_volume(namespace: str, name: str) -> tuple[str, str]:
     )
     node_hostname = f"{pod_info['spec']['nodeName']}.nathanv.home"
     pod_id = pod_info["metadata"]["uid"]
-    print(f"Found volume {volume_id} on node {node_hostname}")
-
     mount_path = (
         f"/var/lib/kubelet/pods/{pod_id}/volumes/kubernetes.io~csi/{volume_id}/mount"
     )
+
+    print(f"Found volume {volume_id} on node {node_hostname} at {mount_path}")
 
     return node_hostname, mount_path

@@ -11,11 +11,12 @@ def main(namespace: str, name: str) -> None:
     node_hostname, mount_path = common.find_volume(namespace, name)
 
     # ssh into node
-    connection = fabric.Connection(node_hostname, user="ubuntu")
+    user = "ubuntu"
+    connection = fabric.Connection(node_hostname, user=user)
 
     # create archive
     tar_file_base = f"{name}.tar"
-    remote_tar_file = f"/tmp/{tar_file_base}"
+    remote_tar_file = f"/home/{user}/{tar_file_base}"
     local_tar_file = f"{common.SCRIPTS_DIR}/tar/{tar_file_base}"
     print(f"Creating archive from {mount_path}")
     connection.run(

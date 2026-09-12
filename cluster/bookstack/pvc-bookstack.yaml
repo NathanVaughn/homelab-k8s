@@ -4,9 +4,9 @@ metadata:
   name: bookstack-pvc-bookstack
   namespace: bookstack
 spec:
-  storageClassName: longhorn-rwx
+  storageClassName: longhorn
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 5Gi
