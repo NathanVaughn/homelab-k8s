@@ -4,9 +4,9 @@ metadata:
   name: lubelogger-pvc-keys
   namespace: lubelogger
 spec:
-  storageClassName: longhorn-rwx
+  storageClassName: longhorn
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 10Mi
