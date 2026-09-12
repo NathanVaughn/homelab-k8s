@@ -150,7 +150,7 @@ base_args = [
     "server",
     "--disable=traefik",
     "--disable=servicelb",
-    "--embedded-registry",
+    # "--embedded-registry",
     f"--tls-san={host.name}",
     f"--tls-san={CONTROL_PLANE_IP}",
     "--etcd-expose-metrics",

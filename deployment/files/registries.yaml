@@ -1,8 +1,8 @@
 # https://docs.k3s.io/installation/registry-mirror
 # --------------------------------------------
 # This section will share images between nodes
-mirrors:
-  "*":
+# mirrors:
+#   "*":
 
 # --------------------------------------------
 # This section will pull everything from Harbor
