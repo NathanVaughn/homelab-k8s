@@ -4,9 +4,8 @@ metadata:
   name: paperless-pvc-data
   namespace: paperless
 spec:
-  storageClassName: longhorn-rwx
+  storageClassName: longhorn
   accessModes:
-    # Lockfiles on NFS don't work well, must be on a single reader storage path
     - ReadWriteOnce
   resources:
     requests:
