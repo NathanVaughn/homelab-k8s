@@ -4,9 +4,9 @@ metadata:
   name: scrutiny-web-pvc
   namespace: scrutiny
 spec:
-  storageClassName: longhorn-rwx
+  storageClassName: longhorn
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 50Mi
