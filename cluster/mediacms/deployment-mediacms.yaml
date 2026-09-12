@@ -1,11 +1,10 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: mediacms-deployment
   namespace: mediacms
 spec:
   replicas: 1
-  serviceName: mediacms
   selector:
     matchLabels:
       app: mediacms
