@@ -13,6 +13,14 @@ spec:
       labels:
         app: mediacms-celery-worker
     spec:
+      # Spread the replicas across physical nodes
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app: mediacms-celery-worker
       nodeSelector:
         role: apps
       containers:
