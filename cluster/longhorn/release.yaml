@@ -19,9 +19,9 @@ spec:
   interval: 1h0m0s
   values:
     # registry-proxy block-start
-    global:
-      cattle:
-        systemDefaultRegistry: cr.nathanv.app/docker.io
+    # global:
+    #   cattle:
+    #     systemDefaultRegistry: cr.nathanv.app/docker.io
     # registry-proxy block-end
     persistence:
       defaultClassReplicaCount: 3
