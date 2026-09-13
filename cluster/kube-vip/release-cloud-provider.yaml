@@ -16,8 +16,8 @@ spec:
   interval: 1h0m0s
   values:
     # registry-proxy block-start
-    # image:
-    #  repository: cr.nathanv.app/ghcr.io/kube-vip/kube-vip-cloud-provider
+    image:
+      repository: cr.nathanv.app/ghcr.io/kube-vip/kube-vip-cloud-provider
     # registry-proxy block-end
     cm:
       data:
