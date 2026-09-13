@@ -5,3 +5,4 @@ metadata:
 provisioner: driver.longhorn.io
 parameters:
   shareManagerNodeSelector: role:apps
+allowVolumeExpansion: true

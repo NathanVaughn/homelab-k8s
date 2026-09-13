@@ -52,6 +52,7 @@ data:
     DEFAULT_THEME = 'dark'
 
     # Make private
+    # https://github.com/mediacms-io/mediacms/blob/main/cms/settings.py
     GLOBAL_LOGIN_REQUIRED = True
     REGISTER_ALLOWED = False
     CAN_LIKE_MEDIA = False
