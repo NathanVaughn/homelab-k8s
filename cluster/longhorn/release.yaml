@@ -30,6 +30,9 @@ spec:
       # prevents data from being deleted when pvc is deleted
       reclaimPolicy: Retain
     defaultSettings:
+      # automatically delete orphaned replicas
+      orphanResourceAutoDeletion: replica-data;instance
+      orphanResourceAutoDeletionGracePeriod: 43200 # 12 hours in seconds
       # enable auto balancing of replicas across nodes
       replicaAutoBalance: best-effort
       # allow manually attached volumes to be detached. Important for rebooting.
