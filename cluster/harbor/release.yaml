@@ -16,6 +16,8 @@ spec:
   interval: 1h0m0s
   values:
     externalURL: https://cr.nathanv.app
+    updateStrategy:
+      type: Recreate
     expose:
       type: clusterIP
       tls:
