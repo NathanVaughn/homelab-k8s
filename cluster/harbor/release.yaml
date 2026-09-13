@@ -30,7 +30,6 @@ spec:
       nodeSelector:
         role: apps
     jobservice:
-      replicas: 2
       nodeSelector:
         role: apps
     registry:
@@ -39,8 +38,6 @@ spec:
       nodeSelector:
         role: apps
     trivy:
-      # make the scan go faster
-      replicas: 3
       nodeSelector:
         role: apps
     database:
@@ -61,13 +58,13 @@ spec:
     persistence:
       persistentVolumeClaim:
         registry:
-          storageClass: longhorn-rwx
-          accessMode: ReadWriteMany
-          size: 50Gi
+          storageClass: longhorn
+          accessMode: ReadWriteOnce
+          size: 20Gi
         jobservice:
           jobLog:
-            storageClass: longhorn-rwx
-            accessMode: ReadWriteMany
+            storageClass: longhorn
+            accessMode: ReadWriteOnce
         database:
           storageClass: longhorn
           accessMode: ReadWriteOnce
