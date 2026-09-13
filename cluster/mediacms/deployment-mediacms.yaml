@@ -18,7 +18,7 @@ spec:
       initContainers:
         - name: migrations
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/mediacms/mediacms:latest
+          image: cr.nathanv.app/docker.io/mediacms/mediacms@sha256:110df89274b0e5703e2ca1bd997c293ff1d994c10150bc4554482d208ce13362
           args: ["./deploy/docker/prestart.sh"]
           env:
             - name: ENABLE_MIGRATIONS
@@ -61,7 +61,7 @@ spec:
       containers:
         - name: mediacms
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/mediacms/mediacms:latest
+          image: cr.nathanv.app/docker.io/mediacms/mediacms@sha256:110df89274b0e5703e2ca1bd997c293ff1d994c10150bc4554482d208ce13362
           ports:
             - containerPort: 80
           env:

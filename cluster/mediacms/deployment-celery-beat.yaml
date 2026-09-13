@@ -18,7 +18,7 @@ spec:
       containers:
         - name: celery-beat
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/mediacms/mediacms:latest
+          image: cr.nathanv.app/docker.io/mediacms/mediacms@sha256:110df89274b0e5703e2ca1bd997c293ff1d994c10150bc4554482d208ce13362
           env:
             - name: ENABLE_UWSGI
               value: "no"
