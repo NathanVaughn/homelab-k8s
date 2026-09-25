@@ -12,6 +12,19 @@ This folder contains Kubernetes manifests synced with [flux](https://fluxcd.io/)
 Individual folders have specific instructions for any manual actions
 needed like setting up secrets.
 
+### dashboards
+
+This folder contains Grafana dashboard definitions
+
+### deployment
+
+This uses [pyinfra](https://pyinfra.com/) to deploy [k3s](https://k3s.io/)
+and other operating system settings and packages.
+
+### obsolete
+
+Old Kubernetes resources that I don't want to delete quite yet.
+
 ### os
 
 Script and information to setup node operating systems.
@@ -20,8 +33,3 @@ Script and information to setup node operating systems.
 
 Scripts for cluster management. Outside the `cluster` directory to not annoy
 `flux`.
-
-### deployment
-
-This uses [pyinfra](https://pyinfra.com/) to deploy [k3s](https://k3s.io/)
-and other operating system settings and packages.
