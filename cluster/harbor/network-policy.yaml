@@ -9,14 +9,14 @@ spec:
     - Ingress
     - Egress
   ingress:
-    # Traefik ingress
+    # Traefik ingress (harbor-nginx container port, post-Service-DNAT)
     - from:
         - namespaceSelector:
             matchLabels:
               kubernetes.io/metadata.name: traefik
       ports:
         - protocol: TCP
-          port: 80
+          port: 8080
     # Prometheus scraping harbor component metrics
     - from:
         - namespaceSelector:

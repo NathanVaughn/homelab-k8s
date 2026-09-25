@@ -37,14 +37,14 @@ spec:
     - Ingress
     - Egress
   ingress:
-    # Traefik ingress (web UI)
+    # Traefik ingress (web UI, longhorn-ui container port, post-Service-DNAT)
     - from:
         - namespaceSelector:
             matchLabels:
               kubernetes.io/metadata.name: traefik
       ports:
         - protocol: TCP
-          port: 80
+          port: 8000
     # Intra-namespace (manager <-> instance-manager <-> csi plugins <-> ui)
     - from:
         - podSelector: {}
