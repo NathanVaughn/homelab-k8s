@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: kube-vip-cloud-provider-network-policy
+  namespace: kube-vip
+spec:
+  # Deliberately scoped to just the cloud-provider Deployment. The main
+  # kube-vip DaemonSet pods use hostNetwork for VIP/ARP announcements and are
+  # not meaningfully governed by namespaced NetworkPolicy, so they're left
+  # untouched to avoid breaking VIP failover.
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: kube-vip-cloud-provider
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress: []
+  egress:
+    # DNS
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+    # Kubernetes API (watches Services to assign LoadBalancer IPs)
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+      ports:
+        - protocol: TCP
+          port: 6443

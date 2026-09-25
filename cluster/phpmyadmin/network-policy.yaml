@@ -1,0 +1,50 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: phpmyadmin-network-policy
+  namespace: phpmyadmin
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    # Traefik ingress
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: traefik
+    # Intra-namespace (phpmyadmin <-> its own mysql)
+    - from:
+        - podSelector: {}
+  egress:
+    # DNS
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+    # Intra-namespace
+    - to:
+        - podSelector: {}
+    # To all namespaces with MySQL on port 3306
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: bookstack
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: ghost
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: webtrees
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: webtrees-test
+      ports:
+        - protocol: TCP
+          port: 3306

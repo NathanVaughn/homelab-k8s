@@ -1,43 +1,32 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: guacd-network-policy
-  namespace: guacamole
-spec:
-  podSelector:
-    matchLabels:
-      app: guacamole-guacd
-  policyTypes:
-    - Ingress
-  # only permit ingress from guacamole frontend
-  ingress:
-    - from:
-        - podSelector:
-            matchLabels:
-              app: guacamole
-      ports:
-        - protocol: TCP
-          port: 4822
----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: guacamole-network-policy
-  namespace: guacamole
+  name: authentik-network-policy
+  namespace: authentik
 spec:
   podSelector: {}
   policyTypes:
     - Ingress
     - Egress
   ingress:
-    # Traefik ingress
+    # Traefik ingress (web UI + forward-auth outpost, used cross-namespace by every app's middleware)
     - from:
         - namespaceSelector:
             matchLabels:
               kubernetes.io/metadata.name: traefik
       ports:
         - protocol: TCP
-          port: 8080
+          port: 9000
+        - protocol: TCP
+          port: 9443
+    # Prometheus scraping authentik-server metrics
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: prometheus
+      ports:
+        - protocol: TCP
+          port: 9300
     # pgadmin to PostgreSQL
     - from:
         - namespaceSelector:
@@ -46,7 +35,7 @@ spec:
       ports:
         - protocol: TCP
           port: 5432
-    # Intra-namespace (guacamole <-> guacd, postgresql)
+    # Intra-namespace (server <-> postgresql)
     - from:
         - podSelector: {}
   egress:
@@ -63,11 +52,7 @@ spec:
     # Intra-namespace
     - to:
         - podSelector: {}
-    # RDP/VNC/SSH access to devices on the local network
+    # External (SMTP)
     - to:
         - ipBlock:
-            cidr: 10.0.0.0/8
-        - ipBlock:
-            cidr: 172.16.0.0/12
-        - ipBlock:
-            cidr: 192.168.0.0/16
+            cidr: 0.0.0.0/0

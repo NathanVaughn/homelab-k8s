@@ -148,6 +148,7 @@ def update_kubeconfig() -> None:
 # adds full hostname to the certificate
 base_args = [
     "server",
+    "--secrets-encryption",
     "--disable=traefik",
     "--disable=servicelb",
     # "--embedded-registry",

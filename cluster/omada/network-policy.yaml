@@ -1,0 +1,65 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: omada-network-policy
+  namespace: omada
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    # Traefik ingress
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: traefik
+    # Intra-namespace (exporter -> omada controller)
+    - from:
+        - podSelector: {}
+    # Prometheus scraping exporter metrics
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: prometheus
+      ports:
+        - protocol: TCP
+          port: 9202
+    # Network devices need to reach the controller
+    - ports:
+        - protocol: TCP
+          port: 29812
+        - protocol: UDP
+          port: 27001
+        - protocol: UDP
+          port: 29810
+        - protocol: TCP
+          port: 29811
+        - protocol: TCP
+          port: 29814
+        - protocol: TCP
+          port: 29815
+        - protocol: TCP
+          port: 29816
+        - protocol: TCP
+          port: 29813
+        - protocol: TCP
+          port: 29817
+  egress:
+    # DNS
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+    # Intra-namespace
+    - to:
+        - podSelector: {}
+    # Network devices and firmware updates
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0

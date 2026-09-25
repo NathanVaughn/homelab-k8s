@@ -19,7 +19,7 @@ spec:
       containers:
         - name: snippet-box
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/pawelmalak/snippet-box:latest
+          image: cr.nathanv.app/docker.io/pawelmalak/snippet-box@sha256:4aac6fe8818dbb78a60e09d1556949e28f85cff8d50bdc6356b898806ea5f4f7
           ports:
             - containerPort: 5000
           volumeMounts:

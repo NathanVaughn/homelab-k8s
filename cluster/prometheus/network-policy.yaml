@@ -1,0 +1,67 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: prometheus-network-policy
+  namespace: prometheus
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    # Traefik ingress (Prometheus UI + Alertmanager UI)
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: traefik
+      ports:
+        - protocol: TCP
+          port: 9090
+        - protocol: TCP
+          port: 9093
+    # Intra-namespace (prometheus <-> alertmanager <-> operator <-> kube-state-metrics <-> node-exporter)
+    - from:
+        - podSelector: {}
+  egress:
+    # DNS
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+    # Intra-namespace
+    - to:
+        - podSelector: {}
+    # kube-system targets (coredns metrics, kubelet metrics)
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+      ports:
+        - protocol: TCP
+          port: 9153
+        - protocol: TCP
+          port: 10250
+        - protocol: TCP
+          port: 10255
+    # Kubernetes API server (apiserver ServiceMonitor)
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+      ports:
+        - protocol: TCP
+          port: 6443
+    # Prometheus is the central metrics scraper for every app namespace, so it
+    # must be able to reach any target's metrics endpoint. The actual
+    # restriction happens on the ingress side of each namespace's NetworkPolicy
+    # (only allowing prometheus on its specific metrics port).
+    - to:
+        - namespaceSelector: {}
+    # External (SMTP for alertmanager)
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0

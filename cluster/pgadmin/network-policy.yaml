@@ -1,0 +1,72 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: pgadmin-network-policy
+  namespace: pgadmin
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    # Traefik ingress
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: traefik
+    # Intra-namespace (pgadmin <-> its own postgresql)
+    - from:
+        - podSelector: {}
+  egress:
+    # DNS
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+    # Intra-namespace
+    - to:
+        - podSelector: {}
+    # To all namespaces with PostgreSQL on port 5432
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: authentik
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: freshrss
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: git-pkgs
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: grafana
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: guacamole
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: lubelogger
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: mediacms
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: mypypi
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: paperless
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: technitium-dns
+      ports:
+        - protocol: TCP
+          port: 5432
+    # External (OAuth via authentik.nathanv.app)
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
