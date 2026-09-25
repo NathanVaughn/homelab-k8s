@@ -10,14 +10,16 @@ spec:
     - Egress
   ingress:
     # External clients via the LoadBalancer VIP
+    # NOTE: NetworkPolicy ports match the pod's actual containerPort (post-Service-DNAT),
+    # not the Service's port, so these must be the "web"/"websecure" container ports.
     - from:
         - ipBlock:
             cidr: 0.0.0.0/0
       ports:
         - protocol: TCP
-          port: 80
+          port: 8000
         - protocol: TCP
-          port: 443
+          port: 8443
     # Prometheus scraping traefik metrics
     - from:
         - namespaceSelector:

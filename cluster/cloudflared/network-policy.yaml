@@ -37,3 +37,10 @@ spec:
           port: 443
         - protocol: UDP
           port: 443
+    # Traefik origin service (websecure container port, post-Service-DNAT)
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+      ports:
+        - protocol: TCP
+          port: 8443
