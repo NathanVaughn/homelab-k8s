@@ -19,6 +19,14 @@ spec:
           port: 9090
         - protocol: TCP
           port: 9093
+    # Grafana Prometheus datasource queries
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: grafana
+      ports:
+        - protocol: TCP
+          port: 9090
     # Intra-namespace (prometheus <-> alertmanager <-> operator <-> kube-state-metrics <-> node-exporter)
     - from:
         - podSelector: {}
