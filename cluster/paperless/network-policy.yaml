@@ -42,6 +42,14 @@ spec:
     # Intra-namespace
     - to:
         - podSelector: {}
+    # Internal HTTPS via Traefik (Service port 443 -> pod port 8443)
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: traefik
+      ports:
+        - protocol: TCP
+          port: 8443
     # External (mail-based document consumption via IMAP/IMAPS)
     - to:
         - ipBlock:

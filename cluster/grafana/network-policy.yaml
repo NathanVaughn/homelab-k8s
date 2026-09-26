@@ -50,6 +50,14 @@ spec:
       ports:
         - protocol: TCP
           port: 3100
+    # Internal HTTPS via Traefik (Service port 443 -> pod port 8443)
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: traefik
+      ports:
+        - protocol: TCP
+          port: 8443
     # External (OAuth via authentik.nathanv.app, SMTP)
     - to:
         - ipBlock:
