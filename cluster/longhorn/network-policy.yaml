@@ -48,6 +48,24 @@ spec:
     # Intra-namespace (manager <-> instance-manager <-> csi plugins <-> ui)
     - from:
         - podSelector: {}
+    # RWX volume mounts: kubelet on each node mounts share-manager NFS exports
+    # (port 2049) via the host's network namespace (nsmounter), not from a pod,
+    # so podSelector alone doesn't match this traffic - needs node/private
+    # network ipBlock like the egress rule below.
+    - from:
+        - ipBlock:
+            cidr: 10.0.0.0/8
+        - ipBlock:
+            cidr: 172.16.0.0/12
+        - ipBlock:
+            cidr: 192.168.0.0/16
+      ports:
+        - protocol: TCP
+          port: 2049
+        - protocol: TCP
+          port: 111
+        - protocol: UDP
+          port: 111
   egress:
     # DNS
     - to:
