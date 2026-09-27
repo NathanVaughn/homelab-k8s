@@ -48,6 +48,16 @@ spec:
     # its specific service port), so this broad allow is safe.
     - to:
         - namespaceSelector: {}
+    # omada-deployment-0 uses hostNetwork (needed for device discovery), so its
+    # IP is the node IP, not a normal pod IP - the namespaceSelector rule above
+    # can't match it (kube-router's namespace ipsets only track pod IPs), so it
+    # needs an explicit ipBlock rule or traefik gets a silent RST (bad gateway).
+    - to:
+        - ipBlock:
+            cidr: 10.0.0.0/24
+      ports:
+        - protocol: TCP
+          port: 8043
     # External (ACME/Let's Encrypt, Cloudflare DNS challenge API)
     - to:
         - ipBlock:
