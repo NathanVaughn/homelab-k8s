@@ -35,7 +35,7 @@ spec:
               value: "no"
           envFrom:
             - secretRef:
-                name: mediacms-env
+                name: mediacms-app-env
           volumeMounts:
             - mountPath: /home/mediacms.io/mediacms/media_files/
               name: mediacms-media-vol
@@ -75,7 +75,7 @@ spec:
               value: "no"
           envFrom:
             - secretRef:
-                name: mediacms-env
+                name: mediacms-app-env
           volumeMounts:
             - mountPath: /home/mediacms.io/mediacms/media_files/
               name: mediacms-media-vol

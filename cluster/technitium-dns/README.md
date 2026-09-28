@@ -5,20 +5,11 @@
 In Authentik, create a proxy provider for a single application with the URL
 `https://technitium-dns.nathanv.app`. Ensure you assign the application to an outpost.
 
-```bash
-export POSTGRES_PASSWORD=$POSTGRES_PASSWORD
-# change dollar sign variables above this line
-kubectl apply -f namespace.yaml
+## Bitwarden secrets
 
-kubectl -n technitium-dns create secret generic technitium-dns-env \
---from-literal=POSTGRES_PASSWORD=$POSTGRES_PASSWORD \
---dry-run=client -o yaml > secret.yaml
-
-kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
-# optional
-kubectl apply -f sealed-secret.yaml
-kubectl delete secret -n technitium-dns technitium-dns-env
-```
+- `TECHNITIUM_DNS_DB_DATABASE`
+- `TECHNITIUM_DNS_DB_PASSWORD`
+- `TECHNITIUM_DNS_DB_USERNAME`
 
 ## Post Setup
 

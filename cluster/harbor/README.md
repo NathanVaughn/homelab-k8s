@@ -8,24 +8,11 @@ In Authentik, configure a OAuth2 provider. Use the redirect URL as
 Change the "Access Token validity" in the Advanced protocol settings,
 otherwise you will be constantly signed out.
 
-```bash
-export ADMIN_PASSWORD=$ADMIN_PASSWORD
-export REGISTRY_PASSWORD=$REGISTRY_PASSWORD
-export DATABASE_PASSWORD=$DATABASE_PASSWORD
-# change dollar sign variables above this line
-kubectl apply -f namespace.yaml
+## Bitwarden secrets
 
-kubectl -n harbor create secret generic harbor-secrets \
---from-literal=harborAdminPassword=$ADMIN_PASSWORD \
---from-literal=registry.credentials.password=$REGISTRY_PASSWORD \
---from-literal=database.internal.password=$DATABASE_PASSWORD \
---dry-run=client -o yaml > secret.yaml
-
-kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
-# optional
-kubectl apply -f sealed-secret.yaml
-kubectl delete secret -n harbor harbor-secrets
-```
+- `HARBOR_ADMIN_PASSWORD`
+- `HARBOR_DB_PASSWORD`
+- `HARBOR_REGISTRY_PASSWORD`
 
 ## Post Setup
 

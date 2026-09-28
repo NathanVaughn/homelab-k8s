@@ -29,13 +29,9 @@ spec:
         - env:
             - name: MARIADB_RANDOM_ROOT_PASSWORD
               value: "1"
-            - name: MARIADB_USER
-              value: bookstack
-            - name: MARIADB_DATABASE
-              value: bookstack
           envFrom:
             - secretRef:
-                name: bookstack-env
+                name: bookstack-db-env
           # registry-proxy image-prefix
           image: cr.nathanv.app/docker.io/library/mariadb:12.3.3
           name: mariadb

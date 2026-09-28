@@ -25,8 +25,6 @@ spec:
               value: postgresql
             - name: PAPERLESS_DBHOST
               value: paperless-postgresql-service.paperless.svc.cluster.local
-            - name: PAPERLESS_DBUSER
-              value: paperless
             - name: PAPERLESS_TIKA_ENABLED
               value: "true"
             - name: PAPERLESS_TIKA_ENDPOINT
@@ -51,7 +49,7 @@ spec:
               value: "true"
           envFrom:
             - secretRef:
-                name: paperless-env
+                name: paperless-app-env
           # registry-proxy image-prefix
           image: cr.nathanv.app/ghcr.io/paperless-ngx/paperless-ngx:3.1.3
           name: paperless

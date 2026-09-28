@@ -17,14 +17,9 @@ spec:
       nodeSelector:
         role: apps
       containers:
-        - env:
-            - name: POSTGRES_USER
-              value: paperless
-            - name: POSTGRES_DB
-              value: paperless
-          envFrom:
+        - envFrom:
             - secretRef:
-                name: paperless-env
+                name: paperless-db-env
           # registry-proxy image-prefix
           image: cr.nathanv.app/docker.io/library/postgres:18.6
           name: postgresql

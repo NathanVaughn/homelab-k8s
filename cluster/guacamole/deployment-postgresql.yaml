@@ -42,12 +42,7 @@ spec:
       #         #     - mountPath: /docker-entrypoint-initdb.d
       #         #       name: initdb-vol
       containers:
-        - env:
-            - name: POSTGRES_USER
-              value: guacamole
-            - name: POSTGRES_DB
-              value: guacamole
-          envFrom:
+        - envFrom:
             - secretRef:
                 name: postgres-env
           # registry-proxy image-prefix

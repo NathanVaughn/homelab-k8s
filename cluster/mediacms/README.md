@@ -2,32 +2,18 @@
 
 ## Setup
 
-```bash
-export ADMIN_USER=$ADMIN_USER
-export ADMIN_EMAIL=$ADMIN_EMAIL
-export ADMIN_PASSWORD=$ADMIN_PASSWORD
-export POSTGRES_PASSWORD=$POSTGRES_PASSWORD
-export SECRET_KEY=$SECRET_KEY
-export EMAIL_HOST_PASSWORD=$EMAIL_HOST_PASSWORD
-export EMAIL_HOST_USER=$EMAIL_HOST_USER
-# change dollar sign variables above this line
-kubectl apply -f namespace.yaml
+## Bitwarden secrets
 
-kubectl -n mediacms create secret generic mediacms-env \
---from-literal=ADMIN_USER=$ADMIN_USER \
---from-literal=ADMIN_EMAIL=$ADMIN_EMAIL \
---from-literal=ADMIN_PASSWORD=$ADMIN_PASSWORD \
---from-literal=POSTGRES_PASSWORD=$POSTGRES_PASSWORD \
---from-literal=SECRET_KEY=$SECRET_KEY \
---from-literal=EMAIL_HOST_PASSWORD=$EMAIL_HOST_PASSWORD \
---from-literal=EMAIL_HOST_USER=$EMAIL_HOST_USER \
---dry-run=client -o yaml > secret.yaml
-
-kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
-# optional
-kubectl apply -f sealed-secret.yaml
-kubectl delete secret -n mediacms mediacms-env
-```
+- `MEDIACMS_ADMIN_EMAIL`
+- `MEDIACMS_ADMIN_PASSWORD`
+- `MEDIACMS_ADMIN_USERNAME`
+- `MEDIACMS_DB_DATABASE`
+- `MEDIACMS_DB_PASSWORD`
+- `MEDIACMS_DB_USERNAME`
+- `MEDIACMS_SECRET_KEY`
+- `MEDIACMS_SMTP_HOST`
+- `MEDIACMS_SMTP_PASSWORD`
+- `MEDIACMS_SMTP_USERNAME`
 
 ## Re-Encode All Media
 

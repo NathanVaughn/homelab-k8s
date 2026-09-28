@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: adsb-tz-config
+  namespace: adsb
+data:
+  TZ: America/Chicago

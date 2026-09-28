@@ -67,8 +67,8 @@ spec:
       database:
         type: postgres
         host: grafana-postgresql-service.grafana.svc.cluster.local:5432
-        name: grafana
-        user: grafana
+        name: $__file{/etc/secrets/grafana_secrets/grafana_ini.database.name}
+        user: $__file{/etc/secrets/grafana_secrets/grafana_ini.database.user}
         password: $__file{/etc/secrets/grafana_secrets/grafana_ini.database.password}
       # https://grafana.com/docs/grafana/latest/observability-as-code/provision-resources/git-sync-setup/#enable-required-feature-toggles
       feature_toggles:

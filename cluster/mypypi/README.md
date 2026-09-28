@@ -2,25 +2,16 @@
 
 ## Setup
 
-```bash
-export POSTGRES_PASSWORD=$POSTGRES_PASSWORD
-export S3_ACCESS_KEY_ID=$S3_ACCESS_KEY_ID
-export S3_SECRET_ACCESS_KEY=$S3_SECRET_ACCESS_KEY
-# change dollar sign variables above this line
-kubectl apply -f namespace.yaml
+## Bitwarden secrets
 
-kubectl -n mypypi create secret generic mypypi-env \
---from-literal=POSTGRES_PASSWORD=$POSTGRES_PASSWORD \
---from-literal=MYPYPI_DATABASE__URL=postgresql://mypypi:$POSTGRES_PASSWORD@mypypi-postgresql-service.mypypi.svc.cluster.local/mypypi \
---from-literal=MYPYPI_STORAGE__S3__ACCESS_KEY_ID=$S3_ACCESS_KEY_ID \
---from-literal=MYPYPI_STORAGE__S3__SECRET_ACCESS_KEY=$S3_SECRET_ACCESS_KEY \
---dry-run=client -o yaml > secret.yaml
-
-kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
-# optional
-kubectl apply -f sealed-secret.yaml
-kubectl delete secret -n mypypi mypypi-env
-```
+- `MYPYPI_DB_DATABASE`
+- `MYPYPI_DB_PASSWORD`
+- `MYPYPI_DB_USERNAME`
+- `MYPYPI_S3_ACCESS_KEY_ID`
+- `MYPYPI_S3_BUCKET`
+- `MYPYPI_S3_ENDPOINT`
+- `MYPYPI_S3_REGION`
+- `MYPYPI_S3_SECRET_ACCESS_KEY`
 
 ## Data Corruption
 

@@ -49,7 +49,16 @@ flux logs -n foo
 ```
 
 If a SealedSecret is getting stuck in `Progressing` state, delete the associated
-`Secret` and try the reconciliation again.
+`Secret` and try the reconciliation again. This applies to resources still
+managed by Sealed Secrets, such as the ESO bootstrap credentials.
+
+For Bitwarden-sourced secrets, check the ExternalSecret and store conditions:
+
+```bash
+kubectl get externalsecrets -A
+kubectl describe externalsecret -n $namespace $name
+kubectl describe clustersecretstore bitwarden-secretsmanager
+```
 
 ## Wipe namespace
 

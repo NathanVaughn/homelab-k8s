@@ -26,12 +26,7 @@ spec:
                     values:
                       - network
       containers:
-        - env:
-            - name: POSTGRES_USER
-              value: technitiumdns
-            - name: POSTGRES_DB
-              value: technitiumdns
-          envFrom:
+        - envFrom:
             - secretRef:
                 name: technitium-dns-env
           # registry-proxy image-prefix

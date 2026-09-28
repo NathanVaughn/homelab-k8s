@@ -5,27 +5,13 @@
 In Authentik, create a proxy provider for a single application with the URL
 `https://longhorn.nathanv.app`. Ensure you assign the application to an outpost.
 
-```bash
-export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-export AWS_ENDPOINTS=$S3_ENDPOINT
-export VIRTUAL_HOSTED_STYLE=false
-# change dollar sign variables above this line
-# AWS_ENDPOINTS must include protocol
-kubectl apply -f namespace.yaml
+## Bitwarden secrets
 
-kubectl -n longhorn create secret generic longhorn-env \
---from-literal=AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
---from-literal=AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
---from-literal=AWS_ENDPOINTS=$AWS_ENDPOINTS \
---from-literal=VIRTUAL_HOSTED_STYLE=$VIRTUAL_HOSTED_STYLE \
---dry-run=client -o yaml > secret.yaml
-
-kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
-# optional
-kubectl apply -f sealed-secret.yaml
-kubectl delete secret -n longhorn longhorn-env
-```
+- `LONGHORN_S3_ACCESS_KEY_ID`
+- `LONGHORN_S3_BUCKET`
+- `LONGHORN_S3_ENDPOINT`
+- `LONGHORN_S3_REGION`
+- `LONGHORN_S3_SECRET_ACCESS_KEY`
 
 ## Post Setup
 

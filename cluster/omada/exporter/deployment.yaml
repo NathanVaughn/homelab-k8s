@@ -28,8 +28,6 @@ spec:
         - env:
             - name: OMADA_HOST
               value: https://omada-service.omada.svc.cluster.local:8043
-            - name: OMADA_USER
-              value: prometheus
             - name: OMADA_SITE
               value: Home
             - name: OMADA_INSECURE

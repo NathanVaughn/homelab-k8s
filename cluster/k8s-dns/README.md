@@ -2,19 +2,7 @@
 
 ## Setup
 
-```bash
-export CLOUDFLARE_API_TOKEN=$CLOUDFLARE_API_TOKEN
-export TECHNITIUM_API_TOKEN=$TECHNITIUM_API_TOKEN
-# change dollar sign variables above this line
-kubectl apply -f namespace.yaml
+## Bitwarden secrets
 
-kubectl -n k8s-dns create secret generic k8s-dns-env \
---from-literal=CLOUDFLARE_API_TOKEN=$CLOUDFLARE_API_TOKEN \
---from-literal=TECHNITIUM_API_TOKEN=$TECHNITIUM_API_TOKEN \
---dry-run=client -o yaml > secret.yaml
-
-kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
-# optional
-kubectl apply -f sealed-secret.yaml
-kubectl delete secret -n k8s-dns k8s-dns-env
-```
+- `K8S_DNS_CLOUDFLARE_API_TOKEN`
+- `K8S_DNS_TECHNITIUM_API_TOKEN`

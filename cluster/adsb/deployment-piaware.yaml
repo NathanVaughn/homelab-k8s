@@ -26,8 +26,10 @@ spec:
             - name: ALLOW_MLAT
               value: "yes"
           envFrom:
+            - configMapRef:
+                name: adsb-tz-config
             - secretRef:
-                name: adsb-env
+                name: adsb-piaware-env
           # registry-proxy image-prefix
           image: cr.nathanv.app/ghcr.io/sdr-enthusiasts/docker-piaware@sha256:086f48dfbb31d7551e40c0d3d57a6b4727eb54aa184e5c438ca57151740e299c
           name: piaware

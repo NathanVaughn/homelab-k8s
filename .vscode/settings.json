@@ -3,7 +3,19 @@
         "https://raw.githubusercontent.com/canonical/subiquity/main/autoinstall-schema.json": "file:///workspaces/homelab-k8s/os/autoinstall.yaml"
     },
     "cSpell.words": [
+        "adsb",
+        "authentik",
+        "bitwarden",
+        "FLIGHTAWARE",
+        "flightradar",
+        "LUBELOGGER",
+        "MEDIACMS",
+        "MYPYPI",
         "nathanv",
-        "pkgs"
+        "piaware",
+        "pkgs",
+        "planefinder",
+        "readsb",
+        "SHARECODE"
     ]
 }

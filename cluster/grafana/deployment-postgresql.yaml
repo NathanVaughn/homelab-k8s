@@ -17,12 +17,7 @@ spec:
       nodeSelector:
         role: apps
       containers:
-        - env:
-            - name: POSTGRES_USER
-              value: grafana
-            - name: POSTGRES_DB
-              value: grafana
-          envFrom:
+        - envFrom:
             - secretRef:
                 name: grafana-secrets
           # registry-proxy image-prefix

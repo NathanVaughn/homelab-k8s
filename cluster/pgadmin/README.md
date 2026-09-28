@@ -31,44 +31,15 @@ OAUTH2_CONFIG = [
 ]
 ```
 
-```bash
-export POSTGRES_PASSWORD=$POSTGRES_PASSWORD
-export PGADMIN_DEFAULT_EMAIL="$PGADMIN_DEFAULT_EMAIL"
-export PGADMIN_DEFAULT_PASSWORD=$PGADMIN_DEFAULT_PASSWORD
-# these need to include a literal quote
-export PGADMIN_CONFIG_MAIL_SERVER="'$PGADMIN_CONFIG_MAIL_SERVER'"
-export PGADMIN_CONFIG_MAIL_USERNAME="'$PGADMIN_CONFIG_MAIL_USERNAME'"
-export PGADMIN_CONFIG_MAIL_PASSWORD="'$PGADMIN_CONFIG_MAIL_PASSWORD'"
-export PGADMIN_CONFIG_CONFIG_DATABASE_URI="'postgresql://pgadmin:$POSTGRES_PASSWORD@pgadmin-postgresql-service.pgadmin.svc.cluster.local:5432/pgadmin'"
-# change dollar sign variables above this line
-kubectl apply -f namespace.yaml
+## Bitwarden secrets
 
-# SETUP environment variables also set
-# Docker ones don't seem to work when using postgres backend
-# https://github.com/pgadmin-org/pgadmin4/blob/a9974b418c49760d3989b7fb25e052ff16b89ac6/web/pgadmin/setup/user_info.py#L37-L44
-kubectl -n pgadmin create secret generic pgadmin-env \
---from-literal=POSTGRES_PASSWORD=$POSTGRES_PASSWORD \
---from-literal=PGADMIN_DEFAULT_EMAIL=$PGADMIN_DEFAULT_EMAIL \
---from-literal=PGADMIN_DEFAULT_PASSWORD=$PGADMIN_DEFAULT_PASSWORD \
---from-literal=PGADMIN_SETUP_EMAIL=$PGADMIN_DEFAULT_EMAIL \
---from-literal=PGADMIN_SETUP_PASSWORD=$PGADMIN_DEFAULT_PASSWORD \
---from-literal=PGADMIN_CONFIG_MAIL_SERVER=$PGADMIN_CONFIG_MAIL_SERVER \
---from-literal=PGADMIN_CONFIG_MAIL_USERNAME=$PGADMIN_CONFIG_MAIL_USERNAME \
---from-literal=PGADMIN_CONFIG_MAIL_PASSWORD=$PGADMIN_CONFIG_MAIL_PASSWORD \
---from-literal=PGADMIN_CONFIG_CONFIG_DATABASE_URI=$PGADMIN_CONFIG_CONFIG_DATABASE_URI \
---dry-run=client -o yaml > secret.yaml
-
-kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
-# optional
-kubectl apply -f sealed-secret.yaml
-kubectl delete secret -n pgadmin pgadmin-env
-
-kubectl -n pgadmin create secret generic pgadmin-oauth \
---from-file=config_local.py \
---dry-run=client -o yaml > secret.yaml
-
-kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret2.yaml
-# optional
-kubectl apply -f sealed-secret2.yaml
-kubectl delete secret -n pgadmin pgadmin-oauth
-```
+- `PGADMIN_ADMIN_EMAIL`
+- `PGADMIN_ADMIN_PASSWORD`
+- `PGADMIN_DB_DATABASE`
+- `PGADMIN_DB_PASSWORD`
+- `PGADMIN_DB_USERNAME`
+- `PGADMIN_OIDC_CLIENT_ID`
+- `PGADMIN_OIDC_CLIENT_SECRET`
+- `PGADMIN_SMTP_HOST`
+- `PGADMIN_SMTP_PASSWORD`
+- `PGADMIN_SMTP_USERNAME`

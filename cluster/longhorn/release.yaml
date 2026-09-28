@@ -45,7 +45,6 @@ spec:
     defaultBackupStore:
       # R2 uses `auto` or `us-east-1` as regions
       # B2 uses `us-east` as region
-      backupTarget: s3://nathanv-private@us-east/longhorn
       backupTargetCredentialSecret: longhorn-env
       # https://www.reddit.com/r/rancher/comments/yu5jqa/comment/iw85rvu/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
       # https://github.com/longhorn/longhorn/issues/1547
@@ -64,3 +63,8 @@ spec:
     metrics:
       serviceMonitor:
         enabled: true
+  valuesFrom:
+    - kind: Secret
+      name: longhorn-env
+      valuesKey: BACKUP_TARGET
+      targetPath: defaultBackupStore.backupTarget

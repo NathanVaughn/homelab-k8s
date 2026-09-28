@@ -8,23 +8,12 @@ SSO extensions pre-installed.
 In Authentik, configure a OAuth2 provider. Use the redirect URL as
 `https://guacamole.nathanv.app`
 
-```bash
-export OPENID_CLIENT_ID=$OPENID_CLIENT_ID
-export POSTGRES_PASSWORD=$POSTGRES_PASSWORD
-# change dollar sign variables above this line
-kubectl apply -f namespace.yaml
+## Bitwarden secrets
 
-kubectl -n guacamole create secret generic guacamole-env \
---from-literal=POSTGRES_PASSWORD=$POSTGRES_PASSWORD \
---from-literal=POSTGRESQL_PASSWORD=$POSTGRES_PASSWORD \
---from-literal=OPENID_CLIENT_ID=$OPENID_CLIENT_ID \
---dry-run=client -o yaml > secret.yaml
-
-kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
-# optional
-kubectl apply -f sealed-secret.yaml
-kubectl delete secret -n guacamole guacamole-env
-```
+- `GUACAMOLE_DB_DATABASE`
+- `GUACAMOLE_DB_PASSWORD`
+- `GUACAMOLE_DB_USERNAME`
+- `GUACAMOLE_OIDC_CLIENT_ID`
 
 ## Post Setup
 

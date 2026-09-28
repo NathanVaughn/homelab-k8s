@@ -22,17 +22,6 @@ cp ~/.cloudflared/*.json tunnel.json
 cloudflared tunnel route dns k8s-tunnel tunnel.nathanv.app
 ```
 
-Lastly, create a secret for the tunnel config:
+## Bitwarden secrets
 
-```bash
-kubectl apply -f namespace.yaml
-
-kubectl -n cloudflared create secret generic tunnel-credentials \
---from-file=credentials.json=tunnel.json \
---dry-run=client -o yaml > secret.yaml
-
-kubeseal --format=yaml --cert=../sealed-secrets/sealed-secrets-public-key.pem < secret.yaml > sealed-secret.yaml
-# optional
-kubectl apply -f sealed-secret.yaml
-kubectl delete secret -n cloudflared tunnel-credentials
-```
+- `CLOUDFLARED_CREDENTIALS_FILE` (the tunnel credentials JSON)

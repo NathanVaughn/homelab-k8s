@@ -33,13 +33,9 @@ spec:
         - env:
             - name: MYSQL_RANDOM_ROOT_PASSWORD
               value: "1"
-            - name: MYSQL_USER
-              value: ghost
-            - name: MYSQL_DATABASE
-              value: ghost
           envFrom:
             - secretRef:
-                name: ghost-env
+                name: ghost-db-env
           # https://ghost.org/docs/faq/supported-databases/
           # registry-proxy image-prefix
           image: cr.nathanv.app/docker.io/library/mysql:26.7.0

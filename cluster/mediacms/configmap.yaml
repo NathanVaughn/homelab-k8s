@@ -14,10 +14,10 @@ data:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
-            "NAME": 'mediacms',
+            "NAME": os.environ['POSTGRES_DB'],
             "HOST": 'mediacms-postgresql-service.mediacms.svc.cluster.local',
             "PORT": '5432',
-            "USER": 'mediacms',
+            "USER": os.environ['POSTGRES_USER'],
             "PASSWORD": os.environ['POSTGRES_PASSWORD'],
             "OPTIONS": {
                 "pool": {

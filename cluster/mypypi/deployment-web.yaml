@@ -23,12 +23,6 @@ spec:
               value: '[{"slug": "pypi", "simple_url": "https://pypi.org/simple/", "cache_minutes": 10, "timeout_seconds": 10}, {"slug": "pytorch", "simple_url": "https://download.pytorch.org/whl/", "cache_minutes": 10, "timeout_seconds": 10}, {"slug": "piwheels", "simple_url": "https://www.piwheels.org/simple/", "cache_minutes": 10, "timeout_seconds": 10}]'
             - name: MYPYPI_STORAGE__DRIVER
               value: s3
-            - name: MYPYPI_STORAGE__S3__ENDPOINT_URL
-              value: https://57ac323804932b01e44e546ff34ba9a3.r2.cloudflarestorage.com/
-            - name: MYPYPI_STORAGE__S3__REGION_NAME
-              value: auto
-            - name: MYPYPI_STORAGE__S3__BUCKET_NAME
-              value: nathanv-public
             - name: MYPYPI_STORAGE__S3__BUCKET_PREFIX
               value: pip
             - name: MYPYPI_STORAGE__S3__PUBLIC_URL_PREFIX
@@ -41,7 +35,7 @@ spec:
               value: mypypi-redis-service.mypypi.svc.cluster.local
           envFrom:
             - secretRef:
-                name: mypypi-env
+                name: mypypi-app-env
           # registry-proxy image-prefix
           image: cr.nathanv.app/ghcr.io/nathanvaughn/mypypi2:0.1.5
           name: mypypi

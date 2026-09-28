@@ -27,10 +27,6 @@ spec:
               value: '5,35'
             - name: DB_HOST
               value: freshrss-postgresql-service.freshrss.svc.cluster.local
-            - name: DB_BASE
-              value: freshrss
-            - name: DB_USER
-              value: freshrss
             - name: OIDC_ENABLED
               value: '1'
             - name: OIDC_PROVIDER_METADATA_URL
@@ -41,7 +37,7 @@ spec:
               value: openid email profile
           envFrom:
             - secretRef:
-                name: freshrss-env
+                name: freshrss-app-env
           # registry-proxy image-prefix
           image: cr.nathanv.app/docker.io/freshrss/freshrss:1.29.1
           name: freshrss

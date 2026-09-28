@@ -36,8 +36,10 @@ spec:
             - name: GRAPHS1090_HIDE_SYSTEM
               value: "true"
           envFrom:
+            - configMapRef:
+                name: adsb-tz-config
             - secretRef:
-                name: adsb-env
+                name: adsb-readsb-env
           # registry-proxy image-prefix
           image: cr.nathanv.app/ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder:telegraf-build-912
           name: readsb

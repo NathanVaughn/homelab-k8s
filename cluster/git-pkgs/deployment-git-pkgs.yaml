@@ -29,7 +29,7 @@ spec:
               value: 10GB
           envFrom:
             - secretRef:
-                name: git-pkgs-env
+                name: git-pkgs-app-env
           # registry-proxy image-prefix
           image: cr.nathanv.app/ghcr.io/git-pkgs/proxy:v0.8.1
           args:

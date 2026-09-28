@@ -33,10 +33,6 @@ spec:
               value: "false"
             - name: DB_HOST
               value: bookstack-mysql-service.bookstack.svc.cluster.local
-            - name: DB_DATABASE
-              value: bookstack
-            - name: DB_USERNAME
-              value: bookstack
             - name: MAIL_DRIVER
               value: smtp
             - name: MAIL_PORT
@@ -67,7 +63,7 @@ spec:
               value: "true"
           envFrom:
             - secretRef:
-                name: bookstack-env
+                name: bookstack-app-env
           # registry-proxy image-prefix
           image: cr.nathanv.app/ghcr.io/linuxserver/bookstack:26.05.20260608
           name: bookstack

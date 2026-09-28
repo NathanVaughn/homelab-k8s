@@ -1,0 +1,62 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: external-secrets-release
+  namespace: external-secrets
+spec:
+  releaseName: external-secrets
+  chart:
+    spec:
+      chart: external-secrets
+      sourceRef:
+        kind: HelmRepository
+        name: external-secrets-repo
+        namespace: external-secrets
+      version: "2.11.0"
+  install:
+    crds: Create
+  upgrade:
+    crds: CreateReplace
+  interval: 1h0m0s
+  values:
+    # registry-proxy block-start
+    image:
+      repository: cr.nathanv.app/ghcr.io/external-secrets/external-secrets
+    # registry-proxy block-end
+    nodeSelector:
+      role: apps
+    webhook:
+      # registry-proxy block-start
+      image:
+        repository: cr.nathanv.app/ghcr.io/external-secrets/external-secrets
+      # registry-proxy block-end
+      nodeSelector:
+        role: apps
+    certController:
+      # registry-proxy block-start
+      image:
+        repository: cr.nathanv.app/ghcr.io/external-secrets/external-secrets
+      # registry-proxy block-end
+      nodeSelector:
+        role: apps
+    bitwarden-sdk-server:
+      enabled: true
+      nodeSelector:
+        role: apps
+      image:
+        # registry-proxy block-start
+        repository: cr.nathanv.app/ghcr.io/external-secrets/bitwarden-sdk-server
+        # registry-proxy block-end
+        tls:
+          enabled: true
+          volumes:
+            - name: bitwarden-tls-certs
+              secret:
+                secretName: bitwarden-tls-certs
+                items:
+                  - key: tls.crt
+                    path: cert.pem
+                  - key: tls.key
+                    path: key.pem
+                  - key: ca.crt
+                    path: ca.pem

@@ -44,7 +44,7 @@ spec:
               value: '["oauth2"]'
           envFrom:
             - secretRef:
-                name: pgadmin-env
+                name: pgadmin-app-env
           # registry-proxy image-prefix
           image: cr.nathanv.app/docker.io/dpage/pgadmin4:9.17
           name: pgadmin
