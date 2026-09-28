@@ -1,0 +1,56 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: homebox-network-policy
+  namespace: homebox
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    # Traefik ingress
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: traefik
+      ports:
+        - protocol: TCP
+          port: 7745
+    # pgadmin to PostgreSQL
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: pgadmin
+      ports:
+        - protocol: TCP
+          port: 5432
+    # Intra-namespace (homebox <-> postgresql)
+    - from:
+        - podSelector: {}
+  egress:
+    # DNS
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+    # Intra-namespace
+    - to:
+        - podSelector: {}
+    # Internal HTTPS via Traefik (Service port 443 -> pod port 8443)
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: traefik
+      ports:
+        - protocol: TCP
+          port: 8443
+    # External (OIDC, SMTP)
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0

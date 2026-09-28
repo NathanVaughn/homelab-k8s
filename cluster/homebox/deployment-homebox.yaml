@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homebox-deployment
+  namespace: homebox
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: homebox
+  template:
+    metadata:
+      labels:
+        app: homebox
+    spec:
+      nodeSelector:
+        role: apps
+      containers:
+        - env:
+            - name: HBOX_MODE
+              value: production
+            - name: HBOX_OPTIONS_TRUST_PROXY
+              value: "true"
+            - name: HBOX_DATABASE_DRIVER
+              value: postgres
+            - name: HBOX_DATABASE_HOST
+              value: homebox-postgresql-service.homebox.svc.cluster.local
+            - name: HBOX_DATABASE_PORT
+              value: "5432"
+            - name: HBOX_DATABASE_SSL_MODE
+              value: disable
+            - name: HBOX_OIDC_ENABLED
+              value: "true"
+            - name: HBOX_OIDC_ISSUER_URL
+              value: https://authentik.nathanv.app/application/o/homebox/
+            - name: HBOX_OIDC_AUTO_REDIRECT
+              value: "true"
+            - name: HBOX_OPTIONS_ALLOW_LOCAL_LOGIN
+              value: "false"
+            - name: HBOX_MAILER_PORT
+              value: "587"
+            - name: HBOX_MAILER_FROM
+              value: "homebox@nvaughn.email"
+          envFrom:
+            - secretRef:
+                name: homebox-app-env
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/ghcr.io/sysadminsmedia/homebox@sha256:dbe0917c7ca1f5db601ed60a76301144fcd0b8dc9c06c7dbcebf232f2f24b0bc
+          name: homebox
+          ports:
+            - containerPort: 7745
+          volumeMounts:
+            - mountPath: /data
+              name: homebox-vol
+      volumes:
+        - name: homebox-vol
+          persistentVolumeClaim:
+            claimName: homebox-pvc-data

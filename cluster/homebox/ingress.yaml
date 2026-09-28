@@ -1,0 +1,19 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: homebox-route
+  namespace: homebox
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`homebox.nathanv.app`)
+      kind: Rule
+      services:
+        - name: homebox-service
+          port: 7745
+  tls:
+    certResolver: le
+    domains:
+      - sans:
+          - "*.nathanv.app"

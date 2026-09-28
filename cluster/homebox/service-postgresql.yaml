@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: homebox-postgresql-service
+  namespace: homebox
+spec:
+  type: ClusterIP
+  selector:
+    app: homebox-postgresql
+  ports:
+    - port: 5432
+      protocol: TCP
