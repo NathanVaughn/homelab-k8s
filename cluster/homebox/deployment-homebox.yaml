@@ -43,6 +43,10 @@ spec:
               value: "587"
             - name: HBOX_MAILER_FROM
               value: "homebox@nvaughn.email"
+            - name: HBOX_STORAGE_CONN_STRING
+              value: "file:///data/?no_tmp_dir=true"
+            - name: HBOX_STORAGE_PREFIX_PATH
+              value: ""
           envFrom:
             - secretRef:
                 name: homebox-app-env
