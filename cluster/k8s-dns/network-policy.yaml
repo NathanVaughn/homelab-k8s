@@ -35,3 +35,7 @@ spec:
       ports:
         - protocol: TCP
           port: 6443
+    # External (Cloudflare API)
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
