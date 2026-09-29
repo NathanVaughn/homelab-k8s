@@ -25,8 +25,11 @@ spec:
       ports:
         - protocol: TCP
           port: 5380
-    # pgadmin to PostgreSQL
+    # grafana and pgadmin to PostgreSQL
     - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: grafana
         - namespaceSelector:
             matchLabels:
               kubernetes.io/metadata.name: pgadmin
