@@ -60,6 +60,14 @@ spec:
       ports:
         - protocol: TCP
           port: 9090
+    # Postgresql queries
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: technitium-dns
+      ports:
+        - protocol: TCP
+          port: 5432
     # Internal HTTPS via Traefik (Service port 443 -> pod port 8443)
     - to:
         - namespaceSelector:
