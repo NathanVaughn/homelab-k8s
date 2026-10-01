@@ -87,6 +87,14 @@ spec:
       ports:
         - protocol: TCP
           port: 6443
+    # External backup target (S3-compatible, e.g. Backblaze B2) for
+    # recurring system-backup/volume-backup jobs
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+      ports:
+        - protocol: TCP
+          port: 443
     # Longhorn engines/replicas and NFS backups communicate directly between
     # nodes (iSCSI, gRPC, NFS) outside of normal service ports, so node/private
     # network access is left broadly open here rather than pinned to specific

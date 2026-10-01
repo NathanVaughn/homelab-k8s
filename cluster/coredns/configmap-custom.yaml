@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coredns-custom
+  namespace: kube-system
+data:
+  # This cluster has no IPv6 egress (pods only get a link-local IPv6 address,
+  # no default route). Upstream DNS still returns AAAA records for many
+  # external hosts (e.g. Backblaze B2 S3), and clients that don't correctly
+  # fall back to IPv4 (e.g. longhorn-engine's S3 backup store driver) fail
+  # with "connect: network is unreachable" instead of using the working A
+  # record. Force all AAAA queries to NXDOMAIN cluster-wide so clients always
+  # get IPv4 addresses. Picked up automatically via the stock k3s CoreDNS
+  # Corefile's `import /etc/coredns/custom/*.override` directive.
+  no-ipv6.override: |
+    template IN AAAA {
+      rcode NXDOMAIN
+    }
