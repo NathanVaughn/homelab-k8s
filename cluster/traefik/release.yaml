@@ -46,7 +46,7 @@ spec:
         enabled: true
         # required for authentik and CDN caching
         allowCrossNamespace: true
-        safeNaming: true
+        safeNaming: false
     # kubectl -n traefik port-forward $(kubectl -n traefik get pods --selector "app.kubernetes.io/name=traefik" --output=name | head -n 1) 8080:8080
     ingressRoute:
       dashboard:
