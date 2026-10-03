@@ -44,9 +44,9 @@ spec:
     providers:
       kubernetesCRD:
         enabled: true
-        # required for authentik and CDN caching
+        # required for authentik
         allowCrossNamespace: true
-        safeNaming: false
+        safeNaming: true
     # kubectl -n traefik port-forward $(kubectl -n traefik get pods --selector "app.kubernetes.io/name=traefik" --output=name | head -n 1) 8080:8080
     ingressRoute:
       dashboard:
@@ -59,17 +59,8 @@ spec:
           enabled: true
     ports:
       websecure:
+        # https://github.com/traefik/traefik-helm-chart/pull/1603
         http:
-          aliasHeadersStrategy: delete
-          encodedCharacters:
-            allowEncodedSlash: false
-            allowEncodedBackSlash: false
-            allowEncodedNullCharacter: false
-            allowEncodedSemicolon: false
-            allowEncodedPercent: false
-            allowEncodedQuestionMark: false
-            allowEncodedHash: false
-          # https://github.com/traefik/traefik-helm-chart/pull/1603
           tls:
             certResolver: le
     envFrom:
