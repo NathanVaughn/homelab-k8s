@@ -23,6 +23,14 @@ spec:
     #   cattle:
     #     systemDefaultRegistry: cr.nathanv.app/docker.io
     # registry-proxy block-end
+    networkPolicies:
+      metricsScrapeSources:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: prometheus
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: prometheus
     persistence:
       defaultClassReplicaCount: 3
       # tries to keep a replica on the node the volume is attached to
