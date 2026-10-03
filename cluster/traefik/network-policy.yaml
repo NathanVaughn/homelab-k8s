@@ -58,6 +58,14 @@ spec:
       ports:
         - protocol: TCP
           port: 8043
+    # kube-apiserver (post-DNAT of 10.43.0.1:443, or the 10.0.1.1 VIP). Without it
+    # the CRD/Ingress providers can't list resources and every route 404s.
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+      ports:
+        - protocol: TCP
+          port: 6443
     # External (ACME/Let's Encrypt, Cloudflare DNS challenge API)
     - to:
         - ipBlock:
