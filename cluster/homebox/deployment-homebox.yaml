@@ -51,7 +51,7 @@ spec:
             - secretRef:
                 name: homebox-app-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/ghcr.io/sysadminsmedia/homebox@sha256:dbe0917c7ca1f5db601ed60a76301144fcd0b8dc9c06c7dbcebf232f2f24b0bc
+          image: cr.nathanv.app/ghcr.io/sysadminsmedia/homebox@sha256:b1ad7e3c63f732a5f6daa466e8116be4f545b3b120383a64dcb62beb00a660cc
           name: homebox
           ports:
             - containerPort: 7745

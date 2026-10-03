@@ -29,7 +29,7 @@ spec:
             - secretRef:
                 name: adsb-planefinder-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/ghcr.io/sdr-enthusiasts/docker-planefinder@sha256:56e493fe119812977385ec7ed0942de10acf8e5555f3078a00fe5f6eca2835cb
+          image: cr.nathanv.app/ghcr.io/sdr-enthusiasts/docker-planefinder@sha256:dbb310c42272d00ed7fc7e24f8347f576ac068ba061ae2c230354028664da197
           name: planefinder
           volumeMounts:
             - mountPath: /run

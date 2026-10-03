@@ -65,7 +65,7 @@ spec:
             - secretRef:
                 name: bookstack-app-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/ghcr.io/linuxserver/bookstack:26.05.20260608
+          image: cr.nathanv.app/ghcr.io/linuxserver/bookstack:26.09.20260929
           name: bookstack
           ports:
             - containerPort: 80
