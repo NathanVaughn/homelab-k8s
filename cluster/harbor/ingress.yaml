@@ -15,6 +15,7 @@ spec:
           port: 80
       middlewares:
         - name: cdn-cache
+          namespace: traefik
     - match: Host(`cr.nathanv.app`)
       kind: Rule
       services:

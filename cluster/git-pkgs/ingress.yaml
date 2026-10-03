@@ -23,6 +23,7 @@ spec:
           port: 8080
       middlewares:
         - name: cdn-cache
+          namespace: traefik
     - match: Host(`pkgs.nathanv.app`) && (PathPrefix(`/pypi`) || PathPrefix(`/npm`) || PathPrefix(`/helm`) || PathPrefix(`/debian`) || PathPrefix(`/rpm`) || PathPrefix(`/cargo`) || PathPrefix(`/generic`))
       kind: Rule
       services:
