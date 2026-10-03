@@ -15,6 +15,14 @@ spec:
       middlewares:
         - name: authentik-forward-auth
           namespace: authentik
+    - match: Host(`pkgs.nathanv.app`) && PathRegexp(`(?i)^.*\.(whl|tgz|zip)$`)
+      kind: Rule
+      priority: 1000
+      services:
+        - name: git-pkgs-service
+          port: 8080
+      middlewares:
+        - name: cdn-cache
     - match: Host(`pkgs.nathanv.app`) && (PathPrefix(`/pypi`) || PathPrefix(`/npm`) || PathPrefix(`/helm`) || PathPrefix(`/debian`) || PathPrefix(`/rpm`) || PathPrefix(`/cargo`) || PathPrefix(`/generic`))
       kind: Rule
       services:

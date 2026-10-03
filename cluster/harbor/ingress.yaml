@@ -7,6 +7,14 @@ spec:
   entryPoints:
     - websecure
   routes:
+    - match: Host(`cr.nathanv.app`) && Method(`GET`) && PathRegexp(`^/v2/.+/blobs/[^/]+:[^/]+$`)
+      kind: Rule
+      priority: 1000
+      services:
+        - name: harbor
+          port: 80
+      middlewares:
+        - name: cdn-cache
     - match: Host(`cr.nathanv.app`)
       kind: Rule
       services:

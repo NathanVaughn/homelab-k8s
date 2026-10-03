@@ -1,0 +1,9 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: cdn-cache
+  namespace: traefik
+spec:
+  headers:
+    customResponseHeaders:
+      CDN-Cache-Control: "public, max-age=31536000"
