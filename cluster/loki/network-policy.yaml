@@ -42,3 +42,12 @@ spec:
     # Intra-namespace
     - to:
         - podSelector: {}
+    # Kubernetes API service and node endpoints (service NAT may alter either)
+    - to:
+        - ipBlock:
+            cidr: 10.0.0.0/8
+      ports:
+        - protocol: TCP
+          port: 443
+        - protocol: TCP
+          port: 6443
