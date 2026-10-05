@@ -31,7 +31,7 @@ spec:
             - secretRef:
                 name: git-pkgs-app-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/ghcr.io/git-pkgs/proxy:v0.9.0
+          image: cr.nathanv.app/ghcr.io/git-pkgs/proxy:v0.9.1
           args:
             - -config
             - /etc/proxy/config.yaml
