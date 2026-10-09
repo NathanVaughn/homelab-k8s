@@ -19,6 +19,14 @@ spec:
           port: 80
         - protocol: TCP
           port: 8080
+    # Webcam ingress
+    - from:
+        - podSelector:
+            matchLabels:
+              app: octoprint
+      ports:
+        - protocol: TCP
+          port: 8080
   egress:
     # DNS
     - to:
@@ -30,6 +38,14 @@ spec:
           port: 53
         - protocol: TCP
           port: 53
+    # Webcam
+    - to:
+        - podSelector:
+            matchLabels:
+              app: octoprint-webcam
+      ports:
+        - protocol: TCP
+          port: 8080
     # External (plugin repository updates)
     - to:
         - ipBlock:

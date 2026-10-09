@@ -3,7 +3,7 @@
 ## Post Setup
 
 - Stream URL: `https://octoprint-cam.nathanv.app/?action=stream`
-- Snapshot URL: `https://octoprint-cam.nathanv.app/?action=snapshot`
+- Snapshot URL: `http://octoprint-cam-service.octoprint.svc.cluster.local:8080/?action=snapshot`
 - Path to FFMPEG: `/usr/bin/ffmpeg`
 - Restart command: `s6-svc -r /var/run/s6/services/octoprint`
 
