@@ -19,7 +19,7 @@ spec:
       containers:
         - env:
             - name: ENABLE_MJPG_STREAMER
-              value: "true"
+              value: "false"
             - name: TZ
               value: America/Chicago # required for print time estimation
           # registry-proxy image-prefix
@@ -29,16 +29,17 @@ spec:
             privileged: true # for device access
             runAsUser: 0
           ports:
-            - containerPort: 8080 # webcam
             - containerPort: 80 # http server
           volumeMounts:
             - mountPath: /octoprint
               name: data-vol
-              # *DON'T * mount the 3d printer as a USB device
-              # If you're not careful, Kubernetes will happily create
-              # a folder in it's place on the host if the 3d printer is not turned on
-              # when the container starts.
+            - mountPath: /dev
+              name: host-dev
       volumes:
         - name: data-vol
           persistentVolumeClaim:
             claimName: octoprint-pvc
+        - name: host-dev
+          hostPath:
+            path: /dev
+            type: Directory

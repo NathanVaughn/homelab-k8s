@@ -6,7 +6,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: octoprint
+    app: octoprint-webcam
   ports:
     - port: 8080
       protocol: TCP

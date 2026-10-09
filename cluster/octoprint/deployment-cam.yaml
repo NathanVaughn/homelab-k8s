@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: octoprint-webcam
+  namespace: octoprint
+spec:
+  replicas: 1
+  serviceName: octoprint-cam-service
+  selector:
+    matchLabels:
+      app: octoprint-webcam
+  template:
+    metadata:
+      labels:
+        app: octoprint-webcam
+    spec:
+      nodeSelector:
+        hardware: 3dprinter
+      containers:
+        - env:
+            - name: RESOLUTION
+              value: 640x480
+          # registry-proxy image-prefix
+          image: cr.nathanv.app/docker.io/davidhamm/mjpg-streamer:0.4
+          name: webcam
+          securityContext:
+            privileged: true
+            runAsUser: 0
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - test -c /dev/video0
+            periodSeconds: 10
+            failureThreshold: 3
+          readinessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - test -c /dev/video0
+            periodSeconds: 5
+          volumeMounts:
+            - mountPath: /dev
+              name: host-dev
+      volumes:
+        - name: host-dev
+          hostPath:
+            path: /dev
+            type: Directory
