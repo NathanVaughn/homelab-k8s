@@ -34,7 +34,7 @@ spec:
     persistence:
       defaultClassReplicaCount: 3
       # tries to keep a replica on the node the volume is attached to
-      defaultDataLocality: best-effort
+      defaultDataLocality: disabled
       # prevents data from being deleted when pvc is deleted
       reclaimPolicy: Retain
     defaultSettings:
