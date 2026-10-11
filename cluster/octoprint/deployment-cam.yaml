@@ -16,6 +16,15 @@ spec:
     spec:
       nodeSelector:
         hardware: 3dprinter
+      tolerations:
+        - key: node.kubernetes.io/not-ready
+          operator: Exists
+          effect: NoExecute
+          tolerationSeconds: 600
+        - key: node.kubernetes.io/unreachable
+          operator: Exists
+          effect: NoExecute
+          tolerationSeconds: 600
       containers:
         - env:
             - name: RESOLUTION
