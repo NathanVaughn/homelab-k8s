@@ -41,13 +41,15 @@ spec:
             - containerPort: 80 # http server
           volumeMounts:
             - mountPath: /octoprint
-              name: data-vol
+              name: local-data
             - mountPath: /dev
               name: host-dev
       volumes:
-        - name: data-vol
-          persistentVolumeClaim:
-            claimName: octoprint-pvc
+        # hostPath so a Longhorn blip can't delete the pod mid-print; see cronjob-backup.yaml
+        - name: local-data
+          hostPath:
+            path: /var/lib/octoprint
+            type: DirectoryOrCreate
         - name: host-dev
           hostPath:
             path: /dev

@@ -1,0 +1,44 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: octoprint-backup
+  namespace: octoprint
+spec:
+  schedule: "0 5 * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          nodeSelector:
+            hardware: 3dprinter
+          containers:
+            - name: backup
+              # registry-proxy image-prefix
+              image: cr.nathanv.app/docker.io/library/busybox:1.37
+              command:
+                - sh
+                - -c
+                - |
+                  set -e
+                  mkdir -p /backup/backups
+                  tar -C /octoprint -czf /backup/backups/octoprint-$(date +%F).tgz .
+                  find /backup/backups -name 'octoprint-*.tgz' -mtime +14 -delete
+              volumeMounts:
+                - mountPath: /octoprint
+                  name: local-data
+                  readOnly: true
+                # replicated Longhorn volume, covered by the nightly Longhorn backup
+                - mountPath: /backup
+                  name: backup-vol
+          volumes:
+            - name: local-data
+              hostPath:
+                path: /var/lib/octoprint
+                type: Directory
+            - name: backup-vol
+              persistentVolumeClaim:
+                claimName: octoprint-pvc
