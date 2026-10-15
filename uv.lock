@@ -5,7 +5,7 @@ requires-python = ">=3.13"
 [[package]]
 name = "annotated-types"
 version = "0.8.0"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/5f/56/a8120250d128bed162cd73c76d45f6ef9991f3e068f62a8ee060afa3104a/annotated_types-0.8.0.tar.gz", hash = "sha256:13b2beaad985e05e2d6407ee4c4f35590b11f8d693a258a561055cac8f64cab7", size = 15893, upload-time = "2026-07-23T20:16:13.995Z" }
 wheels = [
     { url = "https://pkgs.nathanv.app/pypi/packages/packages/99/91/8acff4f5e50511b911bbccb72b8628a49c68ce14148cd9f6431094859a90/annotated_types-0.8.0-py3-none-any.whl", hash = "sha256:f072f4d804ea359e4eaf198b1af7a8b0943881a87f31bb764f8bf219bb9419e0", size = 13427, upload-time = "2026-07-23T20:16:12.938Z" },
@@ -14,7 +14,7 @@ wheels = [
 [[package]]
 name = "bcrypt"
 version = "5.0.0"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/d4/36/3329e2518d70ad8e2e5817d5a4cac6bba05a47767ec416c7d020a965f408/bcrypt-5.0.0.tar.gz", hash = "sha256:f748f7c2d6fd375cc93d3fba7ef4a9e3a092421b8dbf34d8d4dc06be9492dfdd", size = 25386, upload-time = "2025-09-25T19:50:47.829Z" }
 wheels = [
     { url = "https://pkgs.nathanv.app/pypi/packages/packages/13/85/3e65e01985fddf25b64ca67275bb5bdb4040bd1a53b66d355c6c37c8a680/bcrypt-5.0.0-cp313-cp313t-macosx_10_12_universal2.whl", hash = "sha256:f3c08197f3039bec79cee59a606d62b96b16669cff3949f21e74796b6e3cd2be", size = 481806, upload-time = "2025-09-25T19:49:05.102Z" },
@@ -80,7 +80,7 @@ wheels = [
 [[package]]
 name = "cffi"
 version = "2.1.1"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 dependencies = [
     { name = "pycparser", marker = "implementation_name != 'PyPy'" },
 ]
@@ -153,7 +153,7 @@ wheels = [
 [[package]]
 name = "click"
 version = "8.5.0"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/c7/0e/7fa0ef50764b67090eca4114772a2abf8b6148198475e54c660b97caeee6/click-8.5.0.tar.gz", hash = "sha256:ba0d2089de75ea0310e2dde03160e6ca10009947fb95a182f9b54021bb272e34", size = 382235, upload-time = "2026-08-26T13:33:14.56Z" }
 wheels = [
     { url = "https://pkgs.nathanv.app/pypi/packages/packages/58/50/6c0d534c5f134586a8e1ba4e330569e32f057e33372ae556463212fb4cd3/click-8.5.0-py3-none-any.whl", hash = "sha256:255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360", size = 125251, upload-time = "2026-08-26T13:33:12.928Z" },
@@ -162,7 +162,7 @@ wheels = [
 [[package]]
 name = "cryptography"
 version = "50.0.2"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 dependencies = [
     { name = "cffi", marker = "platform_python_implementation != 'PyPy'" },
 ]
@@ -225,7 +225,7 @@ wheels = [
 [[package]]
 name = "decorator"
 version = "5.3.1"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/60/8b/32f9823da46cde7df2087faa08cd98d01b908f8dcab982cdba9c84e85355/decorator-5.3.1.tar.gz", hash = "sha256:4cbcdd55a6efadb9dbea26b858f4fb3264567b52d69ca0d25b721b553f60ea82", size = 58084, upload-time = "2026-05-18T06:03:28.057Z" }
 wheels = [
     { url = "https://pkgs.nathanv.app/pypi/packages/packages/05/7f/798705f5296a58ca505d600456748d1be48078eac8a7050d8a98bc9edb89/decorator-5.3.1-py3-none-any.whl", hash = "sha256:f47fe6fdbd2edd623ecfe36875d37aba411624e2670dd395dddae1358689bb3c", size = 10365, upload-time = "2026-05-18T06:03:26.517Z" },
@@ -234,7 +234,7 @@ wheels = [
 [[package]]
 name = "deprecated"
 version = "3.0.0"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 dependencies = [
     { name = "wrapt" },
 ]
@@ -246,7 +246,7 @@ wheels = [
 [[package]]
 name = "distro"
 version = "1.9.0"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/fc/f8/98eea607f65de6527f8a2e8885fc8015d3e6f5775df186e443e0964a11c3/distro-1.9.0.tar.gz", hash = "sha256:2fa77c6fd8940f116ee1d6b94a2f90b13b5ea8d019b98bc8bafdcabcdd9bdbed", size = 60722, upload-time = "2023-12-24T09:54:32.31Z" }
 wheels = [
     { url = "https://pkgs.nathanv.app/pypi/packages/packages/12/b3/231ffd4ab1fc9d679809f356cebee130ac7daa00d6d6f3206dd4fd137e9e/distro-1.9.0-py3-none-any.whl", hash = "sha256:7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2", size = 20277, upload-time = "2023-12-24T09:54:30.421Z" },
@@ -255,7 +255,7 @@ wheels = [
 [[package]]
 name = "fabric"
 version = "3.2.3"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 dependencies = [
     { name = "decorator" },
     { name = "deprecated" },
@@ -270,7 +270,7 @@ wheels = [
 [[package]]
 name = "gevent"
 version = "26.9.0"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 dependencies = [
     { name = "cffi", marker = "platform_python_implementation == 'CPython' and sys_platform == 'win32'" },
     { name = "greenlet", marker = "platform_python_implementation == 'CPython'" },
@@ -311,7 +311,7 @@ wheels = [
 [[package]]
 name = "greenlet"
 version = "3.5.6"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/3e/6e/0091f175ccd02b02bc8811bbcbcc6ac2e980be116e3b2f7a736ca322bf84/greenlet-3.5.6.tar.gz", hash = "sha256:8e67c43bdfc88d5fee6db0d3e40175b362fc95fb85f0412d233b9b203c53a575", size = 207653, upload-time = "2026-09-14T15:42:51.806Z" }
 wheels = [
     { url = "https://pkgs.nathanv.app/pypi/packages/packages/f1/a1/e720a38852366c589e1a46cf570b886507ad2cf591050c203365638baab0/greenlet-3.5.6-cp313-cp313-macosx_11_0_universal2.whl", hash = "sha256:f96f0e30b5a95c7631b12bfe214cbc90ec8fe8cfa36920596c10514a65743519", size = 294627, upload-time = "2026-09-14T14:24:40.102Z" },
@@ -393,7 +393,7 @@ dev = [{ name = "prek", specifier = ">=0.4.5" }]
 [[package]]
 name = "invoke"
 version = "2.2.1"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/de/bd/b461d3424a24c80490313fd77feeb666ca4f6a28c7e72713e3d9095719b4/invoke-2.2.1.tar.gz", hash = "sha256:515bf49b4a48932b79b024590348da22f39c4942dff991ad1fb8b8baea1be707", size = 304762, upload-time = "2025-10-11T00:36:35.172Z" }
 wheels = [
     { url = "https://pkgs.nathanv.app/pypi/packages/packages/32/4b/b99e37f88336009971405cbb7630610322ed6fbfa31e1d7ab3fbf3049a2d/invoke-2.2.1-py3-none-any.whl", hash = "sha256:2413bc441b376e5cd3f55bb5d364f973ad8bdd7bf87e53c79de3c11bf3feecc8", size = 160287, upload-time = "2025-10-11T00:36:33.703Z" },
@@ -402,7 +402,7 @@ wheels = [
 [[package]]
 name = "jinja2"
 version = "3.1.6"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 dependencies = [
     { name = "markupsafe" },
 ]
@@ -414,7 +414,7 @@ wheels = [
 [[package]]
 name = "markupsafe"
 version = "3.0.4"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/38/9b/e422a865e1d5d57d0e509b4e0bf1c1a70a7f6382c29a5aa428df994c8bc8/markupsafe-3.0.4.tar.gz", hash = "sha256:2e9ad7dd851bf45fab9f75cbff4cb493fee9979e8d8c7c9c3ee119022518edd6", size = 153777, upload-time = "2026-10-02T23:07:22.29Z" }
 wheels = [
     { url = "https://pkgs.nathanv.app/pypi/packages/packages/6d/18/4bc5ba32499e87bb2b0ef5b3a9bb9c00a131fa961ddf0be548cb550f548b/markupsafe-3.0.4-cp313-cp313-android_24_arm64_v8a.whl", hash = "sha256:de8b364c423ef0a4bad9069657d617f9a5d2b2062457a89b1fa16ee199c399c1", size = 12786, upload-time = "2026-10-02T23:05:08.709Z" },
@@ -512,7 +512,7 @@ wheels = [
 [[package]]
 name = "packaging"
 version = "26.3"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/7d/fa/3944b40b07da9ce895c0e6303a5ab7d53da063554f534556b134a54d6093/packaging-26.3.tar.gz", hash = "sha256:94edc256424af38762eb31306eed28beb9f0efc50a8837492c9d6fd6004aed79", size = 313412, upload-time = "2026-08-04T18:15:28.737Z" }
 wheels = [
     { url = "https://pkgs.nathanv.app/pypi/packages/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl", hash = "sha256:d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c", size = 129956, upload-time = "2026-08-04T18:15:27.159Z" },
@@ -521,7 +521,7 @@ wheels = [
 [[package]]
 name = "paramiko"
 version = "4.0.0"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 dependencies = [
     { name = "bcrypt" },
     { name = "cryptography" },
@@ -536,7 +536,7 @@ wheels = [
 [[package]]
 name = "prek"
 version = "0.5.5"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/9b/7b/11538b8e6cd7e269261feae62a2d08818fdcf8f43c3b1a253cec01a5488d/prek-0.5.5.tar.gz", hash = "sha256:16bf596768bb754779c7d42317e9ca16ac609c0cce7d13bae0829944ab40a26a", size = 570428, upload-time = "2026-10-05T06:08:59.165Z" }
 wheels = [
     { url = "https://pkgs.nathanv.app/pypi/packages/packages/2e/77/189e554ea92baf6c1d33733b3e9d1ed819ab7d77e57eb2e3ead0bb1d8060/prek-0.5.5-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:50fbceb0f728b504023f6e6c9037ac0656436949d94f7a85bac5542e6c1a4a75", size = 6038669, upload-time = "2026-10-05T06:08:39.368Z" },
@@ -553,7 +553,7 @@ wheels = [
 [[package]]
 name = "pycparser"
 version = "3.11"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/da/a8/c5fdbeee588bb8ada9458774f43adf1bdd30bd59157055142183e769a024/pycparser-3.11.tar.gz", hash = "sha256:d875f09c3507d00e1aba0eecc6dcadc1352f30fff09dc6bff2f1c2935e97c2bc", size = 113796, upload-time = "2026-10-09T12:56:59.539Z" }
 wheels = [
     { url = "https://pkgs.nathanv.app/pypi/packages/packages/90/11/0e6f11117525ff0eec40ebac3d313376f102df93ca44ad9e893ee85e4f89/pycparser-3.11-py3-none-any.whl", hash = "sha256:51d5a8ba2be0bbe440b99d2112604c95bbbc3c2748a64260186c541e1729cd80", size = 51178, upload-time = "2026-10-09T12:56:58.131Z" },
@@ -562,7 +562,7 @@ wheels = [
 [[package]]
 name = "pydantic"
 version = "2.14.1"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 dependencies = [
     { name = "annotated-types" },
     { name = "pydantic-core" },
@@ -577,7 +577,7 @@ wheels = [
 [[package]]
 name = "pydantic-core"
 version = "2.50.1"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 dependencies = [
     { name = "typing-extensions" },
 ]
@@ -664,7 +664,7 @@ wheels = [
 [[package]]
 name = "pyinfra"
 version = "3.10.0"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 dependencies = [
     { name = "click" },
     { name = "distro" },
@@ -685,7 +685,7 @@ wheels = [
 [[package]]
 name = "pynacl"
 version = "1.6.2"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 dependencies = [
     { name = "cffi", marker = "platform_python_implementation != 'PyPy'" },
 ]
@@ -720,7 +720,7 @@ wheels = [
 [[package]]
 name = "python-dateutil"
 version = "2.9.0.post0"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 dependencies = [
     { name = "six" },
 ]
@@ -732,7 +732,7 @@ wheels = [
 [[package]]
 name = "pyyaml"
 version = "6.0.3"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/05/8e/961c0007c59b8dd7729d542c61a4d537767a59645b82a0b521206e1e25c2/pyyaml-6.0.3.tar.gz", hash = "sha256:d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f", size = 130960, upload-time = "2025-09-25T21:33:16.546Z" }
 wheels = [
     { url = "https://pkgs.nathanv.app/pypi/packages/packages/d1/11/0fd08f8192109f7169db964b5707a2f1e8b745d4e239b784a5a1dd80d1db/pyyaml-6.0.3-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:8da9669d359f02c0b91ccc01cac4a67f16afec0dac22c2ad09f46bee0697eba8", size = 181669, upload-time = "2025-09-25T21:32:23.673Z" },
@@ -768,7 +768,7 @@ wheels = [
 [[package]]
 name = "six"
 version = "1.17.0"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/94/e7/b2c673351809dca68a0e064b6af791aa332cf192da575fd474ed7d6f16a2/six-1.17.0.tar.gz", hash = "sha256:ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81", size = 34031, upload-time = "2024-12-04T17:35:28.174Z" }
 wheels = [
     { url = "https://pkgs.nathanv.app/pypi/packages/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl", hash = "sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274", size = 11050, upload-time = "2024-12-04T17:35:26.475Z" },
@@ -777,7 +777,7 @@ wheels = [
 [[package]]
 name = "typeguard"
 version = "4.6.0"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 dependencies = [
     { name = "typing-extensions" },
 ]
@@ -789,7 +789,7 @@ wheels = [
 [[package]]
 name = "types-paramiko"
 version = "4.0.0.20260518"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 dependencies = [
     { name = "cryptography" },
 ]
@@ -801,7 +801,7 @@ wheels = [
 [[package]]
 name = "typing-extensions"
 version = "4.16.0"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/f6/cc/6253133b5bb138fc3306cebfbda2c520f545d36b5be2c7255cc528bb45d6/typing_extensions-4.16.0.tar.gz", hash = "sha256:dc983d19a509c94dba722ee6abd33940f7c05a89e243c47e907eb4db6f1a43e5", size = 113555, upload-time = "2026-07-02T08:40:05.92Z" }
 wheels = [
     { url = "https://pkgs.nathanv.app/pypi/packages/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl", hash = "sha256:481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8", size = 45571, upload-time = "2026-07-02T08:40:04.659Z" },
@@ -810,7 +810,7 @@ wheels = [
 [[package]]
 name = "typing-inspection"
 version = "0.4.4"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 dependencies = [
     { name = "typing-extensions" },
 ]
@@ -822,7 +822,7 @@ wheels = [
 [[package]]
 name = "wrapt"
 version = "2.5.1"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/04/22/89e2f3bdae5cb34e0cab0cd86d7172dbf418de4b46c9b17b9c7a560dfa44/wrapt-2.5.1.tar.gz", hash = "sha256:f595bb0185aab3e9dc31950c95d914f56ea8278810c3b928f3426e12ed6d27bc", size = 184455, upload-time = "2026-10-14T00:39:39.24Z" }
 wheels = [
     { url = "https://pkgs.nathanv.app/pypi/packages/packages/e4/6d/cfe55762435f36107815d56a2cfbebe7e3129b593c47a670c6eb1d7917d3/wrapt-2.5.1-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:f98eaf784cd12bc69c77af398084174531007cd81849c962163ccfc6e791f3ea", size = 106068, upload-time = "2026-10-14T00:37:36.087Z" },
@@ -886,7 +886,7 @@ wheels = [
 [[package]]
 name = "zope-event"
 version = "6.2"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/93/41/faa10af34d48d9cd6fa0249a1162943ad84a9590bd1a06939981e6640416/zope_event-6.2.tar.gz", hash = "sha256:b97d5d6327067ee6b9dfcbdf606ade9ade70991e19c162e808ea39e5fcf0f8d3", size = 18958, upload-time = "2026-04-28T06:24:10.578Z" }
 wheels = [
     { url = "https://pkgs.nathanv.app/pypi/packages/packages/9e/33/848922889e946d4befc415c219fe516af75c49555d8e736e183bfd30db42/zope_event-6.2-py3-none-any.whl", hash = "sha256:5e755153ac4faf64c10a4b6dd3307680166a3edf65b38df22df592610f8fa874", size = 6525, upload-time = "2026-04-28T06:24:09.176Z" },
@@ -895,7 +895,7 @@ wheels = [
 [[package]]
 name = "zope-interface"
 version = "8.6"
-source = { registry = "https://pkgs.nathanv.app/pypi/simple" }
+source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/26/39/a8481b926e42c44a6fcc670904f8251469ec42edbff1ba066719ca1e7fb4/zope_interface-8.6.tar.gz", hash = "sha256:b40ef9b4873afb5d0dec02b8d2dfde1cf18c72337b60c99cb735961e0bac05c0", size = 257973, upload-time = "2026-08-20T11:18:08.717Z" }
 wheels = [
     { url = "https://pkgs.nathanv.app/pypi/packages/packages/30/01/860c4879f072968375ec82fabaa5d83256e6ad8d3dce9527b00931e54b10/zope_interface-8.6-cp313-cp313-macosx_10_9_x86_64.whl", hash = "sha256:add6e226c6568de6d0ea9f6abe6353072387afcf5f817610ea266495d0c1ee72", size = 212548, upload-time = "2026-08-20T11:17:29.161Z" },
