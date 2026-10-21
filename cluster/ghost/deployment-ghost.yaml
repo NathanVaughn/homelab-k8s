@@ -44,7 +44,7 @@ spec:
             - secretRef:
                 name: ghost-app-env
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/library/ghost:6.70.0
+          image: cr.nathanv.app/docker.io/library/ghost:6.72.0
           # 6.4.0 not aviable on amd64
           # hash issue with 6.10.3
           name: ghost
