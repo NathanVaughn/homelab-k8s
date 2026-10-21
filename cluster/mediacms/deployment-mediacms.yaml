@@ -18,7 +18,7 @@ spec:
       initContainers:
         - name: migrations
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/mediacms/mediacms@sha256:bd7ff29a3538ceaa78dc380ebcc6c52a6e54bc4b40678b6e07aea18081ceb553
+          image: cr.nathanv.app/docker.io/mediacms/mediacms@sha256:f10737c9cd23836969680db9c5ee5aec8d2b7e09b559aa8ad93cf2460ec81a7e
           args: ["./deploy/docker/prestart.sh"]
           env:
             - name: ENABLE_MIGRATIONS
@@ -52,7 +52,7 @@ spec:
               name: mediacms-media-vol
         - name: seed-files
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/curlimages/curl:8.22.0
+          image: cr.nathanv.app/docker.io/curlimages/curl:8.23.0
           command: ['sh', '-c']
           args: ['mkdir -p /home/mediacms.io/mediacms/media_files/userlogos/ && cd /home/mediacms.io/mediacms/media_files/userlogos/ && curl -o banner.jpg https://raw.githubusercontent.com/mediacms-io/mediacms/refs/heads/main/media_files/userlogos/banner.jpg && curl -o poster_audio.jpg https://raw.githubusercontent.com/mediacms-io/mediacms/refs/heads/main/media_files/userlogos/poster_audio.jpg && curl -o user.jpg https://raw.githubusercontent.com/mediacms-io/mediacms/refs/heads/main/media_files/userlogos/user.jpg']
           volumeMounts:
@@ -61,7 +61,7 @@ spec:
       containers:
         - name: mediacms
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/mediacms/mediacms@sha256:bd7ff29a3538ceaa78dc380ebcc6c52a6e54bc4b40678b6e07aea18081ceb553
+          image: cr.nathanv.app/docker.io/mediacms/mediacms@sha256:f10737c9cd23836969680db9c5ee5aec8d2b7e09b559aa8ad93cf2460ec81a7e
           ports:
             - containerPort: 80
           env:
