@@ -40,6 +40,7 @@ spec:
       oidc:
         issuerURL: https://authentik.nathanv.app/application/o/headlamp/
         scopes: openid,profile,email
+        autoLogin: true
     # registry-proxy block-start
     image:
       registry: cr.nathanv.app/ghcr.io
