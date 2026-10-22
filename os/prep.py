@@ -1,9 +1,9 @@
 import argparse
 import os
-import subprocess
 import urllib.request
 
 import yaml
+from passlib.handlers.sha2_crypt import sha512_crypt
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE_FILE = os.path.join(THIS_DIR, "autoinstall.tmpl.yaml")
@@ -22,10 +22,8 @@ def main(hostname: str, password: str, ssid_name: str, ssid_password: str) -> No
         ssh_key = response.read().decode("utf-8").strip()
 
     data["autoinstall"]["identity"]["hostname"] = hostname
-    data["autoinstall"]["identity"]["password"] = (
-        subprocess.check_output(["mkpasswd", "-m", "sha-512", password])
-        .decode("utf-8")
-        .strip()
+    data["autoinstall"]["identity"]["password"] = sha512_crypt.using(rounds=5000).hash(
+        password
     )
 
     data["autoinstall"]["ssh"]["authorized-keys"] = [ssh_key]
@@ -35,7 +33,7 @@ def main(hostname: str, password: str, ssid_name: str, ssid_password: str) -> No
         data["autoinstall"]["network"]["wifis"]["wlp2s0"]["access-points"] = {
             ssid_name: {"password": ssid_password}
         }
-        data["packages"].append("wpasupplicant")
+        data["autoinstall"]["packages"].append("wpasupplicant")
     else:
         del data["autoinstall"]["network"]["wifis"]
 
