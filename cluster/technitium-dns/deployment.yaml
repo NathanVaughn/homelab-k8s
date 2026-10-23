@@ -26,8 +26,7 @@ spec:
                       - network
       containers:
         - name: technitium-dns
-          # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/technitium/dns-server:15.6.2
+          image: docker.io/technitium/dns-server:15.6.2
           ports:
             - containerPort: 5380
             - containerPort: 53
