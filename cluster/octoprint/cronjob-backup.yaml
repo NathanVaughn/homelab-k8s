@@ -26,7 +26,7 @@ spec:
                   set -e
                   mkdir -p /backup/backups
                   tar -C /octoprint -czf /backup/backups/octoprint-$(date +%F).tgz .
-                  find /backup/backups -name 'octoprint-*.tgz' -mtime +1 -delete
+                  find /backup/backups -name 'octoprint-*.tgz' -mtime +2 -delete
               volumeMounts:
                 - mountPath: /octoprint
                   name: local-data
