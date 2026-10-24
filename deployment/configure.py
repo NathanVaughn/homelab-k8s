@@ -1,4 +1,3 @@
-import io
 import json
 import os
 import pathlib
@@ -8,7 +7,7 @@ import urllib.request
 
 import yaml
 from pyinfra import host, inventory
-from pyinfra.facts.server import Hostname, User
+from pyinfra.facts.server import Hostname
 from pyinfra.operations import apt, files, python, server, systemd
 
 ROOT_DIR = pathlib.Path(__file__).absolute().parent.parent
@@ -32,20 +31,6 @@ if not k3s_install_script.exists():
 with open(ROOT_DIR.joinpath("deployment", "secrets", "k3s_token")) as fp:
     k3s_token = fp.read().strip()
 
-# setup passwordless sudo
-files.block(
-    name="Setup passwordless sudo",
-    path="/etc/sudoers",
-    content=f"{host.get_fact(User)} ALL=(ALL) NOPASSWD: ALL\n",
-    _sudo=True,
-)
-# New way of doing this
-files.put(
-    name="Setup passwordless sudo",
-    src=io.StringIO(f"{host.get_fact(User)} ALL=(ALL) NOPASSWD: ALL\n"),
-    dest="/etc/sudoers.d/ubuntu",
-    _sudo=True,
-)
 
 # configure multipath
 # https://longhorn.io/kb/troubleshooting-volume-with-multipath/#solution
@@ -76,6 +61,32 @@ apt.packages(
     update=True,
     _sudo=True,
 )
+
+# configure primary DNS server for network role hosts
+if "role=network" in host.data.get("k8s_labels", []):
+    dns_config = files.block(
+        name="Configure primary DNS server",
+        path="/etc/netplan/90-primary-dns.yaml",
+        content=(
+            "network:\n"
+            "  version: 2\n"
+            "  ethernets:\n"
+            "    all-en:\n"
+            "      dhcp4-overrides:\n"
+            "        use-dns: false\n"
+            "      nameservers:\n"
+            "        addresses:\n"
+            "          - 1.1.1.1\n"
+        ),
+        _sudo=True,
+    )
+
+    server.shell(
+        name="Apply primary DNS server configuration",
+        commands="netplan generate && netplan apply",
+        _sudo=True,
+        _if=dns_config.did_change,
+    )
 
 # disable wifi
 if "connectivity=eth" in host.data.get("k8s_labels", []):
@@ -144,14 +155,18 @@ def update_kubeconfig() -> None:
         yaml.safe_dump(kube_config_data, fp)
 
 
-# https://serverfault.com/a/1162813
-# adds full hostname to the certificate
+is_etcd_voter = host.data.get("etcd_voter", True)
+k3s_service = "k3s" if is_etcd_voter else "k3s-agent"
+kubelet_args = ["--kubelet-arg=node-status-update-frequency=5s"]
+
 base_args = [
     "server",
     "--secrets-encryption",
     "--disable=traefik",
     "--disable=servicelb",
     # "--embedded-registry",
+    # https://serverfault.com/a/1162813
+    # adds full hostname to the certificate
     f"--tls-san={host.name}",
     f"--tls-san={CONTROL_PLANE_IP}",
     "--etcd-expose-metrics",
@@ -161,62 +176,79 @@ base_args = [
     "--kube-apiserver-arg=default-unreachable-toleration-seconds=20",
     "--kube-controller-arg=node-monitor-period=20s",
     "--kube-controller-arg=node-monitor-grace-period=20s",
-    "--kubelet-arg=node-status-update-frequency=5s",
+    *kubelet_args,
 ]
 
-if first_host.name == host.name:
+
+if is_etcd_voter:
+    if first_host.name == host.name:
+        server.script(
+            name="Run k3s server install script on first node",
+            src=str(k3s_install_script),
+            _env={"K3S_TOKEN": k3s_token},
+            args=[*base_args, "--cluster-init"],
+        )
+
+        # download the kubeconfig file
+        kube_config = pathlib.Path(os.path.expanduser("~"), ".kube", "config")
+        kube_config.parent.mkdir(exist_ok=True)
+
+        files.get(
+            name="Download kubeconfig",
+            src="/etc/rancher/k3s/k3s.yaml",
+            dest=str(kube_config.absolute()),
+            _sudo=True,
+        )
+
+        python.call(name="Update kubeconfig", function=update_kubeconfig)
+
+    else:
+        # resolve first host name to ip address
+        first_host_ip = socket.gethostbyname(first_host.name)
+        server.script(
+            name="Run k3s server install script on other nodes",
+            src=str(k3s_install_script),
+            _env={"K3S_TOKEN": k3s_token},
+            args=[*base_args, f"--server=https://{first_host_ip}:6443"],
+            _serial=True,  # join one at a time
+        )
+
+else:
+    first_host_ip = socket.gethostbyname(first_host.name)
     server.script(
-        name="Run k3s install script on first node",
+        name="Run k3s agent install script",
         src=str(k3s_install_script),
-        _env={"K3S_TOKEN": k3s_token},
-        args=[*base_args, "--cluster-init"],
+        _env={
+            "K3S_TOKEN": k3s_token,
+            "K3S_URL": f"https://{first_host_ip}:6443",
+        },
+        args=["agent", *kubelet_args],
     )
 
-    # download the kubeconfig file
-    kube_config = pathlib.Path(os.path.expanduser("~"), ".kube", "config")
-    kube_config.parent.mkdir(exist_ok=True)
-
-    files.get(
-        name="Download kubeconfig",
-        src="/etc/rancher/k3s/k3s.yaml",
-        dest=str(kube_config.absolute()),
+# config.yaml only holds server (etcd) settings, agents do not accept them
+k3s_config = None
+if is_etcd_voter:
+    k3s_config = files.put(
+        name="Upload k3s config",
+        src=str(ROOT_DIR.joinpath("deployment", "secrets", "config.yaml")),
+        dest="/etc/rancher/k3s/config.yaml",
         _sudo=True,
     )
 
-    python.call(name="Update kubeconfig", function=update_kubeconfig)
-
-else:
-    # resolve first host name to ip address
-    first_host_ip = socket.gethostbyname(first_host.name)
-    server.script(
-        name="Run k3s install script on other nodes",
-        src=str(k3s_install_script),
-        _env={"K3S_TOKEN": k3s_token},
-        args=[*base_args, f"--server=https://{first_host_ip}:6443"],
-        _serial=True,  # join one at a time
+restart_commands = [f"systemctl restart {k3s_service}"]
+if is_etcd_voter:
+    # block until the node is Ready so quorum is never lost by restarting the next voter
+    restart_commands.append(
+        "timeout 900 sh -c 'until k3s kubectl wait --for=condition=Ready "
+        f"node/{host.get_fact(Hostname)} --timeout=30s; do sleep 5; done'"
     )
 
-registries_config = files.put(
-    name="Upload k3s registry config",
-    src=str(ROOT_DIR.joinpath("deployment", "files", "registries.yaml")),
-    dest="/etc/rancher/k3s/registries.yaml",
-    _sudo=True,
-)
-
-k3s_config = files.put(
-    name="Upload k3s config",
-    src=str(ROOT_DIR.joinpath("deployment", "secrets", "config.yaml")),
-    dest="/etc/rancher/k3s/config.yaml",
-    _sudo=True,
-)
-
-systemd.service(
-    name="Restart k3s",
-    service="k3s",
-    restarted=True,
+server.shell(
+    name="Restart k3s and wait for node to be ready",
+    commands=restart_commands,
     _sudo=True,
     # https://docs.pyinfra.com/en/3.x/using-operations.html#operation-changes-output
-    _if=lambda: k3s_config.did_change() or registries_config.did_change(),
+    _if=lambda: k3s_config is not None and k3s_config.did_change(),
     # restart k3s one at a time
     _serial=True,
 )

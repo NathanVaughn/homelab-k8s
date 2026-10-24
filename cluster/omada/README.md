@@ -7,6 +7,13 @@ In Authentik, create a proxy provider for a single application with the URL
 
 ## Post Setup
 
+### DHCP Pool
+
+Configured under Site Settings -> Network Config -> Network Settings -> LAN.
+
+Set the IP address and mask to `10.0.0.1/20`.
+Set the DHCP pool range to `10.0.0.30 - 10.0.15.254`.
+
 ### DHCP Reservations
 
 Configured under Site Settings -> Services -> DHCP Reservation.

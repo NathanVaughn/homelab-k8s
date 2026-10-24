@@ -5,6 +5,12 @@
 First, copy the K3S secret token into the `secrets/k3s_token` file.
 Also, setup the S3 config file in `secrets/config.yaml` file.
 
+First, enable passwordless sudo:
+
+```bash
+pyinfra inventory.py passwordless_sudo.py --data _sudo_password={password}
+```
+
 To setup K3S, run the following command:
 
 ```bash
@@ -59,6 +65,12 @@ sudo rm -rf /etc/rancher/
 /usr/local/bin/k3s-uninstall.sh
 ```
 
+On another node:
+
+```bash
+kubectl delete node $server
+```
+
 Then try again.
 
 ## Updates
@@ -84,7 +96,7 @@ kubectl drain --delete-emptydir-data --ignore-daemonsets $server
 
 # delete from cluster
 kubectl delete node $server
-# disable webhook perventing delection
+# disable webhook preventing deletion
 kubectl delete validatingwebhookconfiguration longhorn-webhook-validator
 kubectl -n longhorn delete nodes.longhorn.io $server
 

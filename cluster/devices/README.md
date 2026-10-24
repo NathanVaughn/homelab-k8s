@@ -21,7 +21,6 @@
 | Device               | IP        | Description                       |
 | -------------------- | --------- | --------------------------------- |
 | butch.nathanv.home   | 10.0.0.2  | DNS Server and Network Controller |
-| tex.nathanv.home     | 10.0.0.10 | Old app server                    |
 | cassidy.nathanv.home | 10.0.0.11 | 3D print server                   |
 | billy.nathanv.home   | 10.0.0.20 | Kubernetes node 1                 |
 | jesse.nathanv.home   | 10.0.0.21 | Kubernetes node 2                 |
@@ -37,7 +36,6 @@
 | traefik (reverse proxy) | 10.0.1.2 | reverse-proxy.svc.nathanv.home     |
 | chrony (NTP)            | 10.0.1.3 | ntp.svc.nathanv.home               |
 | technitium (DNS)        | 10.0.1.4 | dns.svc.nathanv.home               |
-| Factorio                | 10.0.1.5 | factorio.svc.nathanv.home          |
 | Omada                   | 10.0.1.6 | omada.svc.nathanv.home             |
 
 ## IoT Network
