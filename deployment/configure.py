@@ -254,13 +254,16 @@ server.shell(
 )
 
 # only need to run in one spot on the cluster
-for label in host.data.get("k8s_labels", []):
-    server.shell(
-        name=f"Label node with {label}",
-        commands=f"kubectl label nodes {host.get_fact(Hostname)} {label}",
-        _sudo=True,
-        _run_once=True,
-    )
+if host.name == first_host.name:
+    for target_host in inventory.hosts.values():
+        node_name = target_host.get_fact(Hostname)
+        for label in target_host.data.get("k8s_labels", []):
+            server.shell(
+                name=f"Label {node_name} with {label}",
+                commands=f"kubectl label nodes {node_name} {label}",
+                _sudo=True,
+                _run_once=True,
+            )
 # endregion
 
 # increase the number of open files
