@@ -13,6 +13,7 @@ spec:
   failedJobsHistoryLimit: 3
   jobTemplate:
     spec:
+      activeDeadlineSeconds: 3600
       template:
         spec:
           containers:
@@ -36,5 +37,10 @@ spec:
               # Execute the truncate command
               command: ["/bin/sh", "-c"]
               args:
-                - psql -c "TRUNCATE TABLE django_channels_postgres_message;"
+                - |
+                  echo "Waiting for PostgreSQL to accept connections"
+                  until pg_isready --quiet --timeout=5; do
+                    sleep 30
+                  done
+                  exec psql -v ON_ERROR_STOP=1 -c "TRUNCATE TABLE django_channels_postgres_message;"
           restartPolicy: OnFailure
