@@ -5,7 +5,7 @@ metadata:
   namespace: technitium-dns
 spec:
   type: LoadBalancer
-  loadBalancerIP: "10.0.1.4"
+  loadBalancerIP: "10.10.10.10"
   selector:
     app: technitium-dns
   ports:
