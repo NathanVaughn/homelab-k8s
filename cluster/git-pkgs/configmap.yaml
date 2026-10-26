@@ -7,6 +7,9 @@ data:
         astral: https://releases.astral.sh
       oci:
         ghcr: https://ghcr.io
+      debian_repositories:
+        ubuntu: http://us.archive.ubuntu.com/ubuntu/
+        ubuntu-security: http://security.ubuntu.com/ubuntu/
       helm:
         alloy: https://grafana.github.io/helm-charts/
         authentik: https://charts.goauthentik.io/

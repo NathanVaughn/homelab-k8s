@@ -53,6 +53,7 @@ def main() -> None:
                 "astral": "https://releases.astral.sh",
             },
             "oci": {"ghcr": "https://ghcr.io"},
+            "debian_repositories": {"ubuntu": "http://us.archive.ubuntu.com/ubuntu/", "ubuntu-security": "http://security.ubuntu.com/ubuntu/"}
         }
     }
 
