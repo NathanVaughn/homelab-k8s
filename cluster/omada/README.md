@@ -7,32 +7,37 @@ In Authentik, create a proxy provider for a single application with the URL
 
 ## Post Setup
 
-### DHCP Pool
-
-Configured under Site Settings -> Network Config -> Network Settings -> LAN.
-
-Set the IP address and mask to `10.0.0.1/20`.
-Set the DHCP pool range to `10.0.0.30 - 10.0.15.254`.
-
 ### DHCP Reservations
 
-Configured under Site Settings -> Services -> DHCP Reservation.
+Configured under Site -> Network Config -> Transmission -> DHCP Reservation.
 
 ### DHCP Settings
 
-Configured under Site Settings -> Wired Networks -> LAN -> Networks -> Default -> Networks.
+Configured under Site -> Network Config -> Network Settings -> LAN.
+
+Default VLAN:
+
+VLAN ID: 1
+Set the IP address and mask to `10.0.0.1/20`.
+Set the DHCP pool range to `10.0.0.30 - 10.0.15.254`.
+
+IOT VLAN:
+
+VLAN ID: 10
+Set the IP address and mask to `10.10.0.1/24`.
+Set the DHCP pool range to `10.10.0.1-10.10.0.254`.
 
 NTP is option 42 under the Advanced DHCP Options.
 
 ### Mesh Settings
 
-Configured under Site Settings -> Site.
+Configured under Site -> Network Config -> Site Settings.
 
 Enable Mesh and Band Steering under Wireless Features.
 
 ### Deep Packet Inspection
 
-Configured under Site Settings -> Network Security -> Application Control.
+Configured under Site -> Network Config -> Security -> Application Control.
 
 Enable Deep Packet Inspection and Logging Traffic.
 
@@ -40,10 +45,10 @@ Enable Deep Packet Inspection and Logging Traffic.
 
 This helps for things like Chromecasts that like to ignore DHCP DNS.
 
-First, create an IP group. This is under Site Settings -> Profiles -> Groups.
-This should include 8.8.8.8 and 8.8.4.4.
+First, create an IP group. This is under Site -> Network Config -> Profiles -> Groups.
+This should include 8.8.8.8/32 and 8.8.4.4/32.
 
-Now, go under Site Settings -> Network Security -> ACL.
+Now, go under Site -> Network Config -> Security -> ACL.
 Create a rule for the gateway blocking traffic from LAN -> WAN, for the Google DNS
 IP group.
 
@@ -52,7 +57,7 @@ when starting to stream a movie/show.
 
 ### APs
 
-Optionally, enable OFDMA for both APs under Advanced.
+Optionally, enable OFDMA for both APs under Site -> Devices -> {AP} -> Manage Device -> Config -> Wireless.
 
 ### Lock AP
 
