@@ -14,6 +14,10 @@ spec:
       labels:
         app: technitium-dns-postgresql
     spec:
+      securityContext:
+        # Default containerd AppArmor profile breaks postgres signalling on kernel 7.0.0-42
+        appArmorProfile:
+          type: Unconfined
       affinity:
         nodeAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:

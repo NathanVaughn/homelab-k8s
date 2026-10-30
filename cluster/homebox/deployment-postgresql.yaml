@@ -16,6 +16,10 @@ spec:
     spec:
       nodeSelector:
         role: apps
+      securityContext:
+        # Default containerd AppArmor profile breaks postgres signalling on kernel 7.0.0-42
+        appArmorProfile:
+          type: Unconfined
       containers:
         - envFrom:
             - secretRef:
