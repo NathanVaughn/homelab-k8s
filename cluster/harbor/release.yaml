@@ -14,6 +14,21 @@ spec:
         namespace: harbor
       version: "1.19.4"
   interval: 1h0m0s
+  # Apply AppArmor profile to the database StatefulSet
+  # Default containerd AppArmor profile breaks postgres signalling on kernel 7.0.0-42
+  postRenderers:
+    - kustomize:
+        patches:
+          - target:
+              group: apps
+              version: v1
+              kind: StatefulSet
+              labelSelector: app.kubernetes.io/component=database
+            patch: |
+              - op: add
+                path: /spec/template/spec/securityContext/appArmorProfile
+                value:
+                  type: Unconfined
   values:
     externalURL: https://cr.nathanv.app
     updateStrategy:
