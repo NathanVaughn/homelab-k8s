@@ -20,6 +20,9 @@ spec:
         fsGroup: 999
         runAsUser: 999
         runAsGroup: 999
+        # Default containerd AppArmor profile breaks postgres signalling on kernel 7.0.0-42
+        appArmorProfile:
+          type: Unconfined
       initContainers:
         - name: lost-found-fix
           # registry-proxy image-prefix
