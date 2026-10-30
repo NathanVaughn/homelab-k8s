@@ -48,6 +48,9 @@ spec:
           # 6.4.0 not aviable on amd64
           # hash issue with 6.10.3
           name: ghost
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
           ports:
             - containerPort: 2368
           volumeMounts:
