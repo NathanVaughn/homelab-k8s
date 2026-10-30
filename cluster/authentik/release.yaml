@@ -53,6 +53,10 @@ spec:
     redis:
       enabled: false
     server:
+      # Default containerd AppArmor profile breaks postgres signalling on kernel 7.0.0-42
+      securityContext:
+        appArmorProfile:
+          type: Unconfined
       metrics:
         enabled: true
         serviceMonitor:
