@@ -43,3 +43,11 @@
 VLAN 10
 
 10.10.0.1/24
+
+| Description          | Value                   |
+| -------------------- | ----------------------- |
+| Gateway IP           | 10.10.0.1               |
+| Network Broadcast IP | 10.10.0.255             |
+| Network IP Count     | 254                     |
+| Network IP Range     | 10.10.0.1 - 10.10.0.254 |
+| Network Subnet Mask  | 255.255.255.0           |
