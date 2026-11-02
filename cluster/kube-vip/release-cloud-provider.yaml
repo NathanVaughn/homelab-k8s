@@ -21,4 +21,4 @@ spec:
     # registry-proxy block-end
     cm:
       data:
-        range-global: "10.0.1.1-10.254.254.254"
+        range-global: "10.10.10.100-10.10.10.250"

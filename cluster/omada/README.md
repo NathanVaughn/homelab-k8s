@@ -24,10 +24,41 @@ Set the DHCP pool range to `10.0.0.30 - 10.0.15.254`.
 IOT VLAN:
 
 VLAN ID: 10
-Set the IP address and mask to `10.10.0.1/24`.
-Set the DHCP pool range to `10.10.0.1-10.10.0.254`.
+Set the IP address and mask to `10.20.0.1/24`.
+Set the DHCP pool range to `10.20.0.1-10.20.0.254`.
 
 NTP is option 42 under the Advanced DHCP Options.
+
+### Static Route for Service VIPs
+
+The kube-vip LoadBalancer addresses live in `10.10.10.0/24`, which is not a
+configured LAN. kube-vip answers ARP for them from whichever node holds the
+VIP, so the gateway must treat that subnet as directly reachable on the
+default LAN rather than via a fixed node IP.
+
+Configured under Site -> Network Config -> Transmission -> Routing -> Static Routing.
+
+Create a route with:
+
+| Field       | Value           |
+| ----------- | --------------- |
+| Name        | `service-vips`  |
+| Status      | Enabled         |
+| Destination | `10.10.10.0/24` |
+| Route Type  | Interface       |
+| Interface   | Default         |
+| Metric      | `1`             |
+
+Verify from a LAN client:
+
+```sh
+ping 10.10.10.10
+dig @10.10.10.10 example.com
+```
+
+Traffic from LAN clients to the VIPs passes through the gateway and returns
+via the same interface. If a firewall/ACL rule blocks LAN -> LAN traffic,
+allow `10.0.0.0/20` -> `10.10.10.0/24`.
 
 ### Mesh Settings
 

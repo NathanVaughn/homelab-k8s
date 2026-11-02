@@ -23,7 +23,7 @@ spec:
       repository: cr.nathanv.app/ghcr.io/kube-vip/kube-vip
       # registry-proxy block-end
     config:
-      address: "10.0.1.1"
+      address: "10.10.10.1"
     env:
       # vip_interface: eno1
       vip_arp: "true"

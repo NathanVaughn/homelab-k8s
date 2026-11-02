@@ -11,7 +11,7 @@ from pyinfra.facts.server import Hostname
 from pyinfra.operations import apt, files, python, server, systemd
 
 ROOT_DIR = pathlib.Path(__file__).absolute().parent.parent
-CONTROL_PLANE_IP = "10.0.1.1"
+CONTROL_PLANE_IP = "10.10.10.1"
 
 
 # load k3s data

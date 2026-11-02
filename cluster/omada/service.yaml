@@ -5,7 +5,7 @@ metadata:
   namespace: omada
 spec:
   type: LoadBalancer
-  loadBalancerIP: "10.0.1.6"
+  loadBalancerIP: "10.10.10.4"
   selector:
     app: omada
   ports:
