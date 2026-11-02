@@ -5,5 +5,5 @@ metadata:
   namespace: devices
 spec:
   hostname: billy.nathanv.home
-  internalIP: "10.0.0.20"
+  internalIP: "10.0.0.10"
   comments: Kubernetes node 1, E8-6A-64-78-E1-63

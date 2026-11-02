@@ -5,5 +5,5 @@ metadata:
   namespace: devices
 spec:
   hostname: jesse.nathanv.home
-  internalIP: "10.0.0.21"
+  internalIP: "10.0.0.11"
   comments: Kubernetes node 2, E8-6A-64-40-5D-76
