@@ -8,6 +8,9 @@ data:
       generic:
         astral: https://releases.astral.sh
         github: https://github.com
+      git:
+        github: https://github.com
+        gitlab: https://gitlab.com
       helm:
         alloy: https://grafana.github.io/helm-charts
         authentik: https://charts.goauthentik.io

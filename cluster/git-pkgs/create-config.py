@@ -48,6 +48,7 @@ def main() -> None:
     inner_data = {
         "upstream": {
             "helm": repos,
+            "git": {"github": "https://github.com", "gitlab": "https://gitlab.com"},
             "generic": {
                 "github": "https://github.com",
                 "astral": "https://releases.astral.sh",
