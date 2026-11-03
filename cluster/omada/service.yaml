@@ -3,9 +3,10 @@ kind: Service
 metadata:
   name: omada-service
   namespace: omada
+  annotations:
+    kube-vip.io/loadbalancerIPs: "10.10.10.4"
 spec:
   type: LoadBalancer
-  loadBalancerIP: "10.10.10.4"
   selector:
     app: omada
   ports:

@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: factorio-service
   namespace: factorio
+  annotations:
+    kube-vip.io/loadbalancerIPs: "10.0.1.5"
 spec:
   type: LoadBalancer
-  # use a static IP, since this is easier to maintain in Omada.
-  loadBalancerIP: "10.0.1.5"
   selector:
     app: factorio
   ports:

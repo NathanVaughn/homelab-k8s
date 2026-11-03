@@ -7,7 +7,6 @@ metadata:
     kube-vip.io/loadbalancerIPs: "10.10.10.3"
 spec:
   type: LoadBalancer
-  loadBalancerIP: "10.10.10.3"
   selector:
     app: chrony
   ports:

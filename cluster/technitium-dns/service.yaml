@@ -3,9 +3,10 @@ kind: Service
 metadata:
   name: technitium-dns-service
   namespace: technitium-dns
+  annotations:
+    kube-vip.io/loadbalancerIPs: "10.10.10.10"
 spec:
   type: LoadBalancer
-  loadBalancerIP: "10.10.10.10"
   selector:
     app: technitium-dns
   ports:

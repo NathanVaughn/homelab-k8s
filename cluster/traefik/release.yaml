@@ -28,8 +28,8 @@ spec:
       accessMode: ReadWriteMany
     service:
       type: LoadBalancer
-      spec:
-        loadBalancerIP: "10.10.10.2"
+      annotations:
+        kube-vip.io/loadbalancerIPs: "10.10.10.2"
     certificatesResolvers:
       le:
         acme:
