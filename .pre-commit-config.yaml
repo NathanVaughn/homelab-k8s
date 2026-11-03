@@ -25,7 +25,7 @@ repos:
     hooks:
       - id: ty
   - repo: https://pkgs.nathanv.app/git/github/astral-sh/uv-pre-commit
-    rev: 0.13.6
+    rev: 0.13.7
     hooks:
       - id: uv-lock
   - repo: https://pkgs.nathanv.app/git/github/tarioch/flux-check-hook
