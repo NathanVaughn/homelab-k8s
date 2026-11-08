@@ -1,4 +1,9 @@
-from pyinfra import host
+import shlex
+import subprocess
+import time
+
+from pyinfra import host, inventory
+from pyinfra.api import Host
 from pyinfra.facts import server as server_facts
 from pyinfra.operations import apt, python, server
 
@@ -7,59 +12,95 @@ apt.dist_upgrade(name="apt dist-upgrade", _sudo=True)
 apt.upgrade(name="apt upgrade --autoremove", auto_remove=True, _sudo=True)
 
 
+def run_kubectl_on_control_plane(
+    control_plane: Host, arguments: list[str], ignore_errors: bool = False
+) -> bool:
+    node_name = control_plane.get_fact(server_facts.Hostname)
+    node_ip = subprocess.check_output(
+        [
+            "kubectl",
+            "get",
+            "node",
+            node_name,
+            "-o",
+            'jsonpath={.status.addresses[?(@.type=="InternalIP")].address}',
+        ],
+        text=True,
+    ).strip()
+    if not node_ip:
+        raise RuntimeError(f"No InternalIP found for control-plane node {node_name}")
+
+    ssh_command = [
+        "ssh",
+        "-o",
+        f"HostName={node_ip}",
+        "-o",
+        f"HostKeyAlias={control_plane.name}",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=5",
+        f"{control_plane.data.get('ssh_user', 'ubuntu')}@{control_plane.name}",
+        f"sudo kubectl {shlex.join(arguments)}",
+    ]
+    result = subprocess.run(ssh_command, check=False)
+    if result.returncode and not ignore_errors:
+        raise subprocess.CalledProcessError(result.returncode, ssh_command)
+    return result.returncode == 0
+
+
 def reboot_node() -> None:
-    # first install netstat, since we need it after it reboots
-    apt.packages(
-        name="Install net-tools",
-        packages=["net-tools"],
-        _sudo=True,
+    node_name = host.get_fact(server_facts.Hostname)
+    control_plane = next(
+        candidate
+        for candidate in inventory.hosts.values()
+        if candidate.name != host.name and candidate.data.get("etcd_voter", True)
     )
 
     # cordon the node
-    server.shell(
-        name="Cordon the node",
-        commands=f"kubectl cordon {host.get_fact(server_facts.Hostname)}",
-        _sudo=True,
-    )
+    run_kubectl_on_control_plane(control_plane, ["cordon", node_name])
 
     # drain the node
-    server.shell(
-        name="Drain the node",
-        # without --disable-eviction, longhorn may make it wait forever.
-        # ---
-        # try without `--disable-eviction`, as this gives Longhorn
-        # time to replicate the volume before rebooting
-        commands=f"kubectl drain --delete-emptydir-data --v=2 --ignore-daemonsets {host.get_fact(server_facts.Hostname)}",
-        _sudo=True,
+    # without --disable-eviction, longhorn may make it wait forever.
+    # ---
+    # try without `--disable-eviction`, as this gives Longhorn
+    # time to replicate the volume before rebooting
+    run_kubectl_on_control_plane(
+        control_plane,
+        [
+            "drain",
+            "--delete-emptydir-data",
+            "--v=2",
+            "--ignore-daemonsets",
+            node_name,
+        ],
     )
 
     # reboot
     server.reboot(name="Reboot the server", interval=5, reboot_timeout=600, _sudo=True)
 
-    # wait for the kubernetes server to come back
-    # this uses netstat
-    server.wait(
-        name="Wait for k3s to start",
-        port=6443,
+    run_kubectl_on_control_plane(
+        control_plane,
+        [
+            "wait",
+            "--for=condition=Ready",
+            f"node/{node_name}",
+            "--timeout=600s",
+        ],
     )
 
     # uncordon the node
     max_retries = 10
     for attempt in range(1, max_retries + 1):
-        result = server.shell(
-            name="Uncordon the node",
-            commands=f"kubectl uncordon {host.get_fact(server_facts.Hostname)}",
-            _sudo=True,
-            _ignore_errors=True,
-            _continue_on_error=True,
-        )
-
-        if result.did_succeed():
+        if run_kubectl_on_control_plane(
+            control_plane, ["uncordon", node_name], ignore_errors=True
+        ):
             break
 
-        server.shell(
-            name="Retry wait",
-            commands=f"sleep {attempt * 2}",
+        time.sleep(attempt * 2)
+    else:
+        raise RuntimeError(
+            f"Failed to uncordon node {node_name} after {max_retries} attempts"
         )
 
 
