@@ -62,32 +62,6 @@ apt.packages(
     _sudo=True,
 )
 
-# configure primary DNS server for network role hosts
-if "role=network" in host.data.get("k8s_labels", []):
-    dns_config = files.block(
-        name="Configure primary DNS server",
-        path="/etc/netplan/90-primary-dns.yaml",
-        content=(
-            "network:\n"
-            "  version: 2\n"
-            "  ethernets:\n"
-            "    all-en:\n"
-            "      dhcp4-overrides:\n"
-            "        use-dns: false\n"
-            "      nameservers:\n"
-            "        addresses:\n"
-            "          - 1.1.1.1\n"
-        ),
-        _sudo=True,
-    )
-
-    server.shell(
-        name="Apply primary DNS server configuration",
-        commands="netplan generate && netplan apply",
-        _sudo=True,
-        _if=dns_config.did_change,
-    )
-
 # disable wifi
 if "connectivity=eth" in host.data.get("k8s_labels", []):
     server.shell(name="Disable wifi", commands="nmcli radio wifi off", _sudo=True)
