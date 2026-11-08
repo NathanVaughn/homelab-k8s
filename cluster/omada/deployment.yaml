@@ -52,6 +52,9 @@ spec:
           # registry-proxy image-prefix
           image: cr.nathanv.app/docker.io/mbentley/omada-controller:6.3.0.111
           name: omada
+          securityContext:
+            appArmorProfile:
+              type: Unconfined
           ports:
             - containerPort: 8088
               protocol: TCP
