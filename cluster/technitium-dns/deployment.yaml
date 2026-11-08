@@ -27,6 +27,9 @@ spec:
       containers:
         - name: technitium-dns
           image: docker.io/technitium/dns-server:15.6.2
+          securityContext:
+            appArmorProfile:
+              type: Unconfined
           ports:
             - containerPort: 5380
             - containerPort: 53
