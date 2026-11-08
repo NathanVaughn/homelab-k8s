@@ -30,6 +30,13 @@ spec:
       dnsConfig:
         nameservers:
           - 1.1.1.1
+        searches:
+          - technitium-dns.svc.cluster.local
+          - svc.cluster.local
+          - cluster.local
+        options:
+          - name: ndots
+            value: "5"
       containers:
         - name: technitium-dns
           image: docker.io/technitium/dns-server:15.6.2
