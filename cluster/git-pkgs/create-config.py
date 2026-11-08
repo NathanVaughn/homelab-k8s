@@ -57,6 +57,7 @@ def main() -> None:
             "debian_repositories": {
                 "ubuntu": "https://us.archive.ubuntu.com/ubuntu/",
                 "ubuntu-security": "https://security.ubuntu.com/ubuntu/",
+                "git-core-ppa": "https://ppa.launchpadcontent.net/git-core/ppa/ubuntu/",
             },
         }
     }
