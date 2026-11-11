@@ -3,9 +3,9 @@ data:
   config.yaml: |
     upstream:
       debian_repositories:
+        git-core-ppa: https://ppa.launchpadcontent.net/git-core/ppa/ubuntu/
         ubuntu: https://us.archive.ubuntu.com/ubuntu/
         ubuntu-security: https://security.ubuntu.com/ubuntu/
-        git-core-ppa: https://ppa.launchpadcontent.net/git-core/ppa/ubuntu/
       generic:
         astral: https://releases.astral.sh
         github: https://github.com

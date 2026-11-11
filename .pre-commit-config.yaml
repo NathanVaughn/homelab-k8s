@@ -46,3 +46,9 @@ repos:
         language: system
         pass_filenames: false
         always_run: true
+      - id: git-pkgs-config
+        name: Git Pkgs Config
+        entry: uv run cluster/git-pkgs/create-config.py
+        language: system
+        pass_filenames: false
+        always_run: true
