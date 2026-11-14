@@ -7,6 +7,7 @@ import urllib.request
 
 import yaml
 from pyinfra import host, inventory
+from pyinfra.facts.files import Link
 from pyinfra.facts.server import Hostname
 from pyinfra.operations import apt, files, python, server, systemd
 
@@ -59,6 +60,28 @@ apt.packages(
     name="Install required packages",
     packages=["nfs-common", "network-manager", "systemd-resolved", "htop", "nano"],
     update=True,
+    _sudo=True,
+)
+
+# Disable systemd's OSC 3008 shell integration for Guacamole's terminal.
+# https://github.com/systemd/systemd/issues/42333
+osc_context_mask = "/etc/tmpfiles.d/20-systemd-osc-context.conf"
+osc_context_mask_info = host.get_fact(Link, path=osc_context_mask)
+if osc_context_mask_info is False or (
+    osc_context_mask_info and osc_context_mask_info["link_target"] != "/dev/null"
+):
+    raise RuntimeError(f"Refusing to overwrite existing {osc_context_mask}")
+
+files.link(
+    name="Mask systemd OSC context tmpfiles configuration",
+    path=osc_context_mask,
+    target="/dev/null",
+    _sudo=True,
+)
+files.link(
+    name="Remove systemd OSC context shell profile",
+    path="/etc/profile.d/80-systemd-osc-context.sh",
+    present=False,
     _sudo=True,
 )
 

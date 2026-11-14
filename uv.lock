@@ -439,14 +439,14 @@ wheels = [
 
 [[package]]
 name = "markdown-it-py"
-version = "4.2.0"
+version = "4.3.0"
 source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 dependencies = [
     { name = "mdurl" },
 ]
-sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/06/ff/7841249c247aa650a76b9ee4bbaeae59370dc8bfd2f6c01f3630c35eb134/markdown_it_py-4.2.0.tar.gz", hash = "sha256:04a21681d6fbb623de53f6f364d352309d4094dd4194040a10fd51833e418d49", size = 82454, upload-time = "2026-05-07T12:08:28.36Z" }
+sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/16/fc/cee2c45553c9a9bf77d8b0c391560c556d7ed756b1f0bb35eb5d48db09ea/markdown_it_py-4.3.0.tar.gz", hash = "sha256:91a58fa5b72c71a40cf7177250fd767480d7a2bb3ac426ccfb76fb90305fdaaa", size = 242701, upload-time = "2026-11-10T16:18:30.467Z" }
 wheels = [
-    { url = "https://pkgs.nathanv.app/pypi/packages/packages/b3/81/4da04ced5a082363ecfa159c010d200ecbd959ae410c10c0264a38cac0f5/markdown_it_py-4.2.0-py3-none-any.whl", hash = "sha256:9f7ebbcd14fe59494226453aed97c1070d83f8d24b6fc3a3bcf9a38092641c4a", size = 91687, upload-time = "2026-05-07T12:08:27.182Z" },
+    { url = "https://pkgs.nathanv.app/pypi/packages/packages/c9/31/5f0ac2f1a1c67423c995c731a11cd4ad05d081a2be969d74f868bdb9cc70/markdown_it_py-4.3.0-py3-none-any.whl", hash = "sha256:7aa1511a46c39138de78d9eba92ce47e63124d8003fc98b3a351909e04239efa", size = 96951, upload-time = "2026-11-10T16:18:28.975Z" },
 ]
 
 [[package]]
@@ -731,7 +731,7 @@ wheels = [
 
 [[package]]
 name = "pyinfra"
-version = "3.11.0"
+version = "3.11.1"
 source = { registry = "https://pkgs.nathanv.app/pypi/simple/" }
 dependencies = [
     { name = "cyclopts" },
@@ -746,9 +746,9 @@ dependencies = [
     { name = "typeguard" },
     { name = "types-paramiko" },
 ]
-sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/ab/66/3eb91b5872b443d22181a75a61b32b4d3955f11cb19916f62bb4cb0c7138/pyinfra-3.11.0.tar.gz", hash = "sha256:291b9734aec8137d177ff97881ee825de72c9fad235293abf61ae7eeb2a199f8", size = 710850, upload-time = "2026-11-09T11:02:00.615Z" }
+sdist = { url = "https://pkgs.nathanv.app/pypi/packages/packages/ef/f2/947848242479665094410288667068e50f3c839d4675a3f4fbe7495ce3c3/pyinfra-3.11.1.tar.gz", hash = "sha256:6017acf7b9c2a691217a038728ce4e4c703a986e6930c43c0e8b55d2a8a7265d", size = 714309, upload-time = "2026-11-12T18:17:09.668Z" }
 wheels = [
-    { url = "https://pkgs.nathanv.app/pypi/packages/packages/2b/85/dfd611f04f0ff10983dde0959a24484036dbf26bfdb23e2983037dd84687/pyinfra-3.11.0-py3-none-any.whl", hash = "sha256:ed386a6ff0c9b2045b5fa6c1f9b8b2240a5ed7d6d993af1c13ce3b237700c20a", size = 354706, upload-time = "2026-11-09T11:01:58.38Z" },
+    { url = "https://pkgs.nathanv.app/pypi/packages/packages/50/ef/4e422da006b87999e2af2e5539b1a63864657caf34f6cbd9129eda787f6d/pyinfra-3.11.1-py3-none-any.whl", hash = "sha256:39082ff60a136fab5dee0699f9d2f60c6fad7db2c3a2fd1fb90516c5bd83a5ec", size = 355354, upload-time = "2026-11-12T18:17:07.587Z" },
 ]
 
 [[package]]
