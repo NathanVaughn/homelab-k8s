@@ -27,7 +27,6 @@ spec:
       storageClass: longhorn
       accessMode: ReadWriteMany
     service:
-      type: LoadBalancer
       annotations:
         kube-vip.io/loadbalancerIPs: "10.10.10.2"
     certificatesResolvers:
