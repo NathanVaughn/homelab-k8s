@@ -3,7 +3,9 @@
     "extends": [
         "github>nathanvaughn/renovate-config"
     ],
-    "dependencyDashboard": true,
+    "dependencyDashboard": {
+        "enabled": true
+    },
     "flux": {
         "managerFilePatterns": [
             "/cluster/.+\\.yaml$/"
