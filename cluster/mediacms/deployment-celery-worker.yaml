@@ -26,7 +26,7 @@ spec:
       containers:
         - name: celery-worker
           # registry-proxy image-prefix
-          image: cr.nathanv.app/docker.io/mediacms/mediacms@sha256:f10737c9cd23836969680db9c5ee5aec8d2b7e09b559aa8ad93cf2460ec81a7e
+          image: cr.nathanv.app/docker.io/mediacms/mediacms@sha256:fd5a19139f4581ba972847bf0e075c4ec6f7002c24213bdaa010cf4915606a2a
           env:
             - name: ENABLE_UWSGI
               value: "no"
